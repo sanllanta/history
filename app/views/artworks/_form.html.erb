@@ -1,0 +1,87 @@
+<%= form_for @artwork, :html => { :class => "form-horizontal artwork" } do |f| %>
+
+    <% if @artwork.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@artwork.errors.count, "error") %> prohibited this artwork from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @artwork.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :author, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :author, :class => 'form-control' %>
+    </div>
+    <%= error_span(@artwork[:author]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :activity, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :activity, :class => 'form-control' %>
+    </div>
+    <%= error_span(@artwork[:activity]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :biographic_data, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :biographic_data, :class => 'form-control' %>
+    </div>
+    <%= error_span(@artwork[:biographic_data]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :signed, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :signed, :class => 'form-control' %>
+    </div>
+    <%= error_span(@artwork[:signed]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :synthesis, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :synthesis, :class => 'form-control' %>
+    </div>
+    <%= error_span(@artwork[:synthesis]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :biographic_comment, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :biographic_comment, :class => 'form-control' %>
+    </div>
+    <%= error_span(@artwork[:biographic_comment]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :annotation, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :annotation, :class => 'form-control' %>
+    </div>
+    <%= error_span(@artwork[:annotation]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :sub_image, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :sub_image, :class => 'form-control' %>
+    </div>
+    <%= error_span(@artwork[:sub_image]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :comment, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :comment, :class => 'form-control' %>
+    </div>
+    <%= error_span(@artwork[:comment]) %>
+  </div>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            artworks_path, :class => 'btn btn-default' %>
+
+<% end %>

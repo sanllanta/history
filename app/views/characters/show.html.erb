@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @character.name %>
+</p>
+
+<p>
+  <strong>Biography:</strong>
+  <%= @character.biography %>
+</p>
+
+<p>
+  <strong>Death date:</strong>
+  <%= @character.death_date %>
+</p>
+
+<p>
+  <strong>Beatification date:</strong>
+  <%= @character.beatification_date %>
+</p>
+
+<p>
+  <strong>Canonization date:</strong>
+  <%= @character.canonization_date %>
+</p>
+
+<%= link_to 'Edit', edit_character_path(@character) %> |
+<%= link_to 'Back', characters_path %>
