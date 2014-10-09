@@ -10,6 +10,7 @@ group :assets do
 end
 #gem "tzinfo-data"
 gem 'twitter-bootstrap-rails'
+gem 'font-awesome-rails'
 gem 'diff-lcs'
 #rails generate bootstrap:install static
 #

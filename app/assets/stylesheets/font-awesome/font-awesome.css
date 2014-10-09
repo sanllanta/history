@@ -6,8 +6,8 @@
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url('../fonts/fontawesome-webfont.eot?v=4.1.0');
-  src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.1.0') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff?v=4.1.0') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.1.0') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.1.0#fontawesomeregular') format('svg');
+  src: url('../../../../../../.rvm/gems/ruby-2.1.0@cockpitgem/gems/twitter-bootstrap-rails-3.2.0/app/assets/fonts/fontawesome-webfont.eot?v=4.1.0');
+  src: url('../../../../../../.rvm/gems/ruby-2.1.0@cockpitgem/gems/twitter-bootstrap-rails-3.2.0/app/assets/fonts/fontawesome-webfont.eot?#iefix&v=4.1.0') format('embedded-opentype'), url('../../../../../../.rvm/gems/ruby-2.1.0@cockpitgem/gems/twitter-bootstrap-rails-3.2.0/app/assets/fonts/fontawesome-webfont.woff?v=4.1.0') format('woff'), url('../../../../../../.rvm/gems/ruby-2.1.0@cockpitgem/gems/twitter-bootstrap-rails-3.2.0/app/assets/fonts/fontawesome-webfont.ttf?v=4.1.0') format('truetype'), url('../../../../../../.rvm/gems/ruby-2.1.0@cockpitgem/gems/twitter-bootstrap-rails-3.2.0/app/assets/fonts/fontawesome-webfont.svg?v=4.1.0#fontawesomeregular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
