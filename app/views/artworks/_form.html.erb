@@ -79,9 +79,14 @@
     <%= error_span(@artwork[:comment]) %>
   </div>
 
+    <% if params[:action] == 'edit' %>
+        <%= link_to t('.agregar categorias', :default => t("helpers.links.categories_add")),
+                    new_artwork_category_path(:artwork_id => @artwork.id), :class => 'btn btn-info' %>
+    <%end%>
 
-  <%= f.submit nil, :class => 'btn btn-primary' %>
-  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-            artworks_path, :class => 'btn btn-default' %>
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+    artworks_path, :class => 'btn btn-default' %>
+
 
 <% end %>

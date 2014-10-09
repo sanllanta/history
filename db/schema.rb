@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20140929211347) do
     t.text     "annotation"
     t.text     "sub_image"
     t.text     "comment"
+    t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
