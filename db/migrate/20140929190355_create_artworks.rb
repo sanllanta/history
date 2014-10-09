@@ -11,6 +11,7 @@ class CreateArtworks < ActiveRecord::Migration
       t.text :sub_image
       t.text :comment
 
+      t.belongs_to :category
       t.timestamps
     end
   end

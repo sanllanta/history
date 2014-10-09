@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
   resources :engravings
 
-  resources :categories
 
   resources :descriptions
 
@@ -30,7 +29,10 @@ Rails.application.routes.draw do
 
   resources :places
 
-  resources :artworks
+  resources :artworks do
+    resources :categories
+
+  end
 
   get 'welcome/index'
 
