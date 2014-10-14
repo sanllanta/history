@@ -8,6 +8,7 @@ group :assets do
   # Use CoffeeScript for .js.coffee assets and views
   #gem 'coffee-rails', '~> 4.0.0'
 end
+#gem "tzinfo-data"
 gem 'twitter-bootstrap-rails'
 gem 'font-awesome-rails'
 gem 'diff-lcs'
@@ -19,6 +20,8 @@ group :development, :test do
 
   #rails generate rspec:install
 end
+
+gem "paperclip", "~> 4.2"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.3'
