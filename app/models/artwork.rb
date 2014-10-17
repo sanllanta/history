@@ -1,5 +1,4 @@
 class Artwork < ActiveRecord::Base
-  belongs_to :category
   belongs_to :passage
   belongs_to :place
   belongs_to :scene
@@ -12,8 +11,12 @@ class Artwork < ActiveRecord::Base
   belongs_to :story_type
   belongs_to :work_art_symbol
   belongs_to :school
+  has_many :iconographic_attributes
   has_many :descriptions
   has_many :artwork_characters, dependent: :destroy
+  has_and_belongs_to_many :categories
+  has_and_belongs_to_many :artwork_symbols
+  has_and_belongs_to_many :engravings
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 end

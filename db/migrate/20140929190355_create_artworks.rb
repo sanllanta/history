@@ -7,7 +7,6 @@ class CreateArtworks < ActiveRecord::Migration
       t.belongs_to :type
       t.belongs_to :source
       t.belongs_to :origin
-      t.belongs_to :scene
       t.belongs_to :donor
       t.belongs_to :phylactery_billboard
       t.belongs_to :story_type

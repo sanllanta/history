@@ -1,0 +1,17 @@
+<%= form_for(@artwork_symbol) do |f| %>
+  <% if @artwork_symbol.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@artwork_symbol.errors.count, "error") %> prohibited this artwork_symbol from being saved:</h2>
+
+      <ul>
+      <% @artwork_symbol.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
