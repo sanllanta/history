@@ -25,6 +25,9 @@ class ArtworksController < ApplicationController
   # POST /artworks.json
   def create
     @artwork = Artwork.new(artwork_params)
+    if !artwork_params[:avatar].nil?
+      @artwork.update_attribute(:avatar, artwork_params[:avatar])
+    end
 
     respond_to do |format|
       if @artwork.save
@@ -40,15 +43,26 @@ class ArtworksController < ApplicationController
   # PATCH/PUT /artworks/1
   # PATCH/PUT /artworks/1.json
   def update
-    respond_to do |format|
-      if @artwork.update(artwork_params)
-        format.html { redirect_to @artwork, notice: 'Artwork was successfully updated.' }
-        format.json { render :show, status: :ok, location: @artwork }
-      else
-        format.html { render :edit }
-        format.json { render json: @artwork.errors, status: :unprocessable_entity }
+    if params[:id] == 'send_image'
+      send_image
+    else
+      respond_to do |format|
+        if @artwork.update(artwork_params)
+          format.html { redirect_to @artwork, notice: 'Artwork was successfully updated.' }
+          format.json { render :show, status: :ok, location: @artwork }
+        else
+          format.html { render :edit }
+          format.json { render json: @artwork.errors, status: :unprocessable_entity }
+        end
       end
     end
+  end
+
+  def send_image
+    p "asd"
+    artwork_id = params[:artwork][:id]
+    artwork = Artwork.find(artwork_id)
+    send_file Rails.public_path.to_s << artwork.avatar.url.to_s.split('?')[0]
   end
 
   # DELETE /artworks/1
@@ -64,11 +78,15 @@ class ArtworksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_artwork
-      @artwork = Artwork.find(params[:id])
+      if params[:id]!='send_image'
+        @artwork = Artwork.find(params[:id])
+      else
+        @artwork = Artwork.find(params[:artwork][:id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def artwork_params
-      params.require(:artwork).permit(:author, :activity, :biographic_data, :signed, :synthesis, :biographic_comment, :annotation, :sub_image, :comment)
+      params.require(:artwork).permit(:author, :activity, :biographic_data, :signed, :synthesis, :biographic_comment, :annotation, :avatar, :sub_image, :comment)
     end
 end

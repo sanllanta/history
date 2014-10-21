@@ -3,12 +3,12 @@ source 'https://rubygems.org'
 #manejo de vistas bootstrap
 group :assets do
 #Stile manage of the site
-  gem 'therubyracer'
+  #gem 'therubyracer'
   #gem 'less-rails' #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
   # Use CoffeeScript for .js.coffee assets and views
   #gem 'coffee-rails', '~> 4.0.0'
 end
-#gem "tzinfo-data"
+gem "tzinfo-data"
 gem 'twitter-bootstrap-rails'
 gem 'font-awesome-rails'
 gem 'diff-lcs'
@@ -21,7 +21,7 @@ group :development, :test do
   #rails generate rspec:install
 end
 
-gem "paperclip", "~> 4.2"
+gem 'paperclip', '~> 3.5.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.3'

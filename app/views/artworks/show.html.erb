@@ -18,6 +18,13 @@
   <dd><%= @artwork.biographic_comment %></dd>
   <dt><strong><%= model_class.human_attribute_name(:annotation) %>:</strong></dt>
   <dd><%= @artwork.annotation %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:avatar) %>:</strong></dt>
+  <dd><%= image_tag @artwork.avatar.url(:large) %>
+      <%= form_for @artwork, :url => { :action => "send_image" } do |f|  %>
+          <%= f.hidden_field :id, :value => @artwork.id %>
+          <%= f.submit "Download", class: "btn btn-primary btn-sm" ,style:"margin-top: 1em;" %>
+      <%end%>
+  </dd>
   <dt><strong><%= model_class.human_attribute_name(:sub_image) %>:</strong></dt>
   <dd><%= @artwork.sub_image %></dd>
   <dt><strong><%= model_class.human_attribute_name(:comment) %>:</strong></dt>

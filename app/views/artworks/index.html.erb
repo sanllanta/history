@@ -13,6 +13,7 @@
       <th><%= model_class.human_attribute_name(:synthesis) %></th>
       <th><%= model_class.human_attribute_name(:biographic_comment) %></th>
       <th><%= model_class.human_attribute_name(:annotation) %></th>
+      <th><%= model_class.human_attribute_name(:avatar) %></th>
       <th><%= model_class.human_attribute_name(:sub_image) %></th>
       <th><%= model_class.human_attribute_name(:comment) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
@@ -30,6 +31,7 @@
         <td><%= artwork.synthesis %></td>
         <td><%= artwork.biographic_comment %></td>
         <td><%= artwork.annotation %></td>
+        <td> <%= image_tag artwork.avatar.url(:thumb) %></td>
         <td><%= artwork.sub_image %></td>
         <td><%= artwork.comment %></td>
         <td><%=l artwork.created_at %></td>

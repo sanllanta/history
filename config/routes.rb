@@ -31,10 +31,11 @@ Rails.application.routes.draw do
 
   resources :artworks do
     resources :categories
-
   end
 
   get 'welcome/index'
+
+  put 'artworks/send_image'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
