@@ -15,8 +15,6 @@
 # gem 'pg'
 #
 default: &default
-  #password: kelvin
-  #username: postgres
   password: 12345678
   username: dbhistoria
   reconnect: true
@@ -29,7 +27,7 @@ default: &default
 
 development:
   <<: *default
-  database: cockpit_development
+  database: history_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -63,7 +61,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: cockpit_test
+  database: history_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -86,6 +84,6 @@ test:
 #
 production:
   <<: *default
-  database: cockpit_production
-  username: cockpit
-  password: <%= ENV['COCKPIT_DATABASE_PASSWORD'] %>
+  database: history_production
+  username: history
+  password: <%= ENV['HISTORY_DATABASE_PASSWORD'] %>

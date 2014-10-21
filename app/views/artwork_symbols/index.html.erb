@@ -1,0 +1,23 @@
+<h1>Listing artwork_symbols</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @artwork_symbols.each do |artwork_symbol| %>
+      <tr>
+        <td><%= link_to 'Show', artwork_symbol %></td>
+        <td><%= link_to 'Edit', edit_artwork_symbol_path(artwork_symbol) %></td>
+        <td><%= link_to 'Destroy', artwork_symbol, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Artwork symbol', new_artwork_symbol_path %>

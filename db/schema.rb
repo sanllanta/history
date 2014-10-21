@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141014162501) do
+ActiveRecord::Schema.define(version: 20141017194954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,28 @@ ActiveRecord::Schema.define(version: 20141014162501) do
     t.datetime "updated_at"
   end
 
+  create_table "artwork_symbols", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "artwork_symbols_artworks", force: true do |t|
+    t.integer "artwork_id"
+    t.integer "artwork_symbol_id"
+  end
+
   create_table "artworks", force: true do |t|
+    t.integer  "passage_id"
+    t.integer  "place_id"
+    t.integer  "scene_id"
+    t.integer  "type_id"
+    t.integer  "source_id"
+    t.integer  "origin_id"
+    t.integer  "donor_id"
+    t.integer  "phylactery_billboard_id"
+    t.integer  "story_type_id"
+    t.integer  "school_id"
     t.string   "author"
     t.string   "activity"
     t.text     "biographic_data"
@@ -34,13 +55,27 @@ ActiveRecord::Schema.define(version: 20141014162501) do
     t.text     "annotation"
     t.text     "sub_image"
     t.text     "comment"
-    t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+  end
+
+  create_table "artworks_categories", force: true do |t|
+    t.integer "artwork_id"
+    t.integer "category_id"
+  end
+
+  create_table "artworks_characters", force: true do |t|
+    t.integer "artwork_id"
+    t.integer "character_id"
+  end
+
+  create_table "artworks_engravings", force: true do |t|
+    t.integer "artwork_id"
+    t.integer "engraving_id"
   end
 
   create_table "categories", force: true do |t|
@@ -60,6 +95,7 @@ ActiveRecord::Schema.define(version: 20141014162501) do
   end
 
   create_table "descriptions", force: true do |t|
+    t.integer  "artwork_id"
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -73,6 +109,13 @@ ActiveRecord::Schema.define(version: 20141014162501) do
 
   create_table "engravings", force: true do |t|
     t.text     "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "iconographic_attributes", force: true do |t|
+    t.string   "name"
+    t.integer  "artwork_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -126,12 +169,6 @@ ActiveRecord::Schema.define(version: 20141014162501) do
   end
 
   create_table "types", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "work_art_symbols", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"

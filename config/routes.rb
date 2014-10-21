@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :iconographic_attributes
+
+  resources :artwork_symbols
+
   resources :phylactery_billboards
 
   resources :engravings
@@ -10,8 +14,6 @@ Rails.application.routes.draw do
   resources :schools
 
   resources :story_types
-
-  resources :work_art_symbols
 
   resources :passages
 
