@@ -2,45 +2,44 @@
 </script>
 
 <script>
-function initialize()
-{
-infowindow = new google.maps.InfoWindow();
-var myLatlng = new google.maps.LatLng(4.5983577,-74.0758655);
-var mapProp = {
-  center: myLatlng,
-  zoom:6,
-  mapTypeId:google.maps.MapTypeId.ROADMAP
-  };
-var map=new google.maps.Map(document.getElementById("googleMap")
-  ,mapProp);
+    function initialize() {
+        infowindow = new google.maps.InfoWindow();
+        var myLatlng = new google.maps.LatLng(4.5983577, -74.0758655);
+        var mapProp = {
+            center: myLatlng,
+            zoom: 6,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("googleMap")
+                , mapProp);
 
-var marker = new google.maps.Marker({
-      position: myLatlng,
-      map: map,
-      title: 'Artowrk current location'
-  });
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            title: 'Artowrk current location'
+        });
 
-google.maps.event.addListener(marker, 'click', function() {
-    onItemClick(event, marker);
-  });
+        google.maps.event.addListener(marker, 'click', function () {
+            onItemClick(event, marker);
+        });
 
-function onItemClick(event, marker) {
-  // Create content
-  var contentString = marker.title;
+        function onItemClick(event, marker) {
+            // Create content
+            var contentString = marker.title;
 
-  // Replace our Info Window's content and position
-  infowindow.setContent(contentString);
-  infowindow.setPosition(marker.position);
-  infowindow.open(map)
-}
-}
+            // Replace our Info Window's content and position
+            infowindow.setContent(contentString);
+            infowindow.setPosition(marker.position);
+            infowindow.open(map)
+        }
+    }
 
-google.maps.event.addDomListener(window, 'load', initialize);
+    google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 
 <%- model_class = Artwork -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <h1><%= t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
 <div class="well">
   <div class="row">
@@ -69,27 +68,26 @@ google.maps.event.addDomListener(window, 'load', initialize);
       <div class="col-md-6">
         <h2></h2>
         <%= image_tag @artwork.avatar.url(:large), :class => "img-thumbnail", :class => "img-responsive" %>
-        <%= form_for @artwork, :url => { :action => "send_image" } do |f|  %>
+        <%= form_for @artwork, :url => {:action => "send_image"} do |f| %>
             <%= f.hidden_field :id, :value => @artwork.id %>
-            <%= f.submit "Download original", class: "btn btn-primary btn-sm" ,style:"margin-top: 1em;" %>
-        <%end%>
+            <%= f.submit "Download original", class: "btn btn-primary btn-sm", style: "margin-top: 1em;" %>
+        <% end %>
       </div>
     </dl>
   </div>
   <div class="row">
-    <div class="col-md-6">
-      <h2>Location</h2>
-      <div id="googleMap" style="width:100%;height:380px;"></div>
-    </div>
+    <h2>Location</h2>
+
+    <div id="googleMap" style="width:100%;height:380px;"></div>
   </div>
 </div>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
-              artworks_path, :class => 'btn btn-default'  %>
+            artworks_path, :class => 'btn btn-default' %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_artwork_path(@artwork), :class => 'btn btn-default' %>
+            edit_artwork_path(@artwork), :class => 'btn btn-default' %>
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              artwork_path(@artwork),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
+            artwork_path(@artwork),
+            :method => 'delete',
+            :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
+            :class => 'btn btn-danger' %>

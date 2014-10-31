@@ -39,7 +39,7 @@
   <div class="control-group">
     <%= f.label :signed, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :signed, :class => 'form-control' %>
+      <%= f.select :signed, [['Yes', 'Yes'], ['No', 'No']], :class => 'form-control' %>
     </div>
     <%= error_span(@artwork[:signed]) %>
   </div>
@@ -85,7 +85,13 @@
     </div>
     <%= error_span(@artwork[:comment]) %>
   </div>
-
+    <!--<div class="control-group">
+      <= f.label :passage, :class => 'control-label' %>
+      <div class="controls">
+        <= f.collection_select :passage, Artwork.all, :id, :author, :prompt => "Select a passage"  %><br/>
+      </div>
+      <= error_span(@artwork[:comment]) %>
+    </div>-->
     <% if params[:action] == 'edit' %>
         <%= link_to t('.agregar categorias', :default => t("helpers.links.categories_add")),
                     new_artwork_category_path(:artwork_id => @artwork.id), :class => 'btn btn-info' %>

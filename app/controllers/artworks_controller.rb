@@ -59,7 +59,6 @@ class ArtworksController < ApplicationController
   end
 
   def send_image
-    p "asd"
     artwork_id = params[:artwork][:id]
     artwork = Artwork.find(artwork_id)
     send_file Rails.public_path.to_s << artwork.avatar.url.to_s.split('?')[0]
@@ -76,17 +75,17 @@ class ArtworksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_artwork
-      if params[:id]!='send_image'
-        @artwork = Artwork.find(params[:id])
-      else
-        @artwork = Artwork.find(params[:artwork][:id])
-      end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_artwork
+    if params[:id]!='send_image'
+      @artwork = Artwork.find(params[:id])
+    else
+      @artwork = Artwork.find(params[:artwork][:id])
     end
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def artwork_params
-      params.require(:artwork).permit(:author, :activity, :biographic_data, :signed, :synthesis, :biographic_comment, :annotation, :avatar, :sub_image, :comment)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def artwork_params
+    params.require(:artwork).permit(:author, :activity, :biographic_data, :signed, :synthesis, :biographic_comment, :annotation, :avatar, :sub_image, :comment)
+  end
 end
