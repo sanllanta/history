@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 20141017194954) do
   enable_extension "plpgsql"
 
   create_table "artwork_characters", id: false, force: true do |t|
-    t.integer  "artwork"
-    t.integer  "character"
+    t.integer  "artwork_id"
+    t.integer  "character_id"
     t.boolean  "principal_character", default: false
     t.datetime "created_at"
     t.datetime "updated_at"
