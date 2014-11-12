@@ -1,0 +1,15 @@
+<div class="control-group">
+  <%= ff.fields_for :type do |type_fields| %>
+      <%= type_fields.label :name, "Type" , :class => 'control-label' %>
+      <div class="controls">
+        <%= type_fields.text_area :name %>
+        <% if params[:action] == "edit" %>
+
+            <%= type_fields.check_box :_destroy %>
+            <%= type_fields.label :_destroy , "Eliminar type"%>
+
+        <% end %>
+      </div>
+  <% end %>
+  <%= error_span(@artwork[:type]) %>
+</div>

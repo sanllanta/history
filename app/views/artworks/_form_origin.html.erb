@@ -1,0 +1,15 @@
+<div class="control-group">
+  <%= ff.fields_for :origin do |origin_fields| %>
+      <%= origin_fields.label :name, "origin" , :class => 'control-label' %>
+      <div class="controls">
+        <%= origin_fields.text_area :name %>
+        <% if params[:action] == "edit" %>
+
+            <%= origin_fields.check_box :_destroy %>
+            <%= origin_fields.label :_destroy , "Eliminar origin"%>
+
+        <% end %>
+      </div>
+  <% end %>
+  <%= error_span(@artwork[:passage]) %>
+</div>

@@ -1,0 +1,15 @@
+<div class="control-group">
+  <%= ff.fields_for :donor do |donor_fields| %>
+      <%= donor_fields.label :name, "donor" , :class => 'control-label' %>
+      <div class="controls">
+        <%= donor_fields.text_area :name %>
+        <% if params[:action] == "edit" %>
+
+            <%= donor_fields.check_box :_destroy %>
+            <%= donor_fields.label :_destroy , "Eliminar donor"%>
+
+        <% end %>
+      </div>
+  <% end %>
+  <%= error_span(@artwork[:donor]) %>
+</div>

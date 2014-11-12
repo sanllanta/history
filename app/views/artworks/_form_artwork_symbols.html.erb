@@ -1,0 +1,13 @@
+<div class="control-group">
+  <%=	 ff.fields_for :artwork_symbols do |artwork_symbols_fields| %>
+      <%= artwork_symbols_fields.label :name, "artwork symbols" , :class => 'control-label' %>
+      <div class="controls">
+        <%= artwork_symbols_fields.text_area :name%>
+        <% if params[:action] == "edit" %>
+            <%= artwork_symbols_fields.check_box :_destroy %>
+            <%= artwork_symbols_fields.label :_destroy , "Eliminar artwork symbols"%>
+        <% end %>
+      </div>
+  <% end %>
+  <%= error_span(@artwork[:artwork_symbol]) %>
+</div>

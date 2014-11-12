@@ -1,0 +1,15 @@
+<div class="control-group">
+  <%= ff.fields_for :passage do |passage_fields| %>
+      <%= passage_fields.label :name, "passage" , :class => 'control-label' %>
+      <div class="controls">
+        <%= passage_fields.text_area :name %>
+        <% if params[:action] == "edit" %>
+
+            <%= passage_fields.check_box :_destroy %>
+            <%= passage_fields.label :_destroy , "Eliminar passage"%>
+
+        <% end %>
+      </div>
+  <% end %>
+  <%= error_span(@artwork[:passage]) %>
+</div>

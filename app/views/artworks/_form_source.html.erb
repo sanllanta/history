@@ -1,0 +1,15 @@
+<div class="control-group">
+  <%= ff.fields_for :source do |source_fields| %>
+      <%= source_fields.label :name, "source" , :class => 'control-label' %>
+      <div class="controls">
+        <%= source_fields.text_area :name %>
+        <% if params[:action] == "edit" %>
+
+            <%= source_fields.check_box :_destroy %>
+            <%= source_fields.label :_destroy , "Eliminar source"%>
+
+        <% end %>
+      </div>
+  <% end %>
+  <%= error_span(@artwork[:source]) %>
+</div>

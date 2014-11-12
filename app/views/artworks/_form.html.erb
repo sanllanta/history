@@ -85,13 +85,69 @@
     </div>
     <%= error_span(@artwork[:comment]) %>
   </div>
-    <!--<div class="control-group">
-      <= f.label :passage, :class => 'control-label' %>
+
+    <div class="control-group">
+      <%= f.label :latitude_origin, :class => 'control-label' %>
       <div class="controls">
-        <= f.collection_select :passage, Artwork.all, :id, :author, :prompt => "Select a passage"  %><br/>
+        <%= f.text_field :latitude_origin, :class => 'form-control' %>
       </div>
-      <= error_span(@artwork[:comment]) %>
-    </div>-->
+      <%= error_span(@artwork[:latitude_origin]) %>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :latitude_current, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :latitude_current, :class => 'form-control' %>
+      </div>
+      <%= error_span(@artwork[:latitude_current]) %>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :longitude_origin, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :longitude_origin, :class => 'form-control' %>
+      </div>
+      <%= error_span(@artwork[:longitude_origin]) %>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :longitude_current, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :longitude_current, :class => 'form-control' %>
+      </div>
+      <%= error_span(@artwork[:longitude_current]) %>
+    </div>
+
+    <%= render 'form_descriptions' , :ff => f %>
+
+    <%= render 'form_iconographic_attributes' , :ff => f %>
+
+    <%= render 'form_artwork_symbols' , :ff => f %>
+
+    <%= render 'form_engravings', :ff => f %>
+
+    <%= render 'form_donor', :ff => f %>
+
+    <%= render 'form_origin', :ff => f %>
+
+    <%= render 'form_passage', :ff => f %>
+
+    <%= render 'form_phylactery_billboard', :ff => f %>
+
+    <%= render 'form_scene', :ff => f %>
+
+    <%= render 'form_place', :ff => f %>
+
+    <%= render 'form_school', :ff => f %>
+
+    <%= render 'form_source', :ff => f %>
+
+    <%= render 'form_story_type', :ff => f %>
+
+    <%= render 'form_type', :ff => f %>
+
+    <br>
+
     <% if params[:action] == 'edit' %>
         <%= link_to t('.agregar categorias', :default => t("helpers.links.categories_add")),
                     new_artwork_category_path(:artwork_id => @artwork.id), :class => 'btn btn-info' %>
@@ -103,3 +159,15 @@
 
 
 <% end %>
+
+<%=	 debug (params) %>
+
+<%=	 params.inspect %>
+
+<!--<div class="control-group">
+  <= f.label :passage, :class => 'control-label' %>
+  <div class="controls">
+    <= f.collection_select :passage, Artwork.all, :id, :author, :prompt => "Select a passage"  %><br/>
+  </div>
+  <= error_span(@artwork[:comment]) %>
+</div>-->

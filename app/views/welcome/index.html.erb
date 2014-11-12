@@ -1,2 +1,18 @@
-<h1>Proyecto de Historia</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<% @artworks = Artwork.first(limit = 4) %>
+<hr>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="well-sm">
+            <div id="slider">
+                <% @artworks.each do |artwork| %>
+                  <img class="img-responsive" src="<%= artwork.avatar.url(:slider)  %>" alt>
+                  <!--< image_tag artwork.avatar.url(:large) %>-->
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<% content_for :js_application do %>
+    <%= javascript_include_tag "welcome" %>
+<% end %>

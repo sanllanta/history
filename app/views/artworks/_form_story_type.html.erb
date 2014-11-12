@@ -1,0 +1,15 @@
+<div class="control-group">
+  <%= ff.fields_for :story_type do |story_type_fields| %>
+      <%= story_type_fields.label :name, "Story type" , :class => 'control-label' %>
+      <div class="controls">
+        <%= story_type_fields.text_area :name %>
+        <% if params[:action] == "edit" %>
+
+            <%= story_type_fields.check_box :_destroy %>
+            <%= story_type_fields.label :_destroy , "Eliminar Story type"%>
+
+        <% end %>
+      </div>
+  <% end %>
+  <%= error_span(@artwork[:type]) %>
+</div>

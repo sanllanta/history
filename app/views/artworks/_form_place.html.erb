@@ -1,0 +1,15 @@
+<div class="control-group">
+  <%= ff.fields_for :place do |place_fields| %>
+      <%= place_fields.label :name, "place" , :class => 'control-label' %>
+      <div class="controls">
+        <%= place_fields.text_area :name %>
+        <% if params[:action] == "edit" %>
+
+            <%= place_fields.check_box :_destroy %>
+            <%= place_fields.label :_destroy , "Eliminar scene"%>
+
+        <% end %>
+      </div>
+  <% end %>
+  <%= error_span(@artwork[:place]) %>
+</div>

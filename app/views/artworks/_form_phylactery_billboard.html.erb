@@ -1,0 +1,15 @@
+<div class="control-group">
+  <%= ff.fields_for :phylactery_billboard do |phylactery_fields| %>
+      <%= phylactery_fields.label :name, "phylactery" , :class => 'control-label' %>
+      <div class="controls">
+        <%= phylactery_fields.text_area :name %>
+        <% if params[:action] == "edit" %>
+
+            <%= phylactery_fields.check_box :_destroy %>
+            <%= phylactery_fields.label :_destroy , "Eliminar phylactery"%>
+
+        <% end %>
+      </div>
+  <% end %>
+  <%= error_span(@artwork[:place]) %>
+</div>

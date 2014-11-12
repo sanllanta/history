@@ -15,6 +15,22 @@ class ArtworksController < ApplicationController
   # GET /artworks/new
   def new
     @artwork = Artwork.new
+    if params[:action] == "new"
+      @artwork.descriptions.new
+      @artwork.artwork_symbols.new
+      @artwork.iconographic_attributes.new
+      @artwork.engravings.new
+      @artwork.donor = Donor.new
+      @artwork.origin = Origin.new
+      @artwork.passage = Passage.new
+      @artwork.phylactery_billboard = PhylacteryBillboard.new
+      @artwork.scene = Scene.new
+      @artwork.place = Place.new
+      @artwork.school = School.new
+      @artwork.source = Source.new
+      @artwork.story_type = StoryType.new
+      @artwork.type = Type.new
+    end
   end
 
   # GET /artworks/1/edit
@@ -24,21 +40,31 @@ class ArtworksController < ApplicationController
   # POST /artworks
   # POST /artworks.json
   def create
-    @artwork = Artwork.new(artwork_params)
+
+    @artwork = Artwork.new
+
+    @artwork.save
     if !artwork_params[:avatar].nil?
       @artwork.update_attribute(:avatar, artwork_params[:avatar])
     end
 
     respond_to do |format|
       if @artwork.save
-        format.html { redirect_to @artwork, notice: 'Artwork was successfully created.' }
-        format.json { render :show, status: :created, location: @artwork }
+        if @artwork.update(artwork_params)
+          format.html { redirect_to @artwork, notice: 'Artwork was successfully created.' }
+          format.json { render :show, status: :created, location: @artwork }
+        else
+          format.html { render :new }
+          format.json { render json: @artwork.errors, status: :unprocessable_entity }
+        end
       else
         format.html { render :new }
         format.json { render json: @artwork.errors, status: :unprocessable_entity }
       end
     end
   end
+
+
 
   # PATCH/PUT /artworks/1
   # PATCH/PUT /artworks/1.json
@@ -86,6 +112,28 @@ class ArtworksController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def artwork_params
-    params.require(:artwork).permit(:author, :activity, :biographic_data, :signed, :synthesis, :biographic_comment, :annotation, :avatar, :sub_image, :comment)
+    params.require(:artwork).permit(:author, :activity, :biographic_data, :signed, :synthesis,
+                                    :biographic_comment, :annotation, :avatar, :sub_image, :comment,
+                                    :latitude_origin,:latitude_current,:longitude_origin,:longitude_current,
+                                    descriptions_attributes:[:id,:description,:_destroy],
+                                    iconographic_attributes_attributes:[:id,:name,:_destroy],
+                                    artwork_symbols_attributes:[:id,:name,:_destroy],
+                                    engravings_attributes:[:id,:name,:_destroy],
+                                    donor_attributes:[:id,:name,:_destroy],
+                                    origin_attributes:[:id,:name,:_destroy],
+                                    passage_attributes:[:id,:name,:_destroy],
+                                    phylactery_billboard_attributes:[:id,:name,:_destroy],
+                                    scene_attributes:[:id,:name,:_destroy],
+                                    place_attributes:[:id,:name,:_destroy],
+                                    scene_attributes:[:id,:name,:_destroy],
+                                    school_attributes:[:id,:name,:_destroy],
+                                    source_attributes:[:id,:name,:_destroy],
+                                    story_type_attributes:[:id,:name,:_destroy],
+                                    type_attributes:[:id,:name,:_destroy]
+    )
+  end
+
+  def build_artwork
+
   end
 end

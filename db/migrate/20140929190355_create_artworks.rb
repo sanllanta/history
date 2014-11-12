@@ -22,8 +22,10 @@ class CreateArtworks < ActiveRecord::Migration
       t.text :annotation
       t.text :sub_image
       t.text :comment
-
-
+      t.decimal :latitude_origin , :precision =>5, :scale => 2, :default => 0
+      t.decimal :latitude_current , :precision =>5, :scale => 2, :default => 0
+      t.decimal :longitude_origin , :precision =>5, :scale => 2, :default => 0
+      t.decimal :longitude_current , :precision =>5, :scale => 2, :default => 0
       t.timestamps
     end
   end
