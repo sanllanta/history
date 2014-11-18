@@ -16,7 +16,6 @@ class Artwork < ActiveRecord::Base
   belongs_to :type
   belongs_to :source
   belongs_to :origin
-  belongs_to :scene
   belongs_to :donor
   belongs_to :phylactery_billboard
   belongs_to :story_type

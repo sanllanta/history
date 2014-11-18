@@ -69,11 +69,16 @@ class ArtworksController < ApplicationController
   # PATCH/PUT /artworks/1
   # PATCH/PUT /artworks/1.json
   def update
+
+    custom_artwork_params = artwork_params
+
+    delete_attributes(params, custom_artwork_params)
+
     if params[:id] == 'send_image'
       send_image
     else
       respond_to do |format|
-        if @artwork.update(artwork_params)
+        if @artwork.update(custom_artwork_params)
           format.html { redirect_to @artwork, notice: 'Artwork was successfully updated.' }
           format.json { render :show, status: :ok, location: @artwork }
         else
@@ -112,9 +117,10 @@ class ArtworksController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def artwork_params
-    params.require(:artwork).permit(:author, :activity, :biographic_data, :signed, :synthesis,
+    params.require(:artwork).permit(:passage_id, :place_id, :scene_id, :source_id, :origin_id, :donor_id,
+                                    :phylactery_billboard_id, :story_type_id, :school_id, :author, :activity, :biographic_data, :signed, :synthesis,
                                     :biographic_comment, :annotation, :avatar, :sub_image, :comment,
-                                    :latitude_origin,:latitude_current,:longitude_origin,:longitude_current,
+                                    :latitude_origin,:latitude_current,:longitude_origin,:longitude_current, :type_id,
                                     descriptions_attributes:[:id,:description,:_destroy],
                                     iconographic_attributes_attributes:[:id,:name,:_destroy],
                                     artwork_symbols_attributes:[:id,:name,:_destroy],
@@ -136,4 +142,58 @@ class ArtworksController < ApplicationController
   def build_artwork
 
   end
+
+  #Elimina los atributos marcados desde la vista de edición
+  def delete_attributes(params_hash, custom_artwork_params)
+    if params_hash[:delete_passage]
+      custom_artwork_params.delete :passage_id
+      @artwork.passage = nil
+    end
+
+    if params_hash[:delete_place]
+      custom_artwork_params.delete :place_id
+      @artwork.place = nil
+    end
+
+    if params_hash[:delete_scene]
+      custom_artwork_params.delete :scene_id
+      @artwork.scene = nil
+    end
+
+    if params_hash[:delete_type]
+      custom_artwork_params.delete :type_id
+      @artwork.type = nil
+    end
+
+    if params_hash[:delete_source]
+      custom_artwork_params.delete :source_id
+      @artwork.source = nil
+    end
+
+    if params_hash[:delete_origin]
+      custom_artwork_params.delete :origin_id
+      @artwork.origin = nil
+    end
+
+    if params_hash[:delete_donor]
+      custom_artwork_params.delete :donor_id
+      @artwork.donor = nil
+    end
+
+    if params_hash[:delete_phylactery_billboard]
+      custom_artwork_params.delete :phylactery_billboard_id
+      @artwork.phylactery_billboard = nil
+    end
+
+    if params_hash[:delete_story_type]
+      custom_artwork_params.delete :story_type_id
+      @artwork.story_type = nil
+    end
+
+    if params_hash[:delete_school]
+      custom_artwork_params.delete :school_id
+      @artwork.school = nil
+    end
+  end
+
 end

@@ -86,6 +86,124 @@
     <%= error_span(@artwork[:comment]) %>
   </div>
 
+    <%= render 'form_descriptions' , :ff => f %>
+
+    <%= render 'form_iconographic_attributes' , :ff => f %>
+
+    <%= render 'form_artwork_symbols' , :ff => f %>
+
+    <%= render 'form_engravings', :ff => f %>
+
+    <div class="control-group">
+      <%= f.label :passage, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.collection_select :passage_id, Passage.all, :id, :name,  {:prompt => 'Seleccione el pasaje'} %>
+      <% if params[:action] == "edit" %>
+          <%= check_box_tag  "delete_passage", true %>
+      <% end %>
+      </div>
+      <%= error_span(@artwork[:comment]) %>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :place, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.collection_select :place_id, Place.all, :id, :name,  {:prompt => 'Seleccione el lugar'} %>
+        <% if params[:action] == "edit" %>
+            <%= check_box_tag  "delete_place", true %>
+        <% end %>
+      </div>
+      <%= error_span(@artwork[:comment]) %>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :scene, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.collection_select :scene_id, Scene.all, :id, :name,  {:prompt => 'Seleccione la escena'} %>
+        <% if params[:action] == "edit" %>
+            <%= check_box_tag  "delete_scene", true %>
+        <% end %>
+      </div>
+      <%= error_span(@artwork[:comment]) %>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :type, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.collection_select :type_id, Type.all, :id, :name,  {:prompt => 'Seleccione el tipo'} %>
+        <% if params[:action] == "edit" %>
+            <%= check_box_tag  "delete_type", true %>
+        <% end %>
+      </div>
+      <%= error_span(@artwork[:comment]) %>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :source, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.collection_select :source_id, Source.all, :id, :name,  {:prompt => 'Seleccione la fuente'} %>
+        <% if params[:action] == "edit" %>
+            <%= check_box_tag  "delete_source", true %>
+        <% end %>
+      </div>
+      <%= error_span(@artwork[:comment]) %>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :origin, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.collection_select :origin_id, Origin.all, :id, :name,  {:prompt => 'Seleccione el origen'} %>
+        <% if params[:action] == "edit" %>
+            <%= check_box_tag  "delete_origin", true %>
+        <% end %>
+      </div>
+      <%= error_span(@artwork[:comment]) %>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :donor, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.collection_select :donor_id, Donor.all, :id, :name,  {:prompt => 'Seleccione el donante'} %>
+        <% if params[:action] == "edit" %>
+            <%= check_box_tag  "delete_donor", true %>
+        <% end %>
+      </div>
+      <%= error_span(@artwork[:comment]) %>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :phylactery_billboard, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.collection_select :phylactery_billboard_id, PhylacteryBillboard.all, :id, :name,  {:prompt => 'Cartelera Filacteria'} %>
+        <% if params[:action] == "edit" %>
+            <%= check_box_tag  "delete_phylactery_billboard", true %>
+        <% end %>
+      </div>
+      <%= error_span(@artwork[:comment]) %>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :story_type, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.collection_select :story_type_id, StoryType.all, :id, :name,  {:prompt => 'Seleccione el tipo de historia'} %>
+        <% if params[:action] == "edit" %>
+            <%= check_box_tag  "delete_story_type", true %>
+        <% end %>
+      </div>
+      <%= error_span(@artwork[:comment]) %>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :school, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.collection_select :school_id, School.all, :id, :name,  {:prompt => 'Seleccione la escuela'} %>
+        <% if params[:action] == "edit" %>
+            <%= check_box_tag  "delete_school", true %>
+        <% end %>
+      </div>
+      <%= error_span(@artwork[:comment]) %>
+    </div>
+
     <div class="control-group">
       <%= f.label :latitude_origin, :class => 'control-label' %>
       <div class="controls">
@@ -118,34 +236,6 @@
       <%= error_span(@artwork[:longitude_current]) %>
     </div>
 
-    <%= render 'form_descriptions' , :ff => f %>
-
-    <%= render 'form_iconographic_attributes' , :ff => f %>
-
-    <%= render 'form_artwork_symbols' , :ff => f %>
-
-    <%= render 'form_engravings', :ff => f %>
-
-    <%= render 'form_donor', :ff => f %>
-
-    <%= render 'form_origin', :ff => f %>
-
-    <%= render 'form_passage', :ff => f %>
-
-    <%= render 'form_phylactery_billboard', :ff => f %>
-
-    <%= render 'form_scene', :ff => f %>
-
-    <%= render 'form_place', :ff => f %>
-
-    <%= render 'form_school', :ff => f %>
-
-    <%= render 'form_source', :ff => f %>
-
-    <%= render 'form_story_type', :ff => f %>
-
-    <%= render 'form_type', :ff => f %>
-
     <br>
 
     <% if params[:action] == 'edit' %>
@@ -163,11 +253,3 @@
 <%=	 debug (params) %>
 
 <%=	 params.inspect %>
-
-<!--<div class="control-group">
-  <= f.label :passage, :class => 'control-label' %>
-  <div class="controls">
-    <= f.collection_select :passage, Artwork.all, :id, :author, :prompt => "Select a passage"  %><br/>
-  </div>
-  <= error_span(@artwork[:comment]) %>
-</div>-->
