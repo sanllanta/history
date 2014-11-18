@@ -1,15 +1,10 @@
 <div class="control-group">
-  <%= ff.fields_for :source do |source_fields| %>
-      <%= source_fields.label :name, "source" , :class => 'control-label' %>
-      <div class="controls">
-        <%= source_fields.text_area :name %>
-        <% if params[:action] == "edit" %>
-
-            <%= source_fields.check_box :_destroy %>
-            <%= source_fields.label :_destroy , "Eliminar source"%>
-
-        <% end %>
-      </div>
-  <% end %>
-  <%= error_span(@artwork[:source]) %>
+  <%= f.label :source, :class => 'control-label' %>
+  <div class="controls">
+    <%= f.collection_select :source_id, Source.all, :id, :name,  {:prompt => 'Seleccione la fuente'} %>
+    <% if params[:action] == "edit" %>
+        <%= check_box_tag  "delete_source", true %>
+    <% end %>
+  </div>
+  <%= error_span(@artwork[:comment]) %>
 </div>

@@ -1,15 +1,10 @@
 <div class="control-group">
-  <%= ff.fields_for :place do |place_fields| %>
-      <%= place_fields.label :name, "place" , :class => 'control-label' %>
-      <div class="controls">
-        <%= place_fields.text_area :name %>
-        <% if params[:action] == "edit" %>
-
-            <%= place_fields.check_box :_destroy %>
-            <%= place_fields.label :_destroy , "Eliminar scene"%>
-
-        <% end %>
-      </div>
-  <% end %>
-  <%= error_span(@artwork[:place]) %>
+  <%= f.label :place, :class => 'control-label' %>
+  <div class="controls">
+    <%= f.collection_select :place_id, Place.all, :id, :name,  {:prompt => 'Seleccione el lugar'} %>
+    <% if params[:action] == "edit" %>
+        <%= check_box_tag  "delete_place", true %>
+    <% end %>
+  </div>
+  <%= error_span(@artwork[:comment]) %>
 </div>

@@ -1,15 +1,10 @@
 <div class="control-group">
-  <%= ff.fields_for :school do |school_fields| %>
-      <%= school_fields.label :name, "school" , :class => 'control-label' %>
-      <div class="controls">
-        <%= school_fields.text_area :name %>
-        <% if params[:action] == "edit" %>
-
-            <%= school_fields.check_box :_destroy %>
-            <%= school_fields.label :_destroy , "Eliminar school"%>
-
-        <% end %>
-      </div>
-  <% end %>
-  <%= error_span(@artwork[:school]) %>
+  <%= f.label :school, :class => 'control-label' %>
+  <div class="controls">
+    <%= f.collection_select :school_id, School.all, :id, :name,  {:prompt => 'Seleccione la escuela'} %>
+    <% if params[:action] == "edit" %>
+        <%= check_box_tag  "delete_school", true %>
+    <% end %>
+  </div>
+  <%= error_span(@artwork[:comment]) %>
 </div>
