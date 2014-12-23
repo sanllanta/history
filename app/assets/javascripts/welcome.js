@@ -1,4 +1,2 @@
-//
-//=require flux.js
-//=require flux.min.js
-//=require welcomeSlider.js
+//= require cbpAnimatedHeader.js
+//= require agency.js
