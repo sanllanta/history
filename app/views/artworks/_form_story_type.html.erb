@@ -1,15 +1,10 @@
 <div class="control-group">
-  <%= ff.fields_for :story_type do |story_type_fields| %>
-      <%= story_type_fields.label :name, "Story type" , :class => 'control-label' %>
-      <div class="controls">
-        <%= story_type_fields.text_area :name %>
-        <% if params[:action] == "edit" %>
-
-            <%= story_type_fields.check_box :_destroy %>
-            <%= story_type_fields.label :_destroy , "Eliminar Story type"%>
-
-        <% end %>
-      </div>
-  <% end %>
-  <%= error_span(@artwork[:type]) %>
+  <%= f.label :story_type, :class => 'control-label' %>
+  <div class="controls">
+    <%= f.collection_select :story_type_id, StoryType.all, :id, :name,  {:prompt => 'Seleccione el tipo de historia'} %>
+    <% if params[:action] == "edit" %>
+        <%= check_box_tag  "delete_story_type", true %>
+    <% end %>
+  </div>
+  <%= error_span(@artwork[:comment]) %>
 </div>
