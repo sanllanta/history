@@ -153,10 +153,11 @@
                     new_artwork_category_path(:artwork_id => @artwork.id), :class => 'btn btn-info' %>
     <%end%>
 
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-    artworks_path, :class => 'btn btn-default' %>
+    <%= f.submit :class => 'btn btn-primary' %>
 
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+
+    artworks_path, :class => 'btn btn-default' %>
 
 <% end %>
 
