@@ -38,3 +38,5 @@ pickle-email-*.html
 /public/attachments
 /log/development.log
 /tmp/cache/assets/*
+db/schema.rb
+config/database.yml

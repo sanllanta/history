@@ -1,18 +1,36 @@
-<% @artworks = Artwork.first(limit = 4) %>
-<hr>
-<div class="panel panel-default">
-    <div class="panel-body">
-        <div class="well-sm">
-            <div id="slider">
-                <% @artworks.each do |artwork| %>
-                  <img class="img-responsive" src="<%= artwork.avatar.url(:slider)  %>" alt>
-                  <!--< image_tag artwork.avatar.url(:large) %>-->
-                <% end %>
-            </div>
-        </div>
-    </div>
-</div>
-<hr>
+<%= render 'application/services' %>
+
+<%= render 'application/portfolio' %>
+
+<%= render 'application/about'%>
+
+<%= render 'application/team'%>
+
+<%= render 'application/clients'%>
+
+<%= render 'application/contact'%>
+
+<% content_for :template_header do %>
+    <%= render 'application/header'%>
+<% end %>
+
 <% content_for :js_application do %>
     <%= javascript_include_tag "welcome" %>
 <% end %>
+
+<!--<hr>
+< @artworks = Artwork.first(limit = 4) %>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="well-sm">
+            <div id="slider">-->
+<!--< @artworks.each do |artwork| %>
+    <img class="img-responsive" src="<= artwork.avatar.url(:slider)  %>" alt>-->
+<!--< image_tag artwork.avatar.url(:large) %>-->
+<!-- < end %-->
+<!--   </div>
+</div>
+</div>
+</div>
+<hr>-->

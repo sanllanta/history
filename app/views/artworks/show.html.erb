@@ -1,53 +1,106 @@
 <%- model_class = Artwork -%>
 
-
-
 <div class="page-header">
   <h1><%= t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
-<div class="well">
-  <div class="row">
-    <dl class="dl-horizontal">
-      <div class="col-md-6">
-        <h2>Atributes</h2>
-        <dt><strong><%= model_class.human_attribute_name(:author) %>:</strong></dt>
-        <dd><%= @artwork.author %></dd>
-        <dt><strong><%= model_class.human_attribute_name(:activity) %>:</strong></dt>
-        <dd><%= @artwork.activity %></dd>
-        <dt><strong><%= model_class.human_attribute_name(:biographic_data) %>:</strong></dt>
-        <dd><%= @artwork.biographic_data %></dd>
-        <dt><strong><%= model_class.human_attribute_name(:signed) %>:</strong></dt>
-        <dd><%= @artwork.signed %></dd>
-        <dt><strong><%= model_class.human_attribute_name(:synthesis) %>:</strong></dt>
-        <dd><%= @artwork.synthesis %></dd>
-        <dt><strong><%= model_class.human_attribute_name(:biographic_comment) %>:</strong></dt>
-        <dd><%= @artwork.biographic_comment %></dd>
-        <dt><strong><%= model_class.human_attribute_name(:annotation) %>:</strong></dt>
-        <dd><%= @artwork.annotation %></dd>
-        <dt><strong><%= model_class.human_attribute_name(:sub_image) %>:</strong></dt>
-        <dd><%= @artwork.sub_image %></dd>
-        <dt><strong><%= model_class.human_attribute_name(:comment) %>:</strong></dt>
-        <dd><%= @artwork.comment %></dd>
+
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#atributos" data-toggle="tab" aria-expanded="false">Atributos</a></li>
+  <li class=""><a href="#extra" data-toggle="tab" aria-expanded="false">Atributos extra</a></li>
+  <li class=""><a href="#imagen" data-toggle="tab" aria-expanded="false">Imagen</a></li>
+  <li class=""><a href="#location" data-toggle="tab" aria-expanded="false">Lugar</a></li>
+</ul>
+<div id="myTabContent" class="tab-content">
+
+  <div class="tab-pane fade active in" id="atributos">
+
+    <dt><strong><%= model_class.human_attribute_name(:author) %>:</strong></dt>
+    <dd><%= @artwork.author %></dd>
+
+    <dt><strong><%= model_class.human_attribute_name(:activity) %>:</strong></dt>
+    <dd><%= @artwork.activity %></dd>
+
+    <dt><strong><%= model_class.human_attribute_name(:biographic_data) %>:</strong></dt>
+    <dd><%= @artwork.biographic_data %></dd>
+
+    <dt><strong><%= model_class.human_attribute_name(:signed) %>:</strong></dt>
+    <dd><%= @artwork.signed %></dd>
+
+    <dt><strong><%= model_class.human_attribute_name(:synthesis) %>:</strong></dt>
+    <dd><%= @artwork.synthesis %></dd>
+
+    <dt><strong><%= model_class.human_attribute_name(:biographic_comment) %>:</strong></dt>
+    <dd><%= @artwork.biographic_comment %></dd>
+
+    <dt><strong><%= model_class.human_attribute_name(:annotation) %>:</strong></dt>
+    <dd><%= @artwork.annotation %></dd>
+
+    <dt><strong><%= model_class.human_attribute_name(:sub_image) %>:</strong></dt>
+    <dd><%= @artwork.sub_image %></dd>
+
+    <dt><strong><%= model_class.human_attribute_name(:comment) %>:</strong></dt>
+    <dd><%= @artwork.comment %></dd>
+
+    <% if @artwork.descriptions.count > 0 %>
         <dt><strong>Descripción:</strong></dt>
-        <dd><%= @artwork.descriptions %></dd>
-      </div>
-      <div class="col-md-6">
-        <h2></h2>
-        <%= image_tag @artwork.avatar.url(:large), :class => "img-thumbnail", :class => "img-responsive" %>
-        <%= form_for @artwork, :url => {:action => "send_image"} do |f| %>
-            <%= f.hidden_field :id, :value => @artwork.id %>
-            <%= f.submit "Download original", class: "btn btn-primary btn-sm", style: "margin-top: 1em;" %>
+        <% @artwork.descriptions.each do |descripton| %>
+            <dd><%= descripton.description %></dd>
         <% end %>
-      </div>
-    </dl>
+
+    <% end %>
+
   </div>
 
-  <div class="row">
-    <h2>Location</h2>
+  <div class="tab-pane fade active in" id="extra">
 
-    <div id="googleMap" style="width:100%;height:380px;"></div>
+    <% if @artwork.descriptions.count > 0 %>
+        <dt><strong>Descripción:</strong></dt>
+        <% @artwork.descriptions.each do |descripton| %>
+            <dd><%= descripton.description %></dd>
+        <% end %>
+    <% end %>
+
+    <dt><strong><%= model_class.human_attribute_name(:activity) %>:</strong></dt>
+    <dd><%= @artwork.activity %></dd>
+
+    <dt><strong><%= model_class.human_attribute_name(:biographic_data) %>:</strong></dt>
+    <dd><%= @artwork.biographic_data %></dd>
+
+    <dt><strong><%= model_class.human_attribute_name(:signed) %>:</strong></dt>
+    <dd><%= @artwork.signed %></dd>
+
+    <dt><strong><%= model_class.human_attribute_name(:synthesis) %>:</strong></dt>
+    <dd><%= @artwork.synthesis %></dd>
+
+    <dt><strong><%= model_class.human_attribute_name(:biographic_comment) %>:</strong></dt>
+    <dd><%= @artwork.biographic_comment %></dd>
+
+    <dt><strong><%= model_class.human_attribute_name(:annotation) %>:</strong></dt>
+    <dd><%= @artwork.annotation %></dd>
+
+    <dt><strong><%= model_class.human_attribute_name(:sub_image) %>:</strong></dt>
+    <dd><%= @artwork.sub_image %></dd>
+
+    <dt><strong><%= model_class.human_attribute_name(:comment) %>:</strong></dt>
+    <dd><%= @artwork.comment %></dd>
+
+
+
   </div>
+
+  <div class="tab-pane fade" id="imagen">
+    <%= image_tag @artwork.avatar.url(:large), :class => "img-thumbnail", :class => "img-responsive" %>
+    <%= form_for @artwork, :url => {:action => "send_image"} do |f| %>
+        <%= f.hidden_field :id, :value => @artwork.id %>
+        <%= f.submit "Download original", class: "btn btn-primary btn-sm", style: "margin-top: 1em;" %>
+    <% end %>
+  </div>
+  <div class="tab-pane fade" id="location">
+    <div id="googleMap" style="width:99%;height:350px;"></div>
+  </div>
+
 </div>
+
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
             artworks_path, :class => 'btn btn-default' %>
