@@ -31,6 +31,8 @@ Rails.application.routes.draw do
 
   resources :places
 
+  resources :categories
+
   resources :artworks do
     resources :categories
   end
