@@ -9,3 +9,4 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( welcome.js )
 Rails.application.config.assets.precompile += %w( artwork_edit.js )
 Rails.application.config.assets.precompile += %w( template.js )
+Rails.application.config.assets.precompile += %w( artworks.css )
