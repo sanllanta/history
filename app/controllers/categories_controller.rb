@@ -15,6 +15,10 @@ class CategoriesController < ApplicationController
   # GET /categories/new
   def new
     @category = Category.new
+    puts '-----------------'
+    puts params[:parent_id]
+    puts '-----------------'
+    @category.parent = Category.find(params[:parent_id]) unless params[:parent_id] == nil
   end
 
   # GET /categories/1/edit
@@ -24,10 +28,8 @@ class CategoriesController < ApplicationController
   # POST /categories
   # POST /categories.json
   def create
-    @artwork = Artwork.find(params[:artwork_id])
-
     @category = Category.new(category_params)
-    @artwork.category << @category
+
     respond_to do |format|
       if @category.save
         format.html { redirect_to @category, notice: 'Category was successfully created.' }
@@ -71,6 +73,6 @@ class CategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(:category).permit(:name)
+      params.require(:category).permit(:name, :parent_id)
     end
 end
