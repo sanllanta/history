@@ -1,5 +1,5 @@
 <div class="control-group">
-  <%= f.label :type, :class => 'control-label' %>
+  <%= f.label :type, :class => 'control-label' %> <small> <%= link_to "Crear tipo", new_type_url%></small>
   <div class="controls">
     <%= f.collection_select :type_id, Type.all, :id, :name,  {:prompt => 'Seleccione el tipo'} %>
     <% if params[:action] == "edit" %>

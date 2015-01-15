@@ -1,5 +1,5 @@
 <div class="control-group">
-  <%= f.label :school, :class => 'control-label' %>
+  <%= f.label :school, :class => 'control-label' %> <small><%= link_to "Crear escuela", new_school_url%></small>
   <div class="controls">
     <%= f.collection_select :school_id, School.all, :id, :name,  {:prompt => 'Seleccione la escuela'} %>
     <% if params[:action] == "edit" %>

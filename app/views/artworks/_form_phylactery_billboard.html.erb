@@ -1,5 +1,5 @@
 <div class="control-group">
-  <%= f.label :phylactery_billboard, :class => 'control-label' %>
+  <%= f.label :phylactery_billboard, :class => 'control-label' %> <small><%= link_to "Crear billboard", new_phylactery_billboard_url%></small>
   <div class="controls">
     <%= f.collection_select :phylactery_billboard_id, PhylacteryBillboard.all, :id, :name,  {:prompt => 'Cartelera Filacteria'} %>
     <% if params[:action] == "edit" %>

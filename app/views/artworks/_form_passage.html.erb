@@ -1,5 +1,5 @@
 <div class="control-group">
-  <%= f.label :passage, :class => 'control-label' %>
+  <%= f.label :passage, :class => 'control-label' %> <small> <%= link_to "Crear pasage", new_passage_url %></small>
   <div class="controls">
     <%= f.collection_select :passage_id, Passage.all, :id, :name,  {:prompt => 'Seleccione el pasaje'} %>
   <% if params[:action] == "edit" %>
