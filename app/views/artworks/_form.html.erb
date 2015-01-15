@@ -86,25 +86,67 @@
     <%= error_span(@artwork[:comment]) %>
   </div>
 
-    <%= render 'form_descriptions' , :ff => f %>
+    <div class="row">
 
-    <%= render 'form_iconographic_attributes' , :ff => f %>
+      <div class="col-md-3 portfolio-item">
+        <%= render 'form_descriptions' , :ff => f %>
+      </div>
 
-    <%= render 'form_artwork_symbols' , :ff => f %>
+      <div class="col-md-3 portfolio-item">
+        <%= render 'form_iconographic_attributes' , :ff => f %>
+      </div>
 
-    <%= render 'form_engravings', :ff => f %>
+      <div class="col-md-3 portfolio-item">
+        <%= render 'form_artwork_symbols' , :ff => f %>
+      </div>
 
-    <%= render 'form_passage', :f => f %>
-    <%= render 'form_place', :f => f %>
-    <%= render 'form_scene', :f => f %>
-    <%= render 'form_type', :f => f %>
-    <%= render 'form_source', :f => f %>
-    <%= render 'form_origin', :f => f %>
-    <%= render 'form_donor', :f => f %>
-    <%= render 'form_phylactery_billboard', :f => f %>
-    <%= render 'form_story_type', :f => f %>
-    <%= render 'form_school', :f => f %>
+      <div class="col-md-3 portfolio-item">
+        <%= render 'form_engravings', :ff => f %>
+      </div>
+    </div>
 
+    <div class="row">
+      <div class="col-md-3 portfolio-item">
+        <%= render 'form_passage', :f => f %>
+      </div>
+
+      <div class="col-md-3 portfolio-item">
+        <%= render 'form_place', :f => f %>
+      </div>
+
+      <div class="col-md-3 portfolio-item">
+        <%= render 'form_scene', :f => f %>
+      </div>
+
+      <div class="col-md-3 portfolio-item">
+        <%= render 'form_type', :f => f %>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-3 portfolio-item">
+        <%= render 'form_source', :f => f %>
+      </div>
+      <div class="col-md-3 portfolio-item">
+        <%= render 'form_origin', :f => f %>
+      </div>
+      <div class="col-md-3 portfolio-item">
+        <%= render 'form_donor', :f => f %>
+      </div>
+      <div class="col-md-3 portfolio-item">
+        <%= render 'form_phylactery_billboard', :f => f %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3 portfolio-item">
+        <%= render 'form_story_type', :f => f %>
+      </div>
+      <div class="col-md-3 portfolio-item">
+        <%= render 'form_school', :f => f %>
+      </div>
+    </div>
     
     <div class="control-group">
       <%= f.label :latitude_origin, :class => 'control-label' %>

@@ -1,5 +1,5 @@
 <div class="control-group">
-  <%= f.label :donor, :class => 'control-label' %>
+  <%= f.label :donor, :class => 'control-label' %> <small><%= link_to "Crear donador", new_donor_url%></small>
   <div class="controls">
     <%= f.collection_select :donor_id, Donor.all, :id, :name,  {:prompt => 'Seleccione el donante'} %>
     <% if params[:action] == "edit" %>

@@ -1,5 +1,5 @@
 <div class="control-group">
-  <%= f.label :source, :class => 'control-label' %>
+  <%= f.label :source, :class => 'control-label' %> <small><%= link_to "Crear fuente", new_source_url%></small>
   <div class="controls">
     <%= f.collection_select :source_id, Source.all, :id, :name,  {:prompt => 'Seleccione la fuente'} %>
     <% if params[:action] == "edit" %>

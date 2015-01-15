@@ -1,5 +1,5 @@
 <div class="control-group">
-  <%= f.label :story_type, :class => 'control-label' %>
+  <%= f.label :story_type, :class => 'control-label' %> <small><%= link_to "Crear tipo de historia", new_story_type_url%></small>
   <div class="controls">
     <%= f.collection_select :story_type_id, StoryType.all, :id, :name,  {:prompt => 'Seleccione el tipo de historia'} %>
     <% if params[:action] == "edit" %>

@@ -1,5 +1,5 @@
 <div class="control-group">
-  <%= f.label :place, :class => 'control-label' %>
+  <%= f.label :place, :class => 'control-label' %> <small> <%= link_to "Crear lugar", new_place_url%></small>
   <div class="controls">
     <%= f.collection_select :place_id, Place.all, :id, :name,  {:prompt => 'Seleccione el lugar'} %>
     <% if params[:action] == "edit" %>

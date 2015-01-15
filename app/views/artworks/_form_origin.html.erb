@@ -1,5 +1,5 @@
 <div class="control-group">
-  <%= f.label :origin, :class => 'control-label' %>
+  <%= f.label :origin, :class => 'control-label' %> <small><%= link_to "Crear origen", new_origin_url%></small>
   <div class="controls">
     <%= f.collection_select :origin_id, Origin.all, :id, :name,  {:prompt => 'Seleccione el origen'} %>
     <% if params[:action] == "edit" %>
