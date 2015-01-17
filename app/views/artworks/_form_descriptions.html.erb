@@ -5,6 +5,7 @@
       <div class="controls">
         <%= descriptions_fields.text_area :description%>
         <% if params[:action] == "edit" %>
+            <br>
             <%= descriptions_fields.check_box :_destroy %>
             <%= descriptions_fields.label :_destroy , "Eliminar descripción"%>
         <% end %>

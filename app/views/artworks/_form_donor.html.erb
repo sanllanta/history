@@ -3,7 +3,9 @@
   <div class="controls">
     <%= f.collection_select :donor_id, Donor.all, :id, :name,  {:prompt => 'Seleccione el donante'} %>
     <% if params[:action] == "edit" %>
+        <br>
         <%= check_box_tag  "delete_donor", true %>
+        <%= f.label :_destroy , "Eliminar donor"%>
     <% end %>
   </div>
   <%= error_span(@artwork[:comment]) %>

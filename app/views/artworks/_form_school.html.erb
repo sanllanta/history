@@ -3,7 +3,9 @@
   <div class="controls">
     <%= f.collection_select :school_id, School.all, :id, :name,  {:prompt => 'Seleccione la escuela'} %>
     <% if params[:action] == "edit" %>
+        <br>
         <%= check_box_tag  "delete_school", true %>
+        <%= f.label :_destroy , "Eliminar school"%>
     <% end %>
   </div>
   <%= error_span(@artwork[:comment]) %>

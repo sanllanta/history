@@ -3,7 +3,9 @@
   <div class="controls">
     <%= f.collection_select :source_id, Source.all, :id, :name,  {:prompt => 'Seleccione la fuente'} %>
     <% if params[:action] == "edit" %>
+        <br>
         <%= check_box_tag  "delete_source", true %>
+        <%= f.label :_destroy , "Eliminar sourde"%>
     <% end %>
   </div>
   <%= error_span(@artwork[:comment]) %>

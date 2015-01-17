@@ -4,6 +4,7 @@
       <div class="controls">
         <%= artwork_symbols_fields.text_area :name%>
         <% if params[:action] == "edit" %>
+            <br>
             <%= artwork_symbols_fields.check_box :_destroy %>
             <%= artwork_symbols_fields.label :_destroy , "Eliminar artwork symbols"%>
         <% end %>

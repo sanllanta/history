@@ -3,7 +3,9 @@
   <div class="controls">
     <%= f.collection_select :passage_id, Passage.all, :id, :name,  {:prompt => 'Seleccione el pasaje'} %>
   <% if params[:action] == "edit" %>
-      <%= check_box_tag  "delete_passage", true %>
+        <br>
+        <%= check_box_tag  "delete_passage", true %>
+        <%= f.label :_destroy , "Eliminar passage"%>
   <% end %>
   </div>
   <%= error_span(@artwork[:comment]) %>

@@ -3,7 +3,9 @@
   <div class="controls">
     <%= f.collection_select :origin_id, Origin.all, :id, :name,  {:prompt => 'Seleccione el origen'} %>
     <% if params[:action] == "edit" %>
+        <br>
         <%= check_box_tag  "delete_origin", true %>
+        <%= f.label :_destroy , "Eliminar origen"%>
     <% end %>
   </div>
   <%= error_span(@artwork[:comment]) %>

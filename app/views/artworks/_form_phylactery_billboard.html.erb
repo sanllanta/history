@@ -3,7 +3,9 @@
   <div class="controls">
     <%= f.collection_select :phylactery_billboard_id, PhylacteryBillboard.all, :id, :name,  {:prompt => 'Cartelera Filacteria'} %>
     <% if params[:action] == "edit" %>
+        <br>
         <%= check_box_tag  "delete_phylactery_billboard", true %>
+        <%= f.label :_destroy , "Eliminar billboard"%>
     <% end %>
   </div>
   <%= error_span(@artwork[:comment]) %>

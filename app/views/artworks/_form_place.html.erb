@@ -3,8 +3,10 @@
   <div class="controls">
     <%= f.collection_select :place_id, Place.all, :id, :name,  {:prompt => 'Seleccione el lugar'} %>
     <% if params[:action] == "edit" %>
+        <br>
         <%= check_box_tag  "delete_place", true %>
-    <% end %>
+        <%= f.label :_destroy , "Eliminar place"%>
+  <% end %>
   </div>
   <%= error_span(@artwork[:comment]) %>
 </div>

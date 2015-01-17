@@ -5,6 +5,7 @@
       <div class="controls">
         <%= iconographic_attribute_fields.text_area :name%>
         <% if params[:action] == "edit" %>
+            <br>
             <%= iconographic_attribute_fields.check_box :_destroy %>
             <%= iconographic_attribute_fields.label :_destroy , "Eliminar Iconographic Attribute"%>
         <% end %>

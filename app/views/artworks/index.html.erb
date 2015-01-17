@@ -21,7 +21,9 @@
         <% end %>
               <div class="col-md-3 portfolio-item">
                 <a href="<%= artwork_path(artwork) %>">
-                  <%= image_tag artwork.avatar.url(:thumb) %>
+                  <div>
+                    <%= image_tag artwork.avatar.url(:thumb) %>
+                  </div>
                 </a>
                 <h4>
                   <a href="<%= artwork_path(artwork) %>"><%= artwork.author %></a>

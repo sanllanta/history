@@ -1,8 +1,14 @@
 <%- model_class = Artwork -%>
 
-<div class="page-header">
-  <h1><%= t '.title', :default => model_class.model_name.human.titleize %></h1>
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header"><%= @artwork.author %>
+      <!-- < %=t '.title', :default => model_class.model_name.human.pluralize.titleize %>-->
+      <small><%= @artwork.categories %></small>
+    </h1>
+  </div>
 </div>
+
 
 <ul class="nav nav-tabs">
   <li class="active"><a href="#atributos" data-toggle="tab" aria-expanded="false">Atributos</a></li>
@@ -211,7 +217,7 @@
   </div>
 
 </div>
-
+<br>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
             artworks_path, :class => 'btn btn-default' %>
@@ -270,4 +276,8 @@
     google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 
-<%=	 debug @artwork %>
+<% content_for :css_application do %>
+    <%= stylesheet_link_tag "artworks_show" %>
+<% end %>
+
+<!--< %=	 debug @artwork %> -->
