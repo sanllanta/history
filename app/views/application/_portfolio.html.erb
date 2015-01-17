@@ -8,23 +8,52 @@
       </div>
     </div>
 
-    <div class="row">
+    <% i = 0 %>
+    <% Category.roots.each do |category| %>
+
+        <% if i == 0 then %>
+            <div class="row">
+        <% end %>
+
+        <div class="col-md-4 col-sm-6 portfolio-item">
+          <a href="<%= artworks_path(:parent_id => category) %>" class="portfolio-link" data-toggle="modal">
+            <div class="portfolio-hover">
+              <div class="portfolio-hover-content">
+                <i class="fa fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img src= "<%= image_url 'portfolio/roundicons.png' %>" class="img-responsive" alt="">
+          </a>
+          <div class="portfolio-caption">
+            <h4>Categoria</h4>
+            <p class="text-muted"><%= category.name %> </p>
+          </div>
+        </div>
+
+        <% i += 1 %>
+        <% if i == 3 then %>
+            <% i = 0 %>
+            </div>
+        <% end %>
+
+    <% end %>
+<!--    <div class="row">
       <div class="col-md-4 col-sm-6 portfolio-item">
-        <a href="<%= artworks_path %>" class="portfolio-link" data-toggle="modal">
+        <a href="< %= artworks_path %>" class="portfolio-link" data-toggle="modal">
           <div class="portfolio-hover">
             <div class="portfolio-hover-content">
               <i class="fa fa-plus fa-3x"></i>
             </div>
           </div>
-          <img src= "<%= image_url 'portfolio/roundicons.png' %>" class="img-responsive" alt="">
+          <img src= "< %= image_url 'portfolio/roundicons.png' %>" class="img-responsive" alt="">
         </a>
         <div class="portfolio-caption">
           <h4>Round Icons</h4>
           <p class="text-muted">Graphic Design</p>
         </div>
-      </div>
+      </div>-->
 
-      <div class="col-md-4 col-sm-6 portfolio-item">
+    <!--  <div class="col-md-4 col-sm-6 portfolio-item">
         <a href="<%= artworks_path %>" class="portfolio-link" data-toggle="modal">
           <div class="portfolio-hover">
             <div class="portfolio-hover-content">
@@ -83,6 +112,7 @@
           <p class="text-muted">Website Design</p>
         </div>
       </div>
+
       <div class="col-md-4 col-sm-6 portfolio-item">
         <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
           <div class="portfolio-hover">
@@ -97,6 +127,7 @@
           <p class="text-muted">Website Design</p>
         </div>
       </div>
+    -->
     </div>
   </div>
 </section>

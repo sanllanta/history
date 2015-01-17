@@ -4,6 +4,8 @@ class ArtworksController < ApplicationController
   # GET /artworks
   # GET /artworks.json
   def index
+
+    #@artworks = Category.find(params[:parent_id]).children
     @artworks = Artwork.all
   end
 
