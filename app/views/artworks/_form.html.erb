@@ -180,6 +180,15 @@
       <%= error_span(@artwork[:longitude_current]) %>
     </div>
 
+    <div class="control-group">
+      <%= select("category", "1", options_for_select(@categories_first_level), {:prompt => 'Seleccione Categoria'}) %>
+      <%= select("category", "2", options_for_select(@categories_for_dropdown), {:prompt => 'Seleccione Categoria'}) %>
+      <%= select("category", "3", options_for_select(@categories_for_dropdown), {:prompt => 'Seleccione Categoria'}) %>
+      <%= select("category", "4", options_for_select(@categories_for_dropdown), {:prompt => 'Seleccione Categoria'}) %>
+      <%= select("category", "5", options_for_select(@categories_for_dropdown), {:prompt => 'Seleccione Categoria'}) %>
+      <%= select("category", "6", options_for_select(@categories_for_dropdown), {:prompt => 'Seleccione Categoria'}) %>
+    </div>
+
     <br>
 
     <% if params[:action] == 'edit' %>

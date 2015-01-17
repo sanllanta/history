@@ -1,5 +1,6 @@
 class ArtworksController < ApplicationController
   before_action :set_artwork, only: [:show, :edit, :update, :destroy]
+  before_action :set_categories, only: [:new, :edit]
 
   # GET /artworks
   # GET /artworks.json
@@ -35,6 +36,7 @@ class ArtworksController < ApplicationController
 
   # GET /artworks/1/edit
   def edit
+
   end
 
   # POST /artworks
@@ -140,6 +142,21 @@ class ArtworksController < ApplicationController
   end
 
   def build_artwork
+
+  end
+
+  # Get all the categories for selection
+  def set_categories
+    @categories = Category.all
+    @categories_first_level = []
+    @categories_for_dropdown = []
+    @categories.each do |i|
+    if(i.parent)
+      @categories_for_dropdown = @categories_for_dropdown << [i.name,i.id,{:class => i.parent.id}]
+    else
+      @categories_first_level = @categories_first_level << [i.name,i.id]
+    end
+  end
 
   end
 
