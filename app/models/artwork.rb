@@ -1,4 +1,5 @@
-class Artwork < ActiveRecord::Base
+class
+Artwork < ActiveRecord::Base
   has_attached_file :avatar,
                     :styles => {
                         :large => "500x500>",

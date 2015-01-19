@@ -4,9 +4,8 @@ class ArtworksController < ApplicationController
   # GET /artworks
   # GET /artworks.json
   def index
-
-    #@artworks = Category.find(params[:parent_id]).children
-    @artworks = Artwork.all
+    @artworks = Artwork.joins(:artworks_categories).where(:artworks_categories => {:category_id => params[:parent_id]})
+    #@artworks = Artwork.all
   end
 
   # GET /artworks/1
