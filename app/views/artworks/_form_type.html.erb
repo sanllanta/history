@@ -3,7 +3,10 @@
   <div class="controls">
     <%= f.collection_select :type_id, Type.all, :id, :name,  {:prompt => 'Seleccione el tipo'} %>
     <% if params[:action] == "edit" %>
+        <br>
         <%= check_box_tag  "delete_type", true %>
+        <%= f.label :_destroy , "Eliminar type"%>
+
     <% end %>
   </div>
   <%= error_span(@artwork[:comment]) %>

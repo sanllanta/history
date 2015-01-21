@@ -3,8 +3,11 @@
   <div class="controls">
     <%= f.collection_select :scene_id, Scene.all, :id, :name,  {:prompt => 'Seleccione la escena'} %>
     <% if params[:action] == "edit" %>
+        <br>
         <%= check_box_tag  "delete_scene", true %>
-    <% end %>
+        <%= f.label :_destroy , "Eliminar scene"%>
+
+  <% end %>
   </div>
   <%= error_span(@artwork[:comment]) %>
 </div>

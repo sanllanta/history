@@ -3,7 +3,9 @@
   <div class="controls">
     <%= f.collection_select :story_type_id, StoryType.all, :id, :name,  {:prompt => 'Seleccione el tipo de historia'} %>
     <% if params[:action] == "edit" %>
+        <br>
         <%= check_box_tag  "delete_story_type", true %>
+        <%= f.label :_destroy , "Eliminar story tyoe"%>
     <% end %>
   </div>
   <%= error_span(@artwork[:comment]) %>

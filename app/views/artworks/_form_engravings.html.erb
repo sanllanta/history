@@ -4,6 +4,7 @@
       <div class="controls">
         <%= engravings_fields.text_area :name%>
         <% if params[:action] == "edit" %>
+            <br>
             <%= engravings_fields.check_box :_destroy %>
             <%= engravings_fields.label :_destroy , "Eliminar engravings"%>
         <% end %>
