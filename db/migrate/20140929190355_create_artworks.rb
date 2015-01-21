@@ -13,6 +13,13 @@ class CreateArtworks < ActiveRecord::Migration
       t.belongs_to :school
       #t.belongs_to :work_art_symbol
 
+      #Different categories
+      t.belongs_to :category_1, class_name: "Category"
+      t.belongs_to :category_2, class_name: "Category"
+      t.belongs_to :category_3, class_name: "Category"
+      t.belongs_to :category_4, class_name: "Category"
+      t.belongs_to :category_5, class_name: "Category"
+
       t.string :author
       t.string :activity
       t.text :biographic_data

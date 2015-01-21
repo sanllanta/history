@@ -180,6 +180,29 @@
       <%= error_span(@artwork[:longitude_current]) %>
     </div>
 
+    <div class="control-group">
+      <%= f.label :category_1_id, :class => 'control-label' %>
+      <div class="controls">
+      <%= f.select(:category_1_id, @categories_for_select_1, prompt: 'Select Category', :class => 'form-control') %>
+      </div>
+      <%= f.label :category_2_id, :class => 'control-label' %>
+      <div class="controls">
+      <%= f.select(:category_2_id, @categories_for_select_2, prompt: 'Select Category', :class => 'form-control') %>
+      </div>
+      <%= f.label :category_3_id, :class => 'control-label' %>
+      <div class="controls">
+      <%= f.select(:category_3_id, @categories_for_select_3, prompt: 'Select Category', :class => 'form-control') %>
+      </div>
+      <%= f.label :category_4_id, :class => 'control-label' %>
+      <div class="controls">
+      <%= f.select(:category_4_id, @categories_for_select_4, prompt: 'Select Category', :class => 'form-control') %>
+      </div>
+      <%= f.label :category_5_id, :class => 'control-label' %>
+      <div class="controls">
+      <%= f.select(:category_5_id, @categories_for_select_5, prompt: 'Select Category', :class => 'form-control') %>
+      </div>
+    </div>
+
     <br>
 
     <% if params[:action] == 'edit' %>

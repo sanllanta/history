@@ -31,7 +31,9 @@ Rails.application.routes.draw do
 
   resources :places
 
-  resources :categories
+  resources :categories do
+    get 'get_children_for_select', :on => :member
+  end
 
   resources :artworks do
     resources :categories

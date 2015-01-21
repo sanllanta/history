@@ -1,5 +1,6 @@
 class ArtworksController < ApplicationController
   before_action :set_artwork, only: [:show, :edit, :update, :destroy]
+  before_action :set_categories, only: [:edit]
 
   # GET /artworks
   # GET /artworks.json
@@ -15,6 +16,7 @@ class ArtworksController < ApplicationController
   # GET /artworks/new
   def new
     @artwork = Artwork.new
+    set_categories
     if params[:action] == "new"
       @artwork.descriptions.new
       @artwork.artwork_symbols.new
@@ -117,7 +119,7 @@ class ArtworksController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def artwork_params
-    params.require(:artwork).permit(:passage_id, :place_id, :scene_id, :source_id, :origin_id, :donor_id,
+    params.require(:artwork).permit(:passage_id, :place_id, :scene_id, :source_id, :origin_id, :donor_id, :category_1_id, :category_2_id, :category_3_id, :category_4_id, :category_5_id,
                                     :phylactery_billboard_id, :story_type_id, :school_id, :author, :activity, :biographic_data, :signed, :synthesis,
                                     :biographic_comment, :annotation, :avatar, :sub_image, :comment,
                                     :latitude_origin,:latitude_current,:longitude_origin,:longitude_current, :type_id,
@@ -139,8 +141,48 @@ class ArtworksController < ApplicationController
     )
   end
 
-  def build_artwork
+  #Set categories when editing artworks
+  def set_categories
+    @categories = Category.all
+    @categories_for_select_1 = []
+    @categories_for_select_2 = []
+    @categories_for_select_3 = []
+    @categories_for_select_4 = []
+    @categories_for_select_5 = []
+    @categories.each do |category|
+      if(category.depth == 0)
+        @categories_for_select_1 << [category.name, category.id]
+      end
+    end
 
+    if @artwork.category_1
+      @categories = @artwork.category_1.children
+      @categories.each do |category|
+        @categories_for_select_2 << [category.name, category.id]
+      end
+    end
+
+    if @artwork.category_2
+      @categories = @artwork.category_2.children
+      @categories.each do |category|
+        @categories_for_select_3 << [category.name, category.id]
+      end
+    end
+
+    if @artwork.category_3
+      @categories = @artwork.category_3.children
+      @categories.each do |category|
+        @categories_for_select_4 << [category.name, category.id]
+      end
+    end
+
+    if @artwork.category_4
+      @categories = @artwork.category_4.children
+      @categories.each do |category|
+        @categories_for_select_5 << [category.name, category.id]
+      end
+    end
+    
   end
 
   #Elimina los atributos marcados desde la vista de edición

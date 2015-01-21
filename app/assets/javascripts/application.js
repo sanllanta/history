@@ -18,3 +18,64 @@
 //= require classie.js
 //= require jqBootstrapValidation.js
 // require contact_me.js
+
+/*Get children of a category for select*/
+function getCategoryChildrenForSelect(category_id) {
+  return $.ajax({
+    type: "GET",
+    async:false,
+    dataType: "json",
+    url: "/categories/"+category_id+"/get_children_for_select.json",
+    dataType: "JSON",
+  }).responseJSON;
+}
+
+$(function() {
+$("#artwork_category_1_id").change(function() {
+    // make a POST call and replace the content
+    select = document.getElementById('artwork_category_2_id');
+    select.options.length = 0;
+    data = getCategoryChildrenForSelect($("#artwork_category_1_id").val())
+    select.options.add(new Option("Select Category"));
+    for (index = 0; index < data.length; ++index) {
+      option = data[index];
+      select.options.add(new Option(option.name, option.id));
+    }
+  });
+
+$("#artwork_category_2_id").change(function() {
+    // make a POST call and replace the content
+    select = document.getElementById('artwork_category_3_id');
+    select.options.length = 0;
+    data = getCategoryChildrenForSelect($("#artwork_category_2_id").val())
+    select.options.add(new Option("Select Category"));
+    for (index = 0; index < data.length; ++index) {
+      option = data[index];
+      select.options.add(new Option(option.name, option.id));
+    }
+  });
+
+$("#artwork_category_3_id").change(function() {
+    // make a POST call and replace the content
+    select = document.getElementById('artwork_category_4_id');
+    select.options.length = 0;
+    data = getCategoryChildrenForSelect($("#artwork_category_3_id").val())
+    select.options.add(new Option("Select Category"));
+    for (index = 0; index < data.length; ++index) {
+      option = data[index];
+      select.options.add(new Option(option.name, option.id));
+    }
+  });
+
+$("#artwork_category_4_id").change(function() {
+    // make a POST call and replace the content
+    select = document.getElementById('artwork_category_5_id');
+    select.options.length = 0;
+    data = getCategoryChildrenForSelect($("#artwork_category_4_id").val())
+    select.options.add(new Option("Select Category"));
+    for (index = 0; index < data.length; ++index) {
+      option = data[index];
+      select.options.add(new Option(option.name, option.id));
+    }
+  });
+});

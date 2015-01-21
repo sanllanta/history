@@ -46,6 +46,11 @@ ActiveRecord::Schema.define(version: 20150114001608) do
     t.integer  "phylactery_billboard_id"
     t.integer  "story_type_id"
     t.integer  "school_id"
+    t.integer  "category_1_id"
+    t.integer  "category_2_id"
+    t.integer  "category_3_id"
+    t.integer  "category_4_id"
+    t.integer  "category_5_id"
     t.string   "author"
     t.string   "activity"
     t.text     "biographic_data"
@@ -65,11 +70,6 @@ ActiveRecord::Schema.define(version: 20150114001608) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-  end
-
-  create_table "artworks_categories", force: true do |t|
-    t.integer "artwork_id"
-    t.integer "category_id"
   end
 
   create_table "artworks_characters", force: true do |t|

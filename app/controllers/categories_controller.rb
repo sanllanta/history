@@ -65,6 +65,19 @@ class CategoriesController < ApplicationController
     end
   end
 
+  #Method to get the information on the children for a selector
+  def get_children_for_select
+    set_category
+    @children = @category.children.map do |child|
+      { :id => child.id, :name => child.name }
+    end
+    json = @children.to_json
+    respond_to do |format|
+        format.html { redirect_to @category }
+        format.json { render json: json }
+    end    
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_category

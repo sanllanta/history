@@ -22,11 +22,18 @@ class Artwork < ActiveRecord::Base
   belongs_to :work_art_symbol
   belongs_to :school
 
+  #Different categories
+  belongs_to :category_1, class_name: "Category"
+  belongs_to :category_2, class_name: "Category"
+  belongs_to :category_3, class_name: "Category"
+  belongs_to :category_4, class_name: "Category"
+  belongs_to :category_5, class_name: "Category"
+
+
   has_many :iconographic_attributes
   has_many :descriptions, dependent: :destroy
   has_many :artwork_characters
 
-  has_and_belongs_to_many :categories
   has_and_belongs_to_many :artwork_symbols
   has_and_belongs_to_many :engravings
 
