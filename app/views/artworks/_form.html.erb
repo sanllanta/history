@@ -216,8 +216,9 @@
 
     <%= f.submit :class => 'btn btn-primary' %>
 
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-    artworks_path, :class => 'btn btn-default' %>
+
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),artworks_path(:parent_id =>params[:parent_id]) , :class => 'btn btn-default' %>
+
 
 <% end %>
 

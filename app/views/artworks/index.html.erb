@@ -42,7 +42,7 @@
 </div>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
-            new_artwork_path,
+            new_artwork_path(:parent_id =>params[:parent_id]),
             :class => 'btn btn-primary' %>
 
 

@@ -103,7 +103,7 @@ class ArtworksController < ApplicationController
   def destroy
     @artwork.destroy
     respond_to do |format|
-      format.html { redirect_to artworks_url, notice: 'Artwork was successfully destroyed.' }
+      format.html { redirect_to artworks_url(:parent_id => params[:parent_id] ), notice: 'Artwork was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
