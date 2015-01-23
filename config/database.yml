@@ -87,5 +87,3 @@ test:
 production:
   <<: *default
   database: history_production
-  username: history
-  password: <%= ENV['HISTORY_DATABASE_PASSWORD'] %>
