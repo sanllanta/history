@@ -11,9 +11,10 @@
 
 <ul class="nav nav-tabs">
   <li class="active"><a href="#atributos" data-toggle="tab" aria-expanded="false">Atributos</a></li>
+  <li class=""><a href="#categorias" data-toggle="tab" aria-expanded="false">Categorías</a></li>
   <li class=""><a href="#extra" data-toggle="tab" aria-expanded="false">Atributos extra</a></li>
   <li class=""><a href="#imagen" data-toggle="tab" aria-expanded="false">Imagen</a></li>
-  <li class=""><a href="#location" data-toggle="tab" aria-expanded="false">Lugar</a></li>
+  <li class=""><a id="mapTab" href="#location" data-toggle="tab" aria-expanded="false">Lugar</a></li>
 </ul>
 <div id="myTabContent" class="tab-content">
 
@@ -25,6 +26,8 @@
             <dd><%= descripton.description %></dd>
         <% end %>
     <% end %>
+
+
     <!-- Projects Row -->
     <div class="row">
 
@@ -121,6 +124,60 @@
 
   </div>
 
+  <div class="tab-pane fade" id="categorias">
+      <div class="row">
+
+        <div class="col-md-3 portfolio-item">
+          <h4>
+            Categoria 1
+          </h4>
+          <p>
+            <%=@artwork.category_1.name %>
+          </p>
+        </div>
+
+        <div class="col-md-3 portfolio-item">
+          <h4>
+            Categoria 2
+          </h4>
+          <p>
+            <%=@artwork.category_2.name unless !@artwork.category_2 %>
+          </p>
+        </div>
+
+        <div class="col-md-3 portfolio-item">
+          <h4>
+            Categoria 3
+          </h4>
+          <p>
+            <%=@artwork.category_3.name unless !@artwork.category_3 %>
+          </p>
+        </div>
+
+        <div class="col-md-3 portfolio-item">
+          <h4>
+            Categoria 4
+          </h4>
+          <p>
+            <%=@artwork.category_4.name unless !@artwork.category_4 %>
+          </p>
+        </div>
+
+      </div>
+      <!-- Projects Row -->
+      <div class="row">
+        <div class="col-md-3 portfolio-item">
+          <h4>
+            Categoria 5
+          </h4>
+          <p>
+            <%=@artwork.category_5.name unless !@artwork.category_5 %>
+          </p>
+        </div>
+      </div>
+      <br>
+      <br>
+  </div>
   <div class="tab-pane fade" id="extra">
 
     <!-- Projects Row -->
@@ -212,7 +269,7 @@
     <% end %>
   </div>
   <div class="tab-pane fade" id="location">
-    <div id="googleMap" style="width:99%;height:350px;"></div>
+    <div id="googleMap" style="width:900;height:340px;"></div>
   </div>
 
 </div>
@@ -234,8 +291,8 @@
 <script>
     function initialize() {
         infowindow = new google.maps.InfoWindow();
-        var myLatlngOrigin = new google.maps.LatLng(<%= @artwork.latitude_origin %>,<%= @artwork.longitude_origin %>)//4.5983577, -74.0758655);
-        var myLatlngCurrent = new google.maps.LatLng(<%= @artwork.latitude_current %>,<%= @artwork.longitude_current %>)//4.5983577, -74.0758655);
+        var myLatlngOrigin = new google.maps.LatLng(<%= @artwork.latitude_origin %>,<%= @artwork.longitude_origin %>);
+        var myLatlngCurrent = new google.maps.LatLng(<%= @artwork.latitude_current %>,<%= @artwork.longitude_current %>);
 
         var mapProp = {
             center: myLatlngOrigin,
@@ -243,7 +300,16 @@
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+        $('a[href="#location"]').on('shown', function(e) {
+            map.setCenter(myLatlngOrigin);
+        });
+        $("#mapTab").on('shown.bs.tab', function() {
 
+            /* Trigger map resize event */
+            google.maps.event.trigger(map, 'resize');
+        });
+
+        $("#googleMap").css("width", 900).css("height", 400);
         var marker = new google.maps.Marker({
             position: myLatlngOrigin,
             map: map,
@@ -271,12 +337,10 @@
             infowindow.open(map)
         }
     }
-
     google.maps.event.addDomListener(window, 'load', initialize);
+    google.maps.event.trigger(map, 'resize');
 </script>
 
 <% content_for :css_application do %>
     <%= stylesheet_link_tag "artworks_show" %>
 <% end %>
-
-<!--< %=	 debug @artwork %> -->
