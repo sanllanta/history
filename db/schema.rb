@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20150114001608) do
     t.integer  "category_3_id"
     t.integer  "category_4_id"
     t.integer  "category_5_id"
+    t.string   "title"
     t.string   "author"
     t.string   "activity"
     t.text     "biographic_data"

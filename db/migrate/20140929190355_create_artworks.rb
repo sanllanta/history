@@ -20,6 +20,7 @@ class CreateArtworks < ActiveRecord::Migration
       t.belongs_to :category_4, class_name: "Category"
       t.belongs_to :category_5, class_name: "Category"
 
+      t.string :title
       t.string :author
       t.string :activity
       t.text :biographic_data
