@@ -300,16 +300,14 @@
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-        $('a[href="#location"]').on('shown', function(e) {
-            map.setCenter(myLatlngOrigin);
-        });
         $("#mapTab").on('shown.bs.tab', function() {
 
             /* Trigger map resize event */
             google.maps.event.trigger(map, 'resize');
+            map.setCenter(myLatlngOrigin);
         });
 
-        $("#googleMap").css("width", 900).css("height", 400);
+        $("#googleMap").css("width", '100%').css("height", 400);
         var marker = new google.maps.Marker({
             position: myLatlngOrigin,
             map: map,
@@ -338,7 +336,6 @@
         }
     }
     google.maps.event.addDomListener(window, 'load', initialize);
-    google.maps.event.trigger(map, 'resize');
 </script>
 
 <% content_for :css_application do %>
