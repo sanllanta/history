@@ -5,8 +5,11 @@ class ArtworksController < ApplicationController
   # GET /artworks
   # GET /artworks.json
   def index
-    @artworks = Artwork.where(category_1: params[:parent_id])
-    #@artworks = Artwork.all
+    if params[:author] == ('true')
+      @authors = Author.all
+    else
+      @artworks = Artwork.where(category_1: params[:parent_id])
+    end
   end
 
   # GET /artworks/1
@@ -20,9 +23,11 @@ class ArtworksController < ApplicationController
     set_categories
     if params[:action] == "new"
       @artwork.descriptions.new
+
       @artwork.artwork_symbols.new
       @artwork.iconographic_attributes.new
       @artwork.engravings.new
+      @artwork.author = Author.new
       @artwork.donor = Donor.new
       @artwork.origin = Origin.new
       @artwork.passage = Passage.new
@@ -121,10 +126,11 @@ class ArtworksController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def artwork_params
     params.require(:artwork).permit(:passage_id, :place_id, :scene_id, :source_id, :origin_id, :donor_id, :category_1_id, :category_2_id, :category_3_id, :category_4_id, :category_5_id,
-                                    :phylactery_billboard_id, :story_type_id, :school_id, :title ,:author, :activity, :biographic_data, :signed, :synthesis,
+                                    :phylactery_billboard_id, :story_type_id, :school_id,:author_id, :title, :activity, :biographic_data, :signed, :synthesis,
                                     :biographic_comment, :annotation, :avatar, :sub_image, :comment,
                                     :latitude_origin,:latitude_current,:longitude_origin,:longitude_current, :type_id,
                                     descriptions_attributes:[:id,:description,:_destroy],
+                                    author_attributes:[:id,:name,:_destroy],
                                     iconographic_attributes_attributes:[:id,:name,:_destroy],
                                     artwork_symbols_attributes:[:id,:name,:_destroy],
                                     engravings_attributes:[:id,:name,:_destroy],

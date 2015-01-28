@@ -12,6 +12,7 @@ Artwork < ActiveRecord::Base
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/gif", "image/png"]
 
   belongs_to :passage
+  belongs_to :author
   belongs_to :place
   belongs_to :scene
   belongs_to :type
@@ -22,6 +23,7 @@ Artwork < ActiveRecord::Base
   belongs_to :story_type
   belongs_to :work_art_symbol
   belongs_to :school
+
 
   #Different categories
   belongs_to :category_1, class_name: "Category"
@@ -34,6 +36,7 @@ Artwork < ActiveRecord::Base
   has_many :iconographic_attributes
   has_many :descriptions, dependent: :destroy
   has_many :artwork_characters
+
 
   has_and_belongs_to_many :artwork_symbols
   has_and_belongs_to_many :engravings

@@ -2,6 +2,7 @@ class CreateArtworks < ActiveRecord::Migration
   def change
     create_table :artworks do |t|
       t.belongs_to :passage
+      t.belongs_to :author
       t.belongs_to :place
       t.belongs_to :scene
       t.belongs_to :type
@@ -21,7 +22,6 @@ class CreateArtworks < ActiveRecord::Migration
       t.belongs_to :category_5, class_name: "Category"
 
       t.string :title
-      t.string :author
       t.string :activity
       t.text :biographic_data
       t.text :signed

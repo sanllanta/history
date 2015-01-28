@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :authors
+
   resources :iconographic_attributes
 
   resources :artwork_symbols

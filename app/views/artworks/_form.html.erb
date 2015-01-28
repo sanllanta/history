@@ -21,13 +21,20 @@
       </div>
       <%= error_span(@artwork[:title]) %>
     </div>
-  <div class="control-group">
-    <%= f.label :author, :class => 'control-label' %>
+<!--  <div class="control-group">
+    <= f.label :author, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :author, :class => 'form-control' %>
+      <= f.text_field :author, :class => 'form-control' %>
     </div>
-    <%= error_span(@artwork[:author]) %>
-  </div>
+    <= error_span(@artwork[:author]) %>
+  </div>-->
+
+    <div class="row">
+        <div class="col-md-3 portfolio-item">
+          <%= render 'form_author' , :f => f %>
+        </div>
+    </div>
+
   <div class="control-group">
     <%= f.label :activity, :class => 'control-label' %>
     <div class="controls">

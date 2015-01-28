@@ -1,0 +1,12 @@
+<div class="control-group">
+  <%= f.label :author, :class => 'control-label' %> <small> <%= link_to "Crear pasage", new_author_url %></small>
+  <div class="controls">
+    <%= f.collection_select :author_id, Author.all, :id, :name,  {:prompt => 'Seleccione el author'} %>
+    <% if params[:action] == "edit" %>
+        <br>
+        <%= check_box_tag  "delete_author", true %>
+        <%= f.label :_destroy , "Eliminar author"%>
+    <% end %>
+  </div>
+  <%= error_span(@artwork[:comment]) %>
+</div>

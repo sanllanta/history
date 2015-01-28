@@ -1,51 +1,11 @@
 <%- model_class = Artwork -%>
 
-<!-- Page Heading -->
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Obras
-        <!-- < %=t '.title', :default => model_class.model_name.human.pluralize.titleize %>-->
-        <small>Categoria: <%= Category.find(params[:parent_id]).name %></small>
-      </h1>
-    </div>
-  </div>
-
-
-<!-- Page Content -->
-<div class="container">
-
-  <% i = 0 %>
-  <% @artworks.each  do |artwork| %>
-        <% if i == 0 then %>
-            <div class="row">
-        <% end %>
-              <div class="col-md-3 portfolio-item">
-                <a href="<%= artwork_path(artwork) %>">
-                  <div>
-                    <%= image_tag artwork.avatar.url(:thumb) %>
-                  </div>
-                </a>
-                <h4>
-                  <a href="<%= artwork_path(artwork) %>"><%= artwork.title %></a>
-                </h4>
-                <p><%= artwork.author %></p>
-              </div>
-
-        <% i += 1 %>
-        <% if i == 4 then %>
-          <% i = 0 %>
-          </div>
-        <% end %>
-
-  <% end %>
-
-</div>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_artwork_path(:parent_id =>params[:parent_id]),
-            :class => 'btn btn-primary' %>
-
-
-<% content_for :css_application do %>
-    <%= stylesheet_link_tag "artworks" %>
+<% if not params[:author].nil? %>
+    <%= render 'index_author' %>
 <% end %>
+<% if not params[:parent_id].nil? %>
+    <%= render 'index_category' %>
+<% end %>
+
+
+<%=	 params.inspect %>
