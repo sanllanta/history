@@ -1,11 +1,13 @@
 <%- model_class = Artwork -%>
 
-<% if not params[:author].nil? %>
+<% if params[:author] == ('true') %>
     <%= render 'index_author' %>
-<% end %>
-<% if not params[:parent_id].nil? %>
+<% elsif params[:topic] == ('true') %>
+    <%= render 'index_topic' %>
+<% else %>
     <%= render 'index_category' %>
 <% end %>
+
 
 
 <%=	 params.inspect %>
