@@ -1,10 +1,11 @@
 <%- model_class = Artwork -%>
 
+<!-- Page Heading -->
 <div class="row">
   <div class="col-lg-12">
-    <h1 class="page-header">Obras por Autor
+    <h1 class="page-header">Obras
       <!-- < %=t '.title', :default => model_class.model_name.human.pluralize.titleize %>-->
-      <small>Categoria: <%= params[:author] %></small>
+      <!-- <small>Categoria: < %= Category.find(params[:parent_id]).name %></small>-->
     </h1>
   </div>
 </div>
@@ -14,21 +15,20 @@
 <div class="container">
 
   <% i = 0 %>
-  <% @authors.each  do |author| %>
+  <% @artworks.each  do |artwork| %>
       <% if i == 0 then %>
           <div class="row">
       <% end %>
       <div class="col-md-3 portfolio-item">
-        <a href="<%= author_path(author) %>">
+        <a href="<%= artwork_path(artwork) %>">
           <div>
-            <!--< %= image_tag artwork.avatar.url(:thumb) %> -->
+            <%= image_tag artwork.avatar.url(:thumb) %>
           </div>
         </a>
         <h4>
-
-          <a href="<%= artworks_path(:author_show => author.id) %>"><%= author.name %></a>
+          <a href="<%= artwork_path(artwork) %>"><%= artwork.title %></a>
         </h4>
-        <p><%= author.biography %></p>
+        <p><%= artwork.author.name %></p>
       </div>
 
       <% i += 1 %>
@@ -49,5 +49,3 @@
 <% content_for :css_application do %>
     <%= stylesheet_link_tag "artworks" %>
 <% end %>
-
-<%=	 params.inspect %>

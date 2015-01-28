@@ -4,8 +4,12 @@
     <%= render 'index_author' %>
 <% elsif params[:topic] == ('true') %>
     <%= render 'index_topic' %>
+<% elsif not params[:author_show].nil?%>
+    <%= render 'index_author_show' %>
+<% elsif not params[:parent_id].nil? %>
+    <%= render 'index_category_show' %>
 <% else %>
-    <%= render 'index_category' %>
+    <%= render 'index_all_show' %>
 <% end %>
 
 
