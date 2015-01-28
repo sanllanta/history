@@ -11,6 +11,9 @@ class ArtworksController < ApplicationController
       @artworks = Artwork.where(category_1: params[:parent_id])
     elsif not params[:author_show].nil?
       @artworks = Artwork.where(author_id: params[:author_show])
+    elsif not params[:region_show].nil?
+      place=Place.where(:name =>params[:region_show])
+      @artworks = Artwork.where(place_id: place)
     else
       @artworks = Artwork.all
     end
