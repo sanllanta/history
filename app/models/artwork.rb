@@ -9,7 +9,17 @@ Artwork < ActiveRecord::Base
                         :thumb => "100x100>" },
                     :default_url => "/images/:style/missing.png"
 
+  has_attached_file :sub_image,
+                    :styles => {
+                        :large => "500x500>",
+                        :medium => "300x300>",
+                        :small  => "200x200>",
+                        :slider  => "900x300>",
+                        :thumb => "100x100>" },
+                    :default_url => "/images/:style/missing.png"
+
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/gif", "image/png"]
+  validates_attachment_content_type :sub_image, :content_type => ["image/jpg", "image/jpeg", "image/gif", "image/png"]
 
   belongs_to :passage
   belongs_to :author

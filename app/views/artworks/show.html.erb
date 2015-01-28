@@ -98,15 +98,6 @@
         </p>
       </div>
 
-      <div class="col-md-3 portfolio-item">
-        <h4>
-          Sub imagen
-        </h4>
-        <p>
-          <%=@artwork.sub_image %>
-        </p>
-      </div>
-
     </div>
 
     <div class="row">
@@ -245,7 +236,7 @@
           Sub imagen
         </h4>
         <p>
-          <%=@artwork.sub_image %>
+          <%= image_tag @artwork.sub_image.url(:thumb) %>
         </p>
       </div>
 
