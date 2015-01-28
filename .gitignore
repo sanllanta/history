@@ -40,3 +40,4 @@ pickle-email-*.html
 /tmp/cache/assets/*
 db/schema.rb
 config/database.yml
+public/assets
