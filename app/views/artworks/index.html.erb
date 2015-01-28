@@ -6,8 +6,12 @@
     <%= render 'index_topic' %>
 <% elsif not params[:author_show].nil?%>
     <%= render 'index_author_show' %>
+<% elsif not params[:region_show].nil?%>
+    <%= render 'index_region_show' %>
 <% elsif not params[:parent_id].nil? %>
     <%= render 'index_category_show' %>
+<% elsif not params[:region].nil? %>
+    <%= render 'index_region' %>
 <% else %>
     <%= render 'index_all_show' %>
 <% end %>
