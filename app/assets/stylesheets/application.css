@@ -15,5 +15,6 @@
  *= require bootstrap.min.css
  *= require agency.css
  *= require site_global.css
+ *= require jquery-jvectormap-2.0.1.css
  * require_tree .
  */

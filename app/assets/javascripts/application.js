@@ -17,6 +17,7 @@
 //= require easing_min.js
 //= require classie.js
 //= require jqBootstrapValidation.js
+//= require jquery-jvectormap-2.0.1.min
 // require contact_me.js
 
 /*Get children of a category for select*/
