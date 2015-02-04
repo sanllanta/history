@@ -14,6 +14,7 @@ group :assets do
   #gem 'coffee-rails', '~> 4.0.0'
 end
 gem 'twitter-bootstrap-rails'
+gem 'bootstrap_form'
 gem 'font-awesome-rails'
 gem 'diff-lcs'
 #rails generate bootstrap:install static

@@ -30,6 +30,7 @@ GEM
     ancestry (2.1.0)
       activerecord (>= 3.0.0)
     arel (5.0.1.20140414130214)
+    bootstrap_form (2.2.0)
     builder (3.2.2)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -162,6 +163,7 @@ PLATFORMS
 
 DEPENDENCIES
   ancestry
+  bootstrap_form
   coffee-rails (~> 4.0.0)
   diff-lcs
   font-awesome-rails

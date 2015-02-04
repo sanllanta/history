@@ -1,5 +1,4 @@
-<%= form_for @artwork, :html => { :multipart => true, :class => "form-horizontal artwork" } do |f| %>
-
+<%= bootstrap_form_for(@artwork, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10") do |f| %>
     <% if @artwork.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
       <div class="panel-heading">
@@ -14,218 +13,103 @@
       </div>
     </div>
   <% end %>
-    <div class="control-group">
-      <%= f.label :title, :class => 'control-label' %>
-      <div class="controls">
-        <%= f.text_field :title, :class => 'form-control' %>
-      </div>
-      <%= error_span(@artwork[:title]) %>
-    </div>
-<!--  <div class="control-group">
-    <= f.label :author, :class => 'control-label' %>
-    <div class="controls">
-      <= f.text_field :author, :class => 'form-control' %>
-    </div>
-    <= error_span(@artwork[:author]) %>
-  </div>-->
 
-    <div class="row">
-        <div class="col-md-3 portfolio-item">
-          <%= render 'form_author' , :f => f %>
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#datos_generales" data-toggle="tab" aria-expanded="false">Datos generales</a></li>
+    <li class=""><a href="#desc_img_rel" data-toggle="tab" aria-expanded="false">Descripción, Imagenes y relatos</a></li>
+    <li class=""><a href="#personajes" data-toggle="tab" aria-expanded="false">Personajes</a></li>
+    <li class=""><a href="#cuerpo_gestos" data-toggle="tab" aria-expanded="false">Cuerpo y gestos</a></li>
+    <li class=""><a id="mapTab" href="#location" data-toggle="tab" aria-expanded="false">Lugar</a></li>
+  </ul>
+  <br>
+  <div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade active in" id="datos_generales">
+        <%= image_tag @artwork.avatar.url(:large), :class => "img-thumbnail", :class => "img-responsive" %>
+        <br>
+        <div class="row">
+        <div class="col-md-6">
+          <%= f.file_field :avatar, label: "Imagen"%>
         </div>
-    </div>
-
-  <div class="control-group">
-    <%= f.label :activity, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :activity, :class => 'form-control' %>
-    </div>
-    <%= error_span(@artwork[:activity]) %>
-  </div>
-  <div class="control-group">
-    <%= f.label :biographic_data, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :biographic_data, :class => 'form-control' %>
-    </div>
-    <%= error_span(@artwork[:biographic_data]) %>
-  </div>
-  <div class="control-group">
-    <%= f.label :signed, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.select :signed, [['Yes', 'Yes'], ['No', 'No']], :class => 'form-control' %>
-    </div>
-    <%= error_span(@artwork[:signed]) %>
-  </div>
-  <div class="control-group">
-    <%= f.label :synthesis, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :synthesis, :class => 'form-control' %>
-    </div>
-    <%= error_span(@artwork[:synthesis]) %>
-  </div>
-  <div class="control-group">
-    <%= f.label :biographic_comment, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :biographic_comment, :class => 'form-control' %>
-    </div>
-    <%= error_span(@artwork[:biographic_comment]) %>
-  </div>
-  <div class="control-group">
-    <%= f.label :annotation, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :annotation, :class => 'form-control' %>
-    </div>
-    <%= error_span(@artwork[:annotation]) %>
-  </div>
-  <div class="control-group">
-      <%= f.label :avatar, :class => 'control-label' %>
-      <div class="controls">
-        <%= f.file_field :avatar, :class => 'form-control' %>
+        </div>
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.collection_select :author_id, Author.all, :id, :name,  {:prompt => 'Seleccione el author'} %>
+          <%= f.text_field :activity%>
+          <%= f.text_area :biographic_data%>
+          <div class="row" id="checkboxes">
+            <div class="col-md-6">
+              <div class="col-md-6">
+                <%= f.label :signed%>
+              </div>
+              <%= f.check_box_without_bootstrap :signed%>
+            </div>
+            <div class="col-md-6">
+              <div class="col-md-6">
+                <%= f.label :color%>
+              </div>
+              <%= f.check_box_without_bootstrap :color%>
+            </div>
+          </div>
+          <%= f.text_area :activity, :class => 'form-control' %>
+        </div>
+        <div class="col-md-6">
+            <%= f.select(:category_1_id, @categories_for_select_1, prompt: 'Select Category', :class => 'form-control') %>
+            <%= f.select(:category_2_id, @categories_for_select_2, prompt: 'Select Category', :class => 'form-control') %>
+            <%= f.select(:category_3_id, @categories_for_select_3, prompt: 'Select Category', :class => 'form-control') %>
+            <%= f.select(:category_4_id, @categories_for_select_4, prompt: 'Select Category', :class => 'form-control') %>
+            <%= f.select(:category_5_id, @categories_for_select_5, prompt: 'Select Category', :class => 'form-control') %>
+        </div>
       </div>
-      <%= error_span(@artwork[:avatar]) %>
-  </div>
-  <div class="control-group">
-    <%= f.label :sub_image, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.file_field :sub_image, :class => 'form-control' %>
-    </div>
-    <%= error_span(@artwork[:sub_image]) %>
-  </div>
-  <div class="control-group">
-    <%= f.label :comment, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :comment, :class => 'form-control' %>
-    </div>
-    <%= error_span(@artwork[:comment]) %>
-  </div>
-
-
-    <div class="row">
-
-      <div class="col-md-3 portfolio-item">
-        <%= render 'form_descriptions' , :ff => f %>
+      <br>
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.collection_select :type_id, Type.all, :id, :name,  {:prompt => 'Seleccione el tipo'} %>
+          <%= f.collection_select :source_id, Source.all, :id, :name,  {:prompt => 'Seleccione la fuente'} %>
+          <%= f.collection_select :place_id, Place.all, :id, :name,  {:prompt => 'Seleccione el lugar'} %>
+        </div>
+        <div class="col-md-6">
+          <%= f.collection_select :school_id, School.all, :id, :name,  {:prompt => 'Seleccione la escuela'} %>
+          <%= f.collection_select :origin_id, Origin.all, :id, :name,  {:prompt => 'Seleccione el origen'} %>
+        </div>
       </div>
-
-      <div class="col-md-3 portfolio-item">
-        <%= render 'form_iconographic_attributes' , :ff => f %>
-      </div>
-
-      <div class="col-md-3 portfolio-item">
-        <%= render 'form_artwork_symbols' , :ff => f %>
-      </div>
-
-      <div class="col-md-3 portfolio-item">
-        <%= render 'form_engravings', :ff => f %>
+      <br>
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.text_area :synthesis, :class => 'form-control' %>
+        </div>
+        <div class="col-md-6">
+          <%= f.text_area :biographic_comment, :class => 'form-control' %>
+        </div>
       </div>
     </div>
 
-    <br>
-
-    <div class="row">
-      <div class="col-md-3 portfolio-item">
-        <%= render 'form_passage', :f => f %>
-      </div>
-
-      <div class="col-md-3 portfolio-item">
-        <%= render 'form_place', :f => f %>
-      </div>
-
-      <div class="col-md-3 portfolio-item">
-        <%= render 'form_scene', :f => f %>
-      </div>
-
-      <div class="col-md-3 portfolio-item">
-        <%= render 'form_type', :f => f %>
+    <div class="tab-pane fade active in" id="desc_img_rel">
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.collection_select :scene_id, Scene.all, :id, :name,  {:prompt => 'Seleccione la escena'} %>
+        <%= f.collection_select :story_type_id, StoryType.all, :id, :name,  {:prompt => 'Seleccione el tipo de historia'} %>
+        <%= f.collection_select :donor_id, Donor.all, :id, :name,  {:prompt => 'Seleccione el donante'} %>
+        <%= f.collection_select :phylactery_billboard_id, PhylacteryBillboard.all, :id, :name,  {:prompt => 'Cartelera Filacteria'} %>
+        </div>
+        <div class="col-md-6">
+          <%= f.text_area :comment, :class => 'form-control' %>
+        </div>
       </div>
     </div>
 
-
-    <div class="row">
-      <div class="col-md-3 portfolio-item">
-        <%= render 'form_source', :f => f %>
-      </div>
-      <div class="col-md-3 portfolio-item">
-        <%= render 'form_origin', :f => f %>
-      </div>
-      <div class="col-md-3 portfolio-item">
-        <%= render 'form_donor', :f => f %>
-      </div>
-      <div class="col-md-3 portfolio-item">
-        <%= render 'form_phylactery_billboard', :f => f %>
-      </div>
+    <div class="tab-pane fade active in" id="personajes">
     </div>
 
-    <div class="row">
-      <div class="col-md-3 portfolio-item">
-        <%= render 'form_story_type', :f => f %>
-      </div>
-      <div class="col-md-3 portfolio-item">
-        <%= render 'form_school', :f => f %>
-      </div>
+    <div class="tab-pane fade active in" id="cuerpos_gestos">
     </div>
-    <br>
+
+    <div class="tab-pane fade active in" id="location">
+    </div>
+
     
-    <div class="control-group">
-      <%= f.label :latitude_origin, :class => 'control-label' %>
-      <div class="controls">
-        <%= f.text_field :latitude_origin, :class => 'form-control' %>
-      </div>
-      <%= error_span(@artwork[:latitude_origin]) %>
-    </div>
+  </div>
 
-    <div class="control-group">
-      <%= f.label :latitude_current, :class => 'control-label' %>
-      <div class="controls">
-        <%= f.text_field :latitude_current, :class => 'form-control' %>
-      </div>
-      <%= error_span(@artwork[:latitude_current]) %>
-    </div>
 
-    <div class="control-group">
-      <%= f.label :longitude_origin, :class => 'control-label' %>
-      <div class="controls">
-        <%= f.text_field :longitude_origin, :class => 'form-control' %>
-      </div>
-      <%= error_span(@artwork[:longitude_origin]) %>
-    </div>
-
-    <div class="control-group">
-      <%= f.label :longitude_current, :class => 'control-label' %>
-      <div class="controls">
-        <%= f.text_field :longitude_current, :class => 'form-control' %>
-      </div>
-      <%= error_span(@artwork[:longitude_current]) %>
-    </div>
-
-    <div class="control-group">
-      <%= f.label :category_1_id, :class => 'control-label' %>
-      <div class="controls">
-      <%= f.select(:category_1_id, @categories_for_select_1, prompt: 'Select Category', :class => 'form-control') %>
-      </div>
-      <%= f.label :category_2_id, :class => 'control-label' %>
-      <div class="controls">
-      <%= f.select(:category_2_id, @categories_for_select_2, prompt: 'Select Category', :class => 'form-control') %>
-      </div>
-      <%= f.label :category_3_id, :class => 'control-label' %>
-      <div class="controls">
-      <%= f.select(:category_3_id, @categories_for_select_3, prompt: 'Select Category', :class => 'form-control') %>
-      </div>
-      <%= f.label :category_4_id, :class => 'control-label' %>
-      <div class="controls">
-      <%= f.select(:category_4_id, @categories_for_select_4, prompt: 'Select Category', :class => 'form-control') %>
-      </div>
-      <%= f.label :category_5_id, :class => 'control-label' %>
-      <div class="controls">
-      <%= f.select(:category_5_id, @categories_for_select_5, prompt: 'Select Category', :class => 'form-control') %>
-      </div>
-    </div>
-
-    <br>
-
-    <% if params[:action] == 'edit' %>
-        <%= link_to t('.agregar categorias', :default => t("helpers.links.categories_add")),
-                    new_artwork_category_path(:artwork_id => @artwork.id), :class => 'btn btn-info' %>
-    <%end%>
 
     <%= f.submit :class => 'btn btn-primary' %>
 
