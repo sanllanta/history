@@ -15,7 +15,7 @@
             <div class="row">
         <% end %>
 
-        <div class="col-md-4 col-sm-6 portfolio-item">
+        <div class="col-md-3 col-sm-3 portfolio-item">
           <a href="<%= artworks_path(:topic => category) %>" class="portfolio-link" data-toggle="modal">
             <div class="portfolio-hover">
               <div class="portfolio-hover-content">
@@ -25,13 +25,12 @@
             <img src= "<%= image_url 'categorias/'+I18n.transliterate((category.name.to_s).downcase.tr(' ', '_'))+'.jpg' %>" class="img-responsive" alt="">
           </a>
           <div class="portfolio-caption">
-
-            <p class="text-muted"><%= category.name %> </p>
+            <p class="text-muted"><%= category.name %></p>
           </div>
         </div>
 
         <% i += 1 %>
-        <% if i == 3 then %>
+        <% if i == 4 then %>
             <% i = 0 %>
             </div>
         <% end %>

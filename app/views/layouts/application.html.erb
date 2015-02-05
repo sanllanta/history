@@ -8,19 +8,18 @@
             <%= bootstrap_flash %>
             <!-- Page Content -->
 
-            <% if params[:controller] == 'welcome' %>
-                <%= render 'application/banner'%>
-            <%else%>
-                <%= render 'application/bannerShrink'%>
-            <%end%>
+            <%- if params[:controller] == 'welcome' -%>
+                <%= render 'application/banner' -%><%=yield :template_header -%>
+                <section class="contenido">
+                    <div class="container"><%= yield %></div>
+                </section>
+            <%- else -%>
+                <%= render 'application/bannerShrink' -%><%= yield :template_header -%>
+                <section class="contenido">
+                    <div class="container"><%= yield %></div>
+                </section>
+            <%- end -%>
 
-            <%=yield :template_header%>
-
-            <section class="contenido">
-              <div class="container">
-                <%= yield %>
-              </div>
-            </section>
     </body>
 
     <%= yield :js_application %>
