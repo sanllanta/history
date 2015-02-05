@@ -9,13 +9,32 @@ class ArtworksController < ApplicationController
       @authors = Author.all
     elsif params[:topic] == ('true')
       @artworks = Artwork.where(category_1: params[:parent_id])
+    elsif not params[:parent_id].nil?
+      @artworks = Artwork.where(category_1: params[:parent_id])
     elsif not params[:author_show].nil?
       @artworks = Artwork.where(author_id: params[:author_show])
     elsif not params[:region_show].nil?
       place=Place.where(:name =>params[:region_show])
       @artworks = Artwork.where(place_id: place)
     else
-      @artworks = Artwork.all
+      @authors = Author.all
+      @clasifications = Category.all
+
+      @places = Hash.new
+      artworksTemp = Artwork.all
+      artworksTemp.each do |artwork|
+        place = artwork.place
+        if !@places[place]
+          @places[place] = place
+        end
+
+      end
+      if not params[:author] == ''
+        artworksTemp = Artwork.all#artworksTemp.search(params[:author])
+        @artworks = artworksTemp.paginate(:per_page => 8, :page => params[:page])
+      else
+        @artworks = artworksTemp.paginate(:per_page => 8, :page => params[:page])
+      end
     end
   end
 

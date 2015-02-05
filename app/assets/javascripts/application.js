@@ -50,11 +50,11 @@ $("#artwork_category_2_id").change(function() {
     select = document.getElementById('artwork_category_3_id');
     select.options.length = 0;
     data = getCategoryChildrenForSelect($("#artwork_category_2_id").val())
-    select.options.add(new Option("Select Category"));
     for (index = 0; index < data.length; ++index) {
       option = data[index];
       select.options.add(new Option(option.name, option.id));
     }
+    select.options.add(new Option("Select Category"));
   });
 
 $("#artwork_category_3_id").change(function() {
