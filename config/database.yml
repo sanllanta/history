@@ -15,10 +15,8 @@
 # gem 'pg'
 #
 default: &default
-  #password: postgreshistoriauniandes
-  #username: postgres
-  password: 12345678
-  username: dbhistoria
+  password: kelvin
+  username: postgres
   reconnect: true
   host: localhost
   adapter: postgresql
@@ -87,3 +85,5 @@ test:
 production:
   <<: *default
   database: history_production
+  username: postgres
+  password: <%= ENV['HISTORY_DATABASE_PASSWORD'] %>

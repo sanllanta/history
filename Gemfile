@@ -15,6 +15,7 @@ group :assets do
 end
 #Presentacion, vista con bootstrap
 gem 'twitter-bootstrap-rails'
+gem 'bootstrap_form'
 #manejo de fuentes
 gem 'font-awesome-rails'
 #

@@ -21,10 +21,11 @@ class CreateArtworks < ActiveRecord::Migration
       t.belongs_to :category_4, class_name: "Category"
       t.belongs_to :category_5, class_name: "Category"
 
+      t.boolean :signed
+      t.boolean :color
       t.string :title
       t.string :activity
       t.text :biographic_data
-      t.text :signed
       t.text :synthesis
       t.text :biographic_comment
       t.text :annotation
