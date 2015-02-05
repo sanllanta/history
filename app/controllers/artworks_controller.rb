@@ -7,10 +7,9 @@ class ArtworksController < ApplicationController
   def index
     if params[:author] == ('true')
       @authors = Author.all
-    elsif params[:topic] == ('true')
-      @artworks = Artwork.where(category_1: params[:parent_id])
-    elsif not params[:parent_id].nil?
-      @artworks = Artwork.where(category_1: params[:parent_id])
+    elsif not params[:topic].nil?
+      @authors = Author.where(category_1: params[:topic])
+      @artworks = Artwork.where(category_1: params[:topic])
     elsif not params[:author_show].nil?
       @artworks = Artwork.where(author_id: params[:author_show])
     elsif not params[:region_show].nil?

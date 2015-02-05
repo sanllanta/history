@@ -11,11 +11,11 @@
  * file per style scope.
  *
  *= require font-awesome/font-awesome.min.css
- *= require_self
  *= require bootstrap.min.css
  *= require rails_bootstrap_forms
  *= require agency.css
- *= require site_global.css
  *= require jquery-jvectormap-2.0.1.css
+ *= require site_global.css
+ *= require_self
  * require_tree .
  */
