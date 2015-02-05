@@ -13,8 +13,13 @@ group :assets do
   # Use CoffeeScript for .js.coffee assets and views
   #gem 'coffee-rails', '~> 4.0.0'
 end
+#Presentacion, vista con bootstrap
 gem 'twitter-bootstrap-rails'
+#manejo de fuentes
 gem 'font-awesome-rails'
+#
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 gem 'diff-lcs'
 #rails generate bootstrap:install static
 #
