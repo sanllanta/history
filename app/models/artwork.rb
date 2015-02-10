@@ -67,4 +67,28 @@ Artwork < ActiveRecord::Base
   accepts_nested_attributes_for :story_type, :reject_if => lambda{ |a| a[:name].blank? }, allow_destroy: true
   accepts_nested_attributes_for :type, :reject_if => lambda{ |a| a[:name].blank? }, allow_destroy: true
 
+  def self.search_author(search)
+    if search
+      where('author_id = ?', search)
+    else
+      all
+    end
+  end
+
+  def self.search_category(search)
+    if search
+      where('category_1_id = ?', search)
+    else
+      all
+    end
+  end
+
+  def self.search_place(search)
+    if search
+      where('place_id = ?', search)
+    else
+      all
+    end
+  end
 end
+

@@ -16,22 +16,194 @@ class ArtworksController < ApplicationController
       place=Place.where(:name =>params[:region_show])
       @artworks = Artwork.where(place_id: place)
     else
-      @authors = Author.all
-      @clasifications = Category.all
-
-      @places = Hash.new
       artworksTemp = Artwork.all
-      artworksTemp.each do |artwork|
-        place = artwork.place
-        if !@places[place]
-          @places[place] = place
+      if params[:author].nil? and not params[:category].nil? and params[:place].nil?
+
+        artworksTemp = artworksTemp.search_category(params[:category])
+
+        @authors = Hash.new
+        artworksTemp.each do |artwork|
+          author = artwork.author
+          if !@authors[author]
+            @authors[author] = author
+          end
         end
 
+        @clasifications = Hash.new
+        artworksTemp.each do |artwork|
+          category = artwork.category_1
+          if !@clasifications[category]
+            @clasifications[category] = category
+          end
+        end
+
+        @places = Hash.new
+
+        artworksTemp.each do |artwork|
+          place = artwork.place
+          if !@places[place]
+            @places[place] = place
+          end
+        end
+
+        @artworks = artworksTemp.paginate(:per_page => 8, :page => params[:page])
+
       end
-      if not params[:author] == ''
-        artworksTemp = Artwork.all#artworksTemp.search(params[:author])
+
+      if params[:author].nil? and params[:category].nil? and not params[:place].nil?
+
+        artworksTemp = artworksTemp.search_place(params[:place])
+
+        @authors = Hash.new
+        artworksTemp.each do |artwork|
+          author = artwork.author
+          if !@authors[author]
+            @authors[author] = author
+          end
+        end
+
+        @clasifications = Hash.new
+        artworksTemp.each do |artwork|
+          category = artwork.category_1
+          if !@clasifications[category]
+            @clasifications[category] = category
+          end
+        end
+
+        @places = Hash.new
+
+        artworksTemp.each do |artwork|
+          place = artwork.place
+          if !@places[place]
+            @places[place] = place
+          end
+        end
+
+        @artworks = artworksTemp.paginate(:per_page => 8, :page => params[:page])
+
+      elsif not params[:author].nil? and params[:category].nil? and params[:place].nil?
+
+        artworksTemp = artworksTemp.search_author(params[:author])
+
+        @authors = Hash.new
+        artworksTemp.each do |artwork|
+          author = artwork.author
+          if !@authors[author]
+            @authors[author] = author
+          end
+        end
+
+        @clasifications = Hash.new
+        artworksTemp.each do |artwork|
+          category = artwork.category_1
+          if !@clasifications[category]
+            @clasifications[category] = category
+          end
+        end
+
+        @places = Hash.new
+
+        artworksTemp.each do |artwork|
+          place = artwork.place
+          if !@places[place]
+            @places[place] = place
+          end
+        end
+
+        @artworks = artworksTemp.paginate(:per_page => 8, :page => params[:page])
+
+      elsif not params[:author].nil? and not params[:category].nil? and params[:place].nil?
+
+        artworksTemp = artworksTemp.search_author(params[:author])
+        artworksTemp = artworksTemp.search_category(params[:category])
+
+        @authors = Hash.new
+        artworksTemp.each do |artwork|
+          author = artwork.author
+          if !@authors[author]
+            @authors[author] = author
+          end
+        end
+
+        @clasifications = Hash.new
+        artworksTemp.each do |artwork|
+          category = artwork.category_1
+          if !@clasifications[category]
+            @clasifications[category] = category
+          end
+        end
+
+        @places = Hash.new
+
+        artworksTemp.each do |artwork|
+          place = artwork.place
+          if !@places[place]
+            @places[place] = place
+          end
+        end
+
+        @artworks = artworksTemp.paginate(:per_page => 8, :page => params[:page])
+
+      elsif not params[:author].nil? and not params[:category].nil? and not params[:place].nil?
+
+        artworksTemp = artworksTemp.search_author(params[:author])
+        artworksTemp = artworksTemp.search_category(params[:category])
+        artworksTemp = artworksTemp.search_place(params[:place])
+
+        @authors = Hash.new
+        artworksTemp.each do |artwork|
+          author = artwork.author
+          if !@authors[author]
+            @authors[author] = author
+          end
+        end
+
+        @clasifications = Hash.new
+        artworksTemp.each do |artwork|
+          category = artwork.category_1
+          if !@clasifications[category]
+            @clasifications[category] = category
+          end
+        end
+
+        @places = Hash.new
+
+        artworksTemp.each do |artwork|
+          place = artwork.place
+          if !@places[place]
+            @places[place] = place
+          end
+        end
+
         @artworks = artworksTemp.paginate(:per_page => 8, :page => params[:page])
       else
+        artworksTemp = Artwork.all
+
+        @authors = Hash.new
+        artworksTemp.each do |artwork|
+          author = artwork.author
+          if !@authors[author]
+            @authors[author] = author
+          end
+        end
+
+        @clasifications = Hash.new
+        artworksTemp.each do |artwork|
+          category = artwork.category_1
+          if !@clasifications[category]
+            @clasifications[category] = category
+          end
+        end
+
+        @places = Hash.new
+
+        artworksTemp.each do |artwork|
+          place = artwork.place
+          if !@places[place]
+            @places[place] = place
+          end
+        end
+
         @artworks = artworksTemp.paginate(:per_page => 8, :page => params[:page])
       end
     end
