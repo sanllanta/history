@@ -13,13 +13,7 @@
       </div>
     </div>
   <% end %>
-    <br>
-    <div class="row">
-      <div class="col-md-9">
-        <%= f.text_field :title, label: "Titulo de la obra" %>
-      </div>
-    </div>
-    <br>
+
   <ul class="nav nav-tabs">
     <li class="active"><a href="#datos_generales" data-toggle="tab" aria-expanded="false">Datos generales</a></li>
     <li class=""><a href="#desc_img_rel" data-toggle="tab" aria-expanded="false">Descripción, Imagenes y relatos</a></li>
@@ -39,24 +33,18 @@
         </div>
       <div class="row">
         <div class="col-md-6">
+          <%= f.text_field :title, label: "Titulo" %>
           <%= f.collection_select :author_id, Author.all, :id, :name,  {:prompt => 'Seleccione el author'} %>
           <%= f.text_field :activity%>
           <%= f.text_area :biographic_data%>
           <div class="row" id="checkboxes">
             <div class="col-md-6">
-              <div class="col-md-6">
+              <div class="col-sm-6">
                 <%= f.label :signed%>
               </div>
               <%= f.check_box_without_bootstrap :signed%>
             </div>
-            <div class="col-md-6">
-              <div class="col-md-6">
-                <%= f.label :color%>
-              </div>
-              <%= f.check_box_without_bootstrap :color%>
-            </div>
           </div>
-          <%= f.text_area :activity, :class => 'form-control' %>
         </div>
         <div class="col-md-6">
             <%= f.select(:category_1_id, @categories_for_select_1, prompt: 'Select Category', :class => 'form-control') %>
@@ -87,12 +75,40 @@
           <%= f.text_area :biographic_comment, :class => 'form-control' %>
         </div>
       </div>
-    </div>
-
-    <div class="tab-pane fade active in" id="desc_img_rel">
       <div class="row">
         <div class="col-md-6">
-          <%= f.collection_select :scene_id, Scene.all, :id, :name,  {:prompt => 'Seleccione la escena'} %>
+          <div class="row">
+              <div class="col-sm-2">
+                <label>Origen</label>
+              </div>
+            <div class="col-sm-10">
+              <div id="mapOrigin" class="well"></div>
+            </div>
+          </div>
+          <%= f.text_field :longitude_origin %>
+          <%= f.text_field :latitude_origin %>
+        </div>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-sm-2">
+              <label>Origen</label>
+            </div>
+            <div class="col-sm-10">
+              <div id="mapCurrent" class="well"></div>
+            </div>
+          </div>
+          <%= f.text_field :longitude_current %>
+          <%= f.text_field :latitude_current %>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="tab-pane fade in" id="desc_img_rel">
+      <div class="row">
+        <div class="col-md-6">
+        <%= f.collection_select :scene_id, Scene.all, :id, :name,  {:prompt => 'Seleccione la escena'} %>
         <%= f.collection_select :story_type_id, StoryType.all, :id, :name,  {:prompt => 'Seleccione el tipo de historia'} %>
         <%= f.collection_select :donor_id, Donor.all, :id, :name,  {:prompt => 'Seleccione el donante'} %>
         <%= f.collection_select :phylactery_billboard_id, PhylacteryBillboard.all, :id, :name,  {:prompt => 'Cartelera Filacteria'} %>
@@ -103,13 +119,13 @@
       </div>
     </div>
 
-    <div class="tab-pane fade active in" id="personajes">
+    <div class="tab-pane fade in" id="personajes">
     </div>
 
-    <div class="tab-pane fade active in" id="cuerpos_gestos">
+    <div class="tab-pane fade in" id="cuerpos_gestos">
     </div>
 
-    <div class="tab-pane fade active in" id="location">
+    <div class="tab-pane fade in" id="location">
     </div>
 
     
@@ -121,4 +137,98 @@
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),artworks_path(:parent_id =>params[:parent_id]) , :class => 'btn btn-default' %>
 
 
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
+    </script>
+    <script>
+        function initialize() {
+            infowindow = new google.maps.InfoWindow();
+            var latlngOrigin = new google.maps.LatLng(<%= @artwork.latitude_origin %>,<%= @artwork.longitude_origin %>);
+            var latlngCurrent = new google.maps.LatLng(<%= @artwork.latitude_current %>,<%= @artwork.longitude_current %>);
+
+            var originProp = {
+                disableDefaultUI: true,
+                zoomControl: true,
+                zoomControlOptions: {
+                    style: google.maps.ZoomControlStyle.DEFAULT,
+                    position: google.maps.ControlPosition.RIGHT_TOP
+                },
+                center: latlngOrigin,
+                zoom: 5,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var currentProp = {
+                disableDefaultUI: true,
+                zoomControl: true,
+                zoomControlOptions: {
+                    style: google.maps.ZoomControlStyle.DEFAULT,
+                    position: google.maps.ControlPosition.RIGHT_TOP
+                },
+                center: latlngCurrent,
+                zoom: 5,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var mapOrigin = new google.maps.Map(document.getElementById("mapOrigin"), originProp);
+            $("#datos_generales").on('shown.bs.tab', function() {
+
+                /* Trigger map resize event */
+                google.maps.event.trigger(map, 'resize');
+                map.setCenter(latlngOrigin);
+            });
+            var mapCurrent = new google.maps.Map(document.getElementById("mapCurrent"), currentProp);
+            $("#datos_generales").on('shown.bs.tab', function() {
+
+                /* Trigger map resize event */
+                google.maps.event.trigger(map, 'resize');
+                map.setCenter(latlngCurrent);
+            });
+
+            $("#mapOrigin").css("width", '100%').css("height", 400);
+            var markerOrigin = new google.maps.Marker({
+                position: latlngOrigin,
+                map: mapOrigin,
+                draggable:true,
+                icon: pinSymbol("#A12E33"),
+                title: 'Ubicación de origen'
+            });
+            $("#mapCurrent").css("width", '100%').css("height", 400);
+            var markerCurrent = new google.maps.Marker({
+                position: latlngCurrent,
+                map: mapCurrent,
+                draggable:true,
+                icon: pinSymbol("#F15E00"),
+                title: 'Ubicación actual'
+            });
+
+            google.maps.event.addListener(markerOrigin, 'dragend', function(evt){
+                $('#artwork_latitude_origin').val(evt.latLng.lat());
+                $('#artwork_longitude_origin').val(evt.latLng.lng());
+            });
+            google.maps.event.addListener(markerCurrent, 'dragend', function(evt){
+                $('#artwork_latitude_current').val(evt.latLng.lat());
+                $('#artwork_longitude_current').val(evt.latLng.lng());
+            });
+
+            google.maps.event.addListener(marker, 'click', function () {
+                onItemClick(event, marker);
+                onItemClick(event, markerCurrent);
+            });
+
+            function onItemClick(event, marker) {
+                // Create content
+                var contentString = marker.title;
+            }
+
+            function pinSymbol(color) {
+                return {
+                        path: 'M 0,0 C -2,-20 -10,-22 -10,-30 A 10,10 0 1,1 10,-30 C 10,-22 2,-20 0,0 z',
+                        fillColor: color,
+                        fillOpacity: 1,
+                        strokeColor: '#000',
+                        strokeWeight: 2,
+                        scale: 1
+                        };
+            }
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
 <% end %>
