@@ -24,16 +24,20 @@ class ArtworksController < ApplicationController
         @authors = Hash.new
         artworksTemp.each do |artwork|
           author = artwork.author
-          if !@authors[author]
-            @authors[author] = author
+          if author != nil
+            if !@authors[author]
+              @authors[author] = author
+            end
           end
         end
 
         @clasifications = Hash.new
         artworksTemp.each do |artwork|
           category = artwork.category_1
-          if !@clasifications[category]
-            @clasifications[category] = category
+          if category != nil
+            if !@clasifications[category]
+              @clasifications[category] = category
+            end
           end
         end
 
@@ -41,8 +45,10 @@ class ArtworksController < ApplicationController
 
         artworksTemp.each do |artwork|
           place = artwork.place
-          if !@places[place]
-            @places[place] = place
+          if place != nil
+            if !@places[place]
+              @places[place] = place
+            end
           end
         end
 
@@ -57,25 +63,30 @@ class ArtworksController < ApplicationController
         @authors = Hash.new
         artworksTemp.each do |artwork|
           author = artwork.author
-          if !@authors[author]
-            @authors[author] = author
+          if author != nil
+            if !@authors[author]
+              @authors[author] = author
+            end
           end
         end
 
         @clasifications = Hash.new
         artworksTemp.each do |artwork|
           category = artwork.category_1
-          if !@clasifications[category]
-            @clasifications[category] = category
+          if category != nil
+            if !@clasifications[category]
+              @clasifications[category] = category
+            end
           end
         end
 
         @places = Hash.new
-
         artworksTemp.each do |artwork|
           place = artwork.place
-          if !@places[place]
-            @places[place] = place
+          if place != nil
+            if !@places[place]
+              @places[place] = place
+            end
           end
         end
 
@@ -88,16 +99,20 @@ class ArtworksController < ApplicationController
         @authors = Hash.new
         artworksTemp.each do |artwork|
           author = artwork.author
-          if !@authors[author]
-            @authors[author] = author
+          if author != nil
+            if !@authors[author]
+              @authors[author] = author
+            end
           end
         end
 
         @clasifications = Hash.new
         artworksTemp.each do |artwork|
           category = artwork.category_1
-          if !@clasifications[category]
-            @clasifications[category] = category
+          if category != nil
+            if !@clasifications[category]
+              @clasifications[category] = category
+            end
           end
         end
 
@@ -105,8 +120,10 @@ class ArtworksController < ApplicationController
 
         artworksTemp.each do |artwork|
           place = artwork.place
-          if !@places[place]
-            @places[place] = place
+          if place != nil
+            if !@places[place]
+              @places[place] = place
+            end
           end
         end
 
@@ -120,16 +137,20 @@ class ArtworksController < ApplicationController
         @authors = Hash.new
         artworksTemp.each do |artwork|
           author = artwork.author
-          if !@authors[author]
-            @authors[author] = author
+          if author != nil
+            if !@authors[author]
+              @authors[author] = author
+            end
           end
         end
 
         @clasifications = Hash.new
         artworksTemp.each do |artwork|
           category = artwork.category_1
-          if !@clasifications[category]
-            @clasifications[category] = category
+          if category != nil
+            if !@clasifications[category]
+              @clasifications[category] = category
+            end
           end
         end
 
@@ -137,8 +158,10 @@ class ArtworksController < ApplicationController
 
         artworksTemp.each do |artwork|
           place = artwork.place
-          if !@places[place]
-            @places[place] = place
+          if place != nil
+            if !@places[place]
+              @places[place] = place
+            end
           end
         end
 
@@ -153,16 +176,20 @@ class ArtworksController < ApplicationController
         @authors = Hash.new
         artworksTemp.each do |artwork|
           author = artwork.author
-          if !@authors[author]
-            @authors[author] = author
+          if author != nil
+            if !@authors[author]
+              @authors[author] = author
+            end
           end
         end
 
         @clasifications = Hash.new
         artworksTemp.each do |artwork|
           category = artwork.category_1
-          if !@clasifications[category]
-            @clasifications[category] = category
+          if category != nil
+            if !@clasifications[category]
+              @clasifications[category] = category
+            end
           end
         end
 
@@ -170,8 +197,10 @@ class ArtworksController < ApplicationController
 
         artworksTemp.each do |artwork|
           place = artwork.place
-          if !@places[place]
-            @places[place] = place
+          if place != nil
+            if !@places[place]
+              @places[place] = place
+            end
           end
         end
 
@@ -182,16 +211,20 @@ class ArtworksController < ApplicationController
         @authors = Hash.new
         artworksTemp.each do |artwork|
           author = artwork.author
-          if !@authors[author]
-            @authors[author] = author
+          if author != nil
+            if !@authors[author]
+              @authors[author] = author
+            end
           end
         end
 
         @clasifications = Hash.new
         artworksTemp.each do |artwork|
           category = artwork.category_1
-          if !@clasifications[category]
+          if category != nil
+            if !@clasifications[category]
             @clasifications[category] = category
+            end
           end
         end
 
@@ -200,19 +233,11 @@ class ArtworksController < ApplicationController
         artworksTemp.each do |artwork|
           place = artwork.place
           if place != nil
-
             if !@places[place]
               @places[place] = place
             end
           end
         end
-
-        p "places"
-        p @places
-        p @places.first
-        p "clasificactions"
-        p @clasifications.first
-        p @clasifications.length
 
         @artworks = artworksTemp.paginate(:per_page => 8, :page => params[:page])
       end
