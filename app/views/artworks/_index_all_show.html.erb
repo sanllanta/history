@@ -54,12 +54,11 @@
     <div class="row">
       <div class="col-lg-6">
         <ul class="list-unstyled">
-          <% @places.values.each  do |objeto| %>
+            <% @places.values.each  do |objeto| %>
               <li>
                 <%=	link_to  "#{objeto.name}" ,artworks_path(:params => params.merge(:place => objeto.id))  %>
-
               </li>
-          <% end %>
+            <% end %>
           </li>
         </ul>
       </div>

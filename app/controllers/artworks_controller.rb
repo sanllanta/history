@@ -199,10 +199,20 @@ class ArtworksController < ApplicationController
 
         artworksTemp.each do |artwork|
           place = artwork.place
-          if !@places[place]
-            @places[place] = place
+          if place != nil
+
+            if !@places[place]
+              @places[place] = place
+            end
           end
         end
+
+        p "places"
+        p @places
+        p @places.first
+        p "clasificactions"
+        p @clasifications.first
+        p @clasifications.length
 
         @artworks = artworksTemp.paginate(:per_page => 8, :page => params[:page])
       end
