@@ -13,7 +13,8 @@
       </div>
     </div>
   <% end %>
-
+  <div class="row">
+  <div class="col-sm-9">
   <ul class="nav nav-tabs">
     <li class="active"><a href="#datos_generales" data-toggle="tab" aria-expanded="false">Datos generales</a></li>
     <li class=""><a href="#desc_img_rel" data-toggle="tab" aria-expanded="false">Descripción, Imagenes y relatos</a></li>
@@ -24,25 +25,21 @@
   <br>
   <div id="myTabContent" class="tab-content">
     <div class="tab-pane fade active in" id="datos_generales">
-        <%= image_tag @artwork.avatar.url(:large), :class => "img-thumbnail", :class => "img-responsive" %>
-        <br>
-        <div class="row">
+      <div class="row">
         <div class="col-md-6">
           <%= f.file_field :avatar, label: "Imagen",class:"category"%>
         </div>
-        </div>
+      </div>
       <div class="row">
         <div class="col-md-6">
           <%= f.text_field :title, label: "Titulo" %>
           <%= f.collection_select :author_id, Author.all, :id, :name,  {:prompt => 'Seleccione el author'} %>
           <%= f.text_field :activity%>
           <%= f.text_area :biographic_data%>
-          <div class="row" id="checkboxes">
-            <div class="col-md-6">
-              <div class="col-sm-6">
-                <%= f.label :signed%>
-              </div>
-              <%= f.check_box_without_bootstrap :signed%>
+          <div class="form-group">
+            <%= f.label :signed, class: "control-label col-sm-2"%>
+            <div class="col-md-10">
+                <%= f.check_box_without_bootstrap :signed%>
             </div>
           </div>
         </div>
@@ -75,32 +72,6 @@
           <%= f.text_area :biographic_comment, :class => 'form-control' %>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="row">
-              <div class="col-sm-2">
-                <label>Origen</label>
-              </div>
-            <div class="col-sm-10">
-              <div id="mapOrigin" class="well"></div>
-            </div>
-          </div>
-          <%= f.text_field :longitude_origin %>
-          <%= f.text_field :latitude_origin %>
-        </div>
-        <div class="col-md-6">
-          <div class="row">
-            <div class="col-sm-2">
-              <label>Origen</label>
-            </div>
-            <div class="col-sm-10">
-              <div id="mapCurrent" class="well"></div>
-            </div>
-          </div>
-          <%= f.text_field :longitude_current %>
-          <%= f.text_field :latitude_current %>
-        </div>
-      </div>
     </div>
 
 
@@ -126,11 +97,40 @@
     </div>
 
     <div class="tab-pane fade in" id="location">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-sm-2">
+              <label style="text-align: right">Lugar de origen</label>
+            </div>
+            <div class="col-sm-10">
+              <div id="mapOrigin" class="well"></div>
+            </div>
+          </div>
+          <%= f.text_field :longitude_origin %>
+          <%= f.text_field :latitude_origin %>
+        </div>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-sm-2">
+              <label style="text-align: right">Lugar actual</label>
+            </div>
+            <div class="col-sm-10">
+              <div id="mapCurrent" class="well"></div>
+            </div>
+          </div>
+          <%= f.text_field :longitude_current %>
+          <%= f.text_field :latitude_current %>
+        </div>
+      </div>
     </div>
-
-    
+  </div>
   </div>
 
+  <div class="col-sm-3">
+    <%= image_tag @artwork.avatar.url(:large), :class => "img-thumbnail", :class => "img-responsive", :style => "margin-left: auto; margin-right: auto;" %>
+  </div>
+  </div>
     <%= f.submit :class => 'btn btn-primary' %>
 
 
@@ -168,18 +168,18 @@
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
             var mapOrigin = new google.maps.Map(document.getElementById("mapOrigin"), originProp);
-            $("#datos_generales").on('shown.bs.tab', function() {
+            $("#mapTab").on('shown.bs.tab', function() {
 
                 /* Trigger map resize event */
-                google.maps.event.trigger(map, 'resize');
-                map.setCenter(latlngOrigin);
+                google.maps.event.trigger(mapOrigin, 'resize');
+                mapOrigin.setCenter(latlngOrigin);
             });
             var mapCurrent = new google.maps.Map(document.getElementById("mapCurrent"), currentProp);
-            $("#datos_generales").on('shown.bs.tab', function() {
+            $("#mapTab").on('shown.bs.tab', function() {
 
                 /* Trigger map resize event */
-                google.maps.event.trigger(map, 'resize');
-                map.setCenter(latlngCurrent);
+                google.maps.event.trigger(mapCurrent, 'resize');
+                mapCurrent.setCenter(latlngCurrent);
             });
 
             $("#mapOrigin").css("width", '100%').css("height", 400);
@@ -216,6 +216,11 @@
             function onItemClick(event, marker) {
                 // Create content
                 var contentString = marker.title;
+
+                // Replace our Info Window's content and position
+                infowindow.setContent(contentString);
+                infowindow.setPosition(marker.position);
+                infowindow.open(map);
             }
 
             function pinSymbol(color) {
