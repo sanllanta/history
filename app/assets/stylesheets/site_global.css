@@ -1,3 +1,18 @@
+@font-face {
+    font-family: 'fGothamBook';
+    font-weight: normal;
+    font-style: normal;
+    font-weight: 400;
+    src: url('assets/Gotham-Book.otf');
+}
+
+@font-face {
+    font-family: 'fGothamLight';
+    font-weight: normal;
+    font-style: normal;
+    font-weight: 400;
+    src: url('assets/Gotham-Light.otf');
+}
 .contenido
 {
     padding: 50px 0;
@@ -6,4 +21,19 @@
 .body
 {
     font-size: 13px;
+}
+
+div#contact_image{
+    background-color: #222;
+    background-image: url(../assets/map-image.png);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.navbar-shrink .nav li a{
+    color: #FFFFFF;
+}
+
+.navbar-shrink .navbar-brand{
+    color: #FFFFFF;
 }

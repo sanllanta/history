@@ -118,15 +118,24 @@ fieldset[disabled] .btn-primary.active {
 }
 
 .btn-xl {
-    padding: 20px 40px;
+    padding: 9px 20px;
     border-color: #b51a1a;
     border-radius: 3px;
     text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 18px;
+    font-size: 13px;
     font-weight: 700;
     color: #fff;
     background-color: #b51a1a;
+}
+
+.btn-default {
+    border-color: #ccc;
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    color: #333;
+    background-color: #fff;
 }
 
 .btn-xl:hover,
@@ -175,8 +184,8 @@ fieldset[disabled] .btn-xl.active {
 }
 
 .navbar-default .navbar-brand {
-    font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
-    color: #ffffff;
+    font-family: "fGothamBook",Arial,cursive;
+    color: #9D1F1F;
 }
 
 .navbar-default .navbar-brand:hover,
@@ -210,7 +219,7 @@ fieldset[disabled] .btn-xl.active {
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 400;
     letter-spacing: 1px;
-    color: #fff;
+    color: #b51a1a;
 }
 
 .navbar-default .nav li a:hover,
@@ -237,7 +246,7 @@ fieldset[disabled] .btn-xl.active {
         padding: 0px 0;
         margin-top: 20px;
         border: 0;
-        background-color: rgba(181,26,26,0.8);
+        background-color: rgba(255,255,255,0.8);
         -webkit-transition: padding .3s;
         -moz-transition: padding .3s;
         transition: padding .3s;
@@ -269,7 +278,7 @@ header {
     text-align: center;
     color: #fff;
     background-attachment: scroll;
-    background-image: url(../assets/imago.jpg);
+    background-image: url(../assets/welcome/portada.jpg);
     background-position: center center;
     background-repeat: none;
     -webkit-background-size: cover;
@@ -317,7 +326,7 @@ header .intro-text .intro-heading {
     header .intro-text .intro-heading {
         margin-bottom: 20px;
         text-transform: uppercase;
-        font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-family: "fGothamLight",Arial,sans-serif;
         font-size: 75px;
         font-weight: 700;
         line-height: 75px;
@@ -655,12 +664,7 @@ aside.clients img {
     margin: 50px auto;
 }
 
-section#contact {
-    background-color: #222;
-    background-image: url(../assets/map-image.png);
-    background-position: center;
-    background-repeat: no-repeat;
-}
+
 
 section#contact .section-heading {
     color: #fff;
@@ -672,7 +676,7 @@ section#contact .form-group {
 
 section#contact .form-group input,
 section#contact .form-group textarea {
-    padding: 20px;
+    padding: 8px;
 }
 
 section#contact .form-group input.form-control {
@@ -680,7 +684,7 @@ section#contact .form-group input.form-control {
 }
 
 section#contact .form-group textarea.form-control {
-    height: 236px;
+    height: 158px;
 }
 
 section#contact .form-control:focus {

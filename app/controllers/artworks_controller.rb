@@ -1,6 +1,6 @@
 class ArtworksController < ApplicationController
   before_action :set_artwork, only: [:show, :edit, :update, :destroy]
-  before_action :set_categories, only: [:edit]
+  before_action :set_categories, only: [:edit, :new]
 
   # GET /artworks
   # GET /artworks.json
@@ -251,6 +251,7 @@ class ArtworksController < ApplicationController
 
   # GET /artworks/new
   def new
+    p "cate"
     @artwork = Artwork.new
     set_categories
     if params[:action] == "new"
@@ -280,7 +281,7 @@ class ArtworksController < ApplicationController
   # POST /artworks
   # POST /artworks.json
   def create
-
+    p "entro"
     @artwork = Artwork.new
 
     @artwork.save
@@ -289,6 +290,7 @@ class ArtworksController < ApplicationController
     end
 
     respond_to do |format|
+      set_categories
       if @artwork.save
         if @artwork.update(artwork_params)
           format.html { redirect_to @artwork, notice: 'Artwork was successfully created.' }
@@ -394,34 +396,35 @@ class ArtworksController < ApplicationController
       end
     end
 
-    if @artwork.category_1
-      @categories = @artwork.category_1.children
-      @categories.each do |category|
-        @categories_for_select_2 << [category.name, category.id]
+    if @artwork
+      if @artwork.category_1
+        @categories = @artwork.category_1.children
+        @categories.each do |category|
+          @categories_for_select_2 << [category.name, category.id]
+        end
       end
-    end
 
-    if @artwork.category_2
-      @categories = @artwork.category_2.children
-      @categories.each do |category|
-        @categories_for_select_3 << [category.name, category.id]
+      if @artwork.category_2
+        @categories = @artwork.category_2.children
+        @categories.each do |category|
+          @categories_for_select_3 << [category.name, category.id]
+        end
       end
-    end
 
-    if @artwork.category_3
-      @categories = @artwork.category_3.children
-      @categories.each do |category|
-        @categories_for_select_4 << [category.name, category.id]
+      if @artwork.category_3
+        @categories = @artwork.category_3.children
+        @categories.each do |category|
+          @categories_for_select_4 << [category.name, category.id]
+        end
       end
-    end
 
-    if @artwork.category_4
-      @categories = @artwork.category_4.children
-      @categories.each do |category|
-        @categories_for_select_5 << [category.name, category.id]
+      if @artwork.category_4
+        @categories = @artwork.category_4.children
+        @categories.each do |category|
+          @categories_for_select_5 << [category.name, category.id]
+        end
       end
     end
-    
   end
 
   #Elimina los atributos marcados desde la vista de edición

@@ -14,6 +14,9 @@
     </div>
   <% end %>
   <div class="row">
+    <div class="col-sm-3">
+      <%= image_tag @artwork.avatar.url(:large), :class => "img-thumbnail", :class => "img-responsive", :style => "margin-left: auto; margin-right: auto;" %>
+    </div>
   <div class="col-sm-9">
   <ul class="nav nav-tabs">
     <li class="active"><a href="#datos_generales" data-toggle="tab" aria-expanded="false">Datos generales</a></li>
@@ -126,16 +129,11 @@
     </div>
   </div>
   </div>
-
-  <div class="col-sm-3">
-    <%= image_tag @artwork.avatar.url(:large), :class => "img-thumbnail", :class => "img-responsive", :style => "margin-left: auto; margin-right: auto;" %>
   </div>
-  </div>
-    <%= f.submit :class => 'btn btn-primary' %>
-
-
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),artworks_path(:parent_id =>params[:parent_id]) , :class => 'btn btn-default' %>
-
+    <div style="float: right">
+      <%= f.submit :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),artworks_path(:parent_id =>params[:parent_id]) , :class => 'btn btn-default' %>
+    </div>
 
     <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
     </script>
