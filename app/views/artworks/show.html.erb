@@ -323,7 +323,7 @@
             // Replace our Info Window's content and position
             infowindow.setContent(contentString);
             infowindow.setPosition(marker.position);
-            infowindow.open(map)
+            infowindow.open(map);
         }
     }
     google.maps.event.addDomListener(window, 'load', initialize);

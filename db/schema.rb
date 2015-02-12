@@ -53,7 +53,6 @@ ActiveRecord::Schema.define(version: 20150128103949) do
     t.integer  "category_4_id"
     t.integer  "category_5_id"
     t.boolean  "signed"
-    t.boolean  "color"
     t.string   "title"
     t.string   "activity"
     t.text     "biographic_data"
@@ -62,10 +61,10 @@ ActiveRecord::Schema.define(version: 20150128103949) do
     t.text     "annotation"
     t.text     "sub_image"
     t.text     "comment"
-    t.decimal  "latitude_origin",         precision: 5, scale: 2, default: 0.0
-    t.decimal  "latitude_current",        precision: 5, scale: 2, default: 0.0
-    t.decimal  "longitude_origin",        precision: 5, scale: 2, default: 0.0
-    t.decimal  "longitude_current",       precision: 5, scale: 2, default: 0.0
+    t.decimal  "latitude_origin",         precision: 10, scale: 6, default: 0.0
+    t.decimal  "latitude_current",        precision: 10, scale: 6, default: 0.0
+    t.decimal  "longitude_origin",        precision: 10, scale: 6, default: 0.0
+    t.decimal  "longitude_current",       precision: 10, scale: 6, default: 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "avatar_file_name"
