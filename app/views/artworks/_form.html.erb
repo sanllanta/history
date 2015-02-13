@@ -15,7 +15,9 @@
   <% end %>
   <div class="row">
     <div class="col-sm-3">
-      <%= image_tag @artwork.avatar.url(:large), :class => "img-thumbnail", :class => "img-responsive", :style => "margin-left: auto; margin-right: auto;" %>
+      <a type="href" data-toggle="modal" data-target="#imageModal" href="">
+        <%= image_tag(@artwork.avatar.url(:large), :class => "img-thumbnail", :class => "img-responsive", :style => "margin-left: auto; margin-right: auto;") %>
+      </a>
     </div>
   <div class="col-sm-9">
   <ul class="nav nav-tabs">
@@ -135,9 +137,50 @@
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),artworks_path(:parent_id =>params[:parent_id]) , :class => 'btn btn-default' %>
     </div>
 
+  <!-- Modal for image view -->
+  <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel"><%= "#{@artwork.title} - #{@artwork.author.name} "%></h4>
+        </div>
+        <div class="modal-body">
+          <%= image_tag @artwork.avatar.url, :id => "zoomableImage", :class => "img-thumbnail", :class => "img-responsive", 'data-zoom-image' => @artwork.avatar.url, :style => "margin-left: auto; margin-right: auto;" %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
     <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
     </script>
+    <style>
+      .zoomContainer{ z-index: 9999;};
+      .zoomWindow{ z-index: 9999;}
+    </style>
     <script>
+      //Zoomable Image with ElevateZoom
+      $("#zoomableImage").elevateZoom({ zoomType  : "inner", cursor: "crosshair" });
+
+      $('#imageModal').on('shown.bs.modal', function() {
+        $("#zoomableImage").elevateZoom({
+            zoomType  : "lens",
+            lensShape : "round",
+            lensSize : 200,
+            scrollZoom : true,
+            containLensZoom : true,
+        });
+      });
+
+      jQuery('#imageModal').on('hidden.bs.modal', function (e) {
+        jQuery.removeData(jQuery('#zoomableImage'), 'elevateZoom');//remove zoom instance from image
+        jQuery('.zoomContainer').remove();// remove zoom container from DOM
+      });
+              
+        //Google maps
         function initialize() {
             infowindow = new google.maps.InfoWindow();
             var latlngOrigin = new google.maps.LatLng(<%= @artwork.latitude_origin %>,<%= @artwork.longitude_origin %>);
