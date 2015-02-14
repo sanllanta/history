@@ -25,7 +25,6 @@ class Artwork < ActiveRecord::Base
   validates_presence_of :category_1, :message => "Tiene que ingresar una categoria"
   validates_presence_of :author, :message => "Tiene que ingresar un autor"
   validates_presence_of :place, :message => "Tiene que ingresar un lugar"
-  validates_presence_of :origin, :message => "Tiene que ingresar un origen"
 
   belongs_to :passage
   belongs_to :author

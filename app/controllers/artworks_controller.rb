@@ -290,7 +290,6 @@ class ArtworksController < ApplicationController
     end
 
     respond_to do |format|
-      set_categories
       if @artwork.save
         if @artwork.update(artwork_params)
           format.html { redirect_to @artwork, notice: 'Artwork was successfully created.' }
@@ -300,6 +299,7 @@ class ArtworksController < ApplicationController
           format.json { render json: @artwork.errors, status: :unprocessable_entity }
         end
       else
+        set_categories
         format.html { render :new }
         format.json { render json: @artwork.errors, status: :unprocessable_entity }
       end
