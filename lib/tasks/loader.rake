@@ -5,7 +5,7 @@ namespace :loader do
   	lines = File.new(file).readlines
   	lines.each do |line|
 		  values = line.strip.split(',')
-		  attributes = {"name" => values[2]}
+		  attributes = {"name" => values[2],"code" => values[1]}
 		  Place.create(attributes)
 		end
   end

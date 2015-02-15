@@ -7,16 +7,20 @@ class ArtworksController < ApplicationController
   def index
     if params[:author] == ('true')
       @authors = Author.all
-    elsif not params[:topic].nil?
-      @authors = Author.where(category_1: params[:topic])
-      @artworks = Artwork.where(category_1: params[:topic])
-    elsif not params[:author_show].nil?
-      @artworks = Artwork.where(author_id: params[:author_show])
-    elsif not params[:region_show].nil?
-      place=Place.where(:name =>params[:region_show])
-      @artworks = Artwork.where(place_id: place)
     else
-      artworksTemp = Artwork.all
+
+      #Define la cantidad de obras que se muestran en cada uno de los tipos de vistas
+      if not params[:topic].nil?
+        artworksTemp = Artwork.where(category_1: params[:topic])
+      elsif not params[:author_show].nil?
+        artworksTemp = Artwork.where(author_id: params[:author_show])
+      elsif not params[:region_show].nil?
+        place=Place.where(:name =>params[:region_show])
+        artworksTemp = Artwork.where(place_id: place)
+      else
+        artworksTemp = Artwork.all
+      end
+
       if params[:author].nil? and not params[:category].nil? and params[:place].nil?
 
         artworksTemp = artworksTemp.search_category(params[:category])
@@ -54,9 +58,7 @@ class ArtworksController < ApplicationController
 
         @artworks = artworksTemp.paginate(:per_page => 8, :page => params[:page])
 
-      end
-
-      if params[:author].nil? and params[:category].nil? and not params[:place].nil?
+      elsif params[:author].nil? and params[:category].nil? and not params[:place].nil?
 
         artworksTemp = artworksTemp.search_place(params[:place])
 
@@ -206,7 +208,7 @@ class ArtworksController < ApplicationController
 
         @artworks = artworksTemp.paginate(:per_page => 8, :page => params[:page])
       else
-        artworksTemp = Artwork.all
+
 
         @authors = Hash.new
         artworksTemp.each do |artwork|
@@ -226,6 +228,7 @@ class ArtworksController < ApplicationController
             @clasifications[category] = category
             end
           end
+
         end
 
         @places = Hash.new
@@ -242,6 +245,9 @@ class ArtworksController < ApplicationController
         @artworks = artworksTemp.paginate(:per_page => 8, :page => params[:page])
       end
     end
+
+    #aca va el json en una variable que se puede llamar @json_places
+
   end
 
   # GET /artworks/1
@@ -251,7 +257,6 @@ class ArtworksController < ApplicationController
 
   # GET /artworks/new
   def new
-    p "cate"
     @artwork = Artwork.new
     set_categories
     if params[:action] == "new"
@@ -281,8 +286,7 @@ class ArtworksController < ApplicationController
   # POST /artworks
   # POST /artworks.json
   def create
-    p "entro"
-    @artwork = Artwork.new
+    @artwork = Artwork.new(artwork_params)
 
     @artwork.save
     if !artwork_params[:avatar].nil?
@@ -295,6 +299,7 @@ class ArtworksController < ApplicationController
           format.html { redirect_to @artwork, notice: 'Artwork was successfully created.' }
           format.json { render :show, status: :created, location: @artwork }
         else
+          set_categories
           format.html { render :new }
           format.json { render json: @artwork.errors, status: :unprocessable_entity }
         end
@@ -320,10 +325,12 @@ class ArtworksController < ApplicationController
       send_image
     else
       respond_to do |format|
+
         if @artwork.update(custom_artwork_params)
           format.html { redirect_to @artwork, notice: 'Artwork was successfully updated.' }
           format.json { render :show, status: :ok, location: @artwork }
         else
+          set_categories
           format.html { render :edit }
           format.json { render json: @artwork.errors, status: :unprocessable_entity }
         end

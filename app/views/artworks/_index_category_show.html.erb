@@ -11,6 +11,64 @@
   </div>
 
 
+<!-- Blog Categories Well -->
+<div class="col-md-4">
+
+  <div class="well">
+    <h4>Artistas</h4>
+    <div class="row">
+      <div class="col-lg-6">
+        <ul class="list-unstyled">
+          <% @authors.values.each  do |author| %>
+              <li>
+                <%=	link_to  "#{author.name}" ,artworks_path(:params => params.merge(:author => author.id))  %>
+              </li>
+          <% end %>
+          </li>
+        </ul>
+      </div>
+      <!-- /.col-lg-6 -->
+    </div>
+    <!-- /.row -->
+  </div>
+
+  <div class="well">
+    <h4>Clasificación</h4>
+    <div class="row">
+      <div class="col-lg-6">
+        <ul class="list-unstyled">
+          <% @clasifications.values.each  do |objeto| %>
+              <li>
+                <%=	link_to  "#{objeto.name}" ,artworks_path(:params => params.merge(:category => objeto.id))  %>
+              </li>
+          <% end %>
+          </li>
+        </ul>
+      </div>
+      <!-- /.col-lg-6 -->
+    </div>
+    <!-- /.row -->
+  </div>
+
+  <div class="well">
+    <h4>Lugares</h4>
+    <div class="row">
+      <div class="col-lg-6">
+        <ul class="list-unstyled">
+          <% @places.values.each  do |objeto| %>
+              <li>
+                <%=	link_to  "#{objeto.name}" ,artworks_path(:params => params.merge(:place => objeto.id))  %>
+              </li>
+          <% end %>
+          </li>
+        </ul>
+      </div>
+      <!-- /.col-lg-6 -->
+    </div>
+    <!-- /.row -->
+  </div>
+</div>
+
 <!-- Page Content -->
 <div class="container">
 

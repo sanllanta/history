@@ -1,4 +1,5 @@
 class Author < ActiveRecord::Base
+
   has_many :artworks
   has_attached_file :avatar, :styles => { :large => "500x500>",
                         :medium => "300x300>",
