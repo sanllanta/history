@@ -161,6 +161,7 @@ ActiveRecord::Schema.define(version: 20150128103949) do
 
   create_table "places", force: true do |t|
     t.string   "name"
+    t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

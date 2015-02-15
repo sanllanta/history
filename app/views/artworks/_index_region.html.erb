@@ -71,24 +71,22 @@
     </div>
     <script>
 
-        var gdpData = {
-            "CA": 1563.66,
-            "US": 14624.18,
-            "MX": 1004.04
-        };
+        var jsonData = <%= @json_places.to_json.html_safe %>;
 
         $(function(){
             map = $('#world-map').vectorMap({
                         series: {
                             regions: [{
-                                values: gdpData,
+                                values: jsonData,
                                 scale: ['#C8EEFF', '#0071A4'],
                                 normalizeFunction: 'polynomial'
                             }]
                         },
                         onRegionTipShow: function(e, el, code){
                             var map = $('#world-map').vectorMap('get', 'mapObject');
-                            el.html(el.html()+' (GDP - '+code+'  )');
+                            var obras;
+                            obras = (jsonData[code]) ? jsonData[code] : 0;
+                            el.html(el.html()+' ('+'Obras: '+obras+')');
                         },
                         focusOn:
                         {
