@@ -244,7 +244,7 @@ class ArtworksController < ApplicationController
           end
         end
         #aca va el json en una variable que se puede llamar @json_places
-        @artworks = artworksTemp.paginate(:per_page => 8, :page => params[:page])
+        @artworks = artworksTemp.paginate(:per_page => 20, :page => params[:page])
       end
     end
   end
