@@ -231,6 +231,19 @@ class ArtworksController < ApplicationController
         end
 
         @places = Hash.new
+        artworksTemp.each do |artwork|
+          place = artwork.place
+          if place != nil
+            if !@places[place]
+              @places[place] = place
+            end
+          end
+        end
+        @artworks = artworksTemp.paginate(:per_page => 20, :page => params[:page])
+      end
+
+      if params[:region] == ('true')
+        @places = Hash.new
         @json_places = Hash.new
         artworksTemp.each do |artwork|
           place = artwork.place
@@ -243,10 +256,10 @@ class ArtworksController < ApplicationController
             end
           end
         end
-        #aca va el json en una variable que se puede llamar @json_places
-        @artworks = artworksTemp.paginate(:per_page => 20, :page => params[:page])
       end
+
     end
+
   end
 
   # GET /artworks/1
