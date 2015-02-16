@@ -1,5 +1,4 @@
 <%- model_class = Artwork -%>
-
 <div class="row">
   <div class="col-lg-12">
     <h1 class="page-header"><%= @artwork.title %>
@@ -28,46 +27,46 @@
         <div class="row">
           <div class="col-md-6">
             <div class="row">
-              <label class="control-label col-sm-2">Titulo</label>
-              <div class="col-sm-10"><%= @artwork.title%></div>
+              <label class="control-label col-sm-3">Titulo</label>
+              <div class="col-sm-9"><%= @artwork.get_title%></div>
             </div>
             <div class="row">
-              <label class="control-label col-sm-2">Autor</label>
-              <div class="col-sm-10"><%=@artwork.author.name%></div>
+              <label class="control-label col-sm-3">Autor</label>
+              <div class="col-sm-9"><%=@artwork.get_author_name%></div>
             </div>
             <div class="row">
-              <label class="control-label col-sm-2">Actividad</label>
-              <div class="col-sm-10"><%=@artwork.activity%></div>
+              <label class="control-label col-sm-3">Actividad</label>
+              <div class="col-sm-9"><%=@artwork.get_activity%></div>
             </div>
             <div class="row">
-              <label class="control-label col-sm-2">Información Biográfica</label>
-              <div class="col-sm-10"><%=@artwork.biographic_data%></div>
+              <label class="control-label col-sm-3">Información Biográfica</label>
+              <div class="col-sm-9"><%=@artwork.get_biographic_data%></div>
             </div>
             <div class="row">
-              <label class="control-label col-sm-2">Firmado</label>
-              <div class="col-sm-10"><%=@artwork.signed%></div>
+              <label class="control-label col-sm-3">Firmado</label>
+              <div class="col-sm-9"><%=@artwork.get_signed%></div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="row">
               <label class="control-label col-sm-3">Categoría 1</label>
-              <div class="col-sm-9"><%=@artwork.category_1%></div>
+              <div class="col-sm-9"><%=@artwork.get_category_1_name%></div>
             </div>
             <div class="row">
               <label class="control-label col-sm-3">Categoría 2</label>
-              <div class="col-sm-9"><%=@artwork.category_2%></div>
+              <div class="col-sm-9"><%=@artwork.get_category_2_name%></div>
             </div>
             <div class="row">
               <label class="control-label col-sm-3">Categoría 3</label>
-              <div class="col-sm-9"><%=@artwork.category_3%></div>
+              <div class="col-sm-9"><%=@artwork.get_category_3_name%></div>
             </div>
             <div class="row">
               <label class="control-label col-sm-3">Categoría 4</label>
-              <div class="col-sm-9"><%=@artwork.category_4%></div>
+              <div class="col-sm-9"><%=@artwork.get_category_4_name%></div>
             </div>
             <div class="row">
               <label class="control-label col-sm-3">Categoría 5</label>
-              <div class="col-sm-9"><%=@artwork.category_5%></div>
+              <div class="col-sm-9"><%=@artwork.get_category_5_name%></div>
             </div>
           </div>
         </div>
@@ -75,26 +74,26 @@
         <div class="row">
           <div class="col-md-6">
             <div class="row">
-              <label class="control-label col-sm-2">Tipo</label>
-              <div class="col-sm-10"><%=@artwork.type%></div>
+              <label class="control-label col-sm-3">Tipo</label>
+              <div class="col-sm-9"><%=@artwork.get_type_name%></div>
             </div>
             <div class="row">
-              <label class="control-label col-sm-2">Fuente</label>
-              <div class="col-sm-10"><%=@artwork.source%></div>
+              <label class="control-label col-sm-3">Fuente</label>
+              <div class="col-sm-9"><%=@artwork.get_source_name%></div>
             </div>
             <div class="row">
-              <label class="control-label col-sm-2">Lugar</label>
-              <div class="col-sm-10"><%=@artwork.place%></div>
+              <label class="control-label col-sm-3">Lugar</label>
+              <div class="col-sm-9"><%=@artwork.get_place_name%></div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="row">
-              <label class="control-label col-sm-2">Escuela</label>
-              <div class="col-sm-10"><%=@artwork.school%></div>
+              <label class="control-label col-sm-3">Escuela</label>
+              <div class="col-sm-9"><%=@artwork.get_school_name%></div>
             </div>
             <div class="row">
-              <label class="control-label col-sm-2">Origen</label>
-              <div class="col-sm-10"><%=@artwork.origin%></div>
+              <label class="control-label col-sm-3">Origen</label>
+              <div class="col-sm-9"><%=@artwork.get_origin_name%></div>
             </div>
           </div>
         </div>
@@ -102,14 +101,82 @@
         <div class="row">
           <div class="col-md-6">
             <div class="row">
-              <label class="control-label col-sm-2">Sintesis</label>
-              <div class="col-sm-10"><%=@artwork.synthesis%></div>
+              <label class="control-label col-sm-3">Sintesis</label>
+              <div class="col-sm-9"><%=@artwork.get_synthesis%></div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="row">
-              <label class="control-label col-sm-2">Comentario Biográfico</label>
-              <div class="col-sm-10"><%=@artwork.biographic_comment%></div>
+              <label class="control-label col-sm-3">Comentario Biográfico</label>
+              <div class="col-sm-9"><%=@artwork.get_biographic_comment%></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade in" id="desc_img_rel">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row">
+              <label class="control-label col-sm-3">Escena</label>
+              <div class="col-sm-9"><%=@artwork.get_scene_name%></div>
+            </div>
+            <div class="row">
+              <label class="control-label col-sm-3">Tipo de relato</label>
+              <div class="col-sm-9"><%=@artwork.get_story_type_name%></div>
+            </div>
+            <div class="row">
+              <label class="control-label col-sm-3">Donante</label>
+              <div class="col-sm-9"><%=@artwork.get_donor_name%></div>
+            </div>
+            <div class="row">
+              <label class="control-label col-sm-3">Cartelera Filacteria</label>
+              <div class="col-sm-9"><%=@artwork.get_phylactery_billboard_name%></div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="row">
+              <label class="control-label col-sm-3">Comentarios</label>
+              <div class="col-sm-9"><%=@artwork.get_comment%></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade in" id="location">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-sm-12">
+                <label style="text-align: left">Lugar de origen</label>
+              </div>
+              <div class="col-sm-12">
+                <div id="mapOrigin" class="well"></div>
+              </div>
+            </div>
+            <div class="row">
+              <label class="control-label col-sm-3">Latitud</label>
+              <div class="col-sm-9"><%=@artwork.latitude_origin%></div>
+            </div>
+            <div class="row">
+              <label class="control-label col-sm-3">Longitud</label>
+              <div class="col-sm-9"><%=@artwork.longitude_origin%></div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-sm-12">
+                <label style="text-align: right">Lugar actual</label>
+              </div>
+              <div class="col-sm-12">
+                <div id="mapCurrent" class="well"></div>
+              </div>
+            </div>
+            <div class="row">
+              <label class="control-label col-sm-3">Latitud</label>
+              <div class="col-sm-9"><%=@artwork.latitude_current%></div>
+            </div>
+            <div class="row">
+              <label class="control-label col-sm-3">Longitud</label>
+              <div class="col-sm-9"><%=@artwork.longitude_current%></div>
             </div>
           </div>
         </div>
@@ -132,52 +199,98 @@
 
 <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
 </script>
-
+<style>
+    .zoomContainer{ z-index: 9999;}
+    .zoomWindow{ z-index: 9999;}
+</style>
 <script>
+    //Zoomable Image with ElevateZoom
+    $("#zoomableImage").elevateZoom({ zoomType  : "inner", cursor: "crosshair" });
+
+    $('#imageModal').on('shown.bs.modal', function() {
+        $("#zoomableImage").elevateZoom({
+            zoomType  : "lens",
+            lensShape : "round",
+            lensSize : 200,
+            scrollZoom : true,
+            containLensZoom : true,
+        });
+    });
+
+    jQuery('#imageModal').on('hidden.bs.modal', function (e) {
+        jQuery.removeData(jQuery('#zoomableImage'), 'elevateZoom');//remove zoom instance from image
+        jQuery('.zoomContainer').remove();// remove zoom container from DOM
+    });
+
+    //Google maps
     function initialize() {
         infowindow = new google.maps.InfoWindow();
-        var myLatlngOrigin = new google.maps.LatLng(<%= @artwork.latitude_origin %>,<%= @artwork.longitude_origin %>);
-        var myLatlngCurrent = new google.maps.LatLng(<%= @artwork.latitude_current %>,<%= @artwork.longitude_current %>);
+        var latlngOrigin = new google.maps.LatLng(<%= @artwork.latitude_origin %>,<%= @artwork.longitude_origin %>);
+        var latlngCurrent = new google.maps.LatLng(<%= @artwork.latitude_current %>,<%= @artwork.longitude_current %>);
 
-        var mapProp = {
-            center: myLatlngOrigin,
-            zoom: 6,
+        var originProp = {
+            disableDefaultUI: true,
+            zoomControl: true,
+            zoomControlOptions: {
+                style: google.maps.ZoomControlStyle.DEFAULT,
+                position: google.maps.ControlPosition.RIGHT_TOP
+            },
+            center: latlngOrigin,
+            zoom: 5,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
-        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+        var currentProp = {
+            disableDefaultUI: true,
+            zoomControl: true,
+            zoomControlOptions: {
+                style: google.maps.ZoomControlStyle.DEFAULT,
+                position: google.maps.ControlPosition.RIGHT_TOP
+            },
+            center: latlngCurrent,
+            zoom: 5,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var mapOrigin = new google.maps.Map(document.getElementById("mapOrigin"), originProp);
         $("#mapTab").on('shown.bs.tab', function() {
 
             /* Trigger map resize event */
-            google.maps.event.trigger(map, 'resize');
-            map.setCenter(myLatlngOrigin);
+            google.maps.event.trigger(mapOrigin, 'resize');
+            mapOrigin.setCenter(latlngOrigin);
+        });
+        var mapCurrent = new google.maps.Map(document.getElementById("mapCurrent"), currentProp);
+        $("#mapTab").on('shown.bs.tab', function() {
+
+            /* Trigger map resize event */
+            google.maps.event.trigger(mapCurrent, 'resize');
+            mapCurrent.setCenter(latlngCurrent);
         });
 
-        $("#googleMap").css("width", '100%').css("height", 400);
-        var marker = new google.maps.Marker({
-            position: myLatlngOrigin,
-            map: map,
+        $("#mapOrigin").css("width", '100%').css("height", 400);
+        var markerOrigin = new google.maps.Marker({
+            position: latlngOrigin,
+            map: mapOrigin,
+            draggable:false,
+            icon: pinSymbol("#A12E33"),
             title: 'Ubicación de origen'
         });
+        $("#mapCurrent").css("width", '100%').css("height", 400);
         var markerCurrent = new google.maps.Marker({
-            position: myLatlngCurrent,
-            map: map,
-            title: 'Ubicación current'
+            position: latlngCurrent,
+            map: mapCurrent,
+            draggable:false,
+            icon: pinSymbol("#F15E00"),
+            title: 'Ubicación actual'
         });
 
-        google.maps.event.addListener(marker, 'click', function () {
-            onItemClick(event, marker);
-            onItemClick(event, markerCurrent);
-
-        });
-
-        function onItemClick(event, marker) {
-            // Create content
-            var contentString = marker.title;
-
-            // Replace our Info Window's content and position
-            infowindow.setContent(contentString);
-            infowindow.setPosition(marker.position);
-            infowindow.open(map);
+        function pinSymbol(color) {
+            return {
+                path: 'M 0,0 C -2,-20 -10,-22 -10,-30 A 10,10 0 1,1 10,-30 C 10,-22 2,-20 0,0 z',
+                fillColor: color,
+                fillOpacity: 1,
+                strokeColor: '#000',
+                strokeWeight: 2,
+                scale: 1
+            };
         }
     }
     google.maps.event.addDomListener(window, 'load', initialize);

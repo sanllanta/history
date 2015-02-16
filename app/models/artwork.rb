@@ -85,7 +85,7 @@ class Artwork < ActiveRecord::Base
   def self.search_category(search)
     if search
       where('category_1_id = ?', search)
-    else
+    elseget_activity
       all
     end
   end
@@ -97,5 +97,94 @@ class Artwork < ActiveRecord::Base
       all
     end
   end
+
+  def get_title
+    title ? title : "N/A"
+  end
+
+  def get_author_name
+    author && author.name ? author.name : "N/A"
+  end
+
+  def get_activity
+    activity ? activity : "N/A"
+  end
+
+  def get_biographic_data
+    biographic_data ? biographic_data : "N/A"
+  end
+
+  def get_signed
+    signed ? "Si" : "No"
+  end
+
+  def get_category_1_name
+    category_1 && category_1.name ? category_1.name : "N/A"
+  end
+
+  def get_category_2_name
+    category_2 && category_2.name ? category_2.name : "N/A"
+  end
+
+  def get_category_3_name
+    category_3 && category_3.name ? category_3.name : "N/A"
+  end
+
+  def get_category_4_name
+    category_4 && category_4.name ? category_4.name : "N/A"
+  end
+
+  def get_category_5_name
+    category_5 && category_5.name ? category_5.name : "N/A"
+  end
+
+  def get_type_name
+    type && type.name ? type.name : "N/A"
+  end
+
+  def get_source_name
+    source && source.name ? source.name : "N/A"
+  end
+
+  def get_place_name
+    place && place.name ? place.name : "N/A"
+  end
+
+  def get_school_name
+    school && school.name ? school.name : "N/A"
+  end
+
+  def get_origin_name
+    origin && origin.name ? origin.name : "N/A"
+  end
+
+  def get_synthesis
+    synthesis ? synthesis : "N/A"
+  end
+
+  def get_biographic_comment
+    biographic_comment ? biographic_comment : "N/A"
+  end
+
+  def get_scene_name
+    scene && scene.name ? scene.name : "N/A"
+  end
+
+  def get_story_type_name
+    story_type && story_type.name ? story_type.name : "N/A"
+  end
+
+  def get_donor_name
+    donor && donor.name ? donor.name : "N/A"
+  end
+
+  def get_phylactery_billboard_name
+    phylactery_billboard && phylactery_billboard.name ? phylactery_billboard.name : "N/A"
+  end
+
+  def get_comment
+    comment ? comment : "N/A"
+  end
+
 end
 
