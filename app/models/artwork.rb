@@ -85,7 +85,7 @@ class Artwork < ActiveRecord::Base
   def self.search_category(search)
     if search
       where('category_1_id = ?', search)
-    elseget_activity
+    else
       all
     end
   end
