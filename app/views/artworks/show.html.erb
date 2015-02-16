@@ -8,262 +8,115 @@
   </div>
 </div>
 
-
-<ul class="nav nav-tabs">
-  <li class="active"><a href="#atributos" data-toggle="tab" aria-expanded="false">Datos generales</a></li>
-  <li class=""><a href="#categorias" data-toggle="tab" aria-expanded="false">Descripción, Imagenes y relatos</a></li>
-  <li class=""><a href="#extra" data-toggle="tab" aria-expanded="false">Personajes</a></li>
-  <li class=""><a href="#imagen" data-toggle="tab" aria-expanded="false">Cuerpo y gestos</a></li>
-  <li class=""><a id="mapTab" href="#location" data-toggle="tab" aria-expanded="false">Lugar</a></li>
-</ul>
-<div id="myTabContent" class="tab-content">
-
-  <div class="tab-pane fade active in" id="atributos">
-
-    <% if @artwork.descriptions.count > 0 %>
-        <dt><strong>Descripción:</strong></dt>
-        <% @artwork.descriptions.each do |descripton| %>
-            <dd><%= descripton.description %></dd>
-        <% end %>
-    <% end %>
-
-
-    <!-- Projects Row -->
-    <div class="row">
-
-      <div class="col-md-3 portfolio-item">
-        <h4>
-          Autor
-        </h4>
-        <p>
-          <%=@artwork.author.name %>
-        </p>
-      </div>
-
-      <div class="col-md-3 portfolio-item">
-        <h4>
-          Actividad
-        </h4>
-        <p>
-          <%=@artwork.activity %>
-        </p>
-      </div>
-
-      <div class="col-md-3 portfolio-item">
-        <h4>
-          Información biografica
-        </h4>
-        <p>
-          <%=@artwork.biographic_data %>
-        </p>
-      </div>
-
-      <div class="col-md-3 portfolio-item">
-        <h4>
-          Firmado
-        </h4>
-        <p>
-          <%=@artwork.signed %>
-        </p>
-      </div>
-
-    </div>
-
-    <div class="row">
-
-      <div class="col-md-3 portfolio-item">
-        <h4>
-          Sintesis
-        </h4>
-        <p>
-          <%=@artwork.synthesis %>
-        </p>
-      </div>
-
-      <div class="col-md-3 portfolio-item">
-        <h4>
-          Comentarios biograficos
-        </h4>
-        <p>
-          <%=@artwork.biographic_comment %>
-        </p>
-      </div>
-
-      <div class="col-md-3 portfolio-item">
-        <h4>
-          Anotaciones
-        </h4>
-        <p>
-          <%=@artwork.annotation %>
-        </p>
-      </div>
-
-    </div>
-
-    <div class="row">
-
-      <div class="col-md-5 portfolio-item">
-        <h4>
-          Comentarios
-        </h4>
-        <p>
-          <%=@artwork.comment %>
-        </p>
-      </div>
-
-    </div>
-
+<div class="row">
+  <div class="col-sm-3">
+    <a type="href" data-toggle="modal" data-target="#imageModal" href="">
+      <%= image_tag(@artwork.avatar.url(:large), :class => "img-thumbnail", :class => "img-responsive", :style => "margin-left: auto; margin-right: auto;") %>
+    </a>
   </div>
-
-  <div class="tab-pane fade" id="categorias">
-      <div class="row">
-
-        <div class="col-md-3 portfolio-item">
-          <h4>
-            Categoria 1
-          </h4>
-          <p>
-            <%=@artwork.category_1.name %>
-          </p>
+  <div class="col-sm-9">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#datos_generales" data-toggle="tab" aria-expanded="false">Datos generales</a></li>
+      <li class=""><a href="#desc_img_rel" data-toggle="tab" aria-expanded="false">Descripción, Imagenes y relatos</a></li>
+      <li class=""><a href="#personajes" data-toggle="tab" aria-expanded="false">Personajes</a></li>
+      <li class=""><a href="#cuerpo_gestos" data-toggle="tab" aria-expanded="false">Cuerpo y gestos</a></li>
+      <li class=""><a id="mapTab" href="#location" data-toggle="tab" aria-expanded="false">Lugar</a></li>
+    </ul>
+    <br>
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane fade active in" id="datos_generales">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row">
+              <label class="control-label col-sm-2">Titulo</label>
+              <div class="col-sm-10"><%= @artwork.title%></div>
+            </div>
+            <div class="row">
+              <label class="control-label col-sm-2">Autor</label>
+              <div class="col-sm-10"><%=@artwork.author.name%></div>
+            </div>
+            <div class="row">
+              <label class="control-label col-sm-2">Actividad</label>
+              <div class="col-sm-10"><%=@artwork.activity%></div>
+            </div>
+            <div class="row">
+              <label class="control-label col-sm-2">Información Biográfica</label>
+              <div class="col-sm-10"><%=@artwork.biographic_data%></div>
+            </div>
+            <div class="row">
+              <label class="control-label col-sm-2">Firmado</label>
+              <div class="col-sm-10"><%=@artwork.signed%></div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="row">
+              <label class="control-label col-sm-3">Categoría 1</label>
+              <div class="col-sm-9"><%=@artwork.category_1%></div>
+            </div>
+            <div class="row">
+              <label class="control-label col-sm-3">Categoría 2</label>
+              <div class="col-sm-9"><%=@artwork.category_2%></div>
+            </div>
+            <div class="row">
+              <label class="control-label col-sm-3">Categoría 3</label>
+              <div class="col-sm-9"><%=@artwork.category_3%></div>
+            </div>
+            <div class="row">
+              <label class="control-label col-sm-3">Categoría 4</label>
+              <div class="col-sm-9"><%=@artwork.category_4%></div>
+            </div>
+            <div class="row">
+              <label class="control-label col-sm-3">Categoría 5</label>
+              <div class="col-sm-9"><%=@artwork.category_5%></div>
+            </div>
+          </div>
         </div>
-
-        <div class="col-md-3 portfolio-item">
-          <h4>
-            Categoria 2
-          </h4>
-          <p>
-            <%=@artwork.category_2.name unless !@artwork.category_2 %>
-          </p>
+        <br>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row">
+              <label class="control-label col-sm-2">Tipo</label>
+              <div class="col-sm-10"><%=@artwork.type%></div>
+            </div>
+            <div class="row">
+              <label class="control-label col-sm-2">Fuente</label>
+              <div class="col-sm-10"><%=@artwork.source%></div>
+            </div>
+            <div class="row">
+              <label class="control-label col-sm-2">Lugar</label>
+              <div class="col-sm-10"><%=@artwork.place%></div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="row">
+              <label class="control-label col-sm-2">Escuela</label>
+              <div class="col-sm-10"><%=@artwork.school%></div>
+            </div>
+            <div class="row">
+              <label class="control-label col-sm-2">Origen</label>
+              <div class="col-sm-10"><%=@artwork.origin%></div>
+            </div>
+          </div>
         </div>
-
-        <div class="col-md-3 portfolio-item">
-          <h4>
-            Categoria 3
-          </h4>
-          <p>
-            <%=@artwork.category_3.name unless !@artwork.category_3 %>
-          </p>
-        </div>
-
-        <div class="col-md-3 portfolio-item">
-          <h4>
-            Categoria 4
-          </h4>
-          <p>
-            <%=@artwork.category_4.name unless !@artwork.category_4 %>
-          </p>
-        </div>
-
-      </div>
-      <!-- Projects Row -->
-      <div class="row">
-        <div class="col-md-3 portfolio-item">
-          <h4>
-            Categoria 5
-          </h4>
-          <p>
-            <%=@artwork.category_5.name unless !@artwork.category_5 %>
-          </p>
+        <br>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row">
+              <label class="control-label col-sm-2">Sintesis</label>
+              <div class="col-sm-10"><%=@artwork.synthesis%></div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="row">
+              <label class="control-label col-sm-2">Comentario Biográfico</label>
+              <div class="col-sm-10"><%=@artwork.biographic_comment%></div>
+            </div>
+          </div>
         </div>
       </div>
-      <br>
-      <br>
-  </div>
-  <div class="tab-pane fade" id="extra">
-
-    <!-- Projects Row -->
-    <div class="row">
-
-      <div class="col-md-3 portfolio-item">
-        <h4>
-          Actividad
-        </h4>
-        <p>
-          <%=@artwork.activity %>
-        </p>
-      </div>
-
-      <div class="col-md-3 portfolio-item">
-        <h4>
-          Información biografica
-        </h4>
-        <p>
-          <%=@artwork.biographic_data %>
-        </p>
-      </div>
-
-      <div class="col-md-3 portfolio-item">
-        <h4>
-          Firmado
-        </h4>
-        <p>
-          <%=@artwork.signed %>
-        </p>
-      </div>
-
-      <div class="col-md-3 portfolio-item">
-        <h4>
-          Sintesis
-        </h4>
-        <p>
-          <%=@artwork.synthesis %>
-        </p>
-      </div>
     </div>
-
-    <div class="row">
-
-      <div class="col-md-3 portfolio-item">
-        <h4>
-          Comentarios biograficos
-        </h4>
-        <p>
-          <%=@artwork.biographic_comment %>
-        </p>
-      </div>
-
-      <div class="col-md-3 portfolio-item">
-        <h4>
-          Antaciones
-        </h4>
-        <p>
-          <%=@artwork.annotation %>
-        </p>
-      </div>
-
-      <div class="col-md-3 portfolio-item">
-        <h4>
-          Sub imagen
-        </h4>
-        <p>
-          <%= image_tag @artwork.sub_image.url(:thumb) %>
-        </p>
-      </div>
-
-      <div class="col-md-3 portfolio-item">
-        <h4>
-          Comentarios
-        </h4>
-        <p>
-          <%=@artwork.comment %>
-        </p>
-      </div>
-    </div>
-
   </div>
 
-  <div class="tab-pane fade" id="imagen">
-    <%= image_tag @artwork.avatar.url(:large), :class => "img-thumbnail", :class => "img-responsive" %>
-    <%= form_for @artwork, :url => {:action => "send_image"} do |f| %>
-        <%= f.hidden_field :id, :value => @artwork.id %>
-        <%= f.submit "Download original", class: "btn btn-primary btn-sm", style: "margin-top: 1em;" %>
-    <% end %>
-  </div>
-  <div class="tab-pane fade" id="location">
-    <div id="googleMap" style="width:900;height:340px;"></div>
-  </div>
-
-</div>
 <br>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
