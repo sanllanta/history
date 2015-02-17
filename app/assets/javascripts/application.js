@@ -11,15 +11,17 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery.elevatezoom.js
-//= require turbolinks
 //= require bootstrap.min.js
 //= require easing_min.js
 //= require classie.js
 //= require jqBootstrapValidation.js
 //= require jquery-jvectormap-2.0.1.min
 //= require jquery-jvectormap-world-mill-en
+//= require turbolinks
+//= require turbolinks
 // require contact_me.js
 
 /*Get children of a category for select*/
