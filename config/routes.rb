@@ -10,7 +10,6 @@ Rails.application.routes.draw do
 
   resources :engravings
 
-
   resources :descriptions
 
   resources :schools
