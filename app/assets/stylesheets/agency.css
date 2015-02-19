@@ -4,6 +4,20 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+@font-face {
+    font-family: 'Gotham-Book';
+    src:url('../fonts/Gotham-Book.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham-Light';
+    src:url('../fonts/Gotham-Light.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     overflow-x: hidden;
     font-family: "Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -51,8 +65,8 @@ h3,
 h4,
 h5,
 h6 {
-    text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+
+    font-family: 'Gotham-Book';
     font-weight: 700;
 }
 
@@ -184,7 +198,7 @@ fieldset[disabled] .btn-xl.active {
 }
 
 .navbar-default .navbar-brand {
-    font-family: "fGothamBook",Arial,cursive;
+    font-family: 'Gotham-Book',Arial,cursive;
     color: #9D1F1F;
 }
 
