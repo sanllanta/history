@@ -202,7 +202,7 @@ fieldset[disabled] .btn-xl.active {
     color: #FFFFFF;
     background-color: #b51a1a;
     float: left;
-    padding: 36px 2px 2px 2px;
+    padding: 33px 2px 2px 2px;
     height: 54px;
     font-size: 20px;
     line-height: 20px;
@@ -210,14 +210,28 @@ fieldset[disabled] .btn-xl.active {
     margin-bottom: 5px;
 }
 
+.navbar-default .brand-row {
+    border-bottom-color: #999999;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+}
+
+.navbar-shrink .brand-row {
+    border-bottom-color: #FFFFFF;
+}
+
 .navbar-description {
     font-family: "fGothamLight";
     float: left;
-    padding: 36px 2px 2px 10px;
+    padding: 33px 2px 2px 10px;
     height: 54px;
     font-size: 20px;
     line-height: 20px;
     margin-top: 5px;
+}
+
+.navbar-shrink .navbar-description {
+    color: #FFFFFF;
 }
 
 .navbar-default .navbar-brand {
@@ -269,13 +283,18 @@ fieldset[disabled] .btn-xl.active {
 .navbar-default .navbar-nav>.active>a {
     border-radius: 0;
     color: #fff;
-    background-color: #b51a1a;
+    background-color: rgba(255,255,255,.00);
+    text-decoration: underline;
+    text-decoration-color: #005f8d;
 }
 
 .navbar-default .navbar-nav>.active>a:hover,
 .navbar-default .navbar-nav>.active>a:focus {
+    /*color: #fff;
+    background-color: #781a1a;*/
     color: #fff;
-    background-color: #781a1a;
+    background-color: rgba(255,255,255,.00);
+
 }
 
 @media(min-width:768px) {
