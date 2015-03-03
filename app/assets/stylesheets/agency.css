@@ -297,6 +297,26 @@ fieldset[disabled] .btn-xl.active {
 
 }
 
+.panel-default{
+    border: hidden;
+    border-color: #ddd;
+    border-bottom-width: thin;
+    border-bottom-style: solid;
+    border-radius: 0px !important;
+}
+
+.panel-title>a:hover,
+.panel-title>a:focus{
+    color: #b51a1a;
+    text-decoration: none;
+}
+
+.panel-default>.panel-heading{
+    color: #b51a1a;
+    background-color: transparent;
+    border-color: #fff;
+}
+
 @media(min-width:768px) {
     .navbar-default {
         padding: 0px 0;
@@ -327,6 +347,16 @@ fieldset[disabled] .btn-xl.active {
 
     .navbar-default.navbar-shrink .navbar-brand {
         font-size: 1.5em;
+    }
+}
+
+@media(max-width:768px) {
+    .navbar-description {
+        color: #FFFFFF;
+    }
+
+    .brand-row {
+        border-bottom-color: #FFFFFF !important;
     }
 }
 
