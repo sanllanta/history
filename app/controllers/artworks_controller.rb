@@ -144,7 +144,7 @@ class ArtworksController < ApplicationController
           end
         end
 
-        @artworks = artworksTemp#.paginate(:per_page => 8, :page => params[:page])
+        @artworks = artworksTemp.paginate(:per_page => 8, :page => params[:page])
 
       elsif params[:author].nil? and params[:category].nil? and not params[:place].nil?
 
@@ -180,7 +180,7 @@ class ArtworksController < ApplicationController
           end
         end
 
-        @artworks = artworksTemp#.paginate(:per_page => 8, :page => params[:page])
+        @artworks = artworksTemp.paginate(:per_page => 8, :page => params[:page])
 
       elsif not params[:author].nil? and params[:category].nil? and params[:place].nil?
 
@@ -217,7 +217,7 @@ class ArtworksController < ApplicationController
           end
         end
 
-        @artworks = artworksTemp#.paginate(:per_page => 8, :page => params[:page])
+        @artworks = artworksTemp.paginate(:per_page => 8, :page => params[:page])
 
       elsif not params[:author].nil? and not params[:category].nil? and params[:place].nil?
 
@@ -255,7 +255,7 @@ class ArtworksController < ApplicationController
           end
         end
 
-        @artworks = artworksTemp#.paginate(:per_page => 8, :page => params[:page])
+        @artworks = artworksTemp.paginate(:per_page => 8, :page => params[:page])
 
       elsif not params[:author].nil? and not params[:category].nil? and not params[:place].nil?
 
@@ -294,7 +294,7 @@ class ArtworksController < ApplicationController
           end
         end
 
-        @artworks = artworksTemp#.paginate(:per_page => 8, :page => params[:page])
+        @artworks = artworksTemp.paginate(:per_page => 8, :page => params[:page])
       else
 
         p "LLAMA A TODOS"
@@ -328,7 +328,19 @@ class ArtworksController < ApplicationController
             end
           end
         end
-        @artworks = artworksTemp#.paginate(:per_page => 20, :page => params[:page])
+        p "paginate"
+        p artworksTemp
+
+        @artworks = artworksTemp
+        p params[:page].nil?
+        page =1
+        if not params[:page].nil?
+          page = params[:page]
+        end
+        @artworks = WillPaginate::Collection.create(page, 20, artworksTemp.length) do |pager|
+          pager.replace artworksTemp
+        end
+        #@artworks = artworksTemp.paginate(:per_page => 20, :page => params[:page])
       end
 
       if params[:region] == ('true')
