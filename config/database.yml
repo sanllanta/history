@@ -15,7 +15,7 @@
 # gem 'pg'
 #
 default: &default
-  password: kelvin
+  password: Kelvin09
   username: postgres
   reconnect: true
   host: localhost
