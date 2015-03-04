@@ -74,6 +74,109 @@ class Artwork < ActiveRecord::Base
   accepts_nested_attributes_for :story_type, :reject_if => lambda{ |a| a[:name].blank? }, allow_destroy: true
   accepts_nested_attributes_for :type, :reject_if => lambda{ |a| a[:name].blank? }, allow_destroy: true
 
+  def self.b_title(search)
+    if not search.to_s.empty?
+      where( 'title LIKE ?', "%#{search}%")
+    else
+      nil
+    end
+  end
+
+  def self.s_descriptions(search)
+    if not search.to_s.empty?
+      joins('LEFT JOIN descriptions ON descriptions.artwork_id = artworks.id ').where( 'description LIKE ?', "%#{search}%")
+    else
+      nil
+    end
+  end
+
+  def self.b_synthesis(search)
+    if not search.to_s.empty?
+      where( 'synthesis LIKE ?', "%#{search}%")
+    else
+      nil
+    end
+  end
+
+  def self.b_place(search)
+    if not search.to_s.empty?
+      joins('LEFT JOIN places ON places.id = artworks.place_id').where( 'places.name LIKE ?', "%#{search}%")
+    else
+      all
+    end
+  end
+
+  def self.b_category_1(search)
+    if not search.to_s.empty?
+      joins('LEFT JOIN categories ON category_1_id = categories.id').where( 'categories.name LIKE ?', "%#{search}%")
+    else
+      all
+    end
+  end
+
+  def self.b_category_2(search)
+    if not search.to_s.empty?
+      joins('LEFT JOIN categories ON category_2_id = categories.id').where( 'categories.name LIKE ?', "%#{search}%")
+    else
+      all
+    end
+  end
+
+  def self.b_category_3(search)
+    if not search.to_s.empty?
+      joins('LEFT JOIN categories ON category_3_id = categories.id').where( 'categories.name LIKE ?', "%#{search}%")
+    else
+      all
+    end
+  end
+
+  def self.b_category_4(search)
+    if not search.to_s.empty?
+      joins('LEFT JOIN categories ON category_4_id = categories.id').where( 'categories.name LIKE ?', "%#{search}%")
+    else
+      all
+    end
+  end
+  def self.b_category_5(search)
+    if not search.to_s.empty?
+      joins('LEFT JOIN categories ON category_5_id = categories.id').where( 'categories.name LIKE ?', "%#{search}%")
+    else
+      all
+    end
+  end
+
+  def self.b_comment(search)
+    if not search.to_s.empty?
+      where( 'comment LIKE ?', "%#{search}%")
+    else
+      nil
+    end
+  end
+
+  def self.b_scene(search)
+    if not search.to_s.empty?
+      joins('LEFT JOIN scenes ON scenes.id = artworks.scene_id').where( 'scenes.name LIKE ?', "%#{search}%")
+    else
+      all
+    end
+  end
+
+  def self.b_story_types(search)
+    if not search.to_s.empty?
+      joins('LEFT JOIN story_types ON story_types.id = artworks.story_type_id').where( 'story_types.name LIKE ?', "%#{search}%")
+    else
+      all
+    end
+  end
+
+  def self.b_author(search)
+    if not search.to_s.empty?
+      joins('LEFT JOIN authors ON authors.id = artworks.author_id').where( 'authors.name LIKE ?', "%#{search}%")
+    else
+      nil
+    end
+  end
+
   def self.search_author(search)
     if search
       where('author_id = ?', search)
