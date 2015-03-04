@@ -5,6 +5,90 @@ class ArtworksController < ApplicationController
   # GET /artworks
   # GET /artworks.json
   def index
+
+    if not params[:search].nil? and not params[:search].to_s.empty?
+
+      artworksTemp = Artwork.b_title(params[:search])
+      s_description = Artwork.s_descriptions(params[:search])
+
+      s_description.each do |artworkt|
+        artworksTemp << artworkt
+      end
+
+      s_synthesis = Artwork.b_synthesis(params[:search])
+
+      s_synthesis.each do |artworkt|
+        artworksTemp << artworkt
+      end
+
+      b_place = Artwork.b_place(params[:search])
+
+      b_place.each do |artworkt|
+        artworksTemp << artworkt
+      end
+
+      b_category_1 = Artwork.b_category_1(params[:search])
+
+      b_category_1.each do |artworkt|
+        artworksTemp << artworkt
+      end
+
+      b_category_1 = Artwork.b_category_1(params[:search])
+
+      b_category_1.each do |artworkt|
+        artworksTemp << artworkt
+      end
+
+      b_category_2 = Artwork.b_category_2(params[:search])
+
+      b_category_2.each do |artworkt|
+        artworksTemp << artworkt
+      end
+
+      b_category_3 = Artwork.b_category_3(params[:search])
+
+      b_category_3.each do |artworkt|
+        artworksTemp << artworkt
+      end
+
+      b_category_4 = Artwork.b_category_4(params[:search])
+
+      b_category_4.each do |artworkt|
+        artworksTemp << artworkt
+      end
+
+      b_category_5 = Artwork.b_category_5(params[:search])
+
+      b_category_5.each do |artworkt|
+        artworksTemp << artworkt
+      end
+
+      b_comment = Artwork.b_comment(params[:search])
+
+      b_comment.each do |artworkt|
+        artworksTemp << artworkt
+      end
+
+      b_scene = Artwork.b_scene(params[:search])
+
+      b_scene.each do |artworkt|
+        artworksTemp << artworkt
+      end
+
+      b_story_types = Artwork.b_story_types(params[:search])
+
+      b_story_types.each do |artworkt|
+        artworksTemp << artworkt
+      end
+
+      b_author = Artwork.b_author(params[:search])
+
+      b_author.each do |artworkt|
+        artworksTemp << artworkt
+      end
+      p artworksTemp
+    end
+
     if params[:author] == ('true')
       @authors = Author.all
     else
@@ -18,7 +102,11 @@ class ArtworksController < ApplicationController
         place=Place.where(:name =>params[:region_show])
         artworksTemp = Artwork.where(place_id: place)
       else
-        artworksTemp = Artwork.all
+
+        if params[:search].to_s.empty?
+
+          artworksTemp = Artwork.all
+        end
       end
 
       if params[:author].nil? and not params[:category].nil? and params[:place].nil?
@@ -56,7 +144,7 @@ class ArtworksController < ApplicationController
           end
         end
 
-        @artworks = artworksTemp.paginate(:per_page => 8, :page => params[:page])
+        @artworks = artworksTemp#.paginate(:per_page => 8, :page => params[:page])
 
       elsif params[:author].nil? and params[:category].nil? and not params[:place].nil?
 
@@ -92,7 +180,7 @@ class ArtworksController < ApplicationController
           end
         end
 
-        @artworks = artworksTemp.paginate(:per_page => 8, :page => params[:page])
+        @artworks = artworksTemp#.paginate(:per_page => 8, :page => params[:page])
 
       elsif not params[:author].nil? and params[:category].nil? and params[:place].nil?
 
@@ -129,7 +217,7 @@ class ArtworksController < ApplicationController
           end
         end
 
-        @artworks = artworksTemp.paginate(:per_page => 8, :page => params[:page])
+        @artworks = artworksTemp#.paginate(:per_page => 8, :page => params[:page])
 
       elsif not params[:author].nil? and not params[:category].nil? and params[:place].nil?
 
@@ -167,7 +255,7 @@ class ArtworksController < ApplicationController
           end
         end
 
-        @artworks = artworksTemp.paginate(:per_page => 8, :page => params[:page])
+        @artworks = artworksTemp#.paginate(:per_page => 8, :page => params[:page])
 
       elsif not params[:author].nil? and not params[:category].nil? and not params[:place].nil?
 
@@ -206,9 +294,10 @@ class ArtworksController < ApplicationController
           end
         end
 
-        @artworks = artworksTemp.paginate(:per_page => 8, :page => params[:page])
+        @artworks = artworksTemp#.paginate(:per_page => 8, :page => params[:page])
       else
 
+        p "LLAMA A TODOS"
 
         @authors = Hash.new
         artworksTemp.each do |artwork|
@@ -225,7 +314,7 @@ class ArtworksController < ApplicationController
           category = artwork.category_1
           if category != nil
             if !@clasifications[category]
-            @clasifications[category] = category
+              @clasifications[category] = category
             end
           end
         end
@@ -239,7 +328,7 @@ class ArtworksController < ApplicationController
             end
           end
         end
-        @artworks = artworksTemp.paginate(:per_page => 20, :page => params[:page])
+        @artworks = artworksTemp#.paginate(:per_page => 20, :page => params[:page])
       end
 
       if params[:region] == ('true')
@@ -273,7 +362,6 @@ class ArtworksController < ApplicationController
     set_categories
     if params[:action] == "new"
       @artwork.descriptions.new
-
       @artwork.artwork_symbols.new
       @artwork.iconographic_attributes.new
       @artwork.engravings.new
@@ -353,6 +441,7 @@ class ArtworksController < ApplicationController
   def send_image
     artwork_id = params[:artwork][:id]
     artwork = Artwork.find(artwork_id)
+    p artwork.avatar.url
     send_file Rails.public_path.to_s << artwork.avatar.url.to_s.split('?')[0]
   end
 

@@ -5,6 +5,14 @@
       <div class="row brand-row">
         <a class="arca-brand page-scroll" href="<%= root_path %>">ARCA<sup style="font-size: 42%;vertical-align: super">&reg</sup></a>
         <div class="navbar-description">arte colonial americano</div>
+        <div class="nav navbar-right">
+          <%= form_tag artworks_path , :method => 'get' do %>
+              <p>
+                <%= text_field_tag :search, params[:search] %>
+                <%= submit_tag "Search" , :name=>nil%>
+              </p>
+          <% end %>
+        </div>
       </div>
 
     <!-- Brand and toggle get grouped for better mobile display -->
