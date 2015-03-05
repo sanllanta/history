@@ -15,10 +15,8 @@
 # gem 'pg'
 #
 default: &default
-  #password: kelvin
-  #username: postgres
-  password: 12345678
-  username: dbhistoria
+  password: Kelvin09
+  username: postgres
   reconnect: true
   host: localhost
   adapter: postgresql

@@ -6,14 +6,14 @@
 
 @font-face {
     font-family: 'Gotham-Book';
-    src:url('../fonts/Gotham-Book.otf');
+    src:url('Gotham-Book.otf');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Gotham-Light';
-    src:url('../fonts/Gotham-Light.otf');
+    src:url('Gotham-Light.otf');
     font-weight: normal;
     font-style: normal;
 }
@@ -197,7 +197,10 @@ fieldset[disabled] .btn-xl.active {
     background-color: #222;
 }
 
-.navbar-default .arca-brand{
+.navbar-default .arca-brand,
+.navbar-default .arca-brand:hover,
+.navbar-default .arca-brand:focus,
+.navbar-default .arca-brand:active{
     font-family: "fGothamBook",Arial,cursive;
     color: #FFFFFF;
     background-color: #b51a1a;
@@ -208,6 +211,7 @@ fieldset[disabled] .btn-xl.active {
     line-height: 20px;
     margin-top: 5px;
     margin-bottom: 5px;
+    text-decoration: none;
 }
 
 .navbar-default .brand-row {
@@ -265,27 +269,29 @@ fieldset[disabled] .btn-xl.active {
 .navbar-default .navbar-toggle:focus {
     background-color: #b51a1a;
 }
-
+.navbar-default .nav li a:hover,
+.navbar-default .nav li a:focus,
 .navbar-default .nav li a {
     text-transform: uppercase;
     font-family: "fGothamBook",Arial,cursive;
     font-weight: 400;
     letter-spacing: 1px;
     color: #b51a1a;
-}
-
-.navbar-default .nav li a:hover,
-.navbar-default .nav li a:focus {
-    outline: 0;
-    color: #ffffff;
+    font-size: 8pt;
 }
 
 .navbar-default .navbar-nav>.active>a {
     border-radius: 0;
     color: #fff;
     background-color: rgba(255,255,255,.00);
-    text-decoration: underline;
     text-decoration-color: #005f8d;
+}
+
+.navbar-shrink .nav li a,
+.navbar-shrink .nav li a:hover,
+.navbar-shrink .nav li a:focus,
+.navbar-shrink .nav li a:active{
+    color: #fff;
 }
 
 .navbar-default .navbar-nav>.active>a:hover,
@@ -294,6 +300,34 @@ fieldset[disabled] .btn-xl.active {
     background-color: #781a1a;*/
     color: #fff;
     background-color: rgba(255,255,255,.00);
+
+}
+
+.search-bar{
+    float: right;
+    padding: 35px 2px 2px 2px;
+}
+
+.search-bar .form-group .input-group .form-control {
+    font-family: Gotham-Light;
+    font-size: 8pt;
+    border-top-right-radius: 2em;
+    border-bottom-right-radius: 2em;
+    background-color: #FFFFFF;
+    border-color: transparent;
+    padding-left: 0px;
+    height: 24px;
+}
+
+.search-bar .form-group .input-group .input-group-addon {
+    border-top-left-radius: 2em;
+    border-bottom-left-radius: 2em;
+    padding-left: 14px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    background-color: #FFFFFF;
+    border-color: transparent;
+    color: lightgray;
 
 }
 
@@ -357,6 +391,13 @@ fieldset[disabled] .btn-xl.active {
 
     .brand-row {
         border-bottom-color: #FFFFFF !important;
+    }
+
+    .navbar-default .nav li a,
+    .navbar-default .nav li a:hover,
+    .navbar-default .nav li a:focus,
+    .navbar-default .nav li a:active{
+        color: #FFFFFF;
     }
 }
 

@@ -5,12 +5,9 @@
       <div class="row brand-row">
         <a class="arca-brand page-scroll" href="<%= root_path %>">ARCA<sup style="font-size: 42%;vertical-align: super">&reg</sup></a>
         <div class="navbar-description">arte colonial americano</div>
-        <div class="nav navbar-right">
-          <%= form_tag artworks_path , :method => 'get' do %>
-              <p>
-                <%= text_field_tag :search, params[:search] %>
-                <%= submit_tag "Search" , :name=>nil%>
-              </p>
+        <div class="search-bar">
+          <%= bootstrap_form_tag url: artworks_path, :method => 'get', layout: :inline do |f| %>
+            <%= f.text_field :search, hide_label: true, prepend:'<i class="fa fa-search"></i>'.html_safe, placeholder: 'Buscar en la colección...' %>
           <% end %>
         </div>
       </div>
