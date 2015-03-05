@@ -111,6 +111,23 @@
               <div class="col-sm-9"><%=@artwork.get_biographic_comment%></div>
             </div>
           </div>
+          <div class="col-md-6">
+            <div class="row">
+              <label class="control-label col-sm-3">Descriptores</label>
+              <div class="col-sm-10">
+                <table class="table table-condensed table-hover table-striped">
+
+                  <tbody>
+
+                    <% @artwork.descriptions.each  do |desc| %>
+                      <tr><td><%= desc.description %></td></tr>
+                    <% end %>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="tab-pane fade in" id="desc_img_rel">
@@ -139,6 +156,24 @@
               <div class="col-sm-9"><%=@artwork.get_comment%></div>
             </div>
           </div>
+          <div class="col-md-6">
+            <div class="row">
+              <label class="control-label col-sm-3">Símbolos</label>
+              <div class="col-sm-10">
+                <table class="table table-condensed table-hover table-striped">
+
+                  <tbody>
+
+                  <% @artwork.artwork_symbols.each  do |sym| %>
+                      <tr><td><%= sym.name %></td></tr>
+                  <% end %>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
       <div class="tab-pane fade in" id="location">

@@ -18,7 +18,8 @@ gem 'twitter-bootstrap-rails'
 gem 'bootstrap_form'
 #manejo de fuentes
 gem 'font-awesome-rails'
-#
+#Manejo de paginacion
+
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem 'diff-lcs'

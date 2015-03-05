@@ -501,7 +501,8 @@ class ArtworksController < ApplicationController
                                     school_attributes:[:id,:name,:_destroy],
                                     source_attributes:[:id,:name,:_destroy],
                                     story_type_attributes:[:id,:name,:_destroy],
-                                    type_attributes:[:id,:name,:_destroy]
+                                    type_attributes:[:id,:name,:_destroy],
+                                    :description_ids=>[],:artwork_symbol_ids=>[]
     )
   end
 

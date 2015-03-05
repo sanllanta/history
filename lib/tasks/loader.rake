@@ -1,4 +1,13 @@
 namespace :loader do
+  desc "carga general"
+  task load_general: :environment do
+    Rake::Task['loader:load_countries'].invoke
+    Rake::Task['loader:load_autores'].invoke
+    Rake::Task['loader:load_categories1'].invoke
+    Rake::Task['loader:load_desc_symbol'].invoke
+    Rake::Task['loader:load_obras'].invoke
+  end
+
   desc "Loads the countries listed in countries.csv into the places table"
   task load_countries: :environment do
   	file = File.join(Rails.root, 'app', 'assets', 'data', 'countries.csv')
@@ -130,7 +139,7 @@ namespace :loader do
 
   desc "Obras ficticias"
   task load_obras: :environment do
-    p "Autores"
+    p "Obras"
 
     file = File.join(Rails.root, 'app', 'assets', 'data', 'obras.csv')
     lines = File.new(file).readlines
@@ -172,13 +181,63 @@ namespace :loader do
       if not cat2.nil?
         a.category_2= cat2
       end
-      des1 = Description.new(:description => values[12])
-      des2 = Description.new(:description => values[13])
-      des3 = Description.new(:description => values[14])
-      a.descriptions << des1
-      a.descriptions << des2
-      a.descriptions << des3
+      a.engravings.new(:name=>"kelvin")
+
+      desc = Description.find(i)
+      if desc.nil?
+        desc= Description.first
+        end
+
+      desc2 = Description.find(i+1)
+      if desc2.nil?
+        desc2= Description.first
+      end
+
+      desc3 = Description.find(i+2)
+      if desc3.nil?
+        desc3 = Description.first
+      end
+
+      a.descriptions<<desc
+
+      a.descriptions<<desc2
+      a.descriptions<<desc3
+
+      sym = ArtworkSymbol.find(i)
+      if sym.nil?
+        sym= ArtworkSymbol.first
+      end
+
+      sym2 = ArtworkSymbol.find(i+1)
+      if sym2.nil?
+        sym2= ArtworkSymbol.first
+      end
+
+      sym3 = ArtworkSymbol.find(i+2)
+      if sym3.nil?
+        sym3 = ArtworkSymbol.first
+      end
+
+      a.artwork_symbols<<sym
+      a.artwork_symbols<<sym2
+      a.artwork_symbols<<sym3
+
       a.save!
+    end
+  end
+
+  desc "Desc symbol"
+  task load_desc_symbol: :environment do
+    p "desc symbol"
+
+    file = File.join(Rails.root, 'app', 'assets', 'data', 'desc_symbol.csv')
+    lines = File.new(file).readlines
+    lines.each do |line|
+      values = line.strip.split(',')
+      attributes_desc = {"description" => values[0]}
+      attributes_symb = {"name" => values[1]}
+      Description.create(attributes_desc)
+      ArtworkSymbol.create(attributes_symb)
     end
   end
 

@@ -77,6 +77,33 @@
           <%= f.text_area :biographic_comment, :class => 'form-control' %>
         </div>
       </div>
+      <br>
+      <div class="row">
+        <label class="control-label col-sm-3">Descriptores</label>
+        <br>
+        <div class="col-md-6">
+          <%= f.fields_for :descriptions do |fdesc| %>
+            <fieldset>
+              <%= fdesc.text_area  :description %>
+            </fieldset>
+          <% end %>
+          <!--< % for description in Description.all %>-->
+            <!--< %= check_box_tag "artwork[description_ids][]", description.id, @artwork.descriptions.include?(description) %>-->
+            <!--< %=	 description.description %>-->
+            <!--<br>-->
+          <!--< % end %>-->
+        </div>
+      </div>
+      <br>
+      <!--<div class="row">-->
+        <!--<%= form_for :Descriptions do |fa|%>-->
+            <!--<p>-->
+              <!--<%= fa.text_field :name %>-->
+              <!--<%= submit_tag "Crear" , :name=>nil%>-->
+            <!--</p>-->
+        <!--<% end %>-->
+      <!--</div>-->
+
     </div>
 
 
@@ -91,6 +118,24 @@
         </div>
         <div class="col-md-6">
           <%= f.text_area :comment, :class => 'form-control' %>
+        </div>
+
+        <br>
+        <div class="row">
+          <label class="control-label col-sm-3">Símbolos</label>
+
+          <div class="col-md-6">
+            <!--< % for description in ArtworkSymbol.all %>-->
+                <!--< %= check_box_tag "artwork[artwork_symbol_ids][]", description.id, @artwork.artwork_symbols.include?(description) %>-->
+                <!--< %=	 description.name %>-->
+                <!--<br>-->
+            <!--< % end %>-->
+            <%= f.fields_for :artwork_symbols do |fart| %>
+                <fieldset>
+                  <%= fart.text_area  :name %>
+                </fieldset>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
