@@ -9,11 +9,11 @@ class ArtworksController < ApplicationController
     if not params[:search].nil? and not params[:search].to_s.empty?
 
       artworksTemp = Artwork.b_title(params[:search])
-      s_description = Artwork.s_descriptions(params[:search])
-
-      s_description.each do |artworkt|
-        artworksTemp << artworkt
-      end
+      # s_description = Artwork.s_descriptions(params[:search])
+      #
+      # s_description.each do |artworkt|
+      #   artworksTemp << artworkt
+      # end
 
       s_synthesis = Artwork.b_synthesis(params[:search])
 
