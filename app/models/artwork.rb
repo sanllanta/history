@@ -58,7 +58,7 @@ class Artwork < ActiveRecord::Base
   has_and_belongs_to_many :descriptions
   has_and_belongs_to_many :engravings
 
-  accepts_nested_attributes_for :artwork_symbols
+  accepts_nested_attributes_for :artwork_symbols, allow_destroy: true
   accepts_nested_attributes_for :descriptions, :reject_if => lambda{ |a| a[:description].blank? }, allow_destroy: true
   accepts_nested_attributes_for :iconographic_attributes, :reject_if => lambda{ |a| a[:name].blank? }, allow_destroy: true
   accepts_nested_attributes_for :artwork_symbols, :reject_if => lambda{ |a| a[:name].blank? }, allow_destroy: true

@@ -83,9 +83,7 @@
         <br>
         <div class="col-md-6">
           <%= f.fields_for :descriptions do |fdesc| %>
-            <fieldset>
-              <%= fdesc.text_area  :description %>
-            </fieldset>
+            <%= render 'descriptors_fields', ff:fdesc %>
           <% end %>
           <!--< % for description in Description.all %>-->
             <!--< %= check_box_tag "artwork[description_ids][]", description.id, @artwork.descriptions.include?(description) %>-->
@@ -131,9 +129,7 @@
                 <!--<br>-->
             <!--< % end %>-->
             <%= f.fields_for :artwork_symbols do |fart| %>
-                <fieldset>
-                  <%= fart.text_area  :name %>
-                </fieldset>
+                <%= render 'artwork_symbols_fields', ff:fart %>
             <% end %>
           </div>
         </div>

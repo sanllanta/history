@@ -17,6 +17,7 @@
 //= require bootstrap.min.js
 //= require easing_min.js
 //= require classie.js
+//= require artworks
 //= require jqBootstrapValidation.js
 //= require jquery-jvectormap-2.0.1.min
 //= require jquery-jvectormap-world-mill-en
