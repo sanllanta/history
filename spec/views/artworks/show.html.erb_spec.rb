@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "artworks/show", :type => :view do
   before(:each) do
     @artwork = assign(:artwork, Artwork.create!(
-      :author => "Author",
+      :authors => "Author",
       :activity => "Activity",
       :biographic_data => "MyText",
       :signed => "MyText",

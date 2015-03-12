@@ -2,7 +2,7 @@ class CreateArtworks < ActiveRecord::Migration
   def change
     create_table :artworks do |t|
       t.belongs_to :passage
-      t.belongs_to :author
+      t.belongs_to :authors
       t.belongs_to :place
       t.belongs_to :scene
       t.belongs_to :type

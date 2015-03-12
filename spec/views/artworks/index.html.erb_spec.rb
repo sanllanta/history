@@ -4,7 +4,7 @@ RSpec.describe "artworks/index", :type => :view do
   before(:each) do
     assign(:artworks, [
       Artwork.create!(
-        :author => "Author",
+        :authors => "Author",
         :activity => "Activity",
         :biographic_data => "MyText",
         :signed => "MyText",
@@ -15,7 +15,7 @@ RSpec.describe "artworks/index", :type => :view do
         :comment => "MyText"
       ),
       Artwork.create!(
-        :author => "Author",
+        :authors => "Author",
         :activity => "Activity",
         :biographic_data => "MyText",
         :signed => "MyText",

@@ -1,5 +1,5 @@
 <div class="control-group">
-  <%= f.label :author, :class => 'control-label' %> <small> <%= link_to "Crear pasage", new_author_url %></small>
+  <%= f.label :authors, :class => 'control-label' %> <small> <%= link_to "Crear pasage", new_author_url %></small>
   <div class="controls">
     <%= f.collection_select :author_id, Author.all, :id, :name,  {:prompt => 'Seleccione el author'} %>
     <% if params[:action] == "edit" %>

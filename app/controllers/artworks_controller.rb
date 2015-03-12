@@ -89,7 +89,7 @@ class ArtworksController < ApplicationController
       p artworksTemp
     end
 
-    if params[:author] == ('true')
+    if params[:authors] == ('true')
       @authors = Author.all
     else
 
@@ -109,7 +109,7 @@ class ArtworksController < ApplicationController
         end
       end
 
-      if params[:author].nil? and not params[:category].nil? and params[:place].nil?
+      if params[:authors].nil? and not params[:category].nil? and params[:place].nil?
 
         artworksTemp = artworksTemp.search_category(params[:category])
 
@@ -146,7 +146,7 @@ class ArtworksController < ApplicationController
 
         @artworks = artworksTemp.paginate(:per_page => 8, :page => params[:page])
 
-      elsif params[:author].nil? and params[:category].nil? and not params[:place].nil?
+      elsif params[:authors].nil? and params[:category].nil? and not params[:place].nil?
 
         artworksTemp = artworksTemp.search_place(params[:place])
 
@@ -182,9 +182,9 @@ class ArtworksController < ApplicationController
 
         @artworks = artworksTemp.paginate(:per_page => 8, :page => params[:page])
 
-      elsif not params[:author].nil? and params[:category].nil? and params[:place].nil?
+      elsif not params[:authors].nil? and params[:category].nil? and params[:place].nil?
 
-        artworksTemp = artworksTemp.search_author(params[:author])
+        artworksTemp = artworksTemp.search_author(params[:authors])
 
         @authors = Hash.new
         artworksTemp.each do |artwork|
@@ -219,9 +219,9 @@ class ArtworksController < ApplicationController
 
         @artworks = artworksTemp.paginate(:per_page => 8, :page => params[:page])
 
-      elsif not params[:author].nil? and not params[:category].nil? and params[:place].nil?
+      elsif not params[:authors].nil? and not params[:category].nil? and params[:place].nil?
 
-        artworksTemp = artworksTemp.search_author(params[:author])
+        artworksTemp = artworksTemp.search_author(params[:authors])
         artworksTemp = artworksTemp.search_category(params[:category])
 
         @authors = Hash.new
@@ -257,9 +257,9 @@ class ArtworksController < ApplicationController
 
         @artworks = artworksTemp.paginate(:per_page => 8, :page => params[:page])
 
-      elsif not params[:author].nil? and not params[:category].nil? and not params[:place].nil?
+      elsif not params[:authors].nil? and not params[:category].nil? and not params[:place].nil?
 
-        artworksTemp = artworksTemp.search_author(params[:author])
+        artworksTemp = artworksTemp.search_author(params[:authors])
         artworksTemp = artworksTemp.search_category(params[:category])
         artworksTemp = artworksTemp.search_place(params[:place])
 

@@ -23,7 +23,7 @@
             <ul class="list-unstyled">
               <% @authors.values.each  do |author| %>
                   <li>
-                    <%= link_to  "#{author.name}" ,artworks_path(:params => params.merge(:author => author.id))  %>
+                    <%= link_to  "#{author.name}" ,artworks_path(:params => params.merge(:authors => author.id))  %>
                   </li>
               <% end %>
             </ul>

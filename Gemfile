@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 #manejo de vistas bootstrap
 group :assets do
 #Stile manage of the site
+
   if RUBY_PLATFORM.include? "linux"
     gem 'therubyracer'
     gem 'gravatar_image_tag'
@@ -12,7 +13,13 @@ group :assets do
   #gem 'less-rails' #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
   # Use CoffeeScript for .js.coffee assets and views
   #gem 'coffee-rails', '~> 4.0.0'
+
 end
+
+#Administracion
+gem 'activeadmin', github: 'activeadmin'
+gem 'devise'
+
 #Presentacion, vista con bootstrap
 gem 'twitter-bootstrap-rails'
 gem 'bootstrap_form'

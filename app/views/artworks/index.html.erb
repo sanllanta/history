@@ -4,7 +4,7 @@
 
 <%- model_class = Artwork -%>
 
-<% if params[:author] == ('true') %>
+<% if params[:authors] == ('true') %>
     <%= render 'index_author' %>
 <% elsif params[:topic] == ('true') %>
     <%= render 'index_topic' %>
