@@ -3,9 +3,11 @@ namespace :loader do
   task load_general: :environment do
     Rake::Task['loader:load_countries'].invoke
     Rake::Task['loader:load_autores'].invoke
+    Rake::Task['loader:load_tecnica'].invoke
+    Rake::Task['loader:load_fuente'].invoke
     Rake::Task['loader:load_categories1'].invoke
     Rake::Task['loader:load_desc_symbol'].invoke
-    Rake::Task['loader:load_obras'].invoke
+    #Rake::Task['loader:load_obras'].invoke
   end
 
   desc "Loads the countries listed in countries.csv into the places table"
@@ -126,18 +128,48 @@ namespace :loader do
 		end
   end
 
+
   desc "Autores"
   task load_autores: :environment do
     p "Autores"
 
-    file = File.join(Rails.root, 'app', 'assets', 'data', 'autores.csv')
+    file = File.join(Rails.root, 'app', 'assets', 'data', 'autor_carga.csv')
     lines = File.new(file).readlines
       lines.each do |line|
         values = line.strip.split(',')
-        attributes = {"name" => values[0],"biography" => values[1]}
+        attributes = {"name" => values[0]}
         Author.create(attributes)
       end
   end
+
+  desc "tecnica"
+  task load_tecnica: :environment do
+    p "Tecnica"
+
+    file = File.join(Rails.root, 'app', 'assets', 'data', 'tecnica.csv')
+    lines = File.new(file).readlines
+    lines.each do |line|
+      values = line.strip.split(',')
+      attributes = {"name" => values[0]}
+      Type.create(attributes)
+    end
+
+  end
+
+  desc "fuente"
+  task load_fuente: :environment do
+    p "fuente"
+
+    file = File.join(Rails.root, 'app', 'assets', 'data', 'fuente.csv')
+    lines = File.new(file).readlines
+    lines.each do |line|
+      values = line.strip.split('&;')
+      attributes = {"name" => values[0]}
+      Source.create(attributes)
+    end
+
+  end
+
 
   desc "Obras ficticias"
   task load_obras: :environment do
