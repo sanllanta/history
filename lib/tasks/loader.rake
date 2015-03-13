@@ -26,9 +26,11 @@ namespace :loader do
     file = File.join(Rails.root, 'app', 'assets', 'data', 'cate1.csv')
   	lines = File.new(file).readlines
   	lines.each do |line|
+
 		  values = line.strip.split(',')
 		  attributes = {"name" => values[0]}
-		  Category.create(attributes)
+		  p values[0]
+      Category.create(attributes)
     end
     Rake::Task['loader:load_categories12'].invoke
 

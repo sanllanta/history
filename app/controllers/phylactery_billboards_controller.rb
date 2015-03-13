@@ -1,6 +1,6 @@
 class PhylacteryBillboardsController < ApplicationController
   before_action :set_phylactery_billboard, only: [:show, :edit, :update, :destroy]
-
+  before_filter :authenticate_user!
   # GET /phylactery_billboards
   # GET /phylactery_billboards.json
   def index

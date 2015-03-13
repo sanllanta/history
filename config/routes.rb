@@ -1,50 +1,61 @@
 Rails.application.routes.draw do
+
   devise_for :users
-  ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
-  resources :authors
 
-  resources :iconographic_attributes
+  authenticate :user do
+    get 'application/admin'
+    get 'artworks/admin'
+    resources :iconographic_attributes
 
-  resources :artwork_symbols
+    resources :artwork_symbols
 
-  resources :phylactery_billboards
+    resources :phylactery_billboards
 
-  resources :engravings
+    resources :engravings
 
-  resources :descriptions
+    resources :descriptions
 
-  resources :schools
+    resources :schools
 
-  resources :story_types
+    resources :story_types
 
-  resources :passages
+    resources :passages
 
-  resources :characters
+    resources :characters
 
-  resources :donors
+    resources :donors
 
-  resources :scenes
+    resources :scenes
 
-  resources :origins
+    resources :origins
 
-  resources :sources
+    resources :sources
 
-  resources :types
+    resources :types
 
-  resources :places
+    resources :places
 
-  resources :categories do
-    get 'get_children_for_select', :on => :member
+    resources :authors
+
+    put 'artworks/send_image'
+
+    resources :categories do
+      get 'get_children_for_select', :on => :member
+    end
+
+    resources :artworks, except: [:index, :show]
   end
 
   resources :artworks do
     resources :categories
   end
 
+
+
+
   get 'welcome/index'
 
-  put 'artworks/send_image'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

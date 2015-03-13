@@ -1,6 +1,6 @@
 class ScenesController < ApplicationController
   before_action :set_scene, only: [:show, :edit, :update, :destroy]
-
+  before_filter :authenticate_user!
   # GET /scenes
   # GET /scenes.json
   def index

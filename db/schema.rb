@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20150311185746) do
 
   create_table "artworks", force: true do |t|
     t.integer  "passage_id"
-    t.integer  "authors_id"
+    t.integer  "author_id"
     t.integer  "place_id"
     t.integer  "scene_id"
     t.integer  "type_id"

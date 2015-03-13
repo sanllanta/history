@@ -1,4 +1,5 @@
 class ArtworksController < ApplicationController
+  before_filter :authenticate_user!, except:[:index,:show]
   before_action :set_artwork, only: [:show, :edit, :update, :destroy]
   before_action :set_categories, only: [:edit, :new]
 
@@ -368,26 +369,32 @@ class ArtworksController < ApplicationController
   def show
   end
 
+  # GET /artworks/1
+  # GET /artworks/1.json
+  def admin
+    @artworks = Artwork.all
+  end
+
   # GET /artworks/new
   def new
     @artwork = Artwork.new
     set_categories
     if params[:action] == "new"
-      @artwork.descriptions.new
-      @artwork.artwork_symbols.new
-      @artwork.iconographic_attributes.new
-      @artwork.engravings.new
-      @artwork.author = Author.new
-      @artwork.donor = Donor.new
-      @artwork.origin = Origin.new
-      @artwork.passage = Passage.new
-      @artwork.phylactery_billboard = PhylacteryBillboard.new
-      @artwork.scene = Scene.new
-      @artwork.place = Place.new
-      @artwork.school = School.new
-      @artwork.source = Source.new
-      @artwork.story_type = StoryType.new
-      @artwork.type = Type.new
+      # @artwork.descriptions.new
+      # @artwork.artwork_symbols.new
+      # @artwork.iconographic_attributes.new
+      # @artwork.engravings.new
+      # #@artwork.author = Author.new
+      # @artwork.donor = Donor.new
+      # @artwork.origin = Origin.new
+      # @artwork.passage = Passage.new
+      # @artwork.phylactery_billboard = PhylacteryBillboard.new
+      # @artwork.scene = Scene.new
+      # @artwork.place = Place.new
+      # @artwork.school = School.new
+      # @artwork.source = Source.new
+      # @artwork.story_type = StoryType.new
+      # @artwork.type = Type.new
     end
   end
 

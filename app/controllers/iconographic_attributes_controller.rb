@@ -1,6 +1,6 @@
 class IconographicAttributesController < ApplicationController
   before_action :set_iconographic_attribute, only: [:show, :edit, :update, :destroy]
-
+  before_filter :authenticate_user!
   # GET /iconographic_attributes
   # GET /iconographic_attributes.json
   def index

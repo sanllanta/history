@@ -1,5 +1,6 @@
 class AuthorsController < ApplicationController
   before_action :set_author, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   # GET /authors
   # GET /authors.json
@@ -24,8 +25,8 @@ class AuthorsController < ApplicationController
   # POST /authors
   # POST /authors.json
   def create
-    @author = Author.new(author_params)
 
+    @author = Author.new(author_params)
     respond_to do |format|
       if @author.save
         format.html { redirect_to @author, notice: 'Author was successfully created.' }
@@ -69,6 +70,6 @@ class AuthorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def author_params
-      params.require(:authors).permit(:name,:biography, :avatar)
+      params.require(:author).permit(:name,:biography, :avatar)
     end
 end

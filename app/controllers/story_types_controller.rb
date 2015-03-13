@@ -1,6 +1,6 @@
 class StoryTypesController < ApplicationController
   before_action :set_story_type, only: [:show, :edit, :update, :destroy]
-
+  before_filter :authenticate_user!
   # GET /story_types
   # GET /story_types.json
   def index

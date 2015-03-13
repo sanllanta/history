@@ -1,6 +1,6 @@
 class PassagesController < ApplicationController
   before_action :set_passage, only: [:show, :edit, :update, :destroy]
-
+  before_filter :authenticate_user!
   # GET /passages
   # GET /passages.json
   def index

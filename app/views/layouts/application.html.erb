@@ -27,11 +27,14 @@
                     <div class="container"><%= yield %></div>
                 </section>
             <%- else -%>
-                <%= render 'application/bannerShrink' %>
-
-                <section class="contenido">
-                    <div class="container"><%= yield %></div>
-                </section>
+                <div id="wrapper">
+                    <%= render 'application/bannerShrink' %>
+                    <div class="page-wrapper">
+                        <section class="contenido">
+                            <div class="container"><%= yield %></div>
+                        </section>
+                    </div>
+                </div>
             <%- end -%>
 
     </body>
