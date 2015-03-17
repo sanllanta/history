@@ -1,16 +1,16 @@
 <section id="Regions">
   <div class="container">
     <div class="row">
-      <div class="col-lg-12 text-center">
-        <h2 class="section-heading">Obras por Regiones</h2>
-        <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+      <div class="col-md-9 col-md-offset-3 text-center">
+          <h2 class="section-heading text-left">Obras por Regiones</h2>
       </div>
     </div>
 
     <!-- Seccion de filtros-->
     <div class="col-md-3">
+
       <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-        <!-- Temas-->
+        <!-- fILTRO DE TEMAS -->
         <div class="panel panel-default" style="margin-top: 0px">
           <div class="panel-heading" role="tab" id="headingTemas">
             <h4 class="panel-title">
@@ -21,6 +21,7 @@
           </div>
         </div>
 
+        <!-- fILTRO DE AUTORES -->
         <div class="panel panel-default" style="margin-top: 0px">
           <div class="panel-heading" role="tab" id="headingOne">
             <h4 class="panel-title">
@@ -42,37 +43,17 @@
           </div>
         </div>
 
-        <div class="panel panel-default" style="margin-top: 0px">
-          <div class="panel-heading" role="tab" id="headingTwo">
-            <h4 class="panel-title">
-              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                <%= link_to  '&#8226 Clasificación'.html_safe, artworks_path+"?authors=true" %>
-              </a>
-            </h4>
-          </div>
-          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-            <div class="panel-body">
-              <ul class="list-unstyled">
-                <% @clasifications.values.each  do |objeto| %>
-                    <li>
-                      <%= link_to  "#{objeto.name}" ,artworks_path(:params => params.merge(:category => objeto.id))  %>
-                    </li>
-                <% end %>
-              </ul>
-            </div>
-          </div>
-        </div>
-
+        <!-- fILTRO DE LUGAR -->
         <div class="panel panel-default" style="margin-top: 0px">
           <div class="panel-heading" role="tab" id="headingThree">
             <h4 class="panel-title">
               <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                &#8226 Lugar
+                &#8226 Regiones
               </a>
             </h4>
           </div>
           <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
-            <div class="panel-body">
+            <div class="panel-body" >
 
               <!-- Filtros de Lugar-->
               <div id="collapseTemas" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTemas">
@@ -127,14 +108,18 @@
                   </div>
                 </div>
               </div>
-              <ul class="list-unstyled">
-                <% @places.values.each  do |objeto| %>
-                    <li>
-                      <%= link_to  "#{objeto.name}" ,artworks_path(:params => params.merge(:place => objeto.id))  %>
-                    </li>
-                <% end %>
-              </ul>
             </div>
+          </div>
+        </div>
+
+        <!-- fILTRO DE OBRAS -->
+        <div class="panel panel-default" style="margin-top: 0px">
+          <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <%= link_to  '&#8226 Obras'.html_safe, artworks_path %>
+              </a>
+            </h4>
           </div>
         </div>
       </div>
@@ -142,7 +127,7 @@
 
     <div class="col-md-9">
       <div class="row">
-        <div id="world-map" style="width: 650px; height: 635px; margin-left: auto;margin-right: auto"></div>
+        <div id="world-map" style="width: 855px; height: 635px; margin-left: auto;margin-right: auto"></div>
       </div>
       <script>
 
@@ -150,6 +135,10 @@
 
           $(function(){
               map = $('#world-map').vectorMap({
+                          regionStyle: {
+                              initial: {
+                                  fill: '#D3D3D3'
+                              }},
                           series: {
                               regions: [{
                                   values: jsonData,
@@ -167,7 +156,7 @@
                           {
                               x: -1.5,
                               y: 0.5,
-                              scale: 2
+                              scale: 1.5
                           },
                           onRegionClick: function (event, code) {
                               var map = $('#world-map').vectorMap('get', 'mapObject');

@@ -8,7 +8,18 @@
     margin-right: auto;
 }
 
-#busqueda
+.panel-collapse .panel-body
 {
+    padding: 0px !important;
+}
+
+.panel-body .panel-group
+{
+    margin-bottom: 0px !important;
+}
+
+.jvectormap-container
+{
+background-color: #f9f9fb !important;
 
 }
