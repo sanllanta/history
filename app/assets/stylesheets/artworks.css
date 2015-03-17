@@ -23,3 +23,8 @@
 background-color: #f9f9fb !important;
 
 }
+
+.panel-body .collapsed
+{
+    color: #9B9CA0 !important;
+}

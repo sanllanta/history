@@ -7,4 +7,28 @@ module ArtworksHelper
     end
     link_to(name, "#",class: "add_fields",data:{id: id, fields: fields.gsub("\n","")})
   end
+
+  def link_authors_artworks(obras)
+    nombres = []
+    obras.each do |obra|
+      nombres.append(obra.title)
+      total =total_caracteres(nombres)
+      if total > 30
+        break
+      end
+    end
+    return nombres
+
+  end
+
+  def total_caracteres(nombres)
+    total = 0
+    nombres.each do |nombre|
+      total = total + nombre.mb_chars.length
+    end
+    p total
+    return total
+  end
+
 end
+

@@ -92,6 +92,7 @@ class ArtworksController < ApplicationController
 
     if params[:authors] == ('true')
       @authors = Author.all
+      @authors = @authors.paginate(:per_page => 20, :page => params[:page])
     else
 
       #Define la cantidad de obras que se muestran en cada uno de los tipos de vistas
@@ -106,7 +107,6 @@ class ArtworksController < ApplicationController
       else
 
         if params[:search].to_s.empty?
-
           artworksTemp = Artwork.all
         end
       end
@@ -146,8 +146,12 @@ class ArtworksController < ApplicationController
           end
         end
 
-        @artworks = artworksTemp.paginate(:per_page => 8, :page => params[:page])
-
+        @artworks = WillPaginate::Collection.create(page, 20, artworksTemp.length) do |pager|
+          pager.replace artworksTemp
+        end
+        if params[:authors] == ('true')
+          #@authors = @authors.paginate(:per_page => 8, :page => params[:page])
+        end
       elsif params[:authors].nil? and params[:category].nil? and not params[:place].nil?
         p "2"
         artworksTemp = artworksTemp.search_place(params[:place])
@@ -182,8 +186,12 @@ class ArtworksController < ApplicationController
           end
         end
 
-        @artworks = artworksTemp.paginate(:per_page => 8, :page => params[:page])
-
+        @artworks = WillPaginate::Collection.create(page, 20, artworksTemp.length) do |pager|
+          pager.replace artworksTemp
+        end
+        if params[:authors] == ('true')
+          #@authors = @authors.paginate(:per_page => 8, :page => params[:page])
+        end
       elsif not params[:authors].nil? and params[:category].nil? and params[:place].nil?
         p "3"
         artworksTemp = artworksTemp.search_author(params[:authors])
@@ -219,8 +227,12 @@ class ArtworksController < ApplicationController
           end
         end
 
-        @artworks = artworksTemp.paginate(:per_page => 8, :page => params[:page])
-
+        @artworks = WillPaginate::Collection.create(page, 20, artworksTemp.length) do |pager|
+          pager.replace artworksTemp
+        end
+        if params[:authors] == ('true')
+          #@authors = @authors.paginate(:per_page => 8, :page => params[:page])
+        end
       elsif not params[:authors].nil? and not params[:category].nil? and params[:place].nil?
         p "4"
         artworksTemp = artworksTemp.search_author(params[:authors])
@@ -257,8 +269,12 @@ class ArtworksController < ApplicationController
           end
         end
 
-        @artworks = artworksTemp.paginate(:per_page => 8, :page => params[:page])
-
+        @artworks = WillPaginate::Collection.create(page, 20, artworksTemp.length) do |pager|
+          pager.replace artworksTemp
+        end
+        if params[:authors] == ('true')
+          #@authors = @authors.paginate(:per_page => 8, :page => params[:page])
+        end
       elsif not params[:authors].nil? and not params[:category].nil? and not params[:place].nil?
         p "5"
         artworksTemp = artworksTemp.search_author(params[:authors])
@@ -296,7 +312,12 @@ class ArtworksController < ApplicationController
           end
         end
 
-        @artworks = artworksTemp.paginate(:per_page => 8, :page => params[:page])
+        @artworks = WillPaginate::Collection.create(page, 20, artworksTemp.length) do |pager|
+          pager.replace artworksTemp
+        end
+        if params[:authors] == ('true')
+          #@authors = @authors.paginate(:per_page => 8, :page => params[:page])
+        end
       else
         p "6"
         @authors = Hash.new
@@ -340,7 +361,10 @@ class ArtworksController < ApplicationController
         @artworks = WillPaginate::Collection.create(page, 20, artworksTemp.length) do |pager|
           pager.replace artworksTemp
         end
-        #@artworks = artworksTemp.paginate(:per_page => 20, :page => params[:page])
+        if params[:authors] == ('true')
+
+          #@authors = @authors.paginate(:per_page => 8, :page => params[:page])
+        end
       end
 
       if params[:region] == ('true')
