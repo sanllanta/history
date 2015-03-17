@@ -1,12 +1,15 @@
 <%- model_class = Artwork -%>
 
-<section id="author" class="bg-light-gray">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-9 col-md-offset-3 text-center">
-        <h2 class="section-heading">Obras por Autor</h2>
-      </div>
+<div id="author">
+  <div class="page-header row">
+    <div class="col-md-3"></div>
+    <div class="col-md-9">
+      <h1 class="uppercase">
+        Obras por autor
+      </h1>
     </div>
+  </div>
+  <div class="container">
     <!-- Seccion de filtros-->
     <div class="col-md-3">
       <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -96,7 +99,7 @@
     </div>
   </div>
 
-</section>
+</div>
 
 <% content_for :css_application do %>
     <%= stylesheet_link_tag "artworks" %>

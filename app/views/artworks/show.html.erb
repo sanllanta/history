@@ -1,179 +1,186 @@
 <%- model_class = Artwork -%>
-<div class="row">
-  <div class="col-lg-12">
-    <h1 class="page-header"><%= @artwork.title %>
-      <small><%= @artwork.category_1.name%></small>
-    </h1>
+
+
+<div class="page-header row">
+  <div class="col-md-3"></div>
+  <div class="col-md-9">
+    <h2 class="uppercase"><%= @artwork.title %>
+    <small><%= @artwork.category_1.name%></small>
+    </h2>
   </div>
 </div>
 
 <div class="row">
+
+  <div class="col-md-3">
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+      <div class="panel panel-default" style="margin-top: 0px">
+        <div class="panel-heading" role="tab" id="headingTemas">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTemas" aria-expanded="true" aria-controls="collapseTemas">
+              &#8226 Temas
+            </a>
+          </h4>
+        </div>
+      </div>
+
+      <div class="panel panel-default" style="margin-top: 0px">
+        <div class="panel-heading" role="tab" id="headingOne">
+          <h4 class="panel-title">
+            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+              <%= link_to  '&#8226 Autores'.html_safe, artworks_path+"?authors=true" %>
+            </a>
+          </h4>
+        </div>
+      </div>
+
+      <div class="panel panel-default" style="margin-top: 0px">
+        <div class="panel-heading" role="tab" id="headingThree">
+          <h4 class="panel-title">
+            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              <%= link_to '&#8226 Regiones'.html_safe, artworks_path+"?region=true" %>
+            </a>
+          </h4>
+        </div>
+      </div>
+
+      <div class="panel panel-default" style="margin-top: 0px">
+        <div class="panel-heading" role="tab" id="headingTwo">
+          <h4 class="panel-title">
+            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              <%= link_to  '&#8226 Obras'.html_safe, artworks_path%>
+            </a>
+          </h4>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <div class="col-sm-3">
     <a type="href" data-toggle="modal" data-target="#imageModal" href="">
       <%= image_tag(@artwork.avatar.url(:large), :class => "img-thumbnail", :class => "img-responsive", :style => "margin-left: auto; margin-right: auto;") %>
     </a>
+    <div class="img_title"><%= @artwork.get_title  %><br><%= @artwork.get_author_name  %></div>
   </div>
-  <div class="col-sm-9">
+
+  <div class="col-sm-6">
     <ul class="nav nav-tabs">
-      <li class="active"><a href="#datos_generales" data-toggle="tab" aria-expanded="false">Datos generales</a></li>
-      <li class=""><a href="#desc_img_rel" data-toggle="tab" aria-expanded="false">Descripción, Imagenes y relatos</a></li>
+      <li class="active"><a href="#datos_generales" data-toggle="tab" aria-expanded="false">Datos</a></li>
+      <li class=""><a href="#desc_img_rel" data-toggle="tab" aria-expanded="false">Descripción</a></li>
       <li class=""><a href="#personajes" data-toggle="tab" aria-expanded="false">Personajes</a></li>
-      <li class=""><a href="#cuerpo_gestos" data-toggle="tab" aria-expanded="false">Cuerpo y gestos</a></li>
+      <li class=""><a href="#cuerpo_gestos" data-toggle="tab" aria-expanded="false">Gestos</a></li>
       <li class=""><a id="mapTab" href="#location" data-toggle="tab" aria-expanded="false">Lugar</a></li>
     </ul>
     <br>
     <div id="myTabContent" class="tab-content">
-      <div class="tab-pane fade active in" id="datos_generales">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="row">
-              <label class="control-label col-sm-3">Titulo</label>
-              <div class="col-sm-9"><%= @artwork.get_title%></div>
-            </div>
-            <div class="row">
-              <label class="control-label col-sm-3">Autor</label>
-              <div class="col-sm-9"><%=@artwork.get_author_name%></div>
-            </div>
-            <div class="row">
-              <label class="control-label col-sm-3">Actividad</label>
-              <div class="col-sm-9"><%=@artwork.get_activity%></div>
-            </div>
-            <div class="row">
-              <label class="control-label col-sm-3">Información Biográfica</label>
-              <div class="col-sm-9"><%=@artwork.get_biographic_data%></div>
-            </div>
-            <div class="row">
-              <label class="control-label col-sm-3">Firmado</label>
-              <div class="col-sm-9"><%=@artwork.get_signed%></div>
-            </div>
+      <div class="tab-pane fade active in" id="datos_generales" style="padding-left: 15px">
+        <div class="container" style="width: inherit">
+          <div class="row">
+            <label class="control-label col-sm-3">Titulo</label>
+            <div class="col-sm-9"><%= @artwork.get_title%></div>
           </div>
-          <div class="col-md-6">
-            <div class="row">
-              <label class="control-label col-sm-3">Categoría 1</label>
-              <div class="col-sm-9"><%=@artwork.get_category_1_name%></div>
-            </div>
-            <div class="row">
-              <label class="control-label col-sm-3">Categoría 2</label>
-              <div class="col-sm-9"><%=@artwork.get_category_2_name%></div>
-            </div>
-            <div class="row">
-              <label class="control-label col-sm-3">Categoría 3</label>
-              <div class="col-sm-9"><%=@artwork.get_category_3_name%></div>
-            </div>
-            <div class="row">
-              <label class="control-label col-sm-3">Categoría 4</label>
-              <div class="col-sm-9"><%=@artwork.get_category_4_name%></div>
-            </div>
-            <div class="row">
-              <label class="control-label col-sm-3">Categoría 5</label>
-              <div class="col-sm-9"><%=@artwork.get_category_5_name%></div>
-            </div>
+          <div class="row">
+            <label class="control-label col-sm-3">Autor</label>
+            <div class="col-sm-9"><%=@artwork.get_author_name%></div>
           </div>
-        </div>
-        <br>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="row">
-              <label class="control-label col-sm-3">Tipo</label>
-              <div class="col-sm-9"><%=@artwork.get_type_name%></div>
-            </div>
-            <div class="row">
-              <label class="control-label col-sm-3">Fuente</label>
-              <div class="col-sm-9"><%=@artwork.get_source_name%></div>
-            </div>
-            <div class="row">
-              <label class="control-label col-sm-3">Lugar</label>
-              <div class="col-sm-9"><%=@artwork.get_place_name%></div>
-            </div>
+          <div class="row">
+            <label class="control-label col-sm-3">Actividad</label>
+            <div class="col-sm-9"><%=@artwork.get_activity%></div>
           </div>
-          <div class="col-md-6">
-            <div class="row">
-              <label class="control-label col-sm-3">Escuela</label>
-              <div class="col-sm-9"><%=@artwork.get_school_name%></div>
-            </div>
-            <div class="row">
-              <label class="control-label col-sm-3">Origen</label>
-              <div class="col-sm-9"><%=@artwork.get_origin_name%></div>
-            </div>
+          <div class="row">
+            <label class="control-label col-sm-3">Información Biográfica</label>
+            <div class="col-sm-9"><%=@artwork.get_biographic_data%></div>
+          </div>
+          <div class="row">
+            <label class="control-label col-sm-3">Firmado</label>
+            <div class="col-sm-9"><%=@artwork.get_signed%></div>
+          </div>
+          <div class="row">
+            <label class="control-label col-sm-3">Tipo</label>
+            <div class="col-sm-9"><%=@artwork.get_type_name%></div>
+          </div>
+          <div class="row">
+            <label class="control-label col-sm-3">Fuente</label>
+            <div class="col-sm-9"><%=@artwork.get_source_name%></div>
+          </div>
+          <div class="row">
+            <label class="control-label col-sm-3">Lugar</label>
+            <div class="col-sm-9"><%=@artwork.get_place_name%></div>
+          </div>
+          <div class="row">
+            <label class="control-label col-sm-3">Escuela</label>
+            <div class="col-sm-9"><%=@artwork.get_school_name%></div>
+          </div>
+          <div class="row">
+            <label class="control-label col-sm-3">Origen</label>
+            <div class="col-sm-9"><%=@artwork.get_origin_name%></div>
+          </div>
+          <div class="row">
+            <label class="control-label col-sm-3">Sintesis</label>
+            <div class="col-sm-9"><%=@artwork.get_synthesis%></div>
+          </div>
+          <div class="row">
+            <label class="control-label col-sm-3">Categoría 1</label>
+            <div class="col-sm-9"><%=@artwork.get_category_1_name%></div>
+          </div>
+          <div class="row">
+            <label class="control-label col-sm-3">Categoría 2</label>
+            <div class="col-sm-9"><%=@artwork.get_category_2_name%></div>
+          </div>
+          <div class="row">
+            <label class="control-label col-sm-3">Categoría 3</label>
+            <div class="col-sm-9"><%=@artwork.get_category_3_name%></div>
+          </div>
+          <div class="row">
+            <label class="control-label col-sm-3">Categoría 4</label>
+            <div class="col-sm-9"><%=@artwork.get_category_4_name%></div>
+          </div>
+          <div class="row">
+            <label class="control-label col-sm-3">Categoría 5</label>
+            <div class="col-sm-9"><%=@artwork.get_category_5_name%></div>
           </div>
         </div>
-        <br>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="row">
-              <label class="control-label col-sm-3">Sintesis</label>
-              <div class="col-sm-9"><%=@artwork.get_synthesis%></div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="row">
-              <label class="control-label col-sm-3">Comentario Biográfico</label>
-              <div class="col-sm-9"><%=@artwork.get_biographic_comment%></div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="row">
-              <label class="control-label col-sm-3">Descriptores</label>
-              <div class="col-sm-10">
-                <table class="table table-condensed table-hover table-striped">
 
-                  <tbody>
-
-                    <% @artwork.descriptions.each  do |desc| %>
-                      <tr><td><%= desc.description %></td></tr>
-                    <% end %>
-
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
       <div class="tab-pane fade in" id="desc_img_rel">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="row">
-              <label class="control-label col-sm-3">Escena</label>
-              <div class="col-sm-9"><%=@artwork.get_scene_name%></div>
-            </div>
-            <div class="row">
-              <label class="control-label col-sm-3">Tipo de relato</label>
-              <div class="col-sm-9"><%=@artwork.get_story_type_name%></div>
-            </div>
-            <div class="row">
-              <label class="control-label col-sm-3">Donante</label>
-              <div class="col-sm-9"><%=@artwork.get_donor_name%></div>
-            </div>
-            <div class="row">
-              <label class="control-label col-sm-3">Cartelera Filacteria</label>
-              <div class="col-sm-9"><%=@artwork.get_phylactery_billboard_name%></div>
+        <div class="container" style="width: inherit">
+          <div class="row">
+            <label class="control-label col-sm-3">Escena</label>
+            <div class="col-sm-9"><%=@artwork.get_scene_name%></div>
+          </div>
+          <div class="row">
+            <label class="control-label col-sm-3">Tipo de relato</label>
+            <div class="col-sm-9"><%=@artwork.get_story_type_name%></div>
+          </div>
+          <div class="row">
+            <label class="control-label col-sm-3">Donante</label>
+            <div class="col-sm-9"><%=@artwork.get_donor_name%></div>
+          </div>
+          <div class="row">
+            <label class="control-label col-sm-3">Cartelera Filacteria</label>
+            <div class="col-sm-9"><%=@artwork.get_phylactery_billboard_name%></div>
+          </div>
+          <div class="row">
+            <label class="control-label col-sm-3">Comentarios</label>
+            <div class="col-sm-9"><%=@artwork.get_comment%></div>
+          </div>
+          <div class="row">
+            <label class="control-label col-sm-3">Símbolos</label>
+            <div class="col-sm-10">
+              <table class="table table-condensed table-hover table-striped">
+
+                <tbody>
+
+                <% @artwork.artwork_symbols.each  do |sym| %>
+                    <tr><td><%= sym.name %></td></tr>
+                <% end %>
+
+                </tbody>
+              </table>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="row">
-              <label class="control-label col-sm-3">Comentarios</label>
-              <div class="col-sm-9"><%=@artwork.get_comment%></div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="row">
-              <label class="control-label col-sm-3">Símbolos</label>
-              <div class="col-sm-10">
-                <table class="table table-condensed table-hover table-striped">
-
-                  <tbody>
-
-                  <% @artwork.artwork_symbols.each  do |sym| %>
-                      <tr><td><%= sym.name %></td></tr>
-                  <% end %>
-
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
       <div class="tab-pane fade in" id="location">
