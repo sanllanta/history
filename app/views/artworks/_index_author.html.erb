@@ -8,7 +8,67 @@
         <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
       </div>
     </div>
+    <!-- Seccion de filtros-->
+    <div class="col-md-3">
+      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
+        <div class="panel panel-default" style="margin-top: 0px">
+          <div class="panel-heading" role="tab" id="headingTemas">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseTemas" aria-expanded="false" aria-controls="collapseTemas">
+                <%= link_to  '&#8226 Temas'.html_safe, artworks_path+"?topic=true" %>
+              </a>
+            </h4>
+          </div>
+        </div>
+
+        <div class="panel panel-default" style="margin-top: 0px">
+          <div class="panel-heading" role="tab" id="headingAutores">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseAutores" aria-expanded="true" aria-controls="collapseAutores">
+                <%= link_to  '&#8226 Autores'.html_safe, artworks_path+"?authors=true" %>
+              </a>
+            </h4>
+          </div>
+          <div id="collapseAutores" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingAutores">
+            <div class="panel-body">
+              <ul class="list-unstyled">
+                <% @authors.each  do |objeto| %>
+                    <li>
+                      <%= link_to  "#{objeto.name}" ,artworks_path(:params => params.merge(:authors => objeto.id))  %>
+                    </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="panel panel-default" style="margin-top: 0px">
+          <div class="panel-heading" role="tab" id="headingThree">
+            <h4 class="panel-title">
+              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                <%= link_to '&#8226 Regiones'.html_safe, artworks_path+"?region=true" %>
+              </a>
+            </h4>
+          </div>
+        </div>
+
+        <div class="panel panel-default" style="margin-top: 0px">
+          <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <%= link_to  '&#8226 Obras'.html_safe, artworks_path+"?authors=true" %>
+              </a>
+            </h4>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="col-md-9 text-center">
       <% i = 0 %>
       <% @authors.each  do |author| %>
           <% if i == 0 then %>
@@ -34,11 +94,10 @@
           <% end %>
 
       <% end %>
+    </div>
   </div>
 
 </section>
-
-
 
 <% content_for :css_application do %>
     <%= stylesheet_link_tag "artworks" %>

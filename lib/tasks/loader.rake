@@ -7,7 +7,7 @@ namespace :loader do
     Rake::Task['loader:load_fuente'].invoke
     Rake::Task['loader:load_categories1'].invoke
     Rake::Task['loader:load_desc_symbol'].invoke
-    #Rake::Task['loader:load_obras'].invoke
+    Rake::Task['loader:load_obras'].invoke
   end
 
   desc "Loads the countries listed in countries.csv into the places table"

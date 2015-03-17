@@ -1,5 +1,5 @@
 <section id="Regions">
-<div class="container">
+  <div class="container">
     <div class="row">
       <div class="col-lg-12 text-center">
         <h2 class="section-heading">Obras por Regiones</h2>
@@ -7,111 +7,177 @@
       </div>
     </div>
 
-  <!-- Seccion de filtros-->
-  <div class="col-md-3">
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-      <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="headingOne">
-          <h4 class="panel-title">
-            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              Artistas
-            </a>
-          </h4>
-        </div>
-        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-          <div class="panel-body">
-            <ul class="list-unstyled">
-              <% @authors.values.each  do |author| %>
-                  <li>
-                    <%= link_to  "#{author.name}" ,artworks_path(:params => params.merge(:authors => author.id))  %>
-                  </li>
-              <% end %>
-            </ul>
+    <!-- Seccion de filtros-->
+    <div class="col-md-3">
+      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <!-- Temas-->
+        <div class="panel panel-default" style="margin-top: 0px">
+          <div class="panel-heading" role="tab" id="headingTemas">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseTemas" aria-expanded="true" aria-controls="collapseTemas">
+                <%= link_to  '&#8226 Temas'.html_safe, artworks_path+"?topic=true" %>
+              </a>
+            </h4>
           </div>
         </div>
-      </div>
-      <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="headingTwo">
-          <h4 class="panel-title">
-            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              Clasificación
-            </a>
-          </h4>
-        </div>
-        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-          <div class="panel-body">
-            <ul class="list-unstyled">
-              <% @clasifications.values.each  do |objeto| %>
-                  <li>
-                    <%= link_to  "#{objeto.name}" ,artworks_path(:params => params.merge(:category => objeto.id))  %>
-                  </li>
-              <% end %>
-            </ul>
+
+        <div class="panel panel-default" style="margin-top: 0px">
+          <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                <%= link_to  '&#8226 Autores'.html_safe, artworks_path+"?authors=true" %>
+              </a>
+            </h4>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+              <ul class="list-unstyled">
+                <% @authors.values.each  do |author| %>
+                    <li>
+                      <%= link_to  "#{author.name}" ,artworks_path(:params => params.merge(:authors => author.id))  %>
+                    </li>
+                <% end %>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="headingThree">
-          <h4 class="panel-title">
-            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-              Lugar
-            </a>
-          </h4>
+
+        <div class="panel panel-default" style="margin-top: 0px">
+          <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <%= link_to  '&#8226 Clasificación'.html_safe, artworks_path+"?authors=true" %>
+              </a>
+            </h4>
+          </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+              <ul class="list-unstyled">
+                <% @clasifications.values.each  do |objeto| %>
+                    <li>
+                      <%= link_to  "#{objeto.name}" ,artworks_path(:params => params.merge(:category => objeto.id))  %>
+                    </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-          <div class="panel-body">
-            <ul class="list-unstyled">
-              <% @places.values.each  do |objeto| %>
-                  <li>
-                    <%= link_to  "#{objeto.name}" ,artworks_path(:params => params.merge(:place => objeto.id))  %>
-                  </li>
-              <% end %>
-            </ul>
+
+        <div class="panel panel-default" style="margin-top: 0px">
+          <div class="panel-heading" role="tab" id="headingThree">
+            <h4 class="panel-title">
+              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                &#8226 Lugar
+              </a>
+            </h4>
+          </div>
+          <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
+            <div class="panel-body">
+
+              <!-- Filtros de Lugar-->
+              <div id="collapseTemas" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTemas">
+                <div class="panel-body">
+
+                  <div class="panel-group" id="accordionLugar" role="tablist" aria-multiselectable="true">
+
+                    <div class="panel panel-default" style="margin-top: 0px">
+
+                        <div class="panel-heading" role="tab" id="headingArtistasLugar">
+                          <h4 class="panel-title">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordionLugar" href="#collapseArtistasLugar" aria-expanded="false" aria-controls="collapseArtistasLugar">
+                              Artistas
+                            </a>
+                          </h4>
+                        </div>
+
+                        <div id="collapseArtistasLugar" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingArtistasLugar">
+                          <div class="panel-body">
+                            <ul class="list-unstyled">
+                              <% @authors.values.each  do |author| %>
+                                  <li>
+                                    <%= link_to  "#{author.name}" ,artworks_path(:params => params.merge(:authors => author.id))  %>
+                                  </li>
+                              <% end %>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="panel panel-default" style="margin-top: 0px">
+                        <div class="panel-heading" role="tab" id="headingClasificacionLugar">
+                          <h4 class="panel-title">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordionLugar" href="#collapseClasificacionLugar" aria-expanded="false" aria-controls="collapseClasificacionLugar">
+                              Clasificación
+                            </a>
+                          </h4>
+                        </div>
+                        <div id="collapseClasificacionLugar" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingClasificacionLugar">
+                          <div class="panel-body">
+                            <ul class="list-unstyled">
+                              <% @clasifications.values.each  do |objeto| %>
+                                  <li>
+                                    <%= link_to  "#{objeto.name}" ,artworks_path(:params => params.merge(:category => objeto.id))  %>
+                                  </li>
+                              <% end %>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+
+                  </div>
+                </div>
+              </div>
+              <ul class="list-unstyled">
+                <% @places.values.each  do |objeto| %>
+                    <li>
+                      <%= link_to  "#{objeto.name}" ,artworks_path(:params => params.merge(:place => objeto.id))  %>
+                    </li>
+                <% end %>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
+    <div class="col-md-9">
+      <div class="row">
+        <div id="world-map" style="width: 650px; height: 635px; margin-left: auto;margin-right: auto"></div>
+      </div>
+      <script>
+
+          var jsonData = <%= @json_places.to_json.html_safe %>;
+
+          $(function(){
+              map = $('#world-map').vectorMap({
+                          series: {
+                              regions: [{
+                                  values: jsonData,
+                                  scale: ['#C8EEFF', '#0071A4'],
+                                  normalizeFunction: 'polynomial'
+                              }]
+                          },
+                          onRegionTipShow: function(e, el, code){
+                              var map = $('#world-map').vectorMap('get', 'mapObject');
+                              var obras;
+                              obras = (jsonData[code]) ? jsonData[code] : 0;
+                              el.html(el.html()+' ('+'Obras: '+obras+')');
+                          },
+                          focusOn:
+                          {
+                              x: -1.5,
+                              y: 0.5,
+                              scale: 2
+                          },
+                          onRegionClick: function (event, code) {
+                              var map = $('#world-map').vectorMap('get', 'mapObject');
+                              var regionName = map.getRegionName(code);
+                              window.location.href = "artworks?region_show=" + regionName
+                          }
+                      }
+              );
+          });
+      </script>
+    </div>
   </div>
-
-  <div class="col-md-9">
-  <div class="row">
-            <div id="world-map" style="width: 650px; height: 635px; margin-left: auto;margin-right: auto"></div>
-    </div>
-    <script>
-
-        var jsonData = <%= @json_places.to_json.html_safe %>;
-
-        $(function(){
-            map = $('#world-map').vectorMap({
-                        series: {
-                            regions: [{
-                                values: jsonData,
-                                scale: ['#C8EEFF', '#0071A4'],
-                                normalizeFunction: 'polynomial'
-                            }]
-                        },
-                        onRegionTipShow: function(e, el, code){
-                            var map = $('#world-map').vectorMap('get', 'mapObject');
-                            var obras;
-                            obras = (jsonData[code]) ? jsonData[code] : 0;
-                            el.html(el.html()+' ('+'Obras: '+obras+')');
-                        },
-                        focusOn:
-                        {
-                            x: -1.5,
-                            y: 0.5,
-                            scale: 2
-                        },
-                        onRegionClick: function (event, code) {
-                            var map = $('#world-map').vectorMap('get', 'mapObject');
-                            var regionName = map.getRegionName(code);
-                            window.location.href = "artworks?region_show=" + regionName
-                        }
-                    }
-            );
-        });
-    </script>
-</div>
-</div>
 </section>
