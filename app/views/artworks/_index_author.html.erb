@@ -74,15 +74,29 @@
               <div class="row">
           <% end %>
           <div class="col-md-3 portfolio-item">
-            <a href="<%= artworks_path(:author_show => author.id) %>">
-              <div>
-                <%= image_tag author.avatar.url(:thumb) %>
-              </div>
-            </a>
             <h4>
-
               <a href="<%= artworks_path(:author_show => author.id) %>"><%= author.name %></a>
             </h4>
+            <a href="<%= artworks_path(:author_show => author.id) %>">
+                <div>
+                  <% obj_nombres = link_authors_artworks(author.artworks)%>
+                  <% if not obj_nombres.nil? %>
+
+                      <% inombres = obj_nombres.length %>
+                      <% i = 1 %>
+                      <% obj_nombres.each  do |nombre| %>
+                          <%= nombre %>
+                          <br>
+                          <% if i == inombres %>
+                            <%='ver mas'%>
+                          <% end %>
+                          <% i = i + 1 %>
+                      <% end %>
+                  <% end %>
+                </div>
+
+            </a>
+
             <p><%= author.biography %></p>
           </div>
 
@@ -94,6 +108,12 @@
 
       <% end %>
     </div>
+
+    <div class="text-center">
+
+      <%= will_paginate @authors,  renderer: BootstrapPagination::Rails %>
+    </div>
+
   </div>
 
 </section>

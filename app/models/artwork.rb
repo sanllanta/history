@@ -13,7 +13,7 @@ class Artwork < ActiveRecord::Base
                         :small  => "200x200>",
                         :slider  => "900x300>",
                         :thumb => "100x100>" },
-                    :default_url => "/images/:style/missing.png"
+                    :default_url => ":style/missing.png"
 
   has_attached_file :sub_image,
                     :styles => {
@@ -22,7 +22,7 @@ class Artwork < ActiveRecord::Base
                         :small  => "200x200>",
                         :slider  => "900x300>",
                         :thumb => "100x100>" },
-                    :default_url => "/images/:style/missing.png"
+                    :default_url => ":style/missing.png"
 
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/gif", "image/png"]
   validates_attachment_content_type :sub_image, :content_type => ["image/jpg", "image/jpeg", "image/gif", "image/png"]
