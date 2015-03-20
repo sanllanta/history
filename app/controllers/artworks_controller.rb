@@ -87,7 +87,6 @@ class ArtworksController < ApplicationController
       b_author.each do |artworkt|
         artworksTemp << artworkt
       end
-      p artworksTemp
     end
 
     if params[:authors] == ('true')
