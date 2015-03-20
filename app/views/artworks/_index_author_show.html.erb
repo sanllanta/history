@@ -1,104 +1,181 @@
 <%- model_class = Artwork -%>
 
 <!-- Page Heading -->
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Obras
-        <small>Author: <%= Author.find(params[:author_show]).name %></small>
-      </h1>
-    </div>
-  </div>
 
-
-<!-- Seccion de filtros-->
-<div class="col-md-4">
-
-  <div class="well">
-    <h4>Artistas</h4>
-    <div class="row">
-      <div class="col-lg-6">
-        <ul class="list-unstyled">
-          <% @authors.values.each  do |author| %>
-              <li>
-                <%=	link_to  "#{author.name}" ,artworks_path(:params => params.merge(:authors => author.id))  %>
-              </li>
-          <% end %>
-          </li>
-        </ul>
-      </div>
-      <!-- /.col-lg-6 -->
-    </div>
-    <!-- /.row -->
-  </div>
-
-  <div class="well">
-    <h4>Clasificación</h4>
-    <div class="row">
-      <div class="col-lg-6">
-        <ul class="list-unstyled">
-          <% @clasifications.values.each  do |objeto| %>
-              <li>
-                <%=	link_to  "#{objeto.name}" ,artworks_path(:params => params.merge(:category => objeto.id))  %>
-              </li>
-          <% end %>
-          </li>
-        </ul>
-      </div>
-      <!-- /.col-lg-6 -->
-    </div>
-    <!-- /.row -->
-  </div>
-
-  <div class="well">
-    <h4>Lugares</h4>
-    <div class="row">
-      <div class="col-lg-6">
-        <ul class="list-unstyled">
-          <% @places.values.each  do |objeto| %>
-              <li>
-                <%=	link_to  "#{objeto.name}" ,artworks_path(:params => params.merge(:place => objeto.id))  %>
-              </li>
-          <% end %>
-          </li>
-        </ul>
-      </div>
-      <!-- /.col-lg-6 -->
-    </div>
-    <!-- /.row -->
+<div class="page-header row">
+  <div class="col-md-3"></div>
+  <div class="col-md-9">
+    <h1 class="uppercase">
+        Obras: <small>Author: <%= Author.find(params[:author_show]).name %></small>
+    </h1>
   </div>
 </div>
 
-<!-- Page Content -->
-<div class="container">
+<div id="artwork">
+  <div class="container">
+    <!-- Seccion de filtros-->
+    <div class="col-md-3">
 
-  <% i = 0 %>
-  <% @artworks.each  do |artwork| %>
-        <% if i == 0 then %>
-            <div class="row">
-        <% end %>
-              <div class="col-md-3 portfolio-item">
-                <a href="<%= artwork_path(artwork) %>">
-                  <div>
-                    <%= image_tag artwork.avatar.url(:thumb) %>
-                  </div>
-                </a>
-                <h4>
-                  <a href="<%= artwork_path(artwork) %>"><%= artwork.title %></a>
-                </h4>
-                <p><%= artwork.author.name %></p>
-              </div>
-
-        <% i += 1 %>
-        <% if i == 4 then %>
-          <% i = 0 %>
+      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <!-- fILTRO DE TEMAS -->
+        <div class="panel panel-default" style="margin-top: 0px">
+          <div class="panel-heading" role="tab" id="headingTemas">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseTemas" aria-expanded="true" aria-controls="collapseTemas">
+                <%= link_to  '&#8226 Temas'.html_safe, artworks_path+"?topic=true" %>
+              </a>
+            </h4>
           </div>
-        <% end %>
+        </div>
 
-  <% end %>
+        <!-- fILTRO DE AUTORES -->
+        <div class="panel panel-default" style="margin-top: 0px">
+          <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                <%= link_to  '&#8226 Autores'.html_safe, artworks_path+"?authors=true" %>
+              </a>
+            </h4>
+          </div>
+        </div>
 
+        <!-- fILTRO DE REGIONES -->
+        <div class="panel panel-default" style="margin-top: 0px">
+          <div class="panel-heading" role="tab" id="headingThree">
+            <h4 class="panel-title">
+              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                <%= link_to '&#8226 Regiones'.html_safe, artworks_path+"?region=true" %>
+              </a>
+            </h4>
+          </div>
+        </div>
+
+        <!-- fILTRO DE OBRAS -->
+        <div class="panel panel-default" style="margin-top: 0px">
+          <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                &#8226 Obras
+              </a>
+            </h4>
+          </div>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body" >
+
+            <!-- Filtros de Lugar-->
+            <div id="collapseTemas" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTemas">
+              <div class="panel-body">
+
+                <div class="panel-group" id="accordionLugar" role="tablist" aria-multiselectable="true">
+
+                  <div class="panel panel-default" style="margin-top: 0px">
+
+                    <div class="panel-heading" role="tab" id="headingArtistasLugar">
+                      <h4 class="panel-title">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordionLugar" href="#collapseArtistasLugar" aria-expanded="true" aria-controls="collapseArtistasLugar">
+                          + Artistas
+                        </a>
+                      </h4>
+                    </div>
+
+                    <div id="collapseArtistasLugar" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingArtistasLugar">
+                      <div class="panel-body">
+                        <ul class="list-unstyled">
+                          <% @authors.values.each  do |author| %>
+                              <li>
+                                <%= link_to  "#{author.name}" ,artworks_path(:params => params.merge(:authors => author.id))  %>
+                              </li>
+                          <% end %>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="panel panel-default" style="margin-top: 0px">
+                    <div class="panel-heading" role="tab" id="headingClasificacionObra">
+                      <h4 class="panel-title">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordionLugar" href="#collapseClasificacionObra" aria-expanded="true" aria-controls="collapseClasificacionObra">
+                          + Clasificación
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseClasificacionObra" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingClasificacionObra">
+                      <div class="panel-body">
+                        <ul class="list-unstyled">
+                          <% @clasifications.values.each  do |objeto| %>
+                              <li>
+                                <%= link_to  "#{objeto.name}" ,artworks_path(:params => params.merge(:category => objeto.id))  %>
+                              </li>
+                          <% end %>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="panel panel-default" style="margin-top: 0px">
+                    <div class="panel-heading" role="tab" id="headingClasificacionLugar">
+                      <h4 class="panel-title">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordionLugar" href="#collapseClasificacionLugar" aria-expanded="true" aria-controls="collapseClasificacionLugar">
+                          + Lugar
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseClasificacionLugar" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingClasificacionLugar">
+                      <div class="panel-body">
+                        <ul class="list-unstyled">
+                          <% @places.values.each  do |objeto| %>
+                              <li>
+                                <%= link_to  "#{objeto.name}" ,artworks_path(:params => params.merge(:place => objeto.id))  %>
+                              </li>
+                          <% end %>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <% i = 0 %>
+      <% @artworks.each  do |artwork| %>
+            <% if i == 0 then %>
+                <div class="row">
+            <% end %>
+                  <div class="col-md-3 portfolio-item">
+                    <a href="<%= artwork_path(artwork) %>">
+                      <div>
+                        <%= image_tag artwork.avatar.url(:thumb) %>
+                      </div>
+                    </a>
+                    <h4>
+                      <a href="<%= artwork_path(artwork) %>"><%= artwork.title %></a>
+                    </h4>
+                    <p><%= artwork.author.name %></p>
+                  </div>
+
+            <% i += 1 %>
+            <% if i == 4 then %>
+              <% i = 0 %>
+              </div>
+            <% end %>
+
+      <% end %>
+
+    </div>
+
+  </div>
 </div>
-
-
 
 <% content_for :css_application do %>
     <%= stylesheet_link_tag "artworks" %>

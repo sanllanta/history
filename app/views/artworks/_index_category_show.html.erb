@@ -9,7 +9,7 @@
   </div>
 </div>
 
-<div id="Regions">
+<div id="topic">
   <div class="container">
     <!-- Seccion de filtros-->
     <div class="col-md-3">
@@ -144,32 +144,32 @@
 
     <div class="col-md-9 text-center">
 
-  <% i = 0 %>
-  <% @artworks.each  do |artwork| %>
-        <% if i == 0 then %>
-            <div class="row">
-        <% end %>
-              <div class="col-md-3 portfolio-item">
-                <a href="<%= artwork_path(artwork) %>">
-                  <div>
-                    <%= image_tag artwork.avatar.url(:thumb) %>
+      <% i = 0 %>
+      <% @artworks.each  do |artwork| %>
+            <% if i == 0 then %>
+                <div class="row">
+            <% end %>
+                  <div class="col-md-3 portfolio-item">
+                    <a href="<%= artwork_path(artwork) %>">
+                      <div>
+                        <%= image_tag artwork.avatar.url(:thumb) %>
+                      </div>
+                    </a>
+                    <p class="text-muted">
+                      <a href="<%= artwork_path(artwork) %>"><%= artwork.title %></a>
+                    </p>
+                    <p><%= artwork.author.name %></p>
                   </div>
-                </a>
-                <p class="text-muted">
-                  <a href="<%= artwork_path(artwork) %>"><%= artwork.title %></a>
-                </p>
-                <p><%= artwork.author.name %></p>
+
+            <% i += 1 %>
+            <% if i == 4 then %>
+              <% i = 0 %>
               </div>
+            <% end %>
 
-        <% i += 1 %>
-        <% if i == 4 then %>
-          <% i = 0 %>
-          </div>
-        <% end %>
+      <% end %>
 
-  <% end %>
-
-</div>
+    </div>
   </div>
 </div>
 
