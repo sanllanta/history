@@ -1,12 +1,8 @@
-<%= render 'application/services' %>
-
-<!--< %= render 'application/portfolio' %> -->
+ <%= render 'application/services' %>
 
 <%= render 'application/about'%>
 
 <%= render 'application/team'%>
-
-<!--< %= render 'application/clients'%> -->
 
 <%= render 'application/contact'%>
 
@@ -21,11 +17,10 @@
 <br>
 <br>
 
-<% content_for :template_header do %>
-    <%= render 'application/header'%>
-<% end %>
-
 <% content_for :js_application do %>
     <%= javascript_include_tag "welcome" %>
 <% end %>
 
+ <% content_for :css_application do %>
+     <%= stylesheet_link_tag "welcome" %>
+ <% end %>

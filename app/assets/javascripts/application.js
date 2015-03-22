@@ -21,6 +21,8 @@
 //= require jqBootstrapValidation.js
 //= require jquery-jvectormap-2.0.1.min
 //= require jquery-jvectormap-world-mill-en
+//= require jssor.js
+//= require jssor.slider.js
 
 // require contact_me.js
 
