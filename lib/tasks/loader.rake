@@ -282,40 +282,17 @@ namespace :loader do
     p "Personajes relato"
 
     file = File.join(Rails.root, 'app', 'assets', 'data', 'personajes_relato.csv')
-    lines = File.new(file).readlines
-    lines.each do |line|
-      values = line.strip.split(';')
-      #puts("id/n")
-      #puts(values[0])
-      #p("Nombre")
-      #puts(values[1])
-      #p("Fecha de muerte")
-      #puts(values[2])
-      #p("Fecha de beatificación")
-      #puts(values[3])
-      #p("Fecha de canonización")
-      #puts(values[4])
-      #p("Mini biografía")
-      #puts(values[5])
-      #p("Virtudes centrales")
-      #puts(values[6])
-      #p("VC Observaciones")
-      #puts(values[7])
-      #p("Fuente")
-      #puts(values[8])
-      attributes = {"name" => values[1],
-                    "biography" => values[5],
-                    "death_date" => values[2],
-                    "beatification_date" => values[3],
-                    "canonization_date" => values[4],
+    CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
+      attributes = {"name" => row['Nombre'],
+                    "biography" => row['Mini biografía'],
+                    "death_date" => row['Fecha de muerte'],
+                    "beatification_date" => row['Fecha de beatificación'],
+                    "canonization_date" => row['Fecha de canonización']
       }
-      p attributes
+
       Character.create(attributes)
-      # attributes_desc = {"description" => values[0]}
-      # attributes_symb = {"name" => values[1]}
-      # Description.create(attributes_desc)
-      # ArtworkSymbol.create(attributes_symb)
     end
+
   end
 
   desc "Load passage CSV"
