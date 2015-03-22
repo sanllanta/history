@@ -121,7 +121,6 @@ ActiveRecord::Schema.define(version: 20150311185746) do
   end
 
   create_table "descriptions", force: true do |t|
-    t.integer  "artwork_id"
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"

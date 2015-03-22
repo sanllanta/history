@@ -1,4 +1,6 @@
 namespace :loader do
+  require 'csv'
+  
   desc "carga general"
   task load_general: :environment do
     Rake::Task['loader:load_countries'].invoke
@@ -272,6 +274,15 @@ namespace :loader do
       attributes_symb = {"name" => values[1]}
       Description.create(attributes_desc)
       ArtworkSymbol.create(attributes_symb)
+    end
+  end
+
+  desc "Load passage CSV"
+  task passages_csv: :environment do
+    p "Loading Passages..."
+    file = File.join(Rails.root, 'app', 'assets', 'data', 'passages.csv')
+    CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
+      Passage.create(:name => row['Título'], :id => row['Id'])
     end
   end
 
