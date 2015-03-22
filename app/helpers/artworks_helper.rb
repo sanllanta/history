@@ -1,6 +1,8 @@
 module ArtworksHelper
   def link_to_add_description(name,f,association)
-    new_obj = ff.objects.send(association).klass.new
+    #print(f.object.send(association))
+    #new_obj = f.object.send(association).klass.new
+    new_obj = Description.new
     id = new_obj.object.object_id
     field = f.fields_for(association,new_obj,child_index:id)do |builder|
       render(association.to_s.singularize + "_fields", f:builder)

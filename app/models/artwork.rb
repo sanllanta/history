@@ -36,7 +36,6 @@ class Artwork < ActiveRecord::Base
   belongs_to :source
   belongs_to :origin
   belongs_to :donor
-  belongs_to :phylactery_billboard
   belongs_to :story_type
   belongs_to :work_art_symbol
   belongs_to :school
@@ -50,6 +49,7 @@ class Artwork < ActiveRecord::Base
   belongs_to :category_5, class_name: "Category"
 
 
+  has_many :phylactery_billboards
   has_many :iconographic_attributes
   has_many :artwork_characters
 
@@ -66,7 +66,7 @@ class Artwork < ActiveRecord::Base
   accepts_nested_attributes_for :donor, :reject_if => lambda{ |a| a[:name].blank? }, allow_destroy: true
   accepts_nested_attributes_for :origin, :reject_if => lambda{ |a| a[:name].blank? }, allow_destroy: true
   accepts_nested_attributes_for :passage, :reject_if => lambda{ |a| a[:name].blank? }, allow_destroy: true
-  accepts_nested_attributes_for :phylactery_billboard, :reject_if => lambda{ |a| a[:name].blank? }, allow_destroy: true
+  accepts_nested_attributes_for :phylactery_billboards, :reject_if => lambda{ |a| a[:name].blank? }, allow_destroy: true
   accepts_nested_attributes_for :scene, :reject_if => lambda{ |a| a[:name].blank? }, allow_destroy: true
   accepts_nested_attributes_for :place, :reject_if => lambda{ |a| a[:name].blank? }, allow_destroy: true
   accepts_nested_attributes_for :scene, :reject_if => lambda{ |a| a[:name].blank? }, allow_destroy: true
@@ -283,7 +283,11 @@ class Artwork < ActiveRecord::Base
   end
 
   def get_phylactery_billboard_name
-    phylactery_billboard && phylactery_billboard.name ? phylactery_billboard.name : "N/A"
+    phylactery_billboards && phylactery_billboards.name ? phylactery_billboards.name : "N/A"
+  end
+
+  def get_iconographic_attribute_name
+    iconographic_attributes && iconographic_attributes.name ? iconographic_attributes.name : "N/A"
   end
 
   def get_comment

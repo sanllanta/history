@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-    <!--<p class="notice"><%= notice %> </p>
-    <p class="alert"><%= alert %> </p>-->
+    <!--<p class="notice"> </p>
+    <p class="alert"> </p>-->
     <%= yield :css_application %>
     <%= render 'head'%>
 
     <body id="page-top" class="index">
-            <%= bootstrap_flash %>
+
             <!-- Page Content -->
 
             <%- if params[:controller] == 'welcome' -%>
@@ -17,11 +17,7 @@
                     <!-- You can move inline styles to css file or css block. -->
                   <div class="container">
                     <div id="slider1_container" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 1300px; height: 710px; overflow: hidden;">
-                      <div class="intro-text" style="z-index: 2">
-                        <div class="intro-heading">ARCA<sup style="font-size: 42%;vertical-align: super">&reg</sup> </div>
-                        <div class="intro-lead-in">- Cultura visual de las américas coloniales -</div>
-                        <a href="#services" class="page-scroll btn btn-xl">Archivos Visuales</a>
-                      </div>
+
                       <!-- Loading Screen -->
                       <div u="loading" style="position: absolute; top: 0px; left: 0px;">
                         <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block;
@@ -32,7 +28,8 @@
                         </div>
                       </div>
                     <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1300px; height: 710px; overflow: hidden;">
-                        <div><img u="image" src="<%= image_url 'welcome/portada.jpg' %>" />
+                        <div>
+                          <img u="image" src="<%= image_url 'welcome/portada.jpg' %>" />
                         </div>
                         <div><img u="image" src="<%= image_url 'welcome/portada.jpg' %>" />
                         </div>
@@ -41,6 +38,12 @@
                         <div><img u="image" src="<%= image_url 'welcome/portada.jpg' %>" />
                         </div>
                      </div>
+                      <sup>
+                      <div class="intro-text" style="z-index: -1">
+                        <div class="intro-heading">ARCA<sup style="font-size: 42%;vertical-align: super">&reg</sup> </div>
+                        <div class="intro-lead-in">- Cultura visual de las américas coloniales -</div>
+                        <a href="#services" class="page-scroll btn btn-xl">Archivos Visuales</a>
+                      </div></sup>
                       <!-- bullet navigator container -->
                       <div u="navigator" class="jssorb21" style="position: absolute; bottom: 26px; left: 6px;">
                         <!-- bullet navigator item prototype -->
@@ -69,14 +72,20 @@
 
 
                 <section class="contenido">
-                    <div class="container"><%= yield %></div>
+                    <div class="container">
+                      <%= bootstrap_flash %>
+                      <%= yield %>
+                    </div>
                 </section>
             <%- else -%>
                 <div id="wrapper">
                     <%= render 'application/bannerShrink' %>
                     <div class="page-wrapper">
                         <section class="contenido">
-                            <div class="container"><%= yield %></div>
+                            <div class="container">
+                              <%= bootstrap_flash %>
+                              <%= yield %>
+                            </div>
                         </section>
                     </div>
                 </div>

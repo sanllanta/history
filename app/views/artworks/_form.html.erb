@@ -79,27 +79,27 @@
       </div>
       <br>
       <div class="row">
-        <label class="control-label col-sm-3">Descriptores</label>
+        <!--<label class="control-label col-sm-3">Descriptores</label>-->
         <br>
         <div class="col-md-6">
-          <%= f.fields_for :descriptions do |fdesc| %>
-            <%= render 'descriptors_fields', ff:fdesc %>
+          <%= f.fields_for :descriptions, @artwork.descriptions.build  do |fdesc| %>
+              <%= render 'descriptors_fields', ff:fdesc %>
           <% end %>
-          <!--< % for description in Description.all %>-->
             <!--< %= check_box_tag "artwork[description_ids][]", description.id, @artwork.descriptions.include?(description) %>-->
-            <!--< %=	 description.description %>-->
+          <!--< % for description in Description.all %>-->
+          <!--< %=	 description.description %>-->
             <!--<br>-->
           <!--< % end %>-->
         </div>
       </div>
       <br>
       <!--<div class="row">-->
-        <!--<%= form_for :Descriptions do |fa|%>-->
+        <!--< %= form_for :Descriptions, @artwork.descriptions.build do |fa|%>-->
             <!--<p>-->
-              <!--<%= fa.text_field :name %>-->
-              <!--<%= submit_tag "Crear" , :name=>nil%>-->
+              <!--< %= fa.text_field :name %>-->
+              <!--< %= submit_tag "Crear" , :name=>nil%>-->
             <!--</p>-->
-        <!--<% end %>-->
+        <!--< % end %>-->
       <!--</div>-->
 
     </div>
@@ -113,6 +113,7 @@
         <%= f.collection_select :story_type_id, StoryType.all, :id, :name,  {:prompt => 'Seleccione el tipo de historia'} %>
         <%= f.collection_select :donor_id, Donor.all, :id, :name,  {:prompt => 'Seleccione el donante'} %>
         <%= f.collection_select :phylactery_billboard_id, PhylacteryBillboard.all, :id, :name,  {:prompt => 'Cartelera Filacteria'} %>
+        <%= f.collection_select :iconographic_attribute_id, IconographicAttribute.all, :id, :name,  {:prompt => 'Atributo Iconografico'}, label:"Atributo Iconografico" %>
         </div>
         <div class="col-md-6">
           <%= f.text_area :comment, :class => 'form-control' %>
@@ -120,15 +121,13 @@
 
         <br>
         <div class="row">
-          <label class="control-label col-sm-3">Símbolos</label>
-
           <div class="col-md-6">
             <!--< % for description in ArtworkSymbol.all %>-->
                 <!--< %= check_box_tag "artwork[artwork_symbol_ids][]", description.id, @artwork.artwork_symbols.include?(description) %>-->
                 <!--< %=	 description.name %>-->
                 <!--<br>-->
             <!--< % end %>-->
-            <%= f.fields_for :artwork_symbols do |fart| %>
+            <%= f.fields_for :artwork_symbols, @artwork.artwork_symbols.build  do |fart| %>
                 <%= render 'artwork_symbols_fields', ff:fart %>
             <% end %>
           </div>

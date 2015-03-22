@@ -1,3 +1,9 @@
+.container .alert
+{
+    margin-top: 40px !important;
+    margin-bottom: 0px !important;
+}
+
 @font-face {
     font-family: 'fGothamBook';
     font-weight: normal;

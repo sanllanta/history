@@ -1,7 +1,6 @@
 <fieldset>
-  <%= ff.text_area  :description %>
-
+  <%= ff.text_area :description, label: "Descriptor"  %>
   <%= ff.hidden_field :_destroy %>
   <%= link_to "Quitar descripción","#", class:"remove_fields" %>
-<!--  < %= link_to_add_description "Agregar descripción", ff, :descriptions %>-->
+  <!--< %= link_to_add_description "Agregar descripción", ff , :descriptions %>-->
 </fieldset>

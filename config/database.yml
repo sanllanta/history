@@ -15,7 +15,7 @@
 # gem 'pg'
 #
 default: &default
-  password: Kelvin09
+  password: kelvin
   username: postgres
   #password: 12345678
   #username: dbhistoria

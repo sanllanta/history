@@ -398,7 +398,7 @@ class ArtworksController < ApplicationController
     if params[:action] == "new"
       # @artwork.descriptions.new
       # @artwork.artwork_symbols.new
-      # @artwork.iconographic_attributes.new
+
       # @artwork.engravings.new
       # #@artwork.author = Author.new
       # @artwork.donor = Donor.new
@@ -506,18 +506,18 @@ class ArtworksController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def artwork_params
     params.require(:artwork).permit(:passage_id, :color,  :place_id, :scene_id, :source_id, :origin_id, :donor_id, :category_1_id, :category_2_id, :category_3_id, :category_4_id, :category_5_id,
-                                    :phylactery_billboard_id, :story_type_id, :school_id,:author_id, :title, :activity, :biographic_data, :signed, :synthesis,
+                                    :phylactery_billboard_id,:iconographic_attribute_id, :story_type_id, :school_id,:author_id, :title, :activity, :biographic_data, :signed, :synthesis,
                                     :biographic_comment, :annotation, :avatar, :sub_image, :comment,
                                     :latitude_origin,:latitude_current,:longitude_origin,:longitude_current, :type_id,
                                     descriptions_attributes:[:id,:description,:_destroy],
                                     author_attributes:[:id,:name,:_destroy],
-                                    iconographic_attributes_attributes:[:id,:name,:_destroy],
+                                    iconographic_attribute_attributes:[:id,:name,:_destroy],
+                                    phylactery_billboard_attributes:[:id,:name,:_destroy],
                                     artwork_symbols_attributes:[:id,:name,:_destroy],
                                     engravings_attributes:[:id,:name,:_destroy],
                                     donor_attributes:[:id,:name,:_destroy],
                                     origin_attributes:[:id,:name,:_destroy],
                                     passage_attributes:[:id,:name,:_destroy],
-                                    phylactery_billboard_attributes:[:id,:name,:_destroy],
                                     scene_attributes:[:id,:name,:_destroy],
                                     place_attributes:[:id,:name,:_destroy],
                                     scene_attributes:[:id,:name,:_destroy],
@@ -609,6 +609,11 @@ class ArtworksController < ApplicationController
     if params_hash[:delete_donor]
       custom_artwork_params.delete :donor_id
       @artwork.donor = nil
+    end
+
+    if params_hash[:delete_iconographic_attribute]
+      custom_artwork_params.delete :iconographic_attribute_id
+      @artwork.iconographic_attribute = nil
     end
 
     if params_hash[:delete_phylactery_billboard]
