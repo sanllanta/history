@@ -327,4 +327,83 @@ namespace :loader do
     end
   end
 
+  desc "Obras base 1"
+  task load_obras_base1: :environment do
+    p "Loading artworks..."
+    file = File.join(Rails.root, 'app', 'assets', 'data', 'obras_base_1.csv')
+    CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
+
+      if !/\A\d+\z/.match(row['Id'])
+        break
+      else
+          #Id;
+          #Escenario;
+          scene = Scene.find_or_create_by(:name=>row['Escenario'])
+          #TipoRelato;
+          tipo_relato = StoryType.find_or_create_by(:name=>row['TipoRelato'])
+          #NombreDonante;
+          donante = Donor.find_or_create_by(:name=>row['NombreDonante'])
+          #Cartela;
+          cartela = PhylacteryBillboard.find_or_create_by(:name=>row['Cartela'])
+          #Simbolos;
+          simbolos = ArtworkSymbol.find_or_create_by(:name=>row['Simbolos'])
+          #Id Imagen;
+          #Autor;
+          autor = Author.find_or_create_by(:name=>row['Autor'])
+          #Titulo;
+          titulo = row['Titulo']
+          #Fecha;
+          #ComentariosBiblio;
+          comentariosBiblio = row['ComentariosBiblio']
+          #Técnica;
+          tecnica = Type.find_or_create_by(:name=>row['Técnica'])
+          #ProcedenciaIm;
+          origen = Origin.find_or_create_by(:name=>row['ProcedenciaIm'])
+          #Fuenteimagen;
+          fuente = Source.find_or_create_by(:name=>row['Fuenteimagen'])
+          # Ciudad;
+          ciudad = Place.find_or_create_by(:name=>row['Ciudad'])
+          # Anotaciones;
+          anotaciones = row['Anotaciones']
+          # Id Relato - Personaje;
+          if row['Id Relato - Personaje']
+            p row['Id Relato - Personaje']
+            personaje = Character.find(row['Id Relato - Personaje'])
+            p personaje.name
+          end
+          # Id Pasaje;
+          # Atributos iconográficos;
+          atributos = IconographicAttribute.find_or_create_by(:name=>row['Atributos iconográficos'])
+          # Personajes excluidos;
+          atributos = Character.find_or_create_by(:name=>row['Personajes excluidos'])
+          # Sintesis
+          sintesis = row['Sintesis']
+          #p scene.id
+          artwork = Artwork.create(
+              #:passage_id=>
+              :author_id=>autor.id,
+              :place_id=>ciudad.id,
+              :scene_id=>scene.id,
+              :type_id=>tecnica.id,
+              :source_id=>fuente.id,
+              :origin_id=>origen.id,
+              :donor_id=>donante.id,
+              :iconographic_attribute_id=>atributos.id,
+              :phylactery_billboard_id=>cartela.id,
+              :story_type_id=>tipo_relato.id,
+              :title=>titulo,
+              :annotation=>anotaciones,
+              :synthesis=>sintesis,
+              :biographic_comment=>comentariosBiblio
+              )
+            if simbolos
+              artwork.artwork_symbols <<  simbolos
+            end
+            if personaje
+              artwork.characters << personaje
+            end
+      end
+    end
+  end
+
 end

@@ -51,7 +51,9 @@ class Artwork < ActiveRecord::Base
 
   has_many :phylactery_billboards
   has_many :iconographic_attributes
+
   has_many :artwork_characters
+  has_many :characters, :through => :artwork_characters
 
 
   has_and_belongs_to_many :artwork_symbols
