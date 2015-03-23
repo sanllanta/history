@@ -24,6 +24,9 @@ ActiveRecord::Schema.define(version: 20150311185746) do
     t.datetime "updated_at"
   end
 
+  add_index "artwork_characters", ["artwork_id"], name: "index_artwork_characters_on_artwork_id", using: :btree
+  add_index "artwork_characters", ["character_id"], name: "index_artwork_characters_on_character_id", using: :btree
+
   create_table "artwork_symbols", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -140,7 +143,7 @@ ActiveRecord::Schema.define(version: 20150311185746) do
   end
 
   create_table "iconographic_attributes", force: true do |t|
-    t.string   "name"
+    t.text     "name"
     t.integer  "artwork_id"
     t.datetime "created_at"
     t.datetime "updated_at"
