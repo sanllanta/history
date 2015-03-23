@@ -318,7 +318,12 @@ namespace :loader do
     p "Loading Passages..."
     file = File.join(Rails.root, 'app', 'assets', 'data', 'passages.csv')
     CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
-      Passage.create(:name => row['Título'], :id => row['Id'])
+      Passage.create(:name => row['Título'],
+        :id => row['Id'],
+        :text => row['Pasaje'],
+        :history_type => row['Tipo de historia'],
+        :source => row['Fuente']
+        )
     end
   end
 

@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20150311185746) do
     t.integer  "source_id"
     t.integer  "origin_id"
     t.integer  "donor_id"
+    t.integer  "iconographic_attribute_id"
     t.integer  "phylactery_billboard_id"
     t.integer  "story_type_id"
     t.integer  "school_id"
@@ -61,10 +62,10 @@ ActiveRecord::Schema.define(version: 20150311185746) do
     t.text     "annotation"
     t.text     "sub_image"
     t.text     "comment"
-    t.decimal  "latitude_origin",         precision: 10, scale: 6, default: 0.0
-    t.decimal  "latitude_current",        precision: 10, scale: 6, default: 0.0
-    t.decimal  "longitude_origin",        precision: 10, scale: 6, default: 0.0
-    t.decimal  "longitude_current",       precision: 10, scale: 6, default: 0.0
+    t.decimal  "latitude_origin",           precision: 10, scale: 6, default: 0.0
+    t.decimal  "latitude_current",          precision: 10, scale: 6, default: 0.0
+    t.decimal  "longitude_origin",          precision: 10, scale: 6, default: 0.0
+    t.decimal  "longitude_current",         precision: 10, scale: 6, default: 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "avatar_file_name"
@@ -153,12 +154,17 @@ ActiveRecord::Schema.define(version: 20150311185746) do
 
   create_table "passages", force: true do |t|
     t.string   "name"
+    t.text     "text"
+    t.string   "history_type"
+    t.string   "source"
+    t.integer  "character_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "phylactery_billboards", force: true do |t|
     t.text     "name"
+    t.integer  "artwork_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
