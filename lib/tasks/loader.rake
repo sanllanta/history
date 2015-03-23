@@ -283,11 +283,29 @@ namespace :loader do
 
     file = File.join(Rails.root, 'app', 'assets', 'data', 'personajes_relato.csv')
     CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
-      attributes = {"name" => row['Nombre'],
+      if not row['Fecha de beatificación'].nil?
+        beat_date = row['Fecha de beatificación']+"-01-01"
+      else
+        beat_date=nil
+      end
+      if not row['Fecha de muerte'].nil?
+        death_date = row['Fecha de muerte']+"-01-01"
+      else
+        beat_date=nil
+      end
+
+      if not row['Fecha de canonización'].nil?
+        cano_date = row['Fecha de canonización']+"-01-01"
+      else
+        cano_date=nil
+      end
+
+      attributes = {"id" => row['Id'],
+                    "name" => row['Nombre'],
                     "biography" => row['Mini biografía'],
-                    "death_date" => row['Fecha de muerte'],
-                    "beatification_date" => row['Fecha de beatificación'],
-                    "canonization_date" => row['Fecha de canonización']
+                    "death_date" => death_date,
+                    "beatification_date" => beat_date,
+                    "canonization_date" => cano_date
       }
 
       Character.create(attributes)
