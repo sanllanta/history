@@ -3,17 +3,21 @@ namespace :loader do
   
   desc "carga general"
   task load_general: :environment do
+    p "carga general"
     Rake::Task['loader:load_countries'].invoke
+    Rake::Task['loader:load_categories1'].invoke
     Rake::Task['loader:load_autores'].invoke
     Rake::Task['loader:load_tecnica'].invoke
     Rake::Task['loader:load_fuente'].invoke
-    Rake::Task['loader:load_categories1'].invoke
     Rake::Task['loader:load_desc_symbol'].invoke
-    Rake::Task['loader:load_obras'].invoke
+    Rake::Task['loader:load_personajes_relato'].invoke
+    Rake::Task['loader:passages_csv'].invoke
+    Rake::Task['loader:load_obras_base1'].invoke
   end
 
   desc "Loads the countries listed in countries.csv into the places table"
   task load_countries: :environment do
+    p "Loads the countries listed in countries.csv into the places table"
   	file = File.join(Rails.root, 'app', 'assets', 'data', 'countries.csv')
   	lines = File.new(file).readlines
   	lines.each do |line|
@@ -33,7 +37,6 @@ namespace :loader do
 
 		  values = line.strip.split(',')
 		  attributes = {"name" => values[0]}
-		  p values[0]
       Category.create(attributes)
     end
     Rake::Task['loader:load_categories12'].invoke
@@ -55,8 +58,6 @@ namespace :loader do
         a = Category.new(attributes)
         a.parent = base
         a.save
-      elsif
-        p values[0]
       end
     end
     Rake::Task['loader:load_categories23'].invoke
@@ -78,8 +79,6 @@ namespace :loader do
         a = Category.new(attributes)
         a.parent = base
         a.save
-      elsif
-        p values[0]
       end
     end
     Rake::Task['loader:load_categories34'].invoke
@@ -101,8 +100,6 @@ namespace :loader do
         a = Category.new(attributes)
         a.parent = base
         a.save
-      elsif
-        p values[0]
       end
     end
     Rake::Task['loader:load_categories45'].invoke
@@ -124,12 +121,9 @@ namespace :loader do
         a = Category.new(attributes)
         a.parent = base
         a.save
-      elsif
-        p values[0]
       end
 		end
   end
-
 
   desc "Autores"
   task load_autores: :environment do
@@ -171,7 +165,6 @@ namespace :loader do
     end
 
   end
-
 
   desc "Obras ficticias"
   task load_obras: :environment do
@@ -310,7 +303,12 @@ namespace :loader do
 
       Character.create(attributes)
     end
-
+    # new_max = maximum(primary_key) || 0
+    # comadno = "SELECT setval('company_id_seq', (SELECT max(id) FROM company));"
+    # ActiveRecord::Base.connection.execute(comadno)
+    ActiveRecord::Base.connection.tables.each do |t|
+      ActiveRecord::Base.connection.reset_pk_sequence!(t)
+    end
   end
 
   desc "Load passage CSV"
@@ -332,11 +330,10 @@ namespace :loader do
     p "Loading artworks..."
     file = File.join(Rails.root, 'app', 'assets', 'data', 'obras_base_1.csv')
     CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
-
-      if !/\A\d+\z/.match(row['Id'])
-        break
-      else
-          #Id;
+      if row.length== 21
+        if !/\A\d+\z/.match(row['Id'])
+          break
+        else
           #Escenario;
           scene = Scene.find_or_create_by(:name=>row['Escenario'])
           #TipoRelato;
@@ -346,7 +343,15 @@ namespace :loader do
           #Cartela;
           cartela = PhylacteryBillboard.find_or_create_by(:name=>row['Cartela'])
           #Simbolos;
-          simbolos = ArtworkSymbol.find_or_create_by(:name=>row['Simbolos'])
+          p row['Id']
+          if row['Simbolos']
+            p row['Simbolos']
+            s = ArtworkSymbol.where("name LIKE :prefix", prefix: "%#{row['Simbolos']}%")[0]
+            p s
+            simbolos = ArtworkSymbol.find_or_create_by(:name=>row['Simbolos'])
+          else
+            simbolos = nil
+          end
           #Id Imagen;
           #Autor;
           autor = Author.find_or_create_by(:name=>row['Autor'])
@@ -367,15 +372,26 @@ namespace :loader do
           anotaciones = row['Anotaciones']
           # Id Relato - Personaje;
           if row['Id Relato - Personaje']
-            p row['Id Relato - Personaje']
-            personaje = Character.find(row['Id Relato - Personaje'])
-            p personaje.name
+            p "id relato"
+            begin
+              id = row['Id Relato - Personaje'].to_i
+              personaje = Character.find_by(:id=>id)
+              p row['Id Relato - Personaje']
+            rescue
+              personaje = nil
+              p row['Id Relato - Personaje']
+              p 'Error: Id Relato - Personaje'
+            end
+
           end
           # Id Pasaje;
           # Atributos iconográficos;
           atributos = IconographicAttribute.find_or_create_by(:name=>row['Atributos iconográficos'])
           # Personajes excluidos;
-          atributos = Character.find_or_create_by(:name=>row['Personajes excluidos'])
+          p "personaje excluido"
+          p row['Personajes excluidos']
+          personaje_excluido = Character.find_or_create_by(:name=>row['Personajes excluidos'])
+          p row['Personajes excluidos']
           # Sintesis
           sintesis = row['Sintesis']
           #p scene.id
@@ -396,12 +412,25 @@ namespace :loader do
               :synthesis=>sintesis,
               :biographic_comment=>comentariosBiblio
               )
-            if simbolos
-              artwork.artwork_symbols <<  simbolos
-            end
-            if personaje
-              artwork.characters << personaje
-            end
+          artwork.save!
+          if simbolos
+            artwork.artwork_symbols << simbolos
+          end
+          if personaje
+            artwork.characters << personaje
+            artwork.characters << personaje_excluido
+          end
+          artwork.save!
+
+        end
+      else
+        p "tamaño"
+        p row.length
+        p "id"
+        p row['Id']
+        p "id relato"
+        p row['Id Relato - Personaje']
+        break
       end
     end
   end

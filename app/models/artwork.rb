@@ -1,9 +1,9 @@
 class Artwork < ActiveRecord::Base
 
-  validates_presence_of :title, :message => "Tiene que ingresar un titulo"
-  validates_presence_of :category_1, :message => "Tiene que ingresar una categoria"
-  validates_presence_of :author, :message => "Tiene que ingresar un autor"
-  validates_presence_of :place, :message => "Tiene que ingresar un lugar"
+  #validates_presence_of :title, :message => "Tiene que ingresar un titulo"
+  #validates_presence_of :category_1, :message => "Tiene que ingresar una categoria"
+  #validates_presence_of :author, :message => "Tiene que ingresar un autor"
+  #validates_presence_of :place, :message => "Tiene que ingresar un lugar"
 
 
   has_attached_file :avatar,

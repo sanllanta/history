@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20150311185746) do
   add_index "artwork_characters", ["character_id"], name: "index_artwork_characters_on_character_id", using: :btree
 
   create_table "artwork_symbols", force: true do |t|
-    t.string   "name"
+    t.text     "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
