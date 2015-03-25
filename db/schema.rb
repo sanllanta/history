@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150311185746) do
+ActiveRecord::Schema.define(version: 20150325215133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,12 +45,13 @@ ActiveRecord::Schema.define(version: 20150311185746) do
     t.integer  "scene_id"
     t.integer  "type_id"
     t.integer  "source_id"
-    t.integer  "origin_id"
     t.integer  "donor_id"
     t.integer  "iconographic_attribute_id"
     t.integer  "phylactery_billboard_id"
     t.integer  "story_type_id"
     t.integer  "school_id"
+    t.integer  "origin_city_id"
+    t.integer  "actual_city_id"
     t.integer  "category_1_id"
     t.integer  "category_2_id"
     t.integer  "category_3_id"
@@ -124,6 +125,12 @@ ActiveRecord::Schema.define(version: 20150311185746) do
     t.datetime "updated_at"
   end
 
+  create_table "cities", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "descriptions", force: true do |t|
     t.string   "description"
     t.datetime "created_at"
@@ -145,12 +152,6 @@ ActiveRecord::Schema.define(version: 20150311185746) do
   create_table "iconographic_attributes", force: true do |t|
     t.text     "name"
     t.integer  "artwork_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "origins", force: true do |t|
-    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

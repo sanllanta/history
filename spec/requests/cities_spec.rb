@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "Origins", :type => :request do
-  describe "GET /origins" do
+RSpec.describe "Cities", :type => :request do
+  describe "GET /cities" do
     it "works! (now write some real specs)" do
-      get origins_path
+      get cities_path
       expect(response.status).to be(200)
     end
   end

@@ -7,13 +7,17 @@ class CreateArtworks < ActiveRecord::Migration
       t.belongs_to :scene
       t.belongs_to :type
       t.belongs_to :source
-      t.belongs_to :origin
       t.belongs_to :donor
       t.belongs_to :iconographic_attribute
       t.belongs_to :phylactery_billboard
       t.belongs_to :story_type
       t.belongs_to :school
       #t.belongs_to :work_art_symbol
+
+      #origin and actual cities
+      t.belongs_to :origin_city, class_name: "City"
+      t.belongs_to :actual_city, class_name: "City"
+
 
       #Different categories
       t.belongs_to :category_1, class_name: "Category"

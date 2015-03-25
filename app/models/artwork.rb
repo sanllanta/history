@@ -34,11 +34,14 @@ class Artwork < ActiveRecord::Base
   belongs_to :scene
   belongs_to :type
   belongs_to :source
-  belongs_to :origin
   belongs_to :donor
   belongs_to :story_type
   belongs_to :work_art_symbol
   belongs_to :school
+
+  #origin and actual cities
+  belongs_to :origin_city, class_name: "City"
+  belongs_to :actual_city, class_name: "City"
 
 
   #Different categories
@@ -66,7 +69,6 @@ class Artwork < ActiveRecord::Base
   accepts_nested_attributes_for :artwork_symbols, :reject_if => lambda{ |a| a[:name].blank? }, allow_destroy: true
   accepts_nested_attributes_for :engravings, :reject_if => lambda{ |a| a[:name].blank? }, allow_destroy: true
   accepts_nested_attributes_for :donor, :reject_if => lambda{ |a| a[:name].blank? }, allow_destroy: true
-  accepts_nested_attributes_for :origin, :reject_if => lambda{ |a| a[:name].blank? }, allow_destroy: true
   accepts_nested_attributes_for :passage, :reject_if => lambda{ |a| a[:name].blank? }, allow_destroy: true
   accepts_nested_attributes_for :phylactery_billboards, :reject_if => lambda{ |a| a[:name].blank? }, allow_destroy: true
   accepts_nested_attributes_for :scene, :reject_if => lambda{ |a| a[:name].blank? }, allow_destroy: true
@@ -258,10 +260,6 @@ class Artwork < ActiveRecord::Base
 
   def get_school_name
     school && school.name ? school.name : "N/A"
-  end
-
-  def get_origin_name
-    origin && origin.name ? origin.name : "N/A"
   end
 
   def get_synthesis

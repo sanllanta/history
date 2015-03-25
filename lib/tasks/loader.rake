@@ -373,7 +373,7 @@ namespace :loader do
           #Técnica;
           tecnica = Type.find_or_create_by(:name=>row['Técnica'])
           #ProcedenciaIm;
-          origen = Origin.find_or_create_by(:name=>row['ProcedenciaIm'])
+          #origen = Origin.find_or_create_by(:name=>row['ProcedenciaIm'])
           #Fuenteimagen;
           fuente = Source.find_or_create_by(:name=>row['Fuenteimagen'])
           # Ciudad;
@@ -412,7 +412,6 @@ namespace :loader do
               :scene_id=>scene.id,
               :type_id=>tecnica.id,
               :source_id=>fuente.id,
-              :origin_id=>origen.id,
               :donor_id=>donante.id,
               :iconographic_attribute_id=>atributos.id,
               :phylactery_billboard_id=>cartela.id,

@@ -65,7 +65,7 @@
         </div>
         <div class="col-md-6">
           <%= f.collection_select :school_id, School.all, :id, :name,  {:prompt => 'Seleccione la escuela'} %>
-          <%= f.collection_select :origin_id, Origin.all, :id, :name,  {:prompt => 'Seleccione el origen'} %>
+          <%= f.collection_select :origin_city_id, City.all, :id, :name,  {:prompt => 'Seleccione la ciudad de origen'} %>
         </div>
       </div>
       <br>

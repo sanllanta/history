@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :cities
+
   devise_for :users
 
   authenticate :user do
@@ -26,8 +28,6 @@ Rails.application.routes.draw do
     resources :donors
 
     resources :scenes
-
-    resources :origins
 
     resources :sources
 
