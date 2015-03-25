@@ -1,6 +1,26 @@
 namespace :loader do
   require 'csv'
-  
+
+  desc "carga general"
+  task load_categorias: :environment do
+    p "carga general"
+    Rake::Task['loader:load_categories1'].invoke
+  end
+
+  desc "carga general"
+  task load_general_test: :environment do
+    p "carga general"
+    Rake::Task['loader:load_countries'].invoke
+    Rake::Task['loader:load_categories1'].invoke
+    Rake::Task['loader:load_autores'].invoke
+    Rake::Task['loader:load_tecnica'].invoke
+    Rake::Task['loader:load_fuente'].invoke
+    Rake::Task['loader:load_desc_symbol'].invoke
+    Rake::Task['loader:load_personajes_relato'].invoke
+    Rake::Task['loader:passages_csv'].invoke
+    Rake::Task['loader:load_obras'].invoke
+  end
+
   desc "carga general"
   task load_general: :environment do
     p "carga general"
@@ -31,13 +51,12 @@ namespace :loader do
   desc "Loads the category level 0 listed in cate1.csv into the Category table"
   task load_categories1: :environment do
   	p "cate1"
-    file = File.join(Rails.root, 'app', 'assets', 'data', 'cate1.csv')
-  	lines = File.new(file).readlines
-  	lines.each do |line|
-
-		  values = line.strip.split(',')
-		  attributes = {"name" => values[0]}
-      Category.create(attributes)
+    file = File.join(Rails.root, 'app', 'assets', 'data', 'c1.csv')
+    CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
+      if not row['Categorías 1'].nil?
+		    attributes = {"name" => row['Categorías 1']}
+        Category.create(attributes)
+      end
     end
     Rake::Task['loader:load_categories12'].invoke
 
@@ -46,15 +65,11 @@ namespace :loader do
   desc "Loads the category level 0 listed in cate1.csv into the Category table"
   task load_categories12: :environment do
     p "cate12"
-
-    file = File.join(Rails.root, 'app', 'assets', 'data', 'cate1-2.csv')
-  	lines = File.new(file).readlines
-  	lines.each do |line|
-		  values = line.strip.split(',')
-
-      base = Category.find_by_name(values[0])
+    file = File.join(Rails.root, 'app', 'assets', 'data', 'c1-2.csv')
+    CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
+      base = Category.find_by_name(row['Categoría 1'])
       if not base.nil?
-		    attributes = {"name" => values[1]}
+		    attributes = {"name" => row['Categorías 2']}
         a = Category.new(attributes)
         a.parent = base
         a.save
@@ -68,14 +83,12 @@ namespace :loader do
   task load_categories23: :environment do
     p "cate23"
 
-    file = File.join(Rails.root, 'app', 'assets', 'data', 'cate2-3.csv')
-  	lines = File.new(file).readlines
-  	lines.each do |line|
-		  values = line.strip.split(',')
+    file = File.join(Rails.root, 'app', 'assets', 'data', 'c2-3.csv')
+    CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
 
-      base = Category.find_by_name(values[0])
+      base = Category.find_by_name(row['Categoría 2'])
       if not base.nil?
-		    attributes = {"name" => values[1]}
+		    attributes = {"name" => row['Categoría 3']}
         a = Category.new(attributes)
         a.parent = base
         a.save
@@ -89,14 +102,12 @@ namespace :loader do
   task load_categories34: :environment do
     p "cate34"
 
-    file = File.join(Rails.root, 'app', 'assets', 'data', 'cate3-4.csv')
-  	lines = File.new(file).readlines
-  	lines.each do |line|
-		  values = line.strip.split(',')
+    file = File.join(Rails.root, 'app', 'assets', 'data', 'c3-4.csv')
+    CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
 
-      base = Category.find_by_name(values[0])
+      base = Category.find_by_name(row['Categoría 3'])
       if not base.nil?
-		    attributes = {"name" => values[1]}
+		    attributes = {"name" => row['Categoría 4']}
         a = Category.new(attributes)
         a.parent = base
         a.save
@@ -110,14 +121,12 @@ namespace :loader do
   task load_categories45: :environment do
     p "cate45"
 
-    file = File.join(Rails.root, 'app', 'assets', 'data', 'cate4-5.csv')
-  	lines = File.new(file).readlines
-  	lines.each do |line|
-		  values = line.strip.split(',')
+    file = File.join(Rails.root, 'app', 'assets', 'data', 'c4-5.csv')
+    CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
 
-      base = Category.find_by_name(values[0])
+      base = Category.find_by_name(row['Categoría 4'])
       if not base.nil?
-		    attributes = {"name" => values[1]}
+		    attributes = {"name" => row['Categoría 5']}
         a = Category.new(attributes)
         a.parent = base
         a.save
@@ -328,7 +337,8 @@ namespace :loader do
   desc "Obras base 1"
   task load_obras_base1: :environment do
     p "Loading artworks..."
-    file = File.join(Rails.root, 'app', 'assets', 'data', 'obras_base_1.csv')
+    #file = File.join(Rails.root, 'app', 'assets', 'data', 'obras_base_1.csv')
+    file = File.join(Rails.root, 'app', 'assets', 'data', 'export.csv')
     CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
       if row.length== 21
         if !/\A\d+\z/.match(row['Id'])
