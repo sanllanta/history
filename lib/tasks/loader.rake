@@ -95,7 +95,6 @@ namespace :loader do
       end
     end
     Rake::Task['loader:load_categories34'].invoke
-
   end
 
   desc "Loads the category level 0 listed in cate1.csv into the Category table"
@@ -277,7 +276,7 @@ namespace :loader do
       Description.create(attributes_desc)
       ArtworkSymbol.create(attributes_symb)
     end
-    end
+  end
 
   desc "Personajes Relato"
   task load_personajes_relato: :environment do
@@ -339,11 +338,19 @@ namespace :loader do
     p "Loading artworks..."
     #file = File.join(Rails.root, 'app', 'assets', 'data', 'obras_base_1.csv')
     file = File.join(Rails.root, 'app', 'assets', 'data', 'export.csv')
+    i = 0
     CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
+      i = i+1
+
+      if i== 100
+        break
+      end
+
       if row.length== 21
         if !/\A\d+\z/.match(row['Id'])
           break
         else
+
           #Escenario;
           scene = Scene.find_or_create_by(:name=>row['Escenario'])
           #TipoRelato;
@@ -407,6 +414,7 @@ namespace :loader do
           #p scene.id
           artwork = Artwork.create(
               #:passage_id=>
+              :avatar =>File.open('/home/kelvin/Pictures/copy of mario.jpg', 'rb'),
               :author_id=>autor.id,
               #:place_id=>ciudad.id,
               :scene_id=>scene.id,
