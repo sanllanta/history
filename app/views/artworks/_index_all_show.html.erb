@@ -122,9 +122,9 @@
                 <div id="collapseClasificacionLugar" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingClasificacionLugar">
                   <div class="panel-body">
                     <ul class="list-unstyled">
-                      <% @places.values.each  do |objeto| %>
+                      <% @countries.values.each  do |objeto| %>
                           <li>
-                            <%= link_to  "#{objeto.name}" ,artworks_path(:params => params.merge(:place => objeto.id))  %>
+                            <%= link_to  "#{objeto.name}" ,artworks_path(:params => params.merge(:country => objeto.id))  %>
                           </li>
                       <% end %>
                     </ul>

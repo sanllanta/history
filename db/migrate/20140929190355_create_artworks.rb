@@ -3,7 +3,6 @@ class CreateArtworks < ActiveRecord::Migration
     create_table :artworks do |t|
       t.belongs_to :passage
       t.belongs_to :author
-      t.belongs_to :place
       t.belongs_to :scene
       t.belongs_to :type
       t.belongs_to :source
@@ -17,6 +16,10 @@ class CreateArtworks < ActiveRecord::Migration
       #origin and actual cities
       t.belongs_to :origin_city, class_name: "City"
       t.belongs_to :actual_city, class_name: "City"
+
+      #origin and actual cities
+      t.belongs_to :origin_country, class_name: "Country"
+      t.belongs_to :actual_country, class_name: "Country"
 
 
       #Different categories

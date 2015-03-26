@@ -33,7 +33,7 @@ Rails.application.routes.draw do
 
     resources :types
 
-    resources :places
+    resources :countries
 
     resources :authors
 

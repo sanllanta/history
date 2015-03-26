@@ -4,7 +4,7 @@
   <div class="col-md-3"></div>
   <div class="col-md-9">
     <h1 class="uppercase">
-      Obras <small>Region: <%= Place.where(:name =>params[:region_show]).first.name %></small>
+      Obras <small>Region: <%= Country.where(:name =>params[:region_show]).first.name %></small>
     </h1>
   </div>
 </div>
@@ -122,9 +122,9 @@
                     <div id="collapseClasificacionLugar" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingClasificacionLugar">
                       <div class="panel-body">
                         <ul class="list-unstyled">
-                          <% @places.values.each  do |objeto| %>
+                          <% @countries.values.each  do |objeto| %>
                               <li>
-                                <%= link_to  "#{objeto.name}" ,artworks_path(:params => params.merge(:place => objeto.id))  %>
+                                <%= link_to  "#{objeto.name}" ,artworks_path(:params => params.merge(:country => objeto.id))  %>
                               </li>
                           <% end %>
                         </ul>

@@ -35,15 +35,15 @@ namespace :loader do
     Rake::Task['loader:load_obras_base1'].invoke
   end
 
-  desc "Loads the countries listed in countries.csv into the places table"
+  desc "Loads the countries listed in countries.csv into the countries table"
   task load_countries: :environment do
-    p "Loads the countries listed in countries.csv into the places table"
+    p "Loads the countries listed in countries.csv into the cpuntries table"
   	file = File.join(Rails.root, 'app', 'assets', 'data', 'countries.csv')
   	lines = File.new(file).readlines
   	lines.each do |line|
 		  values = line.strip.split(',')
 		  attributes = {"name" => values[2],"code" => values[1]}
-		  Place.create(attributes)
+		  Country.create(attributes)
 
 		end
   end
@@ -204,11 +204,11 @@ namespace :loader do
       a = Artwork.new(attributes)
       a.author = autor
 
-      pla = Place.find(i)
+      pla = Country.find(i)
       if pla.nil?
-        pla = Place.first
+        pla = Country.first
       end
-      a.place = pla
+      a.origin_country = pla
 
       cat = Category.find(i)
       if cat.nil?
@@ -377,7 +377,7 @@ namespace :loader do
           #Fuenteimagen;
           fuente = Source.find_or_create_by(:name=>row['Fuenteimagen'])
           # Ciudad;
-          ciudad = Place.find_or_create_by(:name=>row['Ciudad'])
+          #ciudad = Place.find_or_create_by(:name=>row['Ciudad'])
           # Anotaciones;
           anotaciones = row['Anotaciones']
           # Id Relato - Personaje;
@@ -408,7 +408,7 @@ namespace :loader do
           artwork = Artwork.create(
               #:passage_id=>
               :author_id=>autor.id,
-              :place_id=>ciudad.id,
+              #:place_id=>ciudad.id,
               :scene_id=>scene.id,
               :type_id=>tecnica.id,
               :source_id=>fuente.id,

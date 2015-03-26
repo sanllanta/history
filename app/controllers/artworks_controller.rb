@@ -22,9 +22,9 @@ class ArtworksController < ApplicationController
         artworksTemp << artworkt
       end
 
-      b_place = Artwork.b_place(params[:search])
+      b_country = Artwork.b_country(params[:search])
 
-      b_place.each do |artworkt|
+      b_country.each do |artworkt|
         artworksTemp << artworkt
       end
 
@@ -100,8 +100,8 @@ class ArtworksController < ApplicationController
       elsif not params[:author_show].nil?
         artworksTemp = Artwork.where(author_id: params[:author_show])
       elsif not params[:region_show].nil?
-        place=Place.where(:name =>params[:region_show])
-        artworksTemp = Artwork.where(place_id: place)
+        country=Country.where(:name =>params[:region_show])
+        artworksTemp = Artwork.where(country_id: country)
       else
 
         if params[:search].to_s.empty?
@@ -109,7 +109,7 @@ class ArtworksController < ApplicationController
         end
       end
 
-      if params[:authors].nil? and not params[:category].nil? and params[:place].nil?
+      if params[:authors].nil? and not params[:category].nil? and params[:country].nil?
         artworksTemp = artworksTemp.search_category(params[:category])
 
         @authors = Hash.new
@@ -132,13 +132,13 @@ class ArtworksController < ApplicationController
           end
         end
 
-        @places = Hash.new
+        @countries = Hash.new
 
         artworksTemp.each do |artwork|
-          place = artwork.place
-          if place != nil
-            if !@places[place]
-              @places[place] = place
+          country = artwork.origin_country
+          if country != nil
+            if !@countries[country]
+              @countries[country] = country
             end
           end
         end
@@ -150,9 +150,9 @@ class ArtworksController < ApplicationController
           pager.replace artworksTemp
         end
 
-      elsif params[:authors].nil? and params[:category].nil? and not params[:place].nil?
+      elsif params[:authors].nil? and params[:category].nil? and not params[:country].nil?
         p "2"
-        artworksTemp = artworksTemp.search_place(params[:place])
+        artworksTemp = artworksTemp.search_country(params[:country])
 
         @authors = Hash.new
         artworksTemp.each do |artwork|
@@ -174,12 +174,12 @@ class ArtworksController < ApplicationController
           end
         end
 
-        @places = Hash.new
+        @countries = Hash.new
         artworksTemp.each do |artwork|
-          place = artwork.place
-          if place != nil
-            if !@places[place]
-              @places[place] = place
+          country = artwork.origin_country
+          if country != nil
+            if !@countries[country]
+              @countries[country] = country
             end
           end
         end
@@ -190,7 +190,7 @@ class ArtworksController < ApplicationController
         @artworks = WillPaginate::Collection.create(page, 20, artworksTemp.length) do |pager|
           pager.replace artworksTemp
         end
-      elsif not params[:authors].nil? and params[:category].nil? and params[:place].nil?
+      elsif not params[:authors].nil? and params[:category].nil? and params[:country].nil?
 
         artworksTemp = artworksTemp.search_author(params[:authors])
 
@@ -214,13 +214,13 @@ class ArtworksController < ApplicationController
           end
         end
 
-        @places = Hash.new
+        @countries = Hash.new
 
         artworksTemp.each do |artwork|
-          place = artwork.place
-          if place != nil
-            if !@places[place]
-              @places[place] = place
+          country = artwork.origin_country
+          if country != nil
+            if !@countries[country]
+              @countries[country] = country
             end
           end
         end
@@ -232,52 +232,9 @@ class ArtworksController < ApplicationController
           pager.replace artworksTemp
         end
 
-      elsif not params[:authors].nil? and not params[:category].nil? and params[:place].nil?
-        artworksTemp = artworksTemp.search_author(params[:authors])
-        artworksTemp = artworksTemp.search_category(params[:category])
-
-        @authors = Hash.new
-        artworksTemp.each do |artwork|
-          author = artwork.author
-          if author != nil
-            if !@authors[author]
-              @authors[author] = author
-            end
-          end
-        end
-
-        @clasifications = Hash.new
-        artworksTemp.each do |artwork|
-          category = artwork.category_1
-          if category != nil
-            if !@clasifications[category]
-              @clasifications[category] = category
-            end
-          end
-        end
-
-        @places = Hash.new
-
-        artworksTemp.each do |artwork|
-          place = artwork.place
-          if place != nil
-            if !@places[place]
-              @places[place] = place
-            end
-          end
-        end
-        page =1
-        if not params[:page].nil?
-          page = params[:page]
-        end
-        @artworks = WillPaginate::Collection.create(page, 20, artworksTemp.length) do |pager|
-          pager.replace artworksTemp
-        end
-
-      elsif not params[:authors].nil? and not params[:category].nil? and not params[:place].nil?
+      elsif not params[:authors].nil? and not params[:category].nil? and params[:country].nil?
         artworksTemp = artworksTemp.search_author(params[:authors])
         artworksTemp = artworksTemp.search_category(params[:category])
-        artworksTemp = artworksTemp.search_place(params[:place])
 
         @authors = Hash.new
         artworksTemp.each do |artwork|
@@ -299,13 +256,56 @@ class ArtworksController < ApplicationController
           end
         end
 
-        @places = Hash.new
+        @countries = Hash.new
 
         artworksTemp.each do |artwork|
-          place = artwork.place
-          if place != nil
-            if !@places[place]
-              @places[place] = place
+          country = artwork.origin_country
+          if country != nil
+            if !@countries[country]
+              @countries[country] = country
+            end
+          end
+        end
+        page =1
+        if not params[:page].nil?
+          page = params[:page]
+        end
+        @artworks = WillPaginate::Collection.create(page, 20, artworksTemp.length) do |pager|
+          pager.replace artworksTemp
+        end
+
+      elsif not params[:authors].nil? and not params[:category].nil? and not params[:country].nil?
+        artworksTemp = artworksTemp.search_author(params[:authors])
+        artworksTemp = artworksTemp.search_category(params[:category])
+        artworksTemp = artworksTemp.search_country(params[:country])
+
+        @authors = Hash.new
+        artworksTemp.each do |artwork|
+          author = artwork.author
+          if author != nil
+            if !@authors[author]
+              @authors[author] = author
+            end
+          end
+        end
+
+        @clasifications = Hash.new
+        artworksTemp.each do |artwork|
+          category = artwork.category_1
+          if category != nil
+            if !@clasifications[category]
+              @clasifications[category] = category
+            end
+          end
+        end
+
+        @countries = Hash.new
+
+        artworksTemp.each do |artwork|
+          country = artwork.origin_country
+          if country != nil
+            if !@countries[country]
+              @countries[country] = country
             end
           end
         end
@@ -338,12 +338,12 @@ class ArtworksController < ApplicationController
           end
         end
 
-        @places = Hash.new
+        @countries = Hash.new
         artworksTemp.each do |artwork|
-          place = artwork.place
-          if place != nil
-            if !@places[place]
-              @places[place] = place
+          country = artwork.origin_country
+          if country != nil
+            if !@countries[country]
+              @countries[country] = country
             end
           end
         end
@@ -361,16 +361,16 @@ class ArtworksController < ApplicationController
       end
 
       if params[:region] == ('true')
-        @places = Hash.new
-        @json_places = Hash.new
+        @countries = Hash.new
+        @json_countries = Hash.new
         artworksTemp.each do |artwork|
-          place = artwork.place
-          if place != nil
-            if !@places[place]
-              @json_places[place.code] = 1
-              @places[place] = place
+          country = artwork.origin_country
+          if country != nil
+            if !@countries[country]
+              @json_countries[country.code] = 1
+              @countries[country] = country
             else
-              @json_places[place.code] += 1
+              @json_countries[country.code] += 1
             end
           end
         end
@@ -505,7 +505,7 @@ class ArtworksController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def artwork_params
-    params.require(:artwork).permit(:passage_id, :color,  :place_id, :scene_id, :source_id, :origin_city_id, :actual_city_id, :donor_id, :category_1_id, :category_2_id, :category_3_id, :category_4_id, :category_5_id,
+    params.require(:artwork).permit(:passage_id, :color,  :origin_country_id, :actual_country_id, :scene_id, :source_id, :origin_city_id, :actual_city_id, :donor_id, :category_1_id, :category_2_id, :category_3_id, :category_4_id, :category_5_id,
                                     :phylactery_billboard_id,:iconographic_attribute_id, :story_type_id, :school_id,:author_id, :title, :activity, :biographic_data, :signed, :synthesis,
                                     :biographic_comment, :annotation, :avatar, :sub_image, :comment,
                                     :latitude_origin,:latitude_current,:longitude_origin,:longitude_current, :type_id,
@@ -518,7 +518,7 @@ class ArtworksController < ApplicationController
                                     donor_attributes:[:id,:name,:_destroy],
                                     passage_attributes:[:id,:name,:_destroy],
                                     scene_attributes:[:id,:name,:_destroy],
-                                    place_attributes:[:id,:name,:_destroy],
+                                    country_attributes:[:id,:name,:_destroy],
                                     scene_attributes:[:id,:name,:_destroy],
                                     school_attributes:[:id,:name,:_destroy],
                                     source_attributes:[:id,:name,:_destroy],
@@ -580,9 +580,9 @@ class ArtworksController < ApplicationController
       @artwork.passage = nil
     end
 
-    if params_hash[:delete_place]
-      custom_artwork_params.delete :place_id
-      @artwork.place = nil
+    if params_hash[:delete_country]
+      custom_artwork_params.delete :country_id
+      @artwork.origin_country = nil
     end
 
     if params_hash[:delete_scene]

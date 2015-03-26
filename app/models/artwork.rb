@@ -30,7 +30,6 @@ class Artwork < ActiveRecord::Base
 
   belongs_to :passage
   belongs_to :author
-  belongs_to :place
   belongs_to :scene
   belongs_to :type
   belongs_to :source
@@ -43,6 +42,9 @@ class Artwork < ActiveRecord::Base
   belongs_to :origin_city, class_name: "City"
   belongs_to :actual_city, class_name: "City"
 
+  #origin and actual countries
+  belongs_to :origin_country, class_name: "Country"
+  belongs_to :actual_country, class_name: "Country"
 
   #Different categories
   belongs_to :category_1, class_name: "Category"
@@ -72,7 +74,6 @@ class Artwork < ActiveRecord::Base
   accepts_nested_attributes_for :passage, :reject_if => lambda{ |a| a[:name].blank? }, allow_destroy: true
   accepts_nested_attributes_for :phylactery_billboards, :reject_if => lambda{ |a| a[:name].blank? }, allow_destroy: true
   accepts_nested_attributes_for :scene, :reject_if => lambda{ |a| a[:name].blank? }, allow_destroy: true
-  accepts_nested_attributes_for :place, :reject_if => lambda{ |a| a[:name].blank? }, allow_destroy: true
   accepts_nested_attributes_for :scene, :reject_if => lambda{ |a| a[:name].blank? }, allow_destroy: true
   accepts_nested_attributes_for :school, :reject_if => lambda{ |a| a[:name].blank? }, allow_destroy: true
   accepts_nested_attributes_for :source, :reject_if => lambda{ |a| a[:name].blank? }, allow_destroy: true
@@ -103,9 +104,9 @@ class Artwork < ActiveRecord::Base
     end
   end
 
-  def self.b_place(search)
+  def self.b_country(search)
     if not search.to_s.empty?
-      joins('LEFT JOIN places ON places.id = artworks.place_id').where( 'places.name LIKE ?', "%#{search}%")
+      joins('LEFT JOIN countries ON countries.id = artworks.country_id').where( 'countries.name LIKE ?', "%#{search}%")
     else
       all
     end
@@ -198,9 +199,9 @@ class Artwork < ActiveRecord::Base
     end
   end
 
-  def self.search_place(search)
+  def self.search_country(search)
     if search
-      where('place_id = ?', search)
+      where('country_id = ?', search)
     else
       all
     end
@@ -254,8 +255,8 @@ class Artwork < ActiveRecord::Base
     source && source.name ? source.name : "N/A"
   end
 
-  def get_place_name
-    place && place.name ? place.name : "N/A"
+  def get_country_name
+    country && country.name ? country.name : "N/A"
   end
 
   def get_school_name

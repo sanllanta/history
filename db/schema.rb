@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 20150325215133) do
   create_table "artworks", force: true do |t|
     t.integer  "passage_id"
     t.integer  "author_id"
-    t.integer  "place_id"
     t.integer  "scene_id"
     t.integer  "type_id"
     t.integer  "source_id"
@@ -52,6 +51,8 @@ ActiveRecord::Schema.define(version: 20150325215133) do
     t.integer  "school_id"
     t.integer  "origin_city_id"
     t.integer  "actual_city_id"
+    t.integer  "origin_country_id"
+    t.integer  "actual_country_id"
     t.integer  "category_1_id"
     t.integer  "category_2_id"
     t.integer  "category_3_id"
@@ -131,6 +132,13 @@ ActiveRecord::Schema.define(version: 20150325215133) do
     t.datetime "updated_at"
   end
 
+  create_table "countries", force: true do |t|
+    t.string   "name"
+    t.string   "code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "descriptions", force: true do |t|
     t.string   "description"
     t.datetime "created_at"
@@ -169,13 +177,6 @@ ActiveRecord::Schema.define(version: 20150325215133) do
   create_table "phylactery_billboards", force: true do |t|
     t.text     "name"
     t.integer  "artwork_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "places", force: true do |t|
-    t.string   "name"
-    t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
