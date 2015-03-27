@@ -37,6 +37,8 @@ Rails.application.routes.draw do
 
     resources :authors
 
+    resources :users
+
     put 'artworks/send_image'
 
     resources :categories do

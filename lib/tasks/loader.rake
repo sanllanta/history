@@ -15,7 +15,7 @@ namespace :loader do
     Rake::Task['loader:load_autores'].invoke
     Rake::Task['loader:load_tecnica'].invoke
     Rake::Task['loader:load_fuente'].invoke
-    Rake::Task['loader:load_desc_symbol'].invoke
+    #Rake::Task['loader:load_desc_symbol'].invoke
     Rake::Task['loader:load_personajes_relato'].invoke
     Rake::Task['loader:passages_csv'].invoke
     Rake::Task['loader:load_obras'].invoke
@@ -29,7 +29,7 @@ namespace :loader do
     Rake::Task['loader:load_autores'].invoke
     Rake::Task['loader:load_tecnica'].invoke
     Rake::Task['loader:load_fuente'].invoke
-    Rake::Task['loader:load_desc_symbol'].invoke
+    #Rake::Task['loader:load_desc_symbol'].invoke
     Rake::Task['loader:load_personajes_relato'].invoke
     Rake::Task['loader:passages_csv'].invoke
     Rake::Task['loader:load_obras_base1'].invoke
@@ -67,12 +67,18 @@ namespace :loader do
     p "cate12"
     file = File.join(Rails.root, 'app', 'assets', 'data', 'c1-2.csv')
     CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
-      base = Category.find_by_name(row['Categoría 1'])
-      if not base.nil?
-		    attributes = {"name" => row['Categorías 2']}
-        a = Category.new(attributes)
-        a.parent = base
-        a.save
+      base_all = Category.where(:name=>row['Categoría 1'])
+      base_all.each do|base|
+          p row['Categoría 1']
+          p base.depth
+          if(base.depth == 0)
+            p "entro"
+            attributes = {"name" => row['Categorías 2']}
+            a = Category.new(attributes)
+            a.parent = base
+            a.save
+            break
+        end
       end
     end
     Rake::Task['loader:load_categories23'].invoke
@@ -86,12 +92,15 @@ namespace :loader do
     file = File.join(Rails.root, 'app', 'assets', 'data', 'c2-3.csv')
     CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
 
-      base = Category.find_by_name(row['Categoría 2'])
-      if not base.nil?
-		    attributes = {"name" => row['Categoría 3']}
-        a = Category.new(attributes)
-        a.parent = base
-        a.save
+      base_all = Category.where(:name=>row['Categoría 2'])
+      base_all.each do|base|
+          if(base.depth == 1)
+            attributes = {"name" => row['Categoría 3']}
+            a = Category.new(attributes)
+            a.parent = base
+            a.save
+            break
+        end
       end
     end
     Rake::Task['loader:load_categories34'].invoke
@@ -104,12 +113,15 @@ namespace :loader do
     file = File.join(Rails.root, 'app', 'assets', 'data', 'c3-4.csv')
     CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
 
-      base = Category.find_by_name(row['Categoría 3'])
-      if not base.nil?
-		    attributes = {"name" => row['Categoría 4']}
-        a = Category.new(attributes)
-        a.parent = base
-        a.save
+      base_all = Category.where(:name=>row['Categoría 3'])
+      base_all.each do|base|
+          if(base.depth == 2)
+            attributes = {"name" => row['Categoría 4']}
+            a = Category.new(attributes)
+            a.parent = base
+            a.save
+            break
+        end
       end
     end
     Rake::Task['loader:load_categories45'].invoke
@@ -123,12 +135,15 @@ namespace :loader do
     file = File.join(Rails.root, 'app', 'assets', 'data', 'c4-5.csv')
     CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
 
-      base = Category.find_by_name(row['Categoría 4'])
-      if not base.nil?
-		    attributes = {"name" => row['Categoría 5']}
-        a = Category.new(attributes)
-        a.parent = base
-        a.save
+      base_all = Category.where(:name=>row['Categoría 4'])
+      base_all.each do|base|
+          if(base.depth == 3)
+            attributes = {"name" => row['Categoría 5']}
+            a = Category.new(attributes)
+            a.parent = base
+            a.save
+            break
+        end
       end
 		end
   end
@@ -341,7 +356,7 @@ namespace :loader do
     i = 0
     CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
       i = i+1
-
+      p i
       if i== 100
         break
       end
