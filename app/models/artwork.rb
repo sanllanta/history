@@ -255,9 +255,23 @@ class Artwork < ActiveRecord::Base
     source && source.name ? source.name : "N/A"
   end
 
-  def get_country_name
-    country && country.name ? country.name : "N/A"
+  def get_origin_country_name
+    origin_country && origin_country.name ? origin_country.name : "N/A"
   end
+
+  def get_actual_country_name
+    actual_country && actual_country.name ? actual_country.name : "N/A"
+  end
+
+  def get_origin_city_name
+    origin_city && origin_city.name ? origin_city.name : "N/A"
+  end
+
+  def get_actual_city_name
+    actual_city && actual_city.name ? actual_city.name : "N/A"
+  end
+
+
 
   def get_school_name
     school && school.name ? school.name : "N/A"

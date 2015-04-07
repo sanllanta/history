@@ -156,7 +156,11 @@
               <div class="col-md-3  portfolio-item">
                 <a href="<%= artwork_path(artwork) %>">
                   <div>
-                    <%= image_tag artwork.avatar.url(:thumb) %>
+                    <% if artwork.avatar.exists?%>
+                        <%= image_tag artwork.avatar.url(:thumb) %>
+                    <% else %>
+                        <%= image_tag artwork.avatar.url(:thumb) , :width => 150, :height => 150 %>
+                    <% end %>
                   </div>
                 </a>
                 <h4>

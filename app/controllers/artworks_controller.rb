@@ -101,7 +101,7 @@ class ArtworksController < ApplicationController
         artworksTemp = Artwork.where(author_id: params[:author_show])
       elsif not params[:region_show].nil?
         country=Country.where(:name =>params[:region_show])
-        artworksTemp = Artwork.where(country_id: country)
+        artworksTemp = Artwork.where(origin_country_id: country)
       else
 
         if params[:search].to_s.empty?
@@ -133,7 +133,6 @@ class ArtworksController < ApplicationController
         end
 
         @countries = Hash.new
-
         artworksTemp.each do |artwork|
           country = artwork.origin_country
           if country != nil
@@ -215,7 +214,6 @@ class ArtworksController < ApplicationController
         end
 
         @countries = Hash.new
-
         artworksTemp.each do |artwork|
           country = artwork.origin_country
           if country != nil
@@ -300,7 +298,6 @@ class ArtworksController < ApplicationController
         end
 
         @countries = Hash.new
-
         artworksTemp.each do |artwork|
           country = artwork.origin_country
           if country != nil
@@ -365,6 +362,7 @@ class ArtworksController < ApplicationController
         @json_countries = Hash.new
         artworksTemp.each do |artwork|
           country = artwork.origin_country
+          p(country.code)
           if country != nil
             if !@countries[country]
               @json_countries[country.code] = 1

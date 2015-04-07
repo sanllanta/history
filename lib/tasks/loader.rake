@@ -15,7 +15,7 @@ namespace :loader do
     Rake::Task['loader:load_autores'].invoke
     Rake::Task['loader:load_tecnica'].invoke
     Rake::Task['loader:load_fuente'].invoke
-    #Rake::Task['loader:load_desc_symbol'].invoke
+    Rake::Task['loader:load_desc_symbol'].invoke
     Rake::Task['loader:load_personajes_relato'].invoke
     Rake::Task['loader:passages_csv'].invoke
     Rake::Task['loader:load_obras'].invoke

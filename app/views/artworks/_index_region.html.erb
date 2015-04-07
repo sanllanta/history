@@ -131,9 +131,10 @@
       <div class="row">
         <div id="world-map" style="width: 855px; height: 635px; margin-left: auto;margin-right: auto"></div>
       </div>
+                                  <!--scale: ['#FFD1C5', '#FF180E'],-->
       <script>
 
-          var jsonData = <%= @json_places.to_json.html_safe %>;
+          var jsonData = <%= @json_countries.to_json.html_safe %>;
 
           $(function(){
               map = $('#world-map').vectorMap({
@@ -144,7 +145,7 @@
                           series: {
                               regions: [{
                                   values: jsonData,
-                                  scale: ['#FFD1C5', '#FF180E'],
+                                  scale:['#C8EEFF', '#0071A4'],
                                   normalizeFunction: 'polynomial'
                               }]
                           },
