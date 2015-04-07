@@ -62,7 +62,7 @@
     <a type="href" data-toggle="modal" data-target="#imageModal" href="">
       <%= image_tag(@artwork.avatar.url(:large), :class => "img-thumbnail", :class => "img-responsive", :style => "margin-left: auto; margin-right: auto;") %>
     </a>
-    <div class="img_title">Id:<%= @artwork.id %><br><%= @artwork.get_title  %><br><%= @artwork.get_author_name  %></div>
+    <div class="img_title">Id:<%= @artwork.id %><br><%= @artwork.get_title  %><br><%= @artwork.get_author_name  %> <%= @artwork.get_author_lastname  %></div>
   </div>
 
   <div class="col-sm-6">
@@ -83,7 +83,7 @@
           </div>
           <div class="row">
             <label class="control-label col-sm-3">Autor</label>
-            <div class="col-sm-9"><%=@artwork.get_author_name%></div>
+            <div class="col-sm-9"><%=@artwork.get_author_name%> <%= @artwork.get_author_lastname  %></div>
           </div>
           <div class="row">
             <label class="control-label col-sm-3">Actividad</label>

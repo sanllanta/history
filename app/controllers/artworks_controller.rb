@@ -10,11 +10,12 @@ class ArtworksController < ApplicationController
     if not params[:search].nil? and not params[:search].to_s.empty?
 
       artworksTemp = Artwork.b_title(params[:search])
-      # s_description = Artwork.s_descriptions(params[:search])
-      #
-      # s_description.each do |artworkt|
-      #   artworksTemp << artworkt
-      # end
+
+      s_description = Artwork.s_descriptions(params[:search])
+
+      s_description.each do |artworkt|
+        artworksTemp << artworkt
+      end
 
       s_synthesis = Artwork.b_synthesis(params[:search])
 
@@ -90,8 +91,12 @@ class ArtworksController < ApplicationController
     end
 
     if params[:authors] == ('true')
-      @authors = Author.all
-      @authors = @authors.paginate(:per_page => 20, :page => params[:page])
+      if params[:authors_filter].nil?
+        @authors = Author.all.order(:lastname)
+      else
+        @authors = Author.where("lastname LIKE ?", "%#{params[:authors_filter].downcase}%")
+      end
+        @authors = @authors.paginate(:per_page => 20, :page => params[:page])
     else
 
       #Define la cantidad de obras que se muestran en cada uno de los tipos de vistas
@@ -150,7 +155,7 @@ class ArtworksController < ApplicationController
         end
 
       elsif params[:authors].nil? and params[:category].nil? and not params[:country].nil?
-        p "2"
+
         artworksTemp = artworksTemp.search_country(params[:country])
 
         @authors = Hash.new
@@ -189,9 +194,10 @@ class ArtworksController < ApplicationController
         @artworks = WillPaginate::Collection.create(page, 20, artworksTemp.length) do |pager|
           pager.replace artworksTemp
         end
-      elsif not params[:authors].nil? and params[:category].nil? and params[:country].nil?
-
-        artworksTemp = artworksTemp.search_author(params[:authors])
+      elsif not params[:authors_filter].nil? and params[:category].nil? and params[:country].nil?
+        p "ENTREOOOOOOOOOOOOOOOOOOOOOOOOo"
+        p params[:authors_filter].downcase
+        artworksTemp = artworksTemp.search_author(params[:authors_filter].downcase)
 
         @authors = Hash.new
         artworksTemp.each do |artwork|
@@ -230,8 +236,8 @@ class ArtworksController < ApplicationController
           pager.replace artworksTemp
         end
 
-      elsif not params[:authors].nil? and not params[:category].nil? and params[:country].nil?
-        artworksTemp = artworksTemp.search_author(params[:authors])
+      elsif not params[:authors_filter].nil? and not params[:category].nil? and params[:country].nil?
+        artworksTemp = artworksTemp.search_author(params[:authors_filter].downcase)
         artworksTemp = artworksTemp.search_category(params[:category])
 
         @authors = Hash.new
@@ -272,8 +278,8 @@ class ArtworksController < ApplicationController
           pager.replace artworksTemp
         end
 
-      elsif not params[:authors].nil? and not params[:category].nil? and not params[:country].nil?
-        artworksTemp = artworksTemp.search_author(params[:authors])
+      elsif not params[:authors_filter].nil? and not params[:category].nil? and not params[:country].nil?
+        artworksTemp = artworksTemp.search_author(params[:authors_filter].downcase)
         artworksTemp = artworksTemp.search_category(params[:category])
         artworksTemp = artworksTemp.search_country(params[:country])
 

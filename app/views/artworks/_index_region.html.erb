@@ -76,11 +76,33 @@
                         <div id="collapseArtistasLugar" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingArtistasLugar">
                           <div class="panel-body">
                             <ul class="list-unstyled">
-                              <% @authors.values.each  do |author| %>
-                                  <li>
-                                    <%= link_to  "#{author.name}" ,artworks_path(:params => params.merge(:authors => author.id))  %>
-                                  </li>
-                              <% end %>
+                              <li><%= link_to  "A" ,artworks_path(:params => params.merge(:authors_filter => "A")) %></li>
+                              <li><%= link_to  "B" ,artworks_path(:params => params.merge(:authors_filter => "B"))  %></li>
+                              <li><%= link_to  "C" ,artworks_path(:params => params.merge(:authors_filter => "C"))  %></li>
+                              <li><%= link_to  "D" ,artworks_path(:params => params.merge(:authors_filter => "D"))  %></li>
+                              <li><%= link_to  "E" ,artworks_path(:params => params.merge(:authors_filter => "E"))  %></li>
+                              <li><%= link_to  "F" ,artworks_path(:params => params.merge(:authors_filter => "F"))  %></li>
+                              <li><%= link_to  "G" ,artworks_path(:params => params.merge(:authors_filter => "G"))  %></li>
+                              <li><%= link_to  "H" ,artworks_path(:params => params.merge(:authors_filter => "H"))  %></li>
+                              <li><%= link_to  "I" ,artworks_path(:params => params.merge(:authors_filter => "I")) %></li>
+                              <li><%= link_to  "J" ,artworks_path(:params => params.merge(:authors_filter => "J"))  %></li>
+                              <li><%= link_to  "K" ,artworks_path(:params => params.merge(:authors_filter => "K"))  %></li>
+                              <li><%= link_to  "L" ,artworks_path(:params => params.merge(:authors_filter => "L"))  %></li>
+                              <li><%= link_to  "M" ,artworks_path(:params => params.merge(:authors_filter => "M"))  %></li>
+                              <li><%= link_to  "N" ,artworks_path(:params => params.merge(:authors_filter => "N"))  %></li>
+                              <li><%= link_to  "Ñ" ,artworks_path(:params => params.merge(:authors_filter => "Ñ"))  %></li>
+                              <li><%= link_to  "O" ,artworks_path(:params => params.merge(:authors_filter => "O"))  %></li>
+                              <li><%= link_to  "P" ,artworks_path(:params => params.merge(:authors_filter => "P"))  %></li>
+                              <li><%= link_to  "Q" ,artworks_path(:params => params.merge(:authors_filter => "Q"))  %></li>
+                              <li><%= link_to  "R" ,artworks_path(:params => params.merge(:authors_filter => "R"))  %></li>
+                              <li><%= link_to  "S" ,artworks_path(:params => params.merge(:authors_filter => "S"))  %></li>
+                              <li><%= link_to  "T" ,artworks_path(:params => params.merge(:authors_filter => "T"))  %></li>
+                              <li><%= link_to  "U" ,artworks_path(:params => params.merge(:authors_filter => "U"))  %></li>
+                              <li><%= link_to  "V" ,artworks_path(:params => params.merge(:authors_filter => "V"))  %></li>
+                              <li><%= link_to  "W" ,artworks_path(:params => params.merge(:authors_filter => "W"))  %></li>
+                              <li><%= link_to  "X" ,artworks_path(:params => params.merge(:authors_filter => "X"))  %></li>
+                              <li><%= link_to  "Y" ,artworks_path(:params => params.merge(:authors_filter => "Y"))  %></li>
+                              <li><%= link_to  "Z" ,artworks_path(:params => params.merge(:authors_filter => "Z"))  %></li>
                             </ul>
                           </div>
                         </div>

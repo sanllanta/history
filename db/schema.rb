@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 20150325215133) do
 
   create_table "authors", force: true do |t|
     t.string   "name"
+    t.string   "lastname"
     t.text     "biography"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -19,6 +19,7 @@ namespace :loader do
     Rake::Task['loader:load_personajes_relato'].invoke
     Rake::Task['loader:passages_csv'].invoke
     Rake::Task['loader:load_obras'].invoke
+    Rake::Task['loader:load_autores_apellido'].invoke
   end
 
   desc "carga general"
@@ -33,6 +34,7 @@ namespace :loader do
     Rake::Task['loader:load_personajes_relato'].invoke
     Rake::Task['loader:passages_csv'].invoke
     Rake::Task['loader:load_obras_base1'].invoke
+    Rake::Task['loader:load_autores_apellido'].invoke
   end
 
   desc "Loads the countries listed in countries.csv into the countries table"
@@ -463,6 +465,23 @@ namespace :loader do
         p "id relato"
         p row['Id Relato - Personaje']
         break
+      end
+    end
+  end
+
+  desc "Autores apellidos"
+  task load_autores_apellido: :environment do
+    p "Autores edicion apellidos"
+
+    file = File.join(Rails.root, 'app', 'assets', 'data', 'autores_apellido.csv')
+    CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
+      obj = Author.find_by_name(row['base'])
+      if obj.nil?
+        Author.create(:name=> row['nombre'],:lastname => row['apellido']).save
+      else
+        obj.name = row['nombre']
+        obj.lastname = row['apellido']
+        obj.save
       end
     end
   end

@@ -88,11 +88,27 @@ class Artwork < ActiveRecord::Base
     end
   end
 
+  # def self.s_descriptions(search)
+  #   if not search.to_s.empty?
+  #     joins('LEFT JOIN descriptions ON descriptions.artwork_id = artworks.id ').where( 'description LIKE ?', "%#{search}%")
+  #   else
+  #     nil
+  #   end
+  # end
+
   def self.s_descriptions(search)
     if not search.to_s.empty?
-      joins('LEFT JOIN descriptions ON descriptions.artwork_id = artworks.id ').where( 'description LIKE ?', "%#{search}%")
+      from('"artworks" INNER JOIN
+      (
+        SELECT DISTINCT A.ar_id FROM
+        (SELECT  "artworks".id AS ar_id ,"artworks_descriptions".* FROM "artworks" LEFT JOIN artworks_descriptions ON artworks_descriptions.artwork_id = artworks.id)A
+        LEFT JOIN
+        descriptions ON A.description_id = descriptions.id
+
+        WHERE (descriptions.description LIKE ' "'%#{search}%'" ')
+      ) B ON artworks.id = B.ar_id')
     else
-      nil
+      all
     end
   end
 
@@ -106,7 +122,7 @@ class Artwork < ActiveRecord::Base
 
   def self.b_country(search)
     if not search.to_s.empty?
-      joins('LEFT JOIN countries ON countries.id = artworks.country_id').where( 'countries.name LIKE ?', "%#{search}%")
+      joins('LEFT JOIN countries ON countries.id = artworks.origin_country_id').where( 'countries.name LIKE ?', "%#{search}%")
     else
       all
     end
@@ -185,7 +201,7 @@ class Artwork < ActiveRecord::Base
 
   def self.search_author(search)
     if search
-      where('author_id = ?', search)
+      joins('LEFT JOIN authors ON authors.id = artworks.author_id').where( 'lower(authors.lastname) LIKE ?', "%#{search}%")
     else
       all
     end
@@ -201,7 +217,7 @@ class Artwork < ActiveRecord::Base
 
   def self.search_country(search)
     if search
-      where('country_id = ?', search)
+      where('origin_country_id = ?', search)
     else
       all
     end
@@ -213,6 +229,10 @@ class Artwork < ActiveRecord::Base
 
   def get_author_name
     author && author.name ? author.name : "N/A"
+  end
+
+  def get_author_lastname
+    author && author.lastname ? author.lastname : "N/A"
   end
 
   def get_activity
