@@ -6,7 +6,7 @@
   <div class="col-md-3"></div>
   <div class="col-md-9">
     <h1 class="uppercase">
-        Obras: <small>Author: <%= Author.find(params[:author_show]).name %></small>
+        Obras: <small>Autor:<%= Author.find(params[:author_show]).name %> <%= Author.find(params[:author_show]).lastname %></small>
     </h1>
   </div>
 </div>
@@ -125,7 +125,7 @@
                     <div id="collapseClasificacionObra" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingClasificacionObra">
                       <div class="panel-body">
                         <ul class="list-unstyled">
-                          <% @clasifications.values.each  do |objeto| %>
+                          <% @clasifications.each  do |objeto| %>
                               <li>
                                 <%= link_to  "#{objeto.name}" ,artworks_path(:params => params.merge(:category => objeto.id))  %>
                               </li>
@@ -146,7 +146,7 @@
                     <div id="collapseClasificacionLugar" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingClasificacionLugar">
                       <div class="panel-body">
                         <ul class="list-unstyled">
-                          <% @countries.values.each  do |objeto| %>
+                          <% @countries.each  do |objeto| %>
                               <li>
                                 <%= link_to  "#{objeto.name}" ,artworks_path(:params => params.merge(:country => objeto.id))  %>
                               </li>
