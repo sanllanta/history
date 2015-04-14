@@ -184,7 +184,7 @@
                     <p class="text-muted">
                       <a href="<%= artwork_path(artwork) %>"><%= artwork.title %></a>
                     </p>
-                    <p><%= artwork.author.name %> <%= artwork.author.lastname %></p>
+                    <p><%= artwork.author.get_full_name %></p>
                   </div>
 
             <% i += 1 %>
