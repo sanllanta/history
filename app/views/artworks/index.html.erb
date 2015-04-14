@@ -2,10 +2,11 @@
     <%= stylesheet_link_tag "artworks.css" %>
 <% end %>
 
-<%- model_class = Artwork -%>
 
 <% if params[:authors] == ('true') %>
     <%= render 'index_author' %>
+<% elsif not params[:region].nil? %>
+    <%= render 'index_region' %>
 <% elsif params[:topic] == ('true') %>
     <%= render 'index_topic' %>
 <% elsif not params[:topic].nil? %>
@@ -14,8 +15,6 @@
     <%= render 'index_author_show' %>
 <% elsif not params[:region_show].nil?%>
     <%= render 'index_region_show' %>
-<% elsif not params[:region].nil? %>
-    <%= render 'index_region' %>
 <% else %>
     <%= render 'index_all_show' %>
 <% end %>

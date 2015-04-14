@@ -125,7 +125,7 @@
                     <ul class="list-unstyled">
                       <% @clasifications.each  do |objeto| %>
                           <li>
-                            <%= link_to  "#{objeto.name}" ,artworks_path(:params => params.merge(:category => objeto.id))  %>
+                            <%= link_to  "#{objeto.name}" ,artworks_path(:params => params.merge(:topic => objeto.id))  %>
                           </li>
                       <% end %>
                     </ul>

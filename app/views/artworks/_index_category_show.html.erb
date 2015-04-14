@@ -123,9 +123,9 @@
                     <div id="collapseClasificacionObra" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingClasificacionObra">
                       <div class="panel-body">
                         <ul class="list-unstyled">
-                          <% @clasifications.values.each  do |objeto| %>
+                          <% @clasifications.each  do |objeto| %>
                               <li>
-                                <%= link_to  "#{objeto.name}" ,artworks_path(:params => params.merge(:category => objeto.id))  %>
+                                <%= link_to  "#{objeto.name}" ,artworks_path(:params => params.merge(:topic => objeto.id))  %>
                               </li>
                           <% end %>
                         </ul>
@@ -144,7 +144,7 @@
                     <div id="collapseClasificacionLugar" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingClasificacionLugar">
                       <div class="panel-body">
                         <ul class="list-unstyled">
-                          <% @countries.values.each  do |objeto| %>
+                          <% @countries.each  do |objeto| %>
                               <li>
                                 <%= link_to  "#{objeto.name}" ,artworks_path(:params => params.merge(:country => objeto.id))  %>
                               </li>

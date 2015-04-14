@@ -1,3 +1,4 @@
+require "will_paginate/array"
 class ArtworksController < ApplicationController
   before_filter :authenticate_user!, except:[:index,:show]
   before_action :set_artwork, only: [:show, :edit, :update, :destroy]
@@ -100,13 +101,14 @@ class ArtworksController < ApplicationController
     else
 
       #Define la cantidad de obras que se muestran en cada uno de los tipos de vistas
+      buscar = true
       if not params[:topic].nil?
-        artworksTemp = Artwork.where(category_1: params[:topic])
+        params[:topic] == 'true' ? buscar = false : nil
       elsif not params[:author_show].nil?
-        artworksTemp = Artwork.where(author_id: params[:author_show])
+        #params[:authors_filter] = params[:author_show]
       elsif not params[:region_show].nil?
         country=Country.where(:name =>params[:region_show])
-        artworksTemp = Artwork.where(origin_country_id: country)
+        params[:country] = country[0].id
       else
 
         if params[:search].to_s.empty?
@@ -114,282 +116,34 @@ class ArtworksController < ApplicationController
         end
       end
 
-      if params[:authors_filter].nil? and not params[:category].nil? and params[:country].nil?
-
-        set_filters(nil, params[:category], nil)
-        p ("PARTE________________________1")
-        #artworksTemp = artworksTemp.search_category(params[:category])
-
-        # @authors = Hash.new
-        # artworksTemp.each do |artwork|
-        #   author = artwork.author
-        #   if author != nil
-        #     if !@authors[author]
-        #       @authors[author] = author
-        #     end
-        #   end
-        # end
-        #
-        # @clasifications = Hash.new
-        # artworksTemp.each do |artwork|
-        #   category = artwork.category_1
-        #   if category != nil
-        #     if !@clasifications[category]
-        #       @clasifications[category] = category
-        #     end
-        #   end
-        # end
-        #
-        # @countries = Hash.new
-        # artworksTemp.each do |artwork|
-        #   country = artwork.origin_country
-        #   if country != nil
-        #     if !@countries[country]
-        #       @countries[country] = country
-        #     end
-        #   end
-        # end
-
+      if buscar
+        p "Autor show"
+        p params[:author_show]
+        p "Autor filter"
+        p params[:authors_filter]
+        set_filters(params[:author_show], params[:authors_filter], params[:topic], params[:country])
         page =1
         if not params[:page].nil?
           page = params[:page]
         end
-        @artworks = WillPaginate::Collection.create(page, 20, @artworks.length) do |pager|
-          pager.replace @artworks
+        if params[:region] != ('true')
+          @artworks = @artworks.paginate(:page => page, :per_page=>20)
         end
-      elsif params[:authors_filter].nil? and params[:category].nil? and not params[:country].nil?
-        p ("PARTE________________________2")
-
-        set_filters(nil, nil, params[:country])
-
-        #artworksTemp = artworksTemp.search_country(params[:country])
-
-        # @authors = Hash.new
-        # artworksTemp.each do |artwork|
-        #   author = artwork.author
-        #   if author != nil
-        #     if !@authors[author]
-        #       @authors[author] = author
-        #     end
-        #   end
+        # @artworks = WillPaginate::Collection.create(page,10, @artworks.length) do |pager|
+        #   pager.replace @artworks
         # end
-        #
-        # @clasifications = Hash.new
-        # artworksTemp.each do |artwork|
-        #   category = artwork.category_1
-        #   if category != nil
-        #     if !@clasifications[category]
-        #       @clasifications[category] = category
-        #     end
-        #   end
-        # end
-        #
-        # @countries = Hash.new
-        # artworksTemp.each do |artwork|
-        #   country = artwork.origin_country
-        #   if country != nil
-        #     if !@countries[country]
-        #       @countries[country] = country
-        #     end
-        #   end
-        # end
-
-        page =1
-        if not params[:page].nil?
-          page = params[:page]
-        end
-        @artworks = WillPaginate::Collection.create(page, 20, @artworks.length) do |pager|
-          pager.replace @artworks
-        end
-      elsif not params[:authors_filter].nil? and params[:category].nil? and params[:country].nil?
-        p ("PARTE________________________3")
-        set_filters(params[:authors_filter].downcase, nil, nil)
-
-        # artworksTemp = artworksTemp.search_author(params[:authors_filter].downcase)
-        #
-        # @authors = Hash.new
-        # artworksTemp.each do |artwork|
-        #   author = artwork.author
-        #   if author != nil
-        #     if !@authors[author]
-        #       @authors[author] = author
-        #     end
-        #   end
-        # end
-        #
-        # @clasifications = Hash.new
-        # artworksTemp.each do |artwork|
-        #   category = artwork.category_1
-        #   if category != nil
-        #     if !@clasifications[category]
-        #       @clasifications[category] = category
-        #     end
-        #   end
-        # end
-        #
-        # @countries = Hash.new
-        # artworksTemp.each do |artwork|
-        #   country = artwork.origin_country
-        #   if country != nil
-        #     if !@countries[country]
-        #       @countries[country] = country
-        #     end
-        #   end
-        # end
-        page =1
-        if not params[:page].nil?
-          page = params[:page]
-        end
-        @artworks = WillPaginate::Collection.create(page, 20, @artworks.length) do |pager|
-          pager.replace @artworks
-        end
-      elsif not params[:authors_filter].nil? and not params[:category].nil? and params[:country].nil?
-        p ("PARTE________________________4")
-        set_filters(params[:authors_filter].downcase, params[:category], nil)
-
-        # artworksTemp = artworksTemp.search_author(params[:authors_filter].downcase)
-        # artworksTemp = artworksTemp.search_category(params[:category])
-        #
-        # @authors = Hash.new
-        # artworksTemp.each do |artwork|
-        #   author = artwork.author
-        #   if author != nil
-        #     if !@authors[author]
-        #       @authors[author] = author
-        #     end
-        #   end
-        # end
-        #
-        # @clasifications = Hash.new
-        # artworksTemp.each do |artwork|
-        #   category = artwork.category_1
-        #   if category != nil
-        #     if !@clasifications[category]
-        #       @clasifications[category] = category
-        #     end
-        #   end
-        # end
-        #
-        # @countries = Hash.new
-        #
-        # artworksTemp.each do |artwork|
-        #   country = artwork.origin_country
-        #   if country != nil
-        #     if !@countries[country]
-        #       @countries[country] = country
-        #     end
-        #   end
-        # end
-        page =1
-        if not params[:page].nil?
-          page = params[:page]
-        end
-        @artworks = WillPaginate::Collection.create(page, 20, artworksTemp.length) do |pager|
-          pager.replace artworksTemp
-        end
-
-      elsif not params[:authors_filter].nil? and not params[:category].nil? and not params[:country].nil?
-        p ("PARTE________________________5")
-
-        set_filters(params[:authors_filter].downcase, params[:category], params[:country])
-
-        # artworksTemp = artworksTemp.search_author(params[:authors_filter].downcase)
-        # artworksTemp = artworksTemp.search_category(params[:category])
-        # artworksTemp = artworksTemp.search_country(params[:country])
-
-        # @authors = Hash.new
-        # artworksTemp.each do |artwork|
-        #   author = artwork.author
-        #   if author != nil
-        #     if !@authors[author]
-        #       @authors[author] = author
-        #     end
-        #   end
-        # end
-        #
-        # @clasifications = Hash.new
-        # artworksTemp.each do |artwork|
-        #   category = artwork.category_1
-        #   if category != nil
-        #     if !@clasifications[category]
-        #       @clasifications[category] = category
-        #     end
-        #   end
-        # end
-        #
-        # @countries = Hash.new
-        # artworksTemp.each do |artwork|
-        #   country = artwork.origin_country
-        #   if country != nil
-        #     if !@countries[country]
-        #       @countries[country] = country
-        #     end
-        #   end
-        # end
-        page =1
-        if not params[:page].nil?
-          page = params[:page]
-        end
-        @artworks = WillPaginate::Collection.create(page, 20, @artworks.length) do |pager|
-          pager.replace @artworks
-        end
-
-      else
-        p ("PARTE________________________6")
-        set_filters(nil,nil,nil)
-
-        # @authors = Hash.new
-        # artworksTemp.each do |artwork|
-        #   author = artwork.author
-        #   if author != nil
-        #     if !@authors[author]
-        #       @authors[author] = author
-        #     end
-        #   end
-        # end
-        #
-        # @clasifications = Hash.new
-        # artworksTemp.each do |artwork|
-        #   category = artwork.category_1
-        #   if category != nil
-        #     if !@clasifications[category]
-        #       @clasifications[category] = category
-        #     end
-        #   end
-        # end
-        #
-        # @countries = Hash.new
-        # artworksTemp.each do |artwork|
-        #   country = artwork.origin_country
-        #   if country != nil
-        #     if !@countries[country]
-        #       @countries[country] = country
-        #     end
-        #   end
-        # end
-
-        # @artworks = artworksTemp
-        p params[:page].nil?
-        page =1
-        if not params[:page].nil?
-          page = params[:page]
-        end
-        @artworks = WillPaginate::Collection.create(page, 20, @artworks.length) do |pager|
-          pager.replace @artworks
-        end
-
       end
 
+
       if params[:region] == ('true')
-        @countries = Hash.new
+        @countries_map = Hash.new
         @json_countries = Hash.new
-        artworksTemp.each do |artwork|
+        @artworks.each do |artwork|
           country = artwork.origin_country
-          p(country.code)
           if country != nil
-            if !@countries[country]
+            if !@countries_map[country]
               @json_countries[country.code] = 1
-              @countries[country] = country
+              @countries_map[country] = country
             else
               @json_countries[country.code] += 1
             end
@@ -416,23 +170,7 @@ class ArtworksController < ApplicationController
   def new
     @artwork = Artwork.new
     set_categories
-    if params[:action] == "new"
-      # @artwork.descriptions.new
-      # @artwork.artwork_symbols.new
 
-      # @artwork.engravings.new
-      # #@artwork.author = Author.new
-      # @artwork.donor = Donor.new
-      # @artwork.origin = Origin.new
-      # @artwork.passage = Passage.new
-      # @artwork.phylactery_billboard = PhylacteryBillboard.new
-      # @artwork.scene = Scene.new
-      # @artwork.place = Place.new
-      # @artwork.school = School.new
-      # @artwork.source = Source.new
-      # @artwork.story_type = StoryType.new
-      # @artwork.type = Type.new
-    end
   end
 
   # GET /artworks/1/edit
@@ -649,10 +387,10 @@ class ArtworksController < ApplicationController
 
 
   # Methods to set @artworks, @clasifications, @countries, @authors
-  def set_filters author_lastname, category_id, country_id
-    @artworks = Artwork.filtros(author_lastname, category_id, country_id)
-    @clasifications = Category.filtros_category(author_lastname, category_id, country_id)
-    @countries = Country.filtros_place(author_lastname, category_id, country_id)
+  def set_filters author_id, author_lastname, category_id, country_id
+    @artworks = Artwork.filtros(author_id, author_lastname, category_id, country_id)
+    @clasifications = Category.filtros_category(author_id, author_lastname, category_id, country_id)
+    @countries = Country.filtros_place(author_id, author_lastname, category_id, country_id)
     return
   end
 
