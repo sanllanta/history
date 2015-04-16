@@ -8,145 +8,152 @@ class ArtworksController < ApplicationController
   # GET /artworks.json
   def index
 
-    if not params[:search].nil? and not params[:search].to_s.empty?
+    if not params[:search].nil?
 
-      artworksTemp = Artwork.b_title(params[:search])
-
-      s_description = Artwork.s_descriptions(params[:search])
-
-      s_description.each do |artworkt|
-        artworksTemp << artworkt
-      end
-
-      s_synthesis = Artwork.b_synthesis(params[:search])
-
-      s_synthesis.each do |artworkt|
-        artworksTemp << artworkt
-      end
-
-      b_country = Artwork.b_country(params[:search])
-
-      b_country.each do |artworkt|
-        artworksTemp << artworkt
-      end
-
-      b_category_1 = Artwork.b_category_1(params[:search])
-
-      b_category_1.each do |artworkt|
-        artworksTemp << artworkt
-      end
-
-      b_category_1 = Artwork.b_category_1(params[:search])
-
-      b_category_1.each do |artworkt|
-        artworksTemp << artworkt
-      end
-
-      b_category_2 = Artwork.b_category_2(params[:search])
-
-      b_category_2.each do |artworkt|
-        artworksTemp << artworkt
-      end
-
-      b_category_3 = Artwork.b_category_3(params[:search])
-
-      b_category_3.each do |artworkt|
-        artworksTemp << artworkt
-      end
-
-      b_category_4 = Artwork.b_category_4(params[:search])
-
-      b_category_4.each do |artworkt|
-        artworksTemp << artworkt
-      end
-
-      b_category_5 = Artwork.b_category_5(params[:search])
-
-      b_category_5.each do |artworkt|
-        artworksTemp << artworkt
-      end
-
-      b_comment = Artwork.b_comment(params[:search])
-
-      b_comment.each do |artworkt|
-        artworksTemp << artworkt
-      end
-
-      b_scene = Artwork.b_scene(params[:search])
-
-      b_scene.each do |artworkt|
-        artworksTemp << artworkt
-      end
-
-      b_story_types = Artwork.b_story_types(params[:search])
-
-      b_story_types.each do |artworkt|
-        artworksTemp << artworkt
-      end
-
-      b_author = Artwork.b_author(params[:search])
-
-      b_author.each do |artworkt|
-        artworksTemp << artworkt
-      end
-    end
-
-    if params[:authors] == ('true')
-      if params[:authors_filter].nil?
-        @authors = Author.all.order(:lastname)
+      if params[:search].to_s.empty?
+        @artworks = Artwork.all
       else
-        @authors = Author.where("lastname LIKE ?", "%#{params[:authors_filter].downcase}%")
+        @artworks = Artwork.b_title(params[:search])
+
+        s_description = Artwork.s_descriptions(params[:search])
+
+        s_description.each do |artworkt|
+          @artworks << artworkt
+        end
+
+        s_synthesis = Artwork.b_synthesis(params[:search])
+
+        s_synthesis.each do |artworkt|
+          @artworks << artworkt
+        end
+
+        b_country = Artwork.b_country(params[:search])
+
+        b_country.each do |artworkt|
+          @artworks << artworkt
+        end
+
+        b_category_1 = Artwork.b_category_1(params[:search])
+
+        b_category_1.each do |artworkt|
+          @artworks << artworkt
+        end
+
+        b_category_1 = Artwork.b_category_1(params[:search])
+
+        b_category_1.each do |artworkt|
+          @artworks << artworkt
+        end
+
+        b_category_2 = Artwork.b_category_2(params[:search])
+
+        b_category_2.each do |artworkt|
+          @artworks << artworkt
+        end
+
+        b_category_3 = Artwork.b_category_3(params[:search])
+
+        b_category_3.each do |artworkt|
+          @artworks << artworkt
+        end
+
+        b_category_4 = Artwork.b_category_4(params[:search])
+
+        b_category_4.each do |artworkt|
+          @artworks << artworkt
+        end
+
+        b_category_5 = Artwork.b_category_5(params[:search])
+
+        b_category_5.each do |artworkt|
+          @artworks << artworkt
+        end
+
+        b_comment = Artwork.b_comment(params[:search])
+
+        b_comment.each do |artworkt|
+          @artworks << artworkt
+        end
+
+        b_scene = Artwork.b_scene(params[:search])
+
+        b_scene.each do |artworkt|
+          @artworks << artworkt
+        end
+
+        b_story_types = Artwork.b_story_types(params[:search])
+
+        b_story_types.each do |artworkt|
+          @artworks << artworkt
+        end
+
+        b_author = Artwork.b_author(params[:search])
+
+        b_author.each do |artworkt|
+          @artworks << artworkt
+        end
       end
-        @authors = @authors.paginate(:per_page => 20, :page => params[:page])
+
+      set_filters(params[:author_show], params[:authors_filter], params[:topic], params[:country])
+      page =1
+
+      if not params[:page].nil?
+        page = params[:page]
+      end
+      p "sercar--------------------------------"
+      p @artworks.length
+      @artworks = WillPaginate::Collection.create(page,20, @artworks.length) do |pager|
+        pager.replace @artworks
+      end
     else
-
-      #Define la cantidad de obras que se muestran en cada uno de los tipos de vistas
-      buscar = true
-      if not params[:topic].nil?
-        params[:topic] == 'true' ? buscar = false : nil
-      elsif not params[:author_show].nil?
-        #params[:authors_filter] = params[:author_show]
-      elsif not params[:region_show].nil?
-        country=Country.where(:name =>params[:region_show])
-        params[:country] = country[0].id
+      p "sercar--------------------------------"
+      p params[:authors] == ('true')
+      if params[:authors] == ('true')
+        p "AUTORES--------------------------------------"
+        if params[:authors_filter].nil?
+          @authors = Author.all.order(:lastname)
+        else
+          @authors = Author.where("lastname LIKE ?", "%#{params[:authors_filter].downcase}%")
+        end
+        @authors = @authors.paginate(:per_page => 20, :page => params[:page])
       else
 
-        if params[:search].to_s.empty?
-          artworksTemp = Artwork.all
-        end
-      end
+        #Define la cantidad de obras que se muestran en cada uno de los tipos de vistas
+        buscar = true
+        if not params[:topic].nil?
+          params[:topic] == 'true' ? buscar = false : nil
+        elsif not params[:author_show].nil?
+          #params[:authors_filter] = params[:author_show]
+        elsif not params[:region_show].nil?
+          country=Country.where(:name =>params[:region_show])
+          params[:country] = country[0].id
+        else
 
-      if buscar
-        p "Autor show"
-        p params[:author_show]
-        p "Autor filter"
-        p params[:authors_filter]
-        set_filters(params[:author_show], params[:authors_filter], params[:topic], params[:country])
-        page =1
-        if not params[:page].nil?
-          page = params[:page]
         end
-        if params[:region] != ('true')
-          @artworks = @artworks.paginate(:page => page, :per_page=>20)
-        end
-        # @artworks = WillPaginate::Collection.create(page,10, @artworks.length) do |pager|
-        #   pager.replace @artworks
-        # end
-      end
 
-
-      if params[:region] == ('true')
-        @countries_map = Hash.new
-        @json_countries = Hash.new
-        @artworks.each do |artwork|
-          country = artwork.origin_country
-          if country != nil
-            if !@countries_map[country]
-              @json_countries[country.code] = 1
-              @countries_map[country] = country
-            else
-              @json_countries[country.code] += 1
+        if buscar
+          set_filters(params[:author_show], params[:authors_filter], params[:topic], params[:country])
+          if params[:region] == ('true')
+            @countries_map = Hash.new
+            @json_countries = Hash.new
+            @artworks.each do |artwork|
+              country = artwork.origin_country
+              if country != nil
+                if !@countries_map[country]
+                  @json_countries[country.code] = 1
+                  @countries_map[country] = country
+                else
+                  @json_countries[country.code] += 1
+                end
+              end
             end
+          else
+            page =1
+
+            if not params[:page].nil?
+              page = params[:page]
+            end
+            @artworks = @artworks.paginate(:page => page, :per_page=>20)
           end
         end
       end
@@ -388,10 +395,15 @@ class ArtworksController < ApplicationController
 
   # Methods to set @artworks, @clasifications, @countries, @authors
   def set_filters author_id, author_lastname, category_id, country_id
-    @artworks = Artwork.filtros(author_id, author_lastname, category_id, country_id)
-    @clasifications = Category.filtros_category(author_id, author_lastname, category_id, country_id)
-    @countries = Country.filtros_place(author_id, author_lastname, category_id, country_id)
-    return
+    if not params[:search].nil? and not params[:search].to_s.empty?
+      p "Filter artwoe................................."
+      @clasifications = Category.filtros_category(author_id, author_lastname, category_id, country_id)
+      @countries = Country.filtros_place(author_id, author_lastname, category_id, country_id)
+    else
+      @clasifications = Category.filtros_category(author_id, author_lastname, category_id, country_id)
+      @countries = Country.filtros_place(author_id, author_lastname, category_id, country_id)
+      @artworks = Artwork.filtros(author_id, author_lastname, category_id, country_id)
+    end
   end
 
 end

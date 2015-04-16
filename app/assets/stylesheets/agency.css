@@ -70,6 +70,27 @@ h6 {
     color: #939498;
 }
 
+.ellipsis{
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;     /** IE6+, Firefox 7+, Opera 11+, Chrome, Safari **/
+    -o-text-overflow: ellipsis;
+    width: 100%;
+}
+
+.artwork-thumbnail > .caption{
+    font-size: 80%;
+    padding-bottom: 0;
+}
+
+#img-wrap{
+    height:150px;
+    width: auto;
+    background-size: cover;
+    background-position:center;
+}
+
 .img-centered {
     margin: 0 auto;
 }

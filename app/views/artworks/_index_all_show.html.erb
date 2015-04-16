@@ -175,21 +175,25 @@
                   <div class="row">
               <% end %>
               <!-- manejo de celular col-sm-4 col-xs-4 -->
-              <div class="col-md-3  portfolio-item">
-                <a href="<%= artwork_path(artwork) %>">
-                  <div>
-                    <% if artwork.avatar.exists?%>
-                        <%= image_tag artwork.avatar.url(:thumb) %>
-                    <% else %>
-                        <%= image_tag artwork.avatar.url(:thumb) , :width => 150, :height => 150 %>
-                    <% end %>
+              <div class="col-sm-3  portfolio-item">
+                <div class="row" style="padding: 0px 2px">
+                  <div class="">
+                    <div class="thumbnail artwork-thumbnail">
+                      <% if artwork.avatar.exists?%>
+                          <div id="img-wrap" style="background-image: url('<%= artwork.avatar.url(:medium) %>');"></div>
+                      <% else %>
+                          <%= image_tag artwork.avatar.url(:thumb) , :width => 150, :height => 150 %>
+                      <% end %>
+                      <div class="caption">
+                        <span class="ellipsis"><a href="<%= artwork_path(artwork) %>"><%= artwork.title %></a></span>
+                        <span class="ellipsis"><%= artwork.author.get_full_name if artwork.author %></span>
+                      </div>
+                    </div>
                   </div>
-                </a>
-                <h4>
-                  <a href="<%= artwork_path(artwork) %>"><%= artwork.title %></a>
-                </h4>
-                <p><%= artwork.author.get_full_name if artwork.author %></p>
+                </div>
               </div>
+
+
 
               <% i += 1 %>
               <% if i == 4 then %>
