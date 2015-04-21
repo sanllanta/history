@@ -1,20 +1,20 @@
 <%- model_class = Artwork -%>
 
-  <div class="page-header row">
-    <div class="col-md-3"></div>
-    <div class="col-md-9">
-      <h1 class="uppercase">
-        Obras
-      </h1>
-    </div>
+<div class="page-header row">
+  <div class="col-md-3"></div>
+  <div class="col-md-9">
+    <h1 class="uppercase">
+      Obras
+    </h1>
   </div>
+</div>
 
 <div id="artwork">
-  <div class="container">
-    <!-- Seccion de filtros-->
-    <div class="col-md-3">
+<div class="container">
+<!-- Seccion de filtros-->
+<div class="col-md-3">
 
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
     <!-- fILTRO DE TEMAS -->
     <div class="panel panel-default" style="margin-top: 0px">
       <div class="panel-heading" role="tab" id="headingTemas">
@@ -161,57 +161,58 @@
       </div>
     </div>
 
-    </div>
-    </div>
+  </div>
+</div>
 
-    <!-- Page Content -->
-    <div class="col-md-8">
-      <div class="container-fluid">
-        <div class="row">
+<!-- Page Content -->
+<div class="col-md-8">
+  <div class="container-fluid">
+    <div class="row">
 
-          <% i = 0 %>
-          <% @artworks.each  do |artwork| %>
-              <% if i == 0 then %>
-                  <div class="row">
-              <% end %>
-              <!-- manejo de celular col-sm-4 col-xs-4 -->
-              <div class="col-sm-3  portfolio-item">
-                <div class="row" style="padding: 0px 2px">
-                  <div class="">
-                    <div class="thumbnail artwork-thumbnail">
-                      <% if artwork.avatar.exists?%>
-                          <div id="img-wrap" style="background-image: url('<%= artwork.avatar.url(:medium) %>');"></div>
-                      <% else %>
-                          <%= image_tag artwork.avatar.url(:thumb) , :width => 150, :height => 150 %>
-                      <% end %>
-                      <div class="caption">
-                        <span class="ellipsis"><a href="<%= artwork_path(artwork) %>"><%= artwork.title %></a></span>
-                        <span class="ellipsis"><%= artwork.author.get_full_name if artwork.author %></span>
-                      </div>
-                    </div>
+      <% i = 0 %>
+      <% @artworks.each  do |artwork| %>
+          <% if i == 0 then %>
+              <div class="row">
+          <% end %>
+          <!-- manejo de celular col-sm-4 col-xs-4 -->
+          <div class="col-sm-3  portfolio-item">
+            <div class="row" style="padding: 0px 2px">
+              <div class="">
+
+                <div class="thumbnail artwork-thumbnail">
+                  <% if artwork.avatar.exists?%>
+                      <div id="img-wrap" style="background-image: url('<%= artwork.avatar.url(:medium) %>');"></div>
+                  <% else %>
+                      <%= image_tag artwork.avatar.url(:thumb) , :width => 150, :height => 150 %>
+                  <% end %>
+                  <div class="caption">
+                    <span class="ellipsis"><a href="<%= artwork_path(artwork) %>"><%= artwork.title %></a></span>
+                    <span class="ellipsis"><%= artwork.author ?  (link_to artwork.get_author_name, artworks_path(author_show: artwork.author_id), class: "link-unstyled") : "" %></span>
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
 
 
 
-              <% i += 1 %>
-              <% if i == 4 then %>
-                  <% i = 0 %>
-                  </div>
-              <% end %>
-
+          <% i += 1 %>
+          <% if i == 4 then %>
+              <% i = 0 %>
+              </div>
           <% end %>
 
-        </div>
-        <div class="text-center">
+      <% end %>
 
-          <%= will_paginate @artworks,  renderer: BootstrapPagination::Rails %>
-        </div>
-      </div>
     </div>
+    <div class="text-center">
 
+      <%= will_paginate @artworks,  renderer: BootstrapPagination::Rails %>
+    </div>
   </div>
+</div>
+
+</div>
 </div>
 
 <% content_for :css_application do %>

@@ -372,6 +372,13 @@ fieldset[disabled] .btn-xl.active {
     border-color: #fff;
 }
 
+.link-unstyled,
+.link-unstyled:hover,
+.link-unstyled:focus{
+    color: grey;
+    text-decoration: none;
+}
+
 @media(min-width:768px) {
     .navbar-default {
         padding: 0px 0;

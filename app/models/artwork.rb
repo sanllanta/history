@@ -262,8 +262,16 @@ class Artwork < ActiveRecord::Base
     activity ? activity : "N/A"
   end
 
+  def get_creation_date
+    creation_date ? creation_date : "N/A"
+  end
+
   def get_biographic_data
     biographic_data ? biographic_data : "N/A"
+  end
+
+  def get_biographic_comment
+    biographic_comment ? biographic_comment : "N/A"
   end
 
   def get_signed
@@ -288,6 +296,10 @@ class Artwork < ActiveRecord::Base
 
   def get_category_5_name
     category_5 && category_5.name ? category_5.name : "N/A"
+  end
+
+  def get_annotation
+    annotation ? annotation : "N/A"
   end
 
   def get_type_name
@@ -350,6 +362,10 @@ class Artwork < ActiveRecord::Base
 
   def get_comment
     comment ? comment : "N/A"
+  end
+
+  def get_author_name
+    author ? author.get_full_name : "N/A"
   end
 
 end

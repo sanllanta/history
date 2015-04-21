@@ -62,7 +62,7 @@
     <a type="href" data-toggle="modal" data-target="#imageModal" href="">
       <%= image_tag(@artwork.avatar.url(:large), :class => "img-thumbnail", :class => "img-responsive", :style => "margin-left: auto; margin-right: auto;") %>
     </a>
-    <div class="img_title">Id:<%= @artwork.id %><br><%= @artwork.get_title  %><br><%= @artwork.get_author_name  %> <%= @artwork.get_author_lastname  %></div>
+    <div class="img_title">Id:<%= @artwork.id %><br><%= @artwork.get_title  %><br><%= @artwork.get_author_name  %> <%= @artwork.get_author_lastname  %><br> Fecha: <%= @artwork.get_creation_date%></div>
   </div>
 
   <div class="col-sm-6">
@@ -83,7 +83,7 @@
           </div>
           <div class="row">
             <label class="control-label col-sm-3">Autor</label>
-            <div class="col-sm-9"><%=@artwork.get_author_name%> <%= @artwork.get_author_lastname  %></div>
+            <div class="col-sm-9"><%=@artwork.get_author_name%></div>
           </div>
           <div class="row">
             <label class="control-label col-sm-3">Actividad</label>
@@ -92,6 +92,10 @@
           <div class="row">
             <label class="control-label col-sm-3">Información Biográfica</label>
             <div class="col-sm-9"><%=@artwork.get_biographic_data%></div>
+          </div>
+          <div class="row">
+            <label class="control-label col-sm-3">Comentario Biográfico</label>
+            <div class="col-sm-9"><%=@artwork.get_biographic_comment%></div>
           </div>
           <div class="row">
             <label class="control-label col-sm-3">Firmado</label>
@@ -149,20 +153,21 @@
             <label class="control-label col-sm-3">Categoría 5</label>
             <div class="col-sm-9"><%=@artwork.get_category_5_name%></div>
           </div>
-        </div>
-        <div class="row">
-          <label class="control-label col-sm-3">Descriptores</label>
-          <div class="col-sm-10">
-            <table class="table table-condensed table-hover table-striped">
-
-              <tbody>
-
-              <% @artwork.descriptions.each  do |sym| %>
-                  <tr><td><%= sym.description %></td></tr>
-              <% end %>
-
-              </tbody>
-            </table>
+          <div class="row">
+            <label class="control-label col-sm-3">Anotación</label>
+            <div class="col-sm-9"><%=@artwork.get_annotation%></div>
+          </div>
+          <div class="row">
+            <label class="control-label col-sm-3">Descriptores</label>
+            <div class="col-sm-10">
+              <table class="table table-condensed table-hover table-striped">
+                <tbody>
+                <% @artwork.descriptions.each  do |sym| %>
+                    <tr><td><%= sym.description %></td></tr>
+                <% end %>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
 

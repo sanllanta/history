@@ -62,6 +62,8 @@ ActiveRecord::Schema.define(version: 20150325215133) do
     t.string   "title"
     t.string   "activity"
     t.text     "biographic_data"
+    t.date     "creation_date"
+    t.string   "annotation_date"
     t.text     "synthesis"
     t.text     "biographic_comment"
     t.text     "annotation"
