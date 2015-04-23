@@ -437,9 +437,15 @@ namespace :loader do
           # Sintesis
           sintesis = row['Sintesis']
           #p scene.id
+          if row['Id Imagen']
+            s_avatar = '/arca/project/imagenes/'+(16000+row['Id Imagen'].to_i).to_s+ 'jpg'
+          else
+            s_avatar = Rails.root + 'app/assets/images/samll/missing.png'
+            p "no se agrego imagen"
+          end
           artwork = Artwork.create(
               #:passage_id=>
-              :avatar =>File.open('/home/kelvin/Pictures/copy of mario.jpg', 'rb'),
+              :avatar =>File.open(s_avatar, 'rb'),
               :author_id=>autor.id,
               #:place_id=>ciudad.id,
               :scene_id=>scene.id,
