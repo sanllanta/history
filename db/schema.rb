@@ -136,8 +136,9 @@ ActiveRecord::Schema.define(version: 20150325215133) do
   end
 
   create_table "countries", force: true do |t|
-    t.string   "name"
     t.string   "code"
+    t.string   "name"
+    t.string   "name_spanish"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

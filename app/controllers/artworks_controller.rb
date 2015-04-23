@@ -126,7 +126,12 @@ class ArtworksController < ApplicationController
           #params[:authors_filter] = params[:author_show]
         elsif not params[:region_show].nil?
           country=Country.where(:name =>params[:region_show])
-          params[:country] = country[0].id
+          if country[0]
+            params[:country] = country[0].id
+          else
+            params[:region] = "true";
+            params[:region_show] = nil;
+          end
         else
 
         end

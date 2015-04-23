@@ -38,7 +38,7 @@
       <div class="row">
         <div class="col-md-6">
           <%= f.text_field :title, label: "Titulo" %>
-          <%= f.collection_select :author_id, Author.all.order("lastname, name DESC"), :id, :get_full_name,  {:prompt => 'Seleccione el author'} %>
+          <%= f.collection_select :author_id, Author.all.order("lastname, name"), :id, :get_full_name,  {:prompt => 'Seleccione el author'} %>
           <%= f.text_field :activity%>
           <%= f.text_area :biographic_data%>
           <div class="form-group">
@@ -61,7 +61,7 @@
         <div class="col-md-6">
           <%= f.collection_select :type_id, Type.all, :id, :name,  {:prompt => 'Seleccione el tipo'} %>
           <%= f.collection_select :source_id, Source.all, :id, :name,  {:prompt => 'Seleccione la fuente'} %>
-          <%= f.collection_select :origin_country_id, Country.all, :id, :name,  {:prompt => 'Seleccione el lugar'} %>
+          <%= f.collection_select :origin_country_id, Country.all.order("name_spanish"), :id, :name_spanish,  {:prompt => 'Seleccione el lugar'} %>
           <%= f.collection_select :origin_city_id, City.all, :id, :name,  {:prompt => 'Seleccione la ciudad de origen'} %>
         </div>
         <div class="col-md-6">

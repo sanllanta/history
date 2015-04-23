@@ -1,6 +1,13 @@
 namespace :loader do
   require 'csv'
 
+  desc "Solo autores"
+  task load_authors_with_lastname: :environment do
+    p "Solo autores"
+    Rake::Task['loader:load_autores'].invoke
+    Rake::Task['loader:load_autores_apellido'].invoke
+  end
+
   desc "carga general"
   task load_categorias: :environment do
     p "carga general"
@@ -39,12 +46,11 @@ namespace :loader do
 
   desc "Loads the countries listed in countries.csv into the countries table"
   task load_countries: :environment do
-    p "Loads the countries listed in countries.csv into the cpuntries table"
   	file = File.join(Rails.root, 'app', 'assets', 'data', 'countries.csv')
   	lines = File.new(file).readlines
   	lines.each do |line|
 		  values = line.strip.split(',')
-		  attributes = {"name" => values[2],"code" => values[1]}
+		  attributes = {"code" => values[1], "name" => values[2], "name_spanish" => values[3]}
 		  Country.create(attributes)
 
 		end
@@ -158,7 +164,9 @@ namespace :loader do
     lines = File.new(file).readlines
       lines.each do |line|
         values = line.strip.split(',')
-        attributes = {"name" => values[0]}
+        nombre = values[0]
+        nombre.strip!
+        attributes = {"name" => nombre}
         Author.create(attributes)
       end
   end
@@ -478,6 +486,7 @@ namespace :loader do
       obj = Author.find_by_name(row['base'])
       if obj.nil?
         Author.create(:name=> row['nombre'],:lastname => row['apellido']).save
+        p "Creado: #{row['nombre']}, #{row['apellido']} de #{row['base']}"
       else
         obj.name = row['nombre']
         obj.lastname = row['apellido']
