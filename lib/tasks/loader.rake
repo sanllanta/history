@@ -438,9 +438,17 @@ namespace :loader do
           sintesis = row['Sintesis']
           #p scene.id
           if row['Id Imagen']
-            s_avatar = '/arca/project/imagenes/'+(16000+row['Id Imagen'].to_i).to_s+ '.jpg'
+            begin
+              f_avatar = File.open('/arca/project/imagenes/'+(16000+row['Id Imagen'].to_i).to_s+ '.jpg','rb')
+              if f_avatar
+              else
+                p "No se encontro" + (16000+row['Id Imagen'].to_i).to_s
+              end
+            rescue
+              p "No se encontro" + (16000+row['Id Imagen'].to_i).to_s
+            end
           else
-            s_avatar = Rails.root + 'app/assets/images/samll/missing.png'
+            f_avatar = File.open (Rails.root + 'app/assets/images/samll/missing.png','rb')
             p "no se agrego imagen"
           end
           artwork = Artwork.create(
