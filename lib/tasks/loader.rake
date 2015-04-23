@@ -441,15 +441,15 @@ namespace :loader do
             begin
               f_avatar = File.open('/arca/project/imagenes/'+(16000+row['Id Imagen'].to_i).to_s+ '.jpg','rb')
               if not f_avatar
-                f_avatar = File.open(Rails.root + 'app/assets/images/small/missing.png','rb')
+                f_avatar = File.open(Rails.root + 'app/assets/images/small/missing.jpg','rb')
                 p "No se encontro" + (16000+row['Id Imagen'].to_i).to_s
               end
             rescue
-              f_avatar = File.open((Rails.root + 'app/assets/images/small/missing.png'),'rb')
+              f_avatar = File.open((Rails.root + 'app/assets/images/small/missing.jpg'),'rb')
               p "No se encontro" + (16000+row['Id Imagen'].to_i).to_s
             end
           else
-            f_avatar = File.open((Rails.root + 'app/assets/images/small/missing.png'),'rb')
+            f_avatar = File.open((Rails.root + 'app/assets/images/small/missing.jpg'),'rb')
             p "no se agrego imagen"
           end
           artwork = Artwork.create(
