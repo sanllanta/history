@@ -438,7 +438,7 @@ namespace :loader do
           sintesis = row['Sintesis']
           #p scene.id
           if row['Id Imagen']
-            s_avatar = '/arca/project/imagenes/'+(16000+row['Id Imagen'].to_i).to_s+ 'jpg'
+            s_avatar = '/arca/project/imagenes/'+(16000+row['Id Imagen'].to_i).to_s+ '.jpg'
           else
             s_avatar = Rails.root + 'app/assets/images/samll/missing.png'
             p "no se agrego imagen"
