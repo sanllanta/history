@@ -404,11 +404,23 @@ namespace :loader do
           comentariosBiblio = row['ComentariosBiblio']
           #Técnica;
           tecnica = Type.find_or_create_by(:name=>row['Técnica'])
-          #ProcedenciaIm;
-          #origen = Origin.find_or_create_by(:name=>row['ProcedenciaIm'])
           #Fuenteimagen;
           fuente = Source.find_or_create_by(:name=>row['Fuenteimagen'])
-          # Ciudad;
+          #País y ciudad
+          pais_actual = nil
+          ciudad_actual = nil
+          if row['Ciudad']
+            pais_ciudad = row['Ciudad'].split(',')
+            if pais_ciudad[0]
+              pais_actual = Country.find_by(:name_spanish => pais_ciudad[0].strip)
+              if !pais_actual
+                p "No se encontró el país #{pais_ciudad[0]}"
+              end
+              if pais_ciudad[1]
+                ciudad_actual = City.find_or_create_by(:name => pais_ciudad[1].strip)
+              end
+            end
+          end
           #ciudad = Place.find_or_create_by(:name=>row['Ciudad'])
           # Lugar
           lugar = nil
@@ -473,7 +485,9 @@ namespace :loader do
               :annotation=>anotaciones,
               :synthesis=>sintesis,
               :biographic_comment=>comentariosBiblio,
-              :place=>lugar
+              :place=>lugar,
+              :actual_country => pais_actual,
+              :actual_city => ciudad_actual
               )
           artwork.save!
           if simbolos

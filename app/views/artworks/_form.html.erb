@@ -67,6 +67,8 @@
         <div class="col-md-6">
           <%= f.collection_select :school_id, School.all.order("name"), :id, :name,  {:prompt => 'Seleccione la escuela'} %>
           <%= f.collection_select :place_id, Place.all.order("name"), :id, :name,  {:prompt => 'Seleccione el lugar'} %>
+          <%= f.text_field :annotation_date %>
+          <%= f.date_field :creation_date %>
         </div>
       </div>
       <br>
