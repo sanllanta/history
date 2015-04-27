@@ -410,6 +410,11 @@ namespace :loader do
           fuente = Source.find_or_create_by(:name=>row['Fuenteimagen'])
           # Ciudad;
           #ciudad = Place.find_or_create_by(:name=>row['Ciudad'])
+          # Lugar
+          lugar = nil
+          if row['ProcedenciaIm']
+            lugar = Place.find_or_create_by(:name=>row['ProcedenciaIm'])
+          end
           # Anotaciones;
           anotaciones = row['Anotaciones']
           # Id Relato - Personaje;
@@ -467,7 +472,8 @@ namespace :loader do
               :title=>titulo,
               :annotation=>anotaciones,
               :synthesis=>sintesis,
-              :biographic_comment=>comentariosBiblio
+              :biographic_comment=>comentariosBiblio,
+              :place=>lugar
               )
           artwork.save!
           if simbolos

@@ -38,13 +38,16 @@ class Artwork < ActiveRecord::Base
   belongs_to :work_art_symbol
   belongs_to :school
 
-  #origin and actual cities
+  #Origin and actual cities
   belongs_to :origin_city, class_name: "City"
   belongs_to :actual_city, class_name: "City"
 
-  #origin and actual countries
+  #Origin and actual countries
   belongs_to :origin_country, class_name: "Country"
   belongs_to :actual_country, class_name: "Country"
+
+  #Place where the artwork is at the moment
+  belongs_to :place
 
   #Different categories
   belongs_to :category_1, class_name: "Category"
@@ -250,10 +253,6 @@ class Artwork < ActiveRecord::Base
     title ? title : "N/A"
   end
 
-  def get_author_name
-    author && author.name ? author.name : "N/A"
-  end
-
   def get_author_lastname
     author && author.lastname ? author.lastname : "N/A"
   end
@@ -366,6 +365,10 @@ class Artwork < ActiveRecord::Base
 
   def get_author_name
     author ? author.get_full_name : "N/A"
+  end
+
+  def get_place
+    place ? place.name : "N/A"
   end
 
 end
