@@ -1,6 +1,9 @@
 namespace :loader do
   require 'csv'
 
+  #@ruta_imagenes = '/arca/project/imagenes/'
+  @ruta_imagenes = '/home/kelvin/Documents/Historia/imagenes_jaime/base/'
+
   desc "Solo autores"
   task load_authors_with_lastname: :environment do
     p "Solo autores"
@@ -368,7 +371,7 @@ namespace :loader do
       i = i+1
       p i
       if i== 100
-        break
+        #break
       end
 
       if row.length== 21
@@ -437,20 +440,19 @@ namespace :loader do
           # Sintesis
           sintesis = row['Sintesis']
           #p scene.id
+          f_avatar = nil
           if row['Id Imagen']
-            begin
-              f_avatar = File.open('/arca/project/imagenes/'+(16000+row['Id Imagen'].to_i).to_s+ '.jpg','rb')
-              if not f_avatar
-                f_avatar = File.open(Rails.root + 'app/assets/images/small/missing.jpg','rb')
-                p "No se encontro" + (16000+row['Id Imagen'].to_i).to_s
-              end
-            rescue
-              f_avatar = File.open((Rails.root + 'app/assets/images/small/missing.jpg'),'rb')
-              p "No se encontro" + (16000+row['Id Imagen'].to_i).to_s
+            if File.exist?(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg')
+              p @ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg'
+              f_avatar = File.open(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg')
+            elsif File.exist?(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.JPG')
+              p @ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.JPG'
+              f_avatar = File.open(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.JPG')
+            else
+              p "No se encontró imagen #{16000+row['Id Imagen'].to_i}"
             end
           else
-            f_avatar = File.open((Rails.root + 'app/assets/images/small/missing.jpg'),'rb')
-            p "no se agrego imagen"
+            p "No se agrego imagen"
           end
           artwork = Artwork.create(
               #:passage_id=>
