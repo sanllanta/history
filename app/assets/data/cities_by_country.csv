@@ -1,0 +1,325 @@
+País;Ciudad
+Argentina;Buenos Aires
+Argentina;Casabindo
+Argentina;Catamarca
+Argentina;Cochinoca
+Argentina;Córdoba 
+Argentina;Corrientes
+Argentina;Humahuaca
+Argentina;Jujuy
+Argentina;Luján
+Argentina;Paraná
+Argentina;Rinconada
+Argentina;Rosario
+Argentina;Salta
+Argentina;Santa Fe
+Argentina;Santiago del Estero
+Argentina;Tilcara
+Argentina;Uquía
+Argentina;Yavi
+Bolivia;Cajamarca
+Bolivia;Calamarca
+Bolivia;Caquiaviri
+Bolivia;Carabuco
+Bolivia;Cochabamba
+Bolivia;Copacabana
+Bolivia;Charcas
+Bolivia;La Paz
+Bolivia;Oruro
+Bolivia;Potosí
+Bolivia;Puerto Rico
+Bolivia;Santa Cruz
+Bolivia;Santiago de Huata
+Bolivia;Sucre
+Brasil;Itapanhoacanga
+Brasil;Belem
+Brasil;Belo Vale
+Brasil;Brasília
+Brasil;Cachoeira
+Brasil;Catas altas
+Brasil;Congonhas
+Brasil;Diamantina
+Brasil;Embu
+Brasil;Espírito Santo 
+Brasil;Holanda
+Brasil;Igaraçu
+Brasil;Itaverava 
+Brasil;Itu São Paulo
+Brasil;Jaboatão dos Guararapes 
+Brasil;João Pessoa
+Brasil;Mariana
+Brasil;Minas Gerais
+Brasil;Niteroi
+Brasil;Nova Era
+Brasil;Olinda
+Brasil;Ouro Branco 
+Brasil;Ouro Preto
+Brasil;Pernambuco
+Brasil;Pinedo
+Brasil;Pirapetinga
+Brasil;Pirenópolis Goiás
+Brasil;Recife
+Brasil;Rio de Janeiro
+Brasil;Sabará 
+Brasil;Salvador
+Brasil;Salvador de Bahia
+Brasil;Santa Bárbara MG
+Brasil;Santana dos Montes
+Brasil;Santata Rita Durao
+Brasil;São Cristóvão
+Brasil;São João del Rei
+Brasil;São Paulo
+Brasil;São Roque
+Brasil;São Tomé das Letras
+Brasil;Sergipe
+Brasil;Serro
+Brasil;Tiradentes 
+Brasil;Vila de Nova Almeida 
+Brasil;Vitoriano Veloso
+Colombia;Bogotá
+Colombia;Cali
+Colombia;Jardín Antioquia
+Colombia;Medellín
+Colombia;Monguí
+Colombia;Popayán
+Colombia;Santa Fe de Antioquia
+Costa Rica;Orosí
+Cuba;Camagüey
+Cuba;Cárdenas
+Cuba;La Habana
+Chile;Concepción
+Chile;La Serena
+Chile;Parinacota
+Chile;Rancagua
+Chile;Santiago
+Ecuador;Cuenca
+Ecuador;El Quinche
+Ecuador;El Retiro
+Ecuador;Guayaquil
+Ecuador;La Ceja
+Ecuador;Loja
+Ecuador;Marinilla
+Ecuador;Medellín
+Ecuador;Quito
+Ecuador;Ríonegro
+Ecuador;Santa Fe de Antioquia
+Ecuador;Santuario
+EEUU;Albany
+EEUU;Allentown
+EEUU;Baltimore
+EEUU;Birmingham
+EEUU;Boston
+EEUU;California
+EEUU;Carolina del Norte
+EEUU;Carolina del Sur
+EEUU;Cincinatti
+EEUU;Charleston
+EEUU;Charlotte
+EEUU;Chicago
+EEUU;Dallas
+EEUU;Davenport
+EEUU;Daytona Beach
+EEUU;Denver
+EEUU;Filadelfia
+EEUU;Forth Worth
+EEUU;Houston
+EEUU;Illinois
+EEUU;Indianapolis
+EEUU;Lincoln
+EEUU;Los Angeles
+EEUU;Massachusetts
+EEUU;Minneapolis
+EEUU;New Haven
+EEUU;New Mexico
+EEUU;New Orleans
+EEUU;New York
+EEUU;Newark
+EEUU;North Kingston
+EEUU;Ohio
+EEUU;Omaha
+EEUU;Pittsfield
+EEUU;Provo
+EEUU;Salem
+EEUU;San Antonio
+EEUU;San Francisco
+EEUU;Santa Fe
+EEUU;Stanford
+EEUU;Tulsa
+EEUU;Washington
+EEUU;Williamsburg
+EEUU;Worcester
+España;Madrid
+España;Pamplona
+España;Sevilla
+Guatemala;Antigua
+Guatemala;Esquipulas
+Guatemala;Puerto Rico
+Haití;Puerto Príncipe
+Honduras;Tegucigalpa
+Israel;Jerusalem
+Italia;Roma
+México;Acámbaro
+México;Acatzingo
+México;Acolman
+México;Actopan
+México;Aculco
+México;Aguascalientes
+México;Atlixco
+México;Atotonilco 
+México;Axapusco
+México;Azcapotzalco
+México;Campeche
+México;Celaya
+México;Coacalco de Berriozábal
+México;Coahuila
+México;Cocula
+México;Coixtlahuaca
+México;Coyoacán
+México;Cuauhtemoc
+México;Cuauhtincha
+México;Cuautitlán
+México;Cuernavaca
+México;Culhuacán
+México;Chalchicomula de Sesma;Puebla
+México;Chapala
+México;Chiapas
+México;Chihuahua
+México;Cholula
+México;Dolores
+México;Durango
+México;Edo de México
+México;Ejutla
+México;El Venado
+México;Guadalajara
+México;Guadalupe
+México;Guanajuato
+México;Hidalgo
+México;Huaquechula
+México;Huehuetoca
+México;Huejotzingo
+México;Jalisco
+México;Jiquipilco 
+México;Juitepec
+México;León
+México;Lerma
+México;Malinalco
+México;Malta
+México;Mérida
+México;Metztitlán
+México;Michoacán
+México;Monterrey
+México;Morelia
+México;Morelos
+México;Oaxaca
+México;Ocotlán
+México;Otumba
+México;Ozumba
+México;Ozumbilla
+México;Pachuca
+México;Pinos
+México;Pinos Zacatecas
+México;Puebla
+México;Puerto Rico
+México;Quecholac
+México;Querétaro
+México;Saltillo
+México;San Andrés Cholula
+México;San Cristóbal de las Casas
+México;San Juan de Puerto Rico
+México;San Lucas Xolox
+México;San Luis Potosí
+México;San Miguel Allende
+México;San Pedro Cholula
+México;Tabasco
+México;Tacamachalco 
+México;Tamazulapan
+México;Taxco
+México;Tecajic
+México;Tecalí
+México;Tecamachalco
+México;Tehuacán
+México;Tenancingo
+México;Tepeaca
+México;Tepetlaoxtoc
+México;Tepotzotlán
+México;Tepozotlán
+México;Texcalyacac
+México;Texcoco
+México;Texmelucan
+México;Tlacotepec
+México;Tlahuelilpan
+México;Tlalmanalco
+México;Tlapa
+México;Tlaxcala
+México;Tlayacapan
+México;Tochtepec
+México;Toluca
+México;Tonalá
+México;Tzintzuntzan
+México;Veracruz
+México;Xochimilco
+México;Yanhuitlan
+México;Yucatan 
+México;Zacatecas
+México;Zapopan
+México;Zinacantepec
+México;Zinacatepec
+México;Zumpango
+Nicaragua;Managua
+Paraguay;Asunción
+Paraguay;Trinidad
+Perú;Accha
+Perú;Acomayo
+Perú;Alemania
+Perú;Apurímac
+Perú;Arequipa
+Perú;Argentina
+Perú;Ayacucho
+Perú;Ayaviri
+Perú;Caima
+Perú;Cajamarca
+Perú;Canicunca
+Perú;Cuzco
+Perú;Chiclayo
+Perú;Chile
+Perú;Chosica
+Perú;Chucuito
+Perú;Hualaoyo
+Perú;Huamanga
+Perú;Huancané
+Perú;Huancavelica
+Perú;Huánuco
+Perú;Huaro
+Perú;Juli
+Perú;Junín
+Perú;La Libertad
+Perú;La Paz
+Perú;Lima
+Perú;México
+Perú;Monte Carlo
+Perú;Nueva York
+Perú;Ocopa
+Perú;Paucartambo
+Perú;Puno
+Perú;Puno juli
+Perú;Quispicanchis
+Perú;Tinta
+Perú;Trujillo
+Perú;Urquillo
+Perú;Valle del Colca
+Puerto Rico;Caguas
+Puerto Rico;Ponce
+Puerto Rico;San Juan
+República Dominicana;Higüey
+República Dominicana;Santo Domingo
+Venezuela;Araure
+Venezuela;Baruta
+Venezuela;Calabozo
+Venezuela;Caracas
+Venezuela;Coro
+Venezuela;Maracaibo
+Venezuela;Mérida
+Venezuela;Ospino
+Venezuela;Quíbor
+Venezuela;Tenerife
+Venezuela;Tocuyo

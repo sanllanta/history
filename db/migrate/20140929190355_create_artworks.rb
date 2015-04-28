@@ -13,14 +13,16 @@ class CreateArtworks < ActiveRecord::Migration
       t.belongs_to :school
       #t.belongs_to :work_art_symbol
 
-      #origin and actual cities
+      #Origin and actual cities
       t.belongs_to :origin_city, class_name: "City"
       t.belongs_to :actual_city, class_name: "City"
 
-      #origin and actual cities
+      #Origin and actual cities
       t.belongs_to :origin_country, class_name: "Country"
       t.belongs_to :actual_country, class_name: "Country"
 
+      #Place where the artwork is at the moment
+      t.belongs_to :place
 
       #Different categories
       t.belongs_to :category_1, class_name: "Category"
