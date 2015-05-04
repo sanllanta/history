@@ -29,7 +29,7 @@ namespace :loader do
     Rake::Task['loader:load_personajes_relato'].invoke
     Rake::Task['loader:passages_csv'].invoke
     Rake::Task['loader:load_obras'].invoke
-    Rake::Task['loader:load_autores_apellido'].invoke
+
   end
 
   desc "carga general"
@@ -45,6 +45,19 @@ namespace :loader do
     Rake::Task['loader:passages_csv'].invoke
     Rake::Task['loader:load_obras_base1'].invoke
     Rake::Task['loader:load_autores_apellido'].invoke
+
+
+  end
+
+  desc "Loads the whole 2nd database to the application"
+  task load_second_db: :environment do
+    Rake::Task['loader:load_symbols'].invoke
+    Rake::Task['loader:load_descriptors'].invoke
+    Rake::Task['loader:load_characters'].invoke
+    Rake::Task['loader:load_db_two'].invoke
+    Rake::Task['loader:load_desc_obras'].invoke
+    Rake::Task['loader:load_simb_obras'].invoke
+
   end
 
   desc "Loads the countries listed in countries.csv into the countries table"
@@ -339,12 +352,6 @@ namespace :loader do
 
       Character.create(attributes)
     end
-    # new_max = maximum(primary_key) || 0
-    # comadno = "SELECT setval('company_id_seq', (SELECT max(id) FROM company));"
-    # ActiveRecord::Base.connection.execute(comadno)
-    ActiveRecord::Base.connection.tables.each do |t|
-      ActiveRecord::Base.connection.reset_pk_sequence!(t)
-    end
   end
 
   desc "Load passage CSV"
@@ -459,6 +466,7 @@ namespace :loader do
           #p scene.id
           f_avatar = nil
           if row['Id Imagen']
+
             if File.exist?(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg')
               p @ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg'
               f_avatar = File.open(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg')
@@ -473,9 +481,9 @@ namespace :loader do
           end
           artwork = Artwork.create(
               #:passage_id=>
+              :id => (row['Id Imagen'].to_i+16000),
               :avatar =>f_avatar,
               :author_id=>autor.id,
-              #:place_id=>ciudad.id,
               :scene_id=>scene.id,
               :type_id=>tecnica.id,
               :source_id=>fuente.id,
@@ -529,6 +537,236 @@ namespace :loader do
         obj.lastname = row['apellido']
         obj.save
       end
+    end
+  end
+
+  desc "Simbolos"
+  task load_symbols: :environment do
+    p "Importando símbolos..."
+    file = File.join(Rails.root, 'app', 'assets', 'data', 'simbolos.csv')
+    CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
+      symbol = row['Simbolo'].capitalize
+      ArtworkSymbol.find_or_create_by(:name=>symbol)
+    end
+  end
+
+  desc "Descriptores"
+  task load_descriptors: :environment do
+    p "Importando descriptores..."
+    file = File.join(Rails.root, 'app', 'assets', 'data', 'descriptores.csv')
+    CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
+      desc = row['nombredes']
+      Description.find_or_create_by(:description=>desc)
+    end
+  end
+
+  desc "Personajes"
+  task load_characters: :environment do
+    p "Importando personajes..."
+    file = File.join(Rails.root, 'app', 'assets', 'data', 'personajes.csv')
+    CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
+      id_personaje = row['ID']
+      name = row['Personaje']
+      biography = row['Biografia']
+      death_year = row['Año Muerte'] ? "01/01/"+row['Año Muerte'] : nil
+      beatification_date = row['Año Beatificación'] ? "01/01/"+row['Año Beatificación'] : nil
+      canonization = row['Canonización'] ? "01/01/"+row['Canonización'] : nil
+
+      death_date = death_year ? death_year.to_date : nil
+      bea_date = beatification_date ? beatification_date.to_date : nil
+      cano_date = canonization ? canonization.to_date : nil
+
+      Character.find_or_create_by(:id=>id_personaje,:name=>name, :biography=>biography, :death_date=>death_date,
+                                  :canonization_date=>cano_date, :beatification_date=>bea_date)
+    end
+  end
+
+  desc "Obras base dos"
+  task load_db_two: :environment do
+    p "Importando obras segunda base..."
+    file = File.join(Rails.root, 'app', 'assets', 'data', 'Consulta2.csv')
+    CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
+      id_obras= row['ID']
+      escenario = row['Escenario']
+      donante = row['Donante']
+      id_imagen = row['ID Imagen']
+      autor = row['Autor']
+      titulo = row['Título']
+      comentarios_biblio = row['comentarios_biblio']
+      cartelera_f = row['Cartelera Filacterias']
+      tipo_de_relato = row['Tipo_De_Relato']
+      tipo = row['Tipo']
+      fuente_imagen = row['Fuente de la Imagen']
+      lugar = row['lugar']
+      anotaciones = row['anotaciones']
+      sintesis = row['Sintesis']
+      atributos_iconograficos = row['Atributos Iconograficos']
+      procedencia = row['Procedencia']
+      fecha = row['Fecha']
+      p id_obras
+      p id_imagen
+      p titulo
+      if not(escenario.to_s.empty? and donante.to_s.empty? and id_imagen.to_s.empty? and autor.to_s.empty? and titulo.to_s.empty? and
+          comentarios_biblio.to_s.empty? and cartelera_f.to_s.empty? and tipo_de_relato.to_s.empty? and tipo.to_s.empty? and
+          fuente_imagen.to_s.empty? and lugar.to_s.empty? and anotaciones.to_s.empty? and sintesis.to_s.empty? and
+          atributos_iconograficos.to_s.empty? and procedencia.to_s.empty? and fecha.to_s.empty?) and not(id_imagen.to_s.empty?)
+
+        f_avatar = nil
+        if id_imagen
+
+          if File.exist?(@ruta_imagenes+id_imagen+ '.jpg')
+            p @ruta_imagenes+id_imagen+ '.jpg'
+            f_avatar = File.open(@ruta_imagenes+id_imagen+ '.jpg')
+          elsif File.exist?(@ruta_imagenes+id_imagen+ '.JPG')
+            p @ruta_imagenes+id_imagen+ '.JPG'
+            f_avatar = File.open(@ruta_imagenes+id_imagen+ '.JPG')
+          else
+            #p "No se encontró imagen #{id_imagen}"
+          end
+        else
+          #p "campo imagen error:#{id_imagen}"
+        end
+
+        #Donante;
+        obj_donante = Donor.find_or_create_by(:name=>donante)
+
+
+        #autor
+        autor = Author.find_or_create_by(:name=>autor)
+
+        #Escenario;
+        scene = Scene.find_or_create_by(:name=>escenario)
+
+        #Técnica;
+        tecnica = Type.find_or_create_by(:name=>tipo)
+
+        #Fuenteimagen;
+        fuente = Source.find_or_create_by(:name=>fuente_imagen)
+
+        #Cartela;
+        cartela = PhylacteryBillboard.find_or_create_by(:name=>cartelera_f)
+
+        #TipoRelato;
+        tipo_relato = StoryType.find_or_create_by(:name=>tipo_de_relato)
+
+        #atributos_iconograficos;
+        atribut_icono = IconographicAttribute.find_or_create_by(:name=>atributos_iconograficos)
+
+        # Lugar
+        if procedencia
+          lugar_obj = Place.find_or_create_by(:name=>procedencia)
+        end
+
+        #País y ciudad
+        pais_actual = nil
+        ciudad_actual = nil
+        if lugar
+          pais_ciudad = lugar.split(',')
+          if pais_ciudad[0]
+            pais_actual = Country.find_by(:name_spanish => pais_ciudad[0].strip)
+            if !pais_actual
+              p "No se encontró el país #{pais_ciudad[0]}"
+            end
+            if pais_ciudad[1]
+              ciudad_actual = City.find_or_create_by(:name => pais_ciudad[1].strip)
+            end
+          end
+        end
+
+        artwork = Artwork.create(
+            #:passage_id=>
+            :id => id_imagen,
+            :avatar =>f_avatar,
+            :author_id=>autor.id,
+            :scene_id=>scene.id,
+            :type_id=>tecnica.id,
+            :source_id=>fuente.id,
+            :donor_id=>obj_donante.id,
+            :iconographic_attribute_id=>atribut_icono.id,
+            :phylactery_billboard_id=>cartela.id,
+            :story_type_id=>tipo_relato.id,
+            :title=>titulo,
+            :annotation=>anotaciones,
+            :synthesis=>sintesis,
+            :biographic_comment=>comentarios_biblio,
+            :place=>lugar_obj,
+            :annotation_date=>fecha,
+            :actual_country => pais_actual,
+            :actual_city => ciudad_actual
+        )
+        artwork.save!
+      else
+        p "vacio: " + id_obras.to_s
+        p "escenario_____" + escenario.nil?.to_s
+        p "donante_____" + donante.nil?.to_s
+        p "id_imagen_____" + id_imagen.nil?.to_s
+        p "autor_____" + autor.nil?.to_s
+        p "titulo _____" + titulo.nil?.to_s
+        p "comentarios_biblio _____" + comentarios_biblio.nil?.to_s
+        p "cartelera_f _____" + cartelera_f.nil?.to_s
+        p "tipo_de_relato _____" + tipo_de_relato.nil?.to_s
+        p "tipo _____" + tipo.nil?.to_s
+        p "vafuente_imagencio _____" + fuente_imagen.nil?.to_s
+        p "lugar _____" + lugar.nil?.to_s
+        p "anotaciones _____" + anotaciones.nil?.to_s
+        p "sintesis _____" + sintesis.nil?.to_s
+        p "atributos_iconograficos ____" + atributos_iconograficos.nil?.to_s
+        p "procedencia _____" + procedencia.nil?.to_s
+        p "fecha _____" + fecha.nil?.to_s
+        p "                              "
+        p "                              "
+        p "                              "
+      end
+    end
+  end
+
+
+  desc "Carge de descriptores a obras"
+  task load_desc_obras: :environment do
+    p "Importando descriptores obras segunda base..."
+    file = File.join(Rails.root, 'app', 'assets', 'data', 'descriptores_obras.csv')
+    CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
+      desc = row['nombredes']
+      id_obra = row['ID Imagen']
+      ob_obra = Artwork.find(:id=>id_obra)
+      ob_desc = Description.find_by(:description=>desc)
+      ob_obra.descriptions << ob_desc
+      ob_obra.save!
+    end
+  end
+
+  desc "Carge de simbolos a obras"
+  task load_simb_obras: :environment do
+    p "Importando simbolos obras segunda base..."
+    file = File.join(Rails.root, 'app', 'assets', 'data', 'descriptores_obras.csv')
+    CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
+      simb = row['Simbolo']
+      id_obra = row['ID Imagen']
+      ob_obra = Artwork.find(:id=>id_obra)
+      ob_simb = ArtworkSymbol.find_by(:name=>simb)
+      ob_obra.artwork_symbols << ob_simb
+      ob_obra.save!
+    end
+  end
+
+  desc "Carge de personajes a obras"
+  task load_simb_obras: :environment do
+    p "Importando simbolos obras segunda base..."
+    file = File.join(Rails.root, 'app', 'assets', 'data', 'descriptores_obras.csv')
+    CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
+      personaId = row['Personajes_ID']
+      id_obra = row['ID Imagen']
+      ob_obra = Artwork.find(:id => id_obra)
+      persona_obj = Character.find(personaId)
+      ob_obra.characters << persona_obj
+      ob_obra.save!
+    end
+  end
+
+  desc "Resets all table sequences"
+  task reset_table_sequences: :environment do
+    ActiveRecord::Base.connection.tables.each do |t|
+      ActiveRecord::Base.connection.reset_pk_sequence!(t)
     end
   end
 
