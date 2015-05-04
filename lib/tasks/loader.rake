@@ -52,6 +52,15 @@ namespace :loader do
 
   desc "Loads the whole 2nd database to the application"
   task load_second_db: :environment do
+    Rake::Task['loader:load_countries'].invoke
+    Rake::Task['loader:load_categories1'].invoke
+    Rake::Task['loader:load_autores'].invoke
+    Rake::Task['loader:load_tecnica'].invoke
+    Rake::Task['loader:load_fuente'].invoke
+    Rake::Task['loader:load_desc_symbol'].invoke
+    Rake::Task['loader:load_personajes_relato'].invoke
+    Rake::Task['loader:passages_csv'].invoke
+    ##
     Rake::Task['loader:load_symbols'].invoke
     Rake::Task['loader:load_descriptors'].invoke
     Rake::Task['loader:load_characters'].invoke
@@ -622,7 +631,7 @@ namespace :loader do
           atributos_iconograficos.to_s.empty? and procedencia.to_s.empty? and fecha.to_s.empty?) and not(id_imagen.to_s.empty?)
 
         f_avatar = nil
-        if id_imagen
+        if id_imagen && false
 
           if File.exist?(@ruta_imagenes2+id_imagen+ '.jpg')
             p @ruta_imagenes2+id_imagen+ '.jpg'
