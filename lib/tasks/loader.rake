@@ -604,6 +604,15 @@ namespace :loader do
       atributos_iconograficos = row['Atributos Iconograficos']
       procedencia = row['Procedencia']
       fecha = row['Fecha']
+
+      #caregoprias
+      cat0 = row['Categorías']
+      cat1 = row['sub1']
+      cat2 = row['sub2']
+      cat3 = row['sub3']
+      cat4 = row['sub4']
+
+
       p id_obras
       p id_imagen
       p titulo
@@ -658,6 +667,17 @@ namespace :loader do
           lugar_obj = Place.find_or_create_by(:name=>procedencia)
         end
 
+        cat0 = row['Categorías']
+        cat0_obj = Category.find_by(:name=> cat0)
+        cat1 = row['sub1']
+        cat1_obj = Category.find_by(:name=> cat1)
+        cat2 = row['sub2']
+        cat2_obj = Category.find_by(:name=> cat2)
+        cat3 = row['sub3']
+        cat3_obj = Category.find_by(:name=> cat3)
+        cat4 = row['sub4']
+        cat4_obj = Category.find_by(:name=> cat4)
+
         #País y ciudad
         pais_actual = nil
         ciudad_actual = nil
@@ -693,7 +713,12 @@ namespace :loader do
             :place=>lugar_obj,
             :annotation_date=>fecha,
             :actual_country => pais_actual,
-            :actual_city => ciudad_actual
+            :actual_city => ciudad_actual,
+            :category_1_id => cat0_obj.id,
+            :category_2_id => cat1_obj.id,
+            :category_3_id => cat2_obj.id,
+            :category_4_id => cat3_obj.id,
+            :category_5_id => cat4_obj.id
         )
         artwork.save!
       else
