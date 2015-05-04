@@ -352,11 +352,11 @@ class Artwork < ActiveRecord::Base
   end
 
   def get_phylactery_billboard_name
-    phylactery_billboards && phylactery_billboards.name ? phylactery_billboards.name : "N/A"
+    phylactery_billboards[0] && phylactery_billboards[0].name ? phylactery_billboards[0].name : "N/A"
   end
 
   def get_iconographic_attribute_name
-    iconographic_attributes && iconographic_attributes.name ? iconographic_attributes.name : "N/A"
+    iconographic_attributes && iconographic_attributes.to_s ? iconographic_attributes.name : "N/A"
   end
 
   def get_comment
