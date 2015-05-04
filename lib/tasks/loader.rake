@@ -631,10 +631,10 @@ namespace :loader do
             p @ruta_imagenes2+id_imagen+ '.JPG'
             f_avatar = File.open(@ruta_imagenes2+id_imagen+ '.JPG')
           else
-            #p "No se encontró imagen #{id_imagen}"
+            p "No se encontró imagen #{@ruta_imagenes2+id_imagen}"
           end
         else
-          #p "campo imagen error:#{id_imagen}"
+          p "campo imagen error:#{@ruta_imagenes2+id_imagen}"
         end
 
         #Donante;
