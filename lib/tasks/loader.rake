@@ -1,8 +1,9 @@
 namespace :loader do
   require 'csv'
 
-  #@ruta_imagenes = '/arca/project/imagenes/'
-  @ruta_imagenes = '/home/kelvin/Documents/Historia/imagenes_jaime/base/'
+  @ruta_imagenes = '/arca/project/imagenes/'
+  #@ruta_imagenes = '/home/kelvin/Documents/Historia/imagenes_jaime/base/'
+  @ruta_imagenes2 = '/arca/project/imagenesBase2/'
 
   desc "Solo autores"
   task load_authors_with_lastname: :environment do
@@ -614,12 +615,12 @@ namespace :loader do
         f_avatar = nil
         if id_imagen
 
-          if File.exist?(@ruta_imagenes+id_imagen+ '.jpg')
-            p @ruta_imagenes+id_imagen+ '.jpg'
-            f_avatar = File.open(@ruta_imagenes+id_imagen+ '.jpg')
-          elsif File.exist?(@ruta_imagenes+id_imagen+ '.JPG')
-            p @ruta_imagenes+id_imagen+ '.JPG'
-            f_avatar = File.open(@ruta_imagenes+id_imagen+ '.JPG')
+          if File.exist?(@ruta_imagenes2+id_imagen+ '.jpg')
+            p @ruta_imagenes2+id_imagen+ '.jpg'
+            f_avatar = File.open(@ruta_imagenes2+id_imagen+ '.jpg')
+          elsif File.exist?(@ruta_imagenes2+id_imagen+ '.JPG')
+            p @ruta_imagenes2+id_imagen+ '.JPG'
+            f_avatar = File.open(@ruta_imagenes2+id_imagen+ '.JPG')
           else
             #p "No se encontró imagen #{id_imagen}"
           end
