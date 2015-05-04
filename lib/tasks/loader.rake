@@ -714,11 +714,11 @@ namespace :loader do
             :annotation_date=>fecha,
             :actual_country => pais_actual,
             :actual_city => ciudad_actual,
-            :category_1_id => cat0_obj.id,
-            :category_2_id => cat1_obj.id,
-            :category_3_id => cat2_obj.id,
-            :category_4_id => cat3_obj.id,
-            :category_5_id => cat4_obj.id
+            :category_1_id => cat0_obj.nil? ? nil :cat0_obj.id,
+            :category_2_id => cat1_obj.nil? ? nil :cat1_obj.id,
+            :category_3_id => cat2_obj.nil? ? nil :cat2_obj.id,
+            :category_4_id => cat3_obj.nil? ? nil :cat3_obj.id,
+            :category_5_id => cat4_obj.nil? ? nil :cat4_obj.id
         )
         artwork.save!
       else
