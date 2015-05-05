@@ -789,15 +789,17 @@ namespace :loader do
 
   desc "Carge de personajes a obras"
   task load_personajes_obras: :environment do
-    p "Importando simbolos obras segunda base..."
+    p "Importando personajes obras segunda base..."
     file = File.join(Rails.root, 'app', 'assets', 'data', 'personaje_obra.csv')
     CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
-      personaId = row['Personajes_ID']
-      id_obra = row['ID Imagen']
-      ob_obra = Artwork.find(id_obra)
-      persona_obj = Character.find(personaId)
-      ob_obra.characters << persona_obj
-      ob_obra.save!
+      if row['Personajes_ID']
+        personaId = row['Personajes_ID']
+        id_obra = row['ID Imagen']
+        ob_obra = Artwork.find(id_obra)
+        persona_obj = Character.find(personaId)
+        ob_obra.characters << persona_obj
+        ob_obra.save!
+      end
     end
   end
 
