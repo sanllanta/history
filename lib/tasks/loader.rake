@@ -61,19 +61,17 @@ namespace :loader do
     Rake::Task['loader:load_fuente'].invoke
     Rake::Task['loader:load_desc_symbol'].invoke
     Rake::Task['loader:passages_csv'].invoke
-    ##
+    
     Rake::Task['loader:load_symbols'].invoke
     Rake::Task['loader:load_descriptors'].invoke
     Rake::Task['loader:load_db_two'].invoke
     Rake::Task['loader:load_desc_obras'].invoke
     Rake::Task['loader:load_simb_obras'].invoke
 
+    Rake::Task['loader:reset_table_sequences'].invoke
     Rake::Task['loader:load_obras_base1'].invoke
     Rake::Task['loader:load_personajes_obras'].invoke
     Rake::Task['loader:load_autores_apellido'].invoke
-
-    Rake::Task['loader:reset_table_sequences'].invoke
-
   end
 
   desc "Loads the countries listed in countries.csv into the countries table"
@@ -481,7 +479,7 @@ namespace :loader do
           sintesis = row['Sintesis']
           #p scene.id
           f_avatar = nil
-          if row['Id Imagen']
+          if row['Id Imagen'] && false
 
             if File.exist?(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg')
               p @ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg'
