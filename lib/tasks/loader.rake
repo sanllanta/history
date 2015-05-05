@@ -207,7 +207,7 @@ namespace :loader do
     CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
       tipo = row['Tipo']
       id = row['ID']
-      values = line.strip.split(';')
+      
       attributes = {"name" => tipo, "id" => id}
       Type.create(attributes)
     end
