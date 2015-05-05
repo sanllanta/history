@@ -1,47 +1,54 @@
-Acuarela,
-Acuarela sobre marfíl,
-Azulejo,
-Biombo Óleo Tela ,
-Ceras,
-Esmalte sobre cobre,
-Esmalte sobre porcelana,
-Gouache,
-Grabado,
-Grabado en hojalata,
-Grabado en seda,
-Grabado iluminado,
-Grafito sobre papel,
-Grafito sobre tela,
-Miniatura,
-Óleo aguafuerte,
-Óleo alabastro,
-Óleo en papel sobre madera,
-Óleo sobre madera techo,
-Óleo sobre mármol,
-Óleo en porcelana,
-Óleo sobre cobre,
-Óleo sobre concha,
-Óleo sobre cuero,
-Óleo sobre grabado,
-Óleo sobre lámina,
-Óleo sobre madera,
-Óleo sobre marfil,
-Óleo sobre Papel,
-Óleo sobre tela,
-Óleo sobre vidrio,
-Pastel,
-Pintura mural,
-Plumaria,
-SD,
-Sepia sobre marfil,
-Sepia sobre papel,
-Tabla Enconchada,
-Tapiz,
-Técnica mixta madera,
-Técnica mixta Óleo tela madera,
-Técnica mixta sobre tela,
-Témpera sobre tela,
-Temple madera,
-Temple sobre marfil,
-Temple tela,
-Tinta sobre papel
+"Tipo";"ID"
+"Acuarela";2
+"Biombo Óleo Tela ";3
+"Ceras";4
+"Grabado en hojalata";5
+"Grabado en seda";6
+"Grabado iluminado";7
+"Óleo aguafuerte";8
+"Óleo alabastro";9
+"Óleo madera techo";10
+"Óleo mármol";11
+"Óleo sobre cuero";12
+"Óleo sobre lámina";13
+"Óleo sobre madera";14
+"Óleo sobre Papel";15
+"Óleo sobre tela";16
+"Pintura mural";18
+"Plumaria";19
+"SD";20
+"Tabla Enconchada";21
+"Tapiz";22
+"Técnica mixta madera";23
+"Técnica mixta Óleo tela madera";24
+"Técnica mixta sobre tela";25
+"Temple madera";26
+"Temple tela";27
+"Azulejo";28
+"Óleo en papel sobre madera";29
+"Óleo sobre cobre";30
+"Óleo sobre grabado";31
+"Óleo porcelana";32
+"Óleo sobre concha";33
+"Temple sobre marfil";34
+"Acuarela sobre marfil";35
+"Grabado";36
+"Témpera sobre tela";37
+"Sepia sobre papel";38
+"Grafito sobre papel";39
+"Pastel";40
+"Tinta sobre papel";41
+"Sepia sobre marfil";42
+"Esmalte sobre porcelana";43
+"Gouache";44
+"Esmalte sobre cobre";45
+"Óleo sobre marfil";46
+"Óleo sobre vidrio";47
+"Grafito sobre tela";48
+"Miniatura";49
+"Óleo sobre plata";50
+"Óleo sobre piedra";51
+"Grabado metal bordado";52
+"Grabado metal iluminado";53
+"Oleo sobre carey";54
+"Óleo sobre espejo";55

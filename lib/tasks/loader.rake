@@ -26,7 +26,6 @@ namespace :loader do
     Rake::Task['loader:load_autores'].invoke
     Rake::Task['loader:load_tecnica'].invoke
     Rake::Task['loader:load_fuente'].invoke
-    Rake::Task['loader:load_desc_symbol'].invoke
     Rake::Task['loader:load_personajes_relato'].invoke
     Rake::Task['loader:passages_csv'].invoke
     Rake::Task['loader:load_obras'].invoke
@@ -41,7 +40,6 @@ namespace :loader do
     Rake::Task['loader:load_autores'].invoke
     Rake::Task['loader:load_tecnica'].invoke
     Rake::Task['loader:load_fuente'].invoke
-    #Rake::Task['loader:load_desc_symbol'].invoke
     Rake::Task['loader:load_personajes_relato'].invoke
     Rake::Task['loader:passages_csv'].invoke
     Rake::Task['loader:load_obras_base1'].invoke
@@ -59,7 +57,6 @@ namespace :loader do
     Rake::Task['loader:load_autores'].invoke
     Rake::Task['loader:load_tecnica'].invoke
     Rake::Task['loader:load_fuente'].invoke
-    Rake::Task['loader:load_desc_symbol'].invoke
     Rake::Task['loader:passages_csv'].invoke
     
     Rake::Task['loader:load_symbols'].invoke
@@ -209,7 +206,7 @@ namespace :loader do
     lines = File.new(file).readlines
     lines.each do |line|
       values = line.strip.split(',')
-      attributes = {"name" => values[0]}
+      attributes = {"name" => values[0], "id" => values[1]}
       Type.create(attributes)
     end
 
@@ -315,21 +312,6 @@ namespace :loader do
       a.artwork_symbols<<sym3
 
       a.save!
-    end
-  end
-
-  desc "Desc symbol"
-  task load_desc_symbol: :environment do
-    p "desc symbol"
-
-    file = File.join(Rails.root, 'app', 'assets', 'data', 'desc_symbol.csv')
-    lines = File.new(file).readlines
-    lines.each do |line|
-      values = line.strip.split(',')
-      attributes_desc = {"description" => values[0]}
-      attributes_symb = {"name" => values[1]}
-      Description.create(attributes_desc)
-      ArtworkSymbol.create(attributes_symb)
     end
   end
 
@@ -559,7 +541,7 @@ namespace :loader do
     p "Importando símbolos..."
     file = File.join(Rails.root, 'app', 'assets', 'data', 'simbolos.csv')
     CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
-      symbol = row['Simbolo'].capitalize
+      symbol = row['simbolo']
       ArtworkSymbol.find_or_create_by(:name=>symbol)
     end
   end
@@ -567,9 +549,9 @@ namespace :loader do
   desc "Descriptores"
   task load_descriptors: :environment do
     p "Importando descriptores..."
-    file = File.join(Rails.root, 'app', 'assets', 'data', 'descriptores.csv')
+    file = File.join(Rails.root, 'app', 'assets', 'data', 'descriptors.csv')
     CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
-      desc = row['nombredes']
+      desc = row['descriptor']
       Description.find_or_create_by(:description=>desc)
     end
   end
@@ -661,7 +643,7 @@ namespace :loader do
         scene = Scene.find_or_create_by(:name=>escenario)
 
         #Técnica;
-        tecnica = Type.find_or_create_by(:name=>tipo)
+        tecnica = Type.find_by(:id=>tipo)
 
         #Fuenteimagen;
         fuente = Source.find_or_create_by(:name=>fuente_imagen)
@@ -786,8 +768,10 @@ namespace :loader do
       id_obra = row['ID Imagen']
       ob_obra = Artwork.find(id_obra)
       ob_simb = ArtworkSymbol.find_by(:name=>simb)
-      ob_obra.artwork_symbols << ob_simb
-      ob_obra.save!
+      if ob_simb
+        ob_obra.artwork_symbols << ob_simb
+        ob_obra.save!
+      end
     end
   end
 
@@ -816,8 +800,9 @@ namespace :loader do
       pais_actual = nil
       ciudad_actual = nil
       pais_origen = nil
-      if row['Procedencia']
-       pais_ciudad = row['Procedencia'].split(',')
+      place = nil
+      if row['Lugar']
+       pais_ciudad = row['Lugar'].split(',')
        if pais_ciudad[0]
           pais_actual = Country.find_by(:name_spanish => pais_ciudad[0].strip)
           if !pais_actual
@@ -833,12 +818,16 @@ namespace :loader do
           end
         end
       end
+      if row['Procedencia']
+        place = Place.find_or_create_by(:name=>row['ProcedenciaIm'])
+      end
       if row['ID Imagen']
         obra = Artwork.find(row['ID Imagen'].to_i)
         if obra
           obra.actual_city = ciudad_actual
           obra.origin_country = pais_origen
           obra.actual_country = pais_actual
+          obra.place = place
           obra.save
         end
       end
