@@ -770,8 +770,10 @@ namespace :loader do
       id_obra = row['ID Imagen']
       ob_obra = Artwork.find(id_obra)
       ob_desc = Description.find_by(:description=>desc)
-      ob_obra.descriptions << ob_desc
-      ob_obra.save!
+      if ob_desc
+        ob_obra.descriptions << ob_desc
+        ob_obra.save!
+      end
     end
   end
 
@@ -834,7 +836,10 @@ namespace :loader do
       if row['ID Imagen']
         obra = Artwork.find(row['ID Imagen'].to_i)
         if obra
-          obra.
+          obra.actual_city = ciudad_actual
+          obra.origin_country = pais_origen
+          obra.actual_country = pais_actual
+          obra.save
         end
       end
     end
