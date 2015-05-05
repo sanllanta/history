@@ -479,7 +479,7 @@ namespace :loader do
           sintesis = row['Sintesis']
           #p scene.id
           f_avatar = nil
-          if row['Id Imagen'] && false
+          if row['Id Imagen']
 
             if File.exist?(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg')
               p @ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg'
