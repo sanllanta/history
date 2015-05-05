@@ -203,15 +203,14 @@ namespace :loader do
   desc "tecnica"
   task load_tecnica: :environment do
     p "Tecnica"
-
     file = File.join(Rails.root, 'app', 'assets', 'data', 'tecnica.csv')
-    lines = File.new(file).readlines
-    lines.each do |line|
-      values = line.strip.split(',')
-      attributes = {"name" => values[0], "id" => values[1]}
+    CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
+      tipo = row['Tipo']
+      id = row['ID']
+      values = line.strip.split(';')
+      attributes = {"name" => tipo, "id" => id}
       Type.create(attributes)
     end
-
   end
 
   desc "fuente"
