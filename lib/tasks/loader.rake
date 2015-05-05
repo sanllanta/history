@@ -66,6 +66,7 @@ namespace :loader do
     Rake::Task['loader:load_db_two'].invoke
     Rake::Task['loader:load_desc_obras'].invoke
     Rake::Task['loader:load_simb_obras'].invoke
+    Rake::Task['loader:load_personajes_obras'].invoke
 
     Rake::Task['loader:reset_table_sequences'].invoke
     Rake::Task['loader:load_personajes_relato'].invoke
@@ -775,11 +776,11 @@ namespace :loader do
   desc "Carge de simbolos a obras"
   task load_simb_obras: :environment do
     p "Importando simbolos obras segunda base..."
-    file = File.join(Rails.root, 'app', 'assets', 'data', 'descriptores_obras.csv')
+    file = File.join(Rails.root, 'app', 'assets', 'data', 'simbolo_obra.csv')
     CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
       simb = row['Simbolo']
       id_obra = row['ID Imagen']
-      ob_obra = Artwork.find(:id=>id_obra)
+      ob_obra = Artwork.find(id_obra)
       ob_simb = ArtworkSymbol.find_by(:name=>simb)
       ob_obra.artwork_symbols << ob_simb
       ob_obra.save!
@@ -787,13 +788,13 @@ namespace :loader do
   end
 
   desc "Carge de personajes a obras"
-  task load_simb_obras: :environment do
+  task load_personajes_obras: :environment do
     p "Importando simbolos obras segunda base..."
-    file = File.join(Rails.root, 'app', 'assets', 'data', 'descriptores_obras.csv')
+    file = File.join(Rails.root, 'app', 'assets', 'data', 'personaje_obra.csv')
     CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
       personaId = row['Personajes_ID']
       id_obra = row['ID Imagen']
-      ob_obra = Artwork.find(:id => id_obra)
+      ob_obra = Artwork.find(id_obra)
       persona_obj = Character.find(personaId)
       ob_obra.characters << persona_obj
       ob_obra.save!
