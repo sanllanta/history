@@ -778,7 +778,7 @@ namespace :loader do
     p "Importando simbolos obras segunda base..."
     file = File.join(Rails.root, 'app', 'assets', 'data', 'simbolo_obra.csv')
     CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
-      simb = row['Simbolo']
+      simb = row['Simbolo'].capitalize
       id_obra = row['ID Imagen']
       ob_obra = Artwork.find(id_obra)
       ob_simb = ArtworkSymbol.find_by(:name=>simb)
