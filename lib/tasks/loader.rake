@@ -52,6 +52,8 @@ namespace :loader do
 
   desc "Loads the whole 2nd database to the application"
   task load_second_db: :environment do
+    Rake::Task['loader:load_personajes_relato'].invoke
+    Rake::Task['loader:load_characters'].invoke
     Rake::Task['loader:load_countries'].invoke
     Rake::Task['loader:load_categories1'].invoke
     Rake::Task['loader:load_autores'].invoke
@@ -62,14 +64,16 @@ namespace :loader do
     ##
     Rake::Task['loader:load_symbols'].invoke
     Rake::Task['loader:load_descriptors'].invoke
-    Rake::Task['loader:load_characters'].invoke
     Rake::Task['loader:load_db_two'].invoke
     Rake::Task['loader:load_desc_obras'].invoke
     Rake::Task['loader:load_simb_obras'].invoke
+
+    Rake::Task['loader:load_obras_base1'].invoke
     Rake::Task['loader:load_personajes_obras'].invoke
+    Rake::Task['loader:load_autores_apellido'].invoke
 
     Rake::Task['loader:reset_table_sequences'].invoke
-    Rake::Task['loader:load_personajes_relato'].invoke
+
   end
 
   desc "Loads the countries listed in countries.csv into the countries table"
@@ -354,7 +358,7 @@ namespace :loader do
         cano_date=nil
       end
 
-      attributes = {"id" => row['Id'],
+      attributes = {"id" => row['Id'].to_i+573,
                     "name" => row['Nombre'],
                     "biography" => row['Mini biografía'],
                     "death_date" => death_date,
@@ -455,9 +459,9 @@ namespace :loader do
           if row['Id Relato - Personaje']
             p "id relato"
             begin
-              id = row['Id Relato - Personaje'].to_i
+              id = row['Id Relato - Personaje'].to_i+573
               personaje = Character.find_by(:id=>id)
-              p row['Id Relato - Personaje']
+              p row['Id Relato - Personaje'].to_i+573
             rescue
               personaje = nil
               p row['Id Relato - Personaje']
@@ -633,7 +637,7 @@ namespace :loader do
           atributos_iconograficos.to_s.empty? and procedencia.to_s.empty? and fecha.to_s.empty?) and not(id_imagen.to_s.empty?)
 
         f_avatar = nil
-        if id_imagen && false
+        if id_imagen
 
           if File.exist?(@ruta_imagenes2+id_imagen+ '.jpg')
             p @ruta_imagenes2+id_imagen+ '.jpg'
