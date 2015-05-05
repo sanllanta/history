@@ -765,7 +765,7 @@ namespace :loader do
     CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
       desc = row['nombredes']
       id_obra = row['ID Imagen']
-      ob_obra = Artwork.find(:id=>id_obra)
+      ob_obra = Artwork.find(id_obra)
       ob_desc = Description.find_by(:description=>desc)
       ob_obra.descriptions << ob_desc
       ob_obra.save!
