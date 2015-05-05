@@ -483,7 +483,7 @@ namespace :loader do
               :avatar =>f_avatar,
               :author_id=>autor.id,
               :scene_id=>scene.id,
-              :type_id=>tecnica.id,
+              :type => tecnica.nil? ? nil : tecnica.id,
               :source_id=>fuente.id,
               :donor_id=>donante.id,
               :iconographic_attribute_id=>atributos.id,
