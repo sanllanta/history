@@ -648,7 +648,10 @@ namespace :loader do
         scene = Scene.find_or_create_by(:name=>escenario)
 
         #Técnica;
-        tecnica = Type.find_by(:id=>tipo)
+        tecnica = nil
+        if tipo
+          tecnica = Type.find_by(:id=>tipo)
+        end
 
         #Fuenteimagen;
         fuente = Source.find_or_create_by(:name=>fuente_imagen)
@@ -700,7 +703,7 @@ namespace :loader do
             :avatar =>f_avatar,
             :author_id=>autor.id,
             :scene_id=>scene.id,
-            :type_id=>tecnica.id,
+            :type=>tecnica,
             :source_id=>fuente.id,
             :donor_id=>obj_donante.id,
             :iconographic_attribute_id=>atribut_icono.id,
