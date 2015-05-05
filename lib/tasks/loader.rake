@@ -761,7 +761,7 @@ namespace :loader do
   end
 
 
-  desc "Carge de descriptores a obras"
+  desc "Cargue de descriptores a obras"
   task load_desc_obras: :environment do
     p "Importando descriptores obras segunda base..."
     file = File.join(Rails.root, 'app', 'assets', 'data', 'descriptores_obras.csv')
@@ -802,6 +802,30 @@ namespace :loader do
         ob_obra.characters << persona_obj
         ob_obra.save!
       end
+    end
+  end
+
+  desc "Cargue de ciudades y países a obras"
+  task load_lugares_obras_DB2 do
+    p "Cargando ciudades y países a obras"
+    file = File.join(Rails.root, 'app', 'assets', 'data', 'Consulta2.csv')
+    CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
+      #País y ciudad
+      pais_actual = nil
+      ciudad_actual = nil
+      if row['Ciudad']
+       pais_ciudad = row['Ciudad'].split(',')
+       if pais_ciudad[0]
+          pais_actual = Country.find_by(:name_spanish => pais_ciudad[0].strip)
+          if !pais_actual
+            p "No se encontró el país #{pais_ciudad[0]}"
+          end
+          if pais_ciudad[1]
+            ciudad_actual = City.find_or_create_by(:name => pais_ciudad[1].strip)
+          end
+        end
+      end
+      
     end
   end
 
