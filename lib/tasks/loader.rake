@@ -813,8 +813,8 @@ namespace :loader do
       #País y ciudad
       pais_actual = nil
       ciudad_actual = nil
-      if row['Ciudad']
-       pais_ciudad = row['Ciudad'].split(',')
+      if row['Procedencia']
+       pais_ciudad = row['Procedencia'].split(',')
        if pais_ciudad[0]
           pais_actual = Country.find_by(:name_spanish => pais_ciudad[0].strip)
           if !pais_actual
@@ -825,7 +825,7 @@ namespace :loader do
           end
         end
       end
-
+      
     end
   end
 
