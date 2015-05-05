@@ -69,6 +69,8 @@ namespace :loader do
     Rake::Task['loader:load_obras_base1'].invoke
     Rake::Task['loader:load_personajes_obras'].invoke
     Rake::Task['loader:load_autores_apellido'].invoke
+    Rake::Task['loader:load_lugares_obras_DB2'].invoke
+
   end
 
   desc "Loads the countries listed in countries.csv into the countries table"
