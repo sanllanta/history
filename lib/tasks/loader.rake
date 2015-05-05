@@ -813,6 +813,7 @@ namespace :loader do
       #País y ciudad
       pais_actual = nil
       ciudad_actual = nil
+      pais_origen = nil
       if row['Procedencia']
        pais_ciudad = row['Procedencia'].split(',')
        if pais_ciudad[0]
@@ -821,11 +822,21 @@ namespace :loader do
             p "No se encontró el país #{pais_ciudad[0]}"
           end
           if pais_ciudad[1]
-            ciudad_actual = City.find_or_create_by(:name => pais_ciudad[1].strip)
+            if Country.find_by(:name_spanish => pais_ciudad[1].strip)
+              pais_origen = pais_actual
+              pais_actual = Country.find_by(:name_spanish => pais_ciudad[1].strip)
+            else
+              ciudad_actual = City.find_or_create_by(:name => pais_ciudad[1].strip)
+            end
           end
         end
       end
-      
+      if row['ID Imagen']
+        obra = Artwork.find(row['ID Imagen'].to_i)
+        if obra
+          obra.
+        end
+      end
     end
   end
 

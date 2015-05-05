@@ -265,6 +265,10 @@ class Artwork < ActiveRecord::Base
     creation_date ? creation_date : "N/A"
   end
 
+  def get_annotation_date
+    annotation_date ? annotation_date : "N/A"
+  end
+
   def get_biographic_data
     biographic_data ? biographic_data : "N/A"
   end
