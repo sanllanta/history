@@ -411,7 +411,10 @@ namespace :loader do
           #ComentariosBiblio;
           comentariosBiblio = row['ComentariosBiblio']
           #Técnica;
-          tecnica = Type.find_or_create_by(:name=>row['Técnica'])
+          tecnica = nil
+          if row['Técnica']
+            tecnica = Type.find_or_create_by(:name=>row['Técnica'])
+          end
           #Fuenteimagen;
           fuente = Source.find_or_create_by(:name=>row['Fuenteimagen'])
           #País y ciudad
@@ -483,7 +486,7 @@ namespace :loader do
               :avatar =>f_avatar,
               :author_id=>autor.id,
               :scene_id=>scene.id,
-              :type => tecnica.nil? ? nil : tecnica.id,
+              :type => tecnica,
               :source_id=>fuente.id,
               :donor_id=>donante.id,
               :iconographic_attribute_id=>atributos.id,
