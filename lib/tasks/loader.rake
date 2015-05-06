@@ -811,14 +811,14 @@ namespace :loader do
         pais_ciudad = row['Lugar'].split(',')
         if pais_ciudad[0]
           if (pais_ciudad[0].strip == ('EEUU'))
-            pais_ciudad[0] = 'United States'
+            pais_ciudad[0] = 'Estados Unidos'
           end
           pais_actual = Country.find_by(:name_spanish => pais_ciudad[0].strip)
           if !pais_actual
             p "No se encontró el país #{pais_ciudad[0]}"
           end
           if pais_ciudad[1]
-            if pais_ciudad[1].strip.equals('EEUU')
+            if (pais_ciudad[0].strip == ('EEUU'))
               pais_ciudad[1] = 'Estados Unidos'
             end
             if Country.find_by(:name_spanish => pais_ciudad[1].strip)
