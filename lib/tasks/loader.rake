@@ -809,13 +809,19 @@ namespace :loader do
       pais_origen = nil
       place = nil
       if row['Lugar']
-       pais_ciudad = row['Lugar'].split(',')
-       if pais_ciudad[0]
+        pais_ciudad = row['Lugar'].split(',')
+        if pais_ciudad[0]
+          if pais_ciudad[0].strip.equals('EEUU')
+            pais_ciudad[0] = 'Estados Unidos'
+          end
           pais_actual = Country.find_by(:name_spanish => pais_ciudad[0].strip)
           if !pais_actual
             p "No se encontró el país #{pais_ciudad[0]}"
           end
           if pais_ciudad[1]
+            if pais_ciudad[1].strip.equals('EEUU')
+              pais_ciudad[1] = 'Estados Unidos'
+            end
             if Country.find_by(:name_spanish => pais_ciudad[1].strip)
               pais_origen = pais_actual
               pais_actual = Country.find_by(:name_spanish => pais_ciudad[1].strip)
