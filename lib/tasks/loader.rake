@@ -396,8 +396,7 @@ namespace :loader do
           if row['Simbolos']
             p row['Simbolos']
             s = ArtworkSymbol.where("name LIKE :prefix", prefix: "%#{row['Simbolos']}%")[0]
-            p s
-            simbolos = ArtworkSymbol.find_or_create_by(:name=>row['Simbolos'])
+            simbolos = ArtworkSymbol.find_by(:name=>row['Simbolos'])
           else
             simbolos = nil
           end
