@@ -1,6 +1,6 @@
 class ArtworkSymbolsController < ApplicationController
   before_action :set_artwork_symbol, only: [:show, :edit, :update, :destroy]
-  before_filter :autenticate_user!
+  before_filter :authenticate_user!
   # GET /artwork_symbols
   # GET /artwork_symbols.json
   def index
