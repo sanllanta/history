@@ -475,11 +475,11 @@ namespace :loader do
             if File.exist?(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg')
               #p @ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg'
               #se cambia
-              #f_avatar = File.open(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg')
+              f_avatar = File.open(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg')
             elsif File.exist?(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.JPG')
               #p @ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.JPG'
               #se cambia
-              #f_avatar = File.open(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.JPG')
+              f_avatar = File.open(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.JPG')
             else
               p "No se encontró imagen #{16000+row['Id Imagen'].to_i}"
             end
@@ -490,7 +490,7 @@ namespace :loader do
               #:passage_id=>
               :id => (row['Id Imagen'].to_i+16000),
               #se cambia
-              #:avatar =>f_avatar,
+              :avatar =>f_avatar,
               :author_id=>autor.id,
               :scene_id=>scene.id,
               :type_id => tecnica.nil? ? nil : tecnica.id,
@@ -635,11 +635,11 @@ namespace :loader do
           if File.exist?(@ruta_imagenes2+id_imagen+ '.jpg')
             #p @ruta_imagenes2+id_imagen+ '.jpg'
             #Se comenta para que no cargue la imagen
-            #f_avatar = File.open(@ruta_imagenes2+id_imagen+ '.jpg')
+            f_avatar = File.open(@ruta_imagenes2+id_imagen+ '.jpg')
           elsif File.exist?(@ruta_imagenes2+id_imagen+ '.JPG')
             #p @ruta_imagenes2+id_imagen+ '.JPG'
             #Se comenta para que no cargue la imagen
-            #f_avatar = File.open(@ruta_imagenes2+id_imagen+ '.JPG')
+            f_avatar = File.open(@ruta_imagenes2+id_imagen+ '.JPG')
           else
             p "No se encontró imagen #{@ruta_imagenes2+id_imagen}"
           end
@@ -712,7 +712,7 @@ namespace :loader do
             #:passage_id=>
             :id => id_imagen,
             #Se comenta para que no cargue la imagen
-            #:avatar =>f_avatar,
+            :avatar =>f_avatar,
             :author_id=>autor.id,
             :scene_id=>scene.id,
             :type=>tecnica,

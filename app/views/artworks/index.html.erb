@@ -6,9 +6,9 @@
 <% if params[:authors] == ('true') %>
     <%= render 'index_author' %>
 <% elsif not params[:region].nil? %>
-    <%= render 'index_all_show' %>
+    <%= render 'index_region' %>
 <% elsif params[:topic] == ('true') %>
-    <%= render 'index_all_show' %>
+    <%= render 'index_topic' %>
 <% elsif not params[:topic].nil? %>
     <%= render 'index_category_show' %>
 <% elsif not params[:author_show].nil?%>
