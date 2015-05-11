@@ -107,7 +107,7 @@ namespace :loader do
       base_all = Category.where(:name=>row['Categoría 1'])
       base_all.each do|base|
           p row['Categoría 1']
-          p base.depth
+          #p base.depth
           if(base.depth == 0)
             p "entro"
             attributes = {"name" => row['Categorías 2']}
@@ -373,7 +373,7 @@ namespace :loader do
     i = 0
     CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
       i = i+1
-      p i
+      #p i
       if i== 100
         #break
       end
@@ -392,9 +392,9 @@ namespace :loader do
           #Cartela;
           cartela = PhylacteryBillboard.find_or_create_by(:name=>row['Cartela'])
           #Simbolos;
-          p row['Id']
+          #p row['Id']
           if row['Simbolos']
-            p row['Simbolos']
+            #p row['Simbolos']
             s = ArtworkSymbol.where("name LIKE :prefix", prefix: "%#{row['Simbolos']}%")[0]
             simbolos = ArtworkSymbol.find_by(:name=>row['Simbolos'])
           else
@@ -440,11 +440,11 @@ namespace :loader do
           anotaciones = row['Anotaciones']
           # Id Relato - Personaje;
           if row['Id Relato - Personaje']
-            p "id relato"
+            #p "id relato"
             begin
               id = row['Id Relato - Personaje'].to_i+573
               personaje = Character.find_by(:id=>id)
-              p row['Id Relato - Personaje'].to_i+573
+              #p row['Id Relato - Personaje'].to_i+573
             rescue
               personaje = nil
               p row['Id Relato - Personaje']
@@ -456,10 +456,11 @@ namespace :loader do
           # Atributos iconográficos;
           atributos = IconographicAttribute.find_or_create_by(:name=>row['Atributos iconográficos'])
           # Personajes excluidos;
-          p "personaje excluido"
-          p row['Personajes excluidos']
+          #se cambia
+          #p "personaje excluido"
+          #p row['Personajes excluidos']
           personaje_excluido = Character.find_or_create_by(:name=>row['Personajes excluidos'])
-          p row['Personajes excluidos']
+          #p row['Personajes excluidos']
           # Sintesis
           sintesis = row['Sintesis']
           #p scene.id
@@ -467,11 +468,13 @@ namespace :loader do
           if row['Id Imagen']
 
             if File.exist?(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg')
-              p @ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg'
-              f_avatar = File.open(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg')
+              #p @ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg'
+              #se cambia
+              #f_avatar = File.open(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg')
             elsif File.exist?(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.JPG')
-              p @ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.JPG'
-              f_avatar = File.open(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.JPG')
+              #p @ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.JPG'
+              #se cambia
+              #f_avatar = File.open(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.JPG')
             else
               p "No se encontró imagen #{16000+row['Id Imagen'].to_i}"
             end
@@ -481,7 +484,8 @@ namespace :loader do
           artwork = Artwork.create(
               #:passage_id=>
               :id => (row['Id Imagen'].to_i+16000),
-              :avatar =>f_avatar,
+              #se cambia
+              #:avatar =>f_avatar,
               :author_id=>autor.id,
               :scene_id=>scene.id,
               :type_id => tecnica.nil? ? nil : tecnica.id,
@@ -510,12 +514,12 @@ namespace :loader do
 
         end
       else
-        p "tamaño"
-        p row.length
-        p "id"
-        p row['Id']
-        p "id relato"
-        p row['Id Relato - Personaje']
+        #p "tamaño"
+        #p row.length
+        #p "id"
+        #p row['Id']
+        #p "id relato"
+        #p row['Id Relato - Personaje']
         break
       end
     end
@@ -611,9 +615,9 @@ namespace :loader do
       cat4 = row['sub4']
 
 
-      p id_obras
-      p id_imagen
-      p titulo
+      #p id_obras
+      #p id_imagen
+      #p titulo
       if not(escenario.to_s.empty? and donante.to_s.empty? and id_imagen.to_s.empty? and autor.to_s.empty? and titulo.to_s.empty? and
           comentarios_biblio.to_s.empty? and cartelera_f.to_s.empty? and tipo_de_relato.to_s.empty? and tipo.to_s.empty? and
           fuente_imagen.to_s.empty? and lugar.to_s.empty? and anotaciones.to_s.empty? and sintesis.to_s.empty? and
