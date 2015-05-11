@@ -116,7 +116,7 @@ class Artwork < ActiveRecord::Base
     country_query = ""
     p("author_lastname")
     p(author_lastname)
-    author_lastname ? author_query = "WHERE authors.lastname LIKE '%#{author_lastname}%'" : nil
+    author_lastname ? author_query = "WHERE authors.lastname LIKE '#{author_lastname}%'" : nil
     author_id ? author_query = "WHERE authors.id = '#{author_id}'" : nil
     category_id ? category_query = "WHERE categories.id = #{category_id}" : nil
     country_id ? country_query = "WHERE countries.id = #{country_id}" : nil
