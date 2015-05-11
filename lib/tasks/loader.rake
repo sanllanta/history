@@ -621,7 +621,7 @@ namespace :loader do
 
         f_avatar = nil
         if id_imagen
-
+          id_imagen = "%04d" % id_imagen
           if File.exist?(@ruta_imagenes2+id_imagen+ '.jpg')
             #p @ruta_imagenes2+id_imagen+ '.jpg'
             #Se comenta para que no cargue la imagen
