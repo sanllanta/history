@@ -104,11 +104,12 @@ class Artwork < ActiveRecord::Base
     (SELECT A.* FROM "categories"
     RIGHT JOIN (SELECT "artworks".* FROM "artworks"
                 LEFT JOIN authors ON authors.id = artworks.author_id
-                %{author_query})A
+                %{author_query}
+                ORDER BY artworks.lastname, artworks.name)A
     ON categories.id = A.category_1_id
     %{category_query})A2
     ON countries.id = A2.origin_country_id %{country_query}
-    ORDER BY lastname, name;'
+    ;'
 
     author_query = ""
     category_query = ""
