@@ -514,12 +514,12 @@ namespace :loader do
 
         end
       else
-        p "tamaño"
-        p row.length
-        p "id"
-        p row['Id']
-        p "id relato"
-        p row['Id Relato - Personaje']
+        #p "tamaño"
+        #p row.length
+        #p "id"
+        #p row['Id']
+        #p "id relato"
+        #p row['Id Relato - Personaje']
         break
       end
     end
