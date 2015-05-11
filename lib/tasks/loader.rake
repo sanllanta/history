@@ -456,10 +456,11 @@ namespace :loader do
           # Atributos iconográficos;
           atributos = IconographicAttribute.find_or_create_by(:name=>row['Atributos iconográficos'])
           # Personajes excluidos;
-          p "personaje excluido"
-          p row['Personajes excluidos']
+          #se cambia
+          #p "personaje excluido"
+          #p row['Personajes excluidos']
           personaje_excluido = Character.find_or_create_by(:name=>row['Personajes excluidos'])
-          p row['Personajes excluidos']
+          #p row['Personajes excluidos']
           # Sintesis
           sintesis = row['Sintesis']
           #p scene.id
@@ -467,11 +468,13 @@ namespace :loader do
           if row['Id Imagen']
 
             if File.exist?(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg')
-              p @ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg'
-              f_avatar = File.open(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg')
+              #p @ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg'
+              #se cambia
+              #f_avatar = File.open(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg')
             elsif File.exist?(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.JPG')
-              p @ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.JPG'
-              f_avatar = File.open(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.JPG')
+              #p @ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.JPG'
+              #se cambia
+              #f_avatar = File.open(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.JPG')
             else
               p "No se encontró imagen #{16000+row['Id Imagen'].to_i}"
             end
@@ -481,7 +484,8 @@ namespace :loader do
           artwork = Artwork.create(
               #:passage_id=>
               :id => (row['Id Imagen'].to_i+16000),
-              :avatar =>f_avatar,
+              #se cambia
+              #:avatar =>f_avatar,
               :author_id=>autor.id,
               :scene_id=>scene.id,
               :type_id => tecnica.nil? ? nil : tecnica.id,
