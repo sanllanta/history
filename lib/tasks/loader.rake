@@ -106,10 +106,10 @@ namespace :loader do
     CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
       base_all = Category.where(:name=>row['Categoría 1'])
       base_all.each do|base|
-          p row['Categoría 1']
+          #p row['Categoría 1']
           #p base.depth
           if(base.depth == 0)
-            p "entro"
+            #p "entro"
             attributes = {"name" => row['Categorías 2']}
             a = Category.new(attributes)
             a.parent = base
