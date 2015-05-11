@@ -623,10 +623,10 @@ namespace :loader do
         if id_imagen
 
           if File.exist?(@ruta_imagenes2+id_imagen+ '.jpg')
-            p @ruta_imagenes2+id_imagen+ '.jpg'
+            #p @ruta_imagenes2+id_imagen+ '.jpg'
             f_avatar = File.open(@ruta_imagenes2+id_imagen+ '.jpg')
           elsif File.exist?(@ruta_imagenes2+id_imagen+ '.JPG')
-            p @ruta_imagenes2+id_imagen+ '.JPG'
+            #p @ruta_imagenes2+id_imagen+ '.JPG'
             f_avatar = File.open(@ruta_imagenes2+id_imagen+ '.JPG')
           else
             p "No se encontró imagen #{@ruta_imagenes2+id_imagen}"
@@ -725,25 +725,25 @@ namespace :loader do
       else
         p "Imagen: " + id_imagen.to_s
         p "Id obra: " + id_obras.to_s
-        p "escenario_____" + escenario.nil?.to_s
-        p "donante_____" + donante.nil?.to_s
-        p "id_imagen_____" + id_imagen.nil?.to_s
-        p "autor_____" + autor.nil?.to_s
-        p "titulo _____" + titulo.nil?.to_s
-        p "comentarios_biblio _____" + comentarios_biblio.nil?.to_s
-        p "cartelera_f _____" + cartelera_f.nil?.to_s
-        p "tipo_de_relato _____" + tipo_de_relato.nil?.to_s
-        p "tipo _____" + tipo.nil?.to_s
-        p "vafuente_imagencio _____" + fuente_imagen.nil?.to_s
-        p "lugar _____" + lugar.nil?.to_s
-        p "anotaciones _____" + anotaciones.nil?.to_s
-        p "sintesis _____" + sintesis.nil?.to_s
-        p "atributos_iconograficos ____" + atributos_iconograficos.nil?.to_s
-        p "procedencia _____" + procedencia.nil?.to_s
-        p "fecha _____" + fecha.nil?.to_s
-        p "                              "
-        p "                              "
-        p "                              "
+        #p "escenario_____" + escenario.nil?.to_s
+        #p "donante_____" + donante.nil?.to_s
+        #p "id_imagen_____" + id_imagen.nil?.to_s
+        #p "autor_____" + autor.nil?.to_s
+        #p "titulo _____" + titulo.nil?.to_s
+        #p "comentarios_biblio _____" + comentarios_biblio.nil?.to_s
+        #p "cartelera_f _____" + cartelera_f.nil?.to_s
+        #p "tipo_de_relato _____" + tipo_de_relato.nil?.to_s
+        #p "tipo _____" + tipo.nil?.to_s
+        #p "vafuente_imagencio _____" + fuente_imagen.nil?.to_s
+        #p "lugar _____" + lugar.nil?.to_s
+        #p "anotaciones _____" + anotaciones.nil?.to_s
+        #p "sintesis _____" + sintesis.nil?.to_s
+        #p "atributos_iconograficos ____" + atributos_iconograficos.nil?.to_s
+        #p "procedencia _____" + procedencia.nil?.to_s
+        #p "fecha _____" + fecha.nil?.to_s
+        #p "                              "
+        #p "                              "
+        #p "                              "
       end
     end
   end
@@ -836,8 +836,9 @@ namespace :loader do
       if row['ID Imagen']
         obra = Artwork.find(row['ID Imagen'].to_i)
         if obra
-          obra.actual_city = ciudad_actual
-          obra.origin_country = pais_origen
+          #obra.actual_city = ciudad_actual
+          obra.origin_country = ciudad_actual
+          obra.origin_city = pais_origen
           obra.actual_country = pais_actual
           obra.place = place
           obra.save
