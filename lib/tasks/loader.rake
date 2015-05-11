@@ -505,7 +505,7 @@ namespace :loader do
               :biographic_comment=>comentariosBiblio,
               :place=>lugar,
               :origin_country => pais_origen,
-              :origin_city => ciudad_origen
+              :origin_city => ciudad_origen,
               :actual_country => pais_actual
               )
           artwork.save!
