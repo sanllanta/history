@@ -731,8 +731,8 @@ namespace :loader do
         )
         artwork.save!
       else
-        p "Imagen: " + id_imagen.to_s
-        p "Id obra: " + id_obras.to_s
+        #p "Imagen: " + id_imagen.to_s
+        #p "Id obra: " + id_obras.to_s
         #p "escenario_____" + escenario.nil?.to_s
         #p "donante_____" + donante.nil?.to_s
         #p "id_imagen_____" + id_imagen.nil?.to_s
