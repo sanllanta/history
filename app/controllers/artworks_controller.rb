@@ -408,7 +408,7 @@ class ArtworksController < ApplicationController
     else
       @clasifications = Category.filtros_category(author_id, author_lastname, category_id, country_id)
       @countries = Country.filtros_place(author_id, author_lastname, category_id, country_id)
-      @artworks = Artwork.filtros(author_id, author_lastname, category_id, country_id).order(:last_name, :name)
+      @artworks = Artwork.filtros(author_id, author_lastname, category_id, country_id)
     end
   end
 

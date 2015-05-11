@@ -107,7 +107,8 @@ class Artwork < ActiveRecord::Base
                 %{author_query})A
     ON categories.id = A.category_1_id
     %{category_query})A2
-    ON countries.id = A2.origin_country_id %{country_query};'
+    ON countries.id = A2.origin_country_id %{country_query}
+    ORDER BY lastname, name;'
 
     author_query = ""
     category_query = ""
