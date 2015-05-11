@@ -106,10 +106,10 @@ namespace :loader do
     CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
       base_all = Category.where(:name=>row['Categoría 1'])
       base_all.each do|base|
-          p row['Categoría 1']
+          #p row['Categoría 1']
           #p base.depth
           if(base.depth == 0)
-            p "entro"
+            #p "entro"
             attributes = {"name" => row['Categorías 2']}
             a = Category.new(attributes)
             a.parent = base
@@ -737,8 +737,8 @@ namespace :loader do
         )
         artwork.save!
       else
-        p "Imagen: " + id_imagen.to_s
-        p "Id obra: " + id_obras.to_s
+        #p "Imagen: " + id_imagen.to_s
+        #p "Id obra: " + id_obras.to_s
         #p "escenario_____" + escenario.nil?.to_s
         #p "donante_____" + donante.nil?.to_s
         #p "id_imagen_____" + id_imagen.nil?.to_s
