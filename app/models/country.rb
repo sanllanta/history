@@ -2,7 +2,7 @@ class Country < ActiveRecord::Base
   has_many :artworks
 
   def self.filtros_place(author_id, author_lastname, category_id, country_id)
-    query = 'SELECT "countries".* FROM "countries" RIGHT JOIN
+    query = 'SELECT DISTINCT "countries".* FROM "countries" RIGHT JOIN
     (SELECT A.* FROM "categories"
       RIGHT JOIN (SELECT "artworks".* FROM "artworks"
         LEFT JOIN authors ON authors.id = artworks.author_id
