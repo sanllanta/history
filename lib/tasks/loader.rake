@@ -624,10 +624,12 @@ namespace :loader do
 
           if File.exist?(@ruta_imagenes2+id_imagen+ '.jpg')
             #p @ruta_imagenes2+id_imagen+ '.jpg'
-            f_avatar = File.open(@ruta_imagenes2+id_imagen+ '.jpg')
+            #Se comenta para que no cargue la imagen
+            #f_avatar = File.open(@ruta_imagenes2+id_imagen+ '.jpg')
           elsif File.exist?(@ruta_imagenes2+id_imagen+ '.JPG')
             #p @ruta_imagenes2+id_imagen+ '.JPG'
-            f_avatar = File.open(@ruta_imagenes2+id_imagen+ '.JPG')
+            #Se comenta para que no cargue la imagen
+            #f_avatar = File.open(@ruta_imagenes2+id_imagen+ '.JPG')
           else
             p "No se encontró imagen #{@ruta_imagenes2+id_imagen}"
           end
@@ -687,7 +689,8 @@ namespace :loader do
           if pais_ciudad[0]
             pais_actual = Country.find_by(:name_spanish => pais_ciudad[0].strip)
             if !pais_actual
-              p "No se encontró el país #{pais_ciudad[0]}"
+              #Se comenta
+              #p "No se encontró el país #{pais_ciudad[0]}"
             end
             if pais_ciudad[1]
               ciudad_actual = City.find_or_create_by(:name => pais_ciudad[1].strip)
@@ -698,7 +701,8 @@ namespace :loader do
         artwork = Artwork.create(
             #:passage_id=>
             :id => id_imagen,
-            :avatar =>f_avatar,
+            #Se comenta para que no cargue la imagen
+            #:avatar =>f_avatar,
             :author_id=>autor.id,
             :scene_id=>scene.id,
             :type=>tecnica,
