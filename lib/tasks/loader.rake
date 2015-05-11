@@ -107,7 +107,7 @@ namespace :loader do
       base_all = Category.where(:name=>row['Categoría 1'])
       base_all.each do|base|
           p row['Categoría 1']
-          p base.depth
+          #p base.depth
           if(base.depth == 0)
             p "entro"
             attributes = {"name" => row['Categorías 2']}
@@ -615,9 +615,9 @@ namespace :loader do
       cat4 = row['sub4']
 
 
-      p id_obras
-      p id_imagen
-      p titulo
+      #p id_obras
+      #p id_imagen
+      #p titulo
       if not(escenario.to_s.empty? and donante.to_s.empty? and id_imagen.to_s.empty? and autor.to_s.empty? and titulo.to_s.empty? and
           comentarios_biblio.to_s.empty? and cartelera_f.to_s.empty? and tipo_de_relato.to_s.empty? and tipo.to_s.empty? and
           fuente_imagen.to_s.empty? and lugar.to_s.empty? and anotaciones.to_s.empty? and sintesis.to_s.empty? and
