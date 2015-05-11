@@ -373,7 +373,7 @@ namespace :loader do
     i = 0
     CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
       i = i+1
-      p i
+      #p i
       if i== 100
         #break
       end
@@ -392,9 +392,9 @@ namespace :loader do
           #Cartela;
           cartela = PhylacteryBillboard.find_or_create_by(:name=>row['Cartela'])
           #Simbolos;
-          p row['Id']
+          #p row['Id']
           if row['Simbolos']
-            p row['Simbolos']
+            #p row['Simbolos']
             s = ArtworkSymbol.where("name LIKE :prefix", prefix: "%#{row['Simbolos']}%")[0]
             simbolos = ArtworkSymbol.find_by(:name=>row['Simbolos'])
           else
@@ -440,11 +440,11 @@ namespace :loader do
           anotaciones = row['Anotaciones']
           # Id Relato - Personaje;
           if row['Id Relato - Personaje']
-            p "id relato"
+            #p "id relato"
             begin
               id = row['Id Relato - Personaje'].to_i+573
               personaje = Character.find_by(:id=>id)
-              p row['Id Relato - Personaje'].to_i+573
+              #p row['Id Relato - Personaje'].to_i+573
             rescue
               personaje = nil
               p row['Id Relato - Personaje']
