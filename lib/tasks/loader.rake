@@ -837,9 +837,9 @@ namespace :loader do
         obra = Artwork.find(row['ID Imagen'].to_i)
         if obra
           #obra.actual_city = ciudad_actual
-          obra.origin_country = ciudad_actual
-          obra.origin_city = pais_origen
-          obra.actual_country = pais_actual
+          obra.origin_country = pais_actual
+          obra.origin_city = ciudad_actual
+          #obra.actual_country =
           obra.place = place
           obra.save
         end
