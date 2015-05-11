@@ -804,7 +804,7 @@ namespace :loader do
     CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
       #País y ciudad
       pais_actual = nil
-      ciudad_actual = nil
+      ciudad_origen = nil
       pais_origen = nil
       place = nil
       if row['Lugar']
@@ -813,19 +813,18 @@ namespace :loader do
           if (pais_ciudad[0].strip == ('EEUU'))
             pais_ciudad[0] = 'Estados Unidos'
           end
-          pais_actual = Country.find_by(:name_spanish => pais_ciudad[0].strip)
-          if !pais_actual
+          pais_origen = Country.find_by(:name_spanish => pais_ciudad[0].strip)
+          if !pais_origen
             p "No se encontró el país #{pais_ciudad[0]}"
           end
           if pais_ciudad[1]
-            if (pais_ciudad[0].strip == ('EEUU'))
+            if (pais_ciudad[1].strip == ('EEUU'))
               pais_ciudad[1] = 'Estados Unidos'
             end
             if Country.find_by(:name_spanish => pais_ciudad[1].strip)
-              pais_origen = pais_actual
               pais_actual = Country.find_by(:name_spanish => pais_ciudad[1].strip)
             else
-              ciudad_actual = City.find_or_create_by(:name => pais_ciudad[1].strip)
+              ciudad_origen = City.find_or_create_by(:name => pais_ciudad[1].strip)
             end
           end
         end
@@ -837,9 +836,9 @@ namespace :loader do
         obra = Artwork.find(row['ID Imagen'].to_i)
         if obra
           #obra.actual_city = ciudad_actual
-          obra.origin_country = pais_actual
-          obra.origin_city = ciudad_actual
-          #obra.actual_country =
+          obra.origin_country = pais_origen
+          obra.origin_city = ciudad_origen
+          obra.actual_country = pais_actual
           obra.place = place
           obra.save
         end
