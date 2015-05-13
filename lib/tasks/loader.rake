@@ -605,7 +605,7 @@ namespace :loader do
       cartelera_f = row['Cartelera Filacterias']
       tipo_de_relato = row['Tipo_De_Relato']
       tipo = row['Tipo']
-      fuente_imagen = row['Fuente de la Imagen']
+      fuente_imagen = row['Fuente']
       lugar = row['lugar']
       anotaciones = row['anotaciones']
       sintesis = row['Sintesis']
@@ -725,7 +725,7 @@ namespace :loader do
             :annotation=>anotaciones,
             :synthesis=>sintesis,
             :biographic_comment=>comentarios_biblio,
-            :place=>lugar_obj,
+            :place_id=>lugar_obj.nil? ? nil : lugar_obj.id,
             :annotation_date=>fecha,
             :actual_country => pais_actual,
             :actual_city => ciudad_actual,
