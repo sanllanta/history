@@ -664,7 +664,7 @@ namespace :loader do
         end
 
         #Fuenteimagen;
-        fuente = Source.find_or_create_by(:name=>fuente_imagen)
+        fuente = Source.find_by(:id=>fuente_imagen)
 
         #Cartela;
         cartela = PhylacteryBillboard.find_or_create_by(:name=>cartelera_f)
