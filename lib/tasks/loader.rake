@@ -481,10 +481,10 @@ namespace :loader do
               #se cambia
               f_avatar = File.open(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.JPG')
             else
-              p "No se encontró imagen #{16000+row['Id Imagen'].to_i}"
+              #p "No se encontró imagen #{16000+row['Id Imagen'].to_i}"
             end
           else
-            p "No se agrego imagen"
+            #p "No se agrego imagen"
           end
           artwork = Artwork.create(
               #:passage_id=>
@@ -644,7 +644,7 @@ namespace :loader do
             p "No se encontró imagen #{@ruta_imagenes2+id_imagen}"
           end
         else
-          p "campo imagen error:#{@ruta_imagenes2+id_imagen}"
+          #p "campo imagen error:#{@ruta_imagenes2+id_imagen}"
         end
 
         #Donante;
