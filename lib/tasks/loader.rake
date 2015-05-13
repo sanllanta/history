@@ -716,7 +716,7 @@ namespace :loader do
             :author_id=>autor.id,
             :scene_id=>scene.id,
             :type=>tecnica,
-            :source_id=>fuente.id,
+            :source_id=>fuente.nil? ? nil : fuente.id,
             :donor_id=>obj_donante.id,
             :iconographic_attribute_id=>atribut_icono.id,
             :phylactery_billboard_id=>cartela.id,
