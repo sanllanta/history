@@ -46,7 +46,7 @@ class Artwork < ActiveRecord::Base
   belongs_to :origin_country, class_name: "Country"
   belongs_to :actual_country, class_name: "Country"
 
-  #Place where the artwork is at the moment
+  #Place where the artwork comme => Procedencia
   belongs_to :place
 
   #Different categories

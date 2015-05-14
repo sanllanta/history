@@ -486,6 +486,7 @@ namespace :loader do
           else
             #p "No se agrego imagen"
           end
+
           artwork = Artwork.create(
               #:passage_id=>
               :id => (row['Id Imagen'].to_i+16000),
@@ -707,35 +708,38 @@ namespace :loader do
             end
           end
         end
-
-        artwork = Artwork.create(
-            #:passage_id=>
-            :id => id_imagen,
-            #Se comenta para que no cargue la imagen
-            :avatar =>f_avatar,
-            :author_id=>autor.id,
-            :scene_id=>scene.id,
-            :type=>tecnica,
-            :source_id=>fuente.nil? ? nil : fuente.id,
-            :donor_id=>obj_donante.id,
-            :iconographic_attribute_id=>atribut_icono.id,
-            :phylactery_billboard_id=>cartela.id,
-            :story_type_id=>tipo_relato.id,
-            :title=>titulo,
-            :annotation=>anotaciones,
-            :synthesis=>sintesis,
-            :biographic_comment=>comentarios_biblio,
-            :place_id=>lugar_obj.nil? ? nil : lugar_obj.id,
-            :annotation_date=>fecha,
-            :actual_country => pais_actual,
-            :actual_city => ciudad_actual,
-            :category_1_id => cat0_obj.nil? ? nil :cat0_obj.id,
-            :category_2_id => cat1_obj.nil? ? nil :cat1_obj.id,
-            :category_3_id => cat2_obj.nil? ? nil :cat2_obj.id,
-            :category_4_id => cat3_obj.nil? ? nil :cat3_obj.id,
-            :category_5_id => cat4_obj.nil? ? nil :cat4_obj.id
-        )
-        artwork.save!
+        begin
+          artwork = Artwork.create(
+              #:passage_id=>
+              :id => id_imagen,
+              #Se comenta para que no cargue la imagen
+              :avatar =>f_avatar,
+              :author_id=>autor.id,
+              :scene_id=>scene.id,
+              :type=>tecnica,
+              :source_id=>fuente.nil? ? nil : fuente.id,
+              :donor_id=>obj_donante.id,
+              :iconographic_attribute_id=>atribut_icono.id,
+              :phylactery_billboard_id=>cartela.id,
+              :story_type_id=>tipo_relato.id,
+              :title=>titulo,
+              :annotation=>anotaciones,
+              :synthesis=>sintesis,
+              :biographic_comment=>comentarios_biblio,
+              :place_id=>lugar_obj.nil? ? nil : lugar_obj.id,
+              :annotation_date=>fecha,
+              :actual_country => pais_actual,
+              :actual_city => ciudad_actual,
+              :category_1_id => cat0_obj.nil? ? nil :cat0_obj.id,
+              :category_2_id => cat1_obj.nil? ? nil :cat1_obj.id,
+              :category_3_id => cat2_obj.nil? ? nil :cat2_obj.id,
+              :category_4_id => cat3_obj.nil? ? nil :cat3_obj.id,
+              :category_5_id => cat4_obj.nil? ? nil :cat4_obj.id
+          )
+          artwork.save!
+        rescue
+          p "No se agrego la obra con id: #{id_imagen}"
+        end
       else
         #p "Imagen: " + id_imagen.to_s
         #p "Id obra: " + id_obras.to_s

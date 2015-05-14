@@ -5,6 +5,16 @@
   <div class="col-md-9">
     <h1 class="uppercase">
       Obras
+            <% if not params[:region_show].nil? %>
+                <small>Region: <%= Country.where(:name =>params[:region_show]).first.name %></small><br>
+            <% end %>
+            <% if not params[:author_show].nil? %>
+                <small>Autor:<%= Author.find(params[:author_show]).name %> <%= Author.find(params[:author_show]).lastname %></small><br>
+            <% end %>
+            <% if not params[:topic].nil? %>
+                <small>Categoria: <%= Category.find(params[:topic]).name %></small><br>
+            <% end %>
+
     </h1>
   </div>
 </div>
