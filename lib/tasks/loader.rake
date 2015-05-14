@@ -218,10 +218,8 @@ namespace :loader do
     p "fuente"
 
     file = File.join(Rails.root, 'app', 'assets', 'data', 'fuente.csv')
-    lines = File.new(file).readlines
-    lines.each do |line|
-      values = line.strip.split('&;')
-      attributes = {"name" => values[0]}
+    CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
+      attributes = {"id" => row['ID'], "name" => row['Fuente de la Imagen']}
       Source.create(attributes)
     end
 
