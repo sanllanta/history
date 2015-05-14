@@ -1,126 +1,280 @@
-"Fuente de la Imagen";"ID"
-;1
-"?";2
-"40 siglos artemex";3
-"Angeles y arcan";4
-"Angeles y arcangeles";5
-"Ángeles y arcángeles";6
-"Angeles y arcangeles Munal II";7
-"Art & Architec";8
-"Art & Architect";9
-"Arte Colonial";10
-"Arte de la Real A";11
-"Arte ecuat Salvat";12
-"Arte R Ad Quito";13
-"ArtStore";14
-"Barroco Andes";15
-"Barroco fuentes";16
-"Barroco Peruan 1";17
-"Barroco Peruan 2";18
-"Barroco Peruan1";19
-"Barroco peruano";20
-"Barroco Peruano 1";21
-"Barroco Peruano 2";22
-"Barroco Peruano I";23
-"Bride of the sun";24
-"Bride of the Sun Barroco Peruano";25
-"Cat, Munal 1";26
-"Cat, Munal II";27
-"Cat. MNA Bol";28
-"Cat. Munal 1";29
-"Cat. Munal II";30
-"Cat. Munal. 1";31
-"Cat. Munal. I";32
-"Cat. Munal. II";33
-"Cat. Pintura Chile";34
-"Cat. PinturaChile";35
-"Cat. Revel A. L";36
-"Cat. Revel A. L Ángeles y Arcangles";37
-"Cat. Revel A.L";38
-"Cat. Revel A.L.";39
-"Cat. Revel A.L. Barroco Peruan 1";40
-"Catalogo bancen";41
-"Catálogo Munal";42
-"Col arte vir peru";43
-"Colección BBVA";44
-"Conver cultures";45
-"Cuenca Ecuador";46
-"Esplendores 30 S";47
-"Esplendores 30S";48
-"Flickr";49
-"Foto Directa";50
-"Gracia Barroca";51
-"Guía artíst. Quito";52
-"Hechizo Oaxaca";53
-"Hist Arte Ibero";54
-"Hist. Pint Vzuela";55
-"Hist. Pint. Venezuela";56
-"Hist. Pint. Vzuela";57
-"Iconografía México
-Ángeles y Arcan";58
-"Iconografia México.";59
-"Imág. Naturales";60
-"Imágenes expur";61
-"Jesuitas";62
-"José Juárez";63
-"Los siglos de oro";64
-"Lucia Qurejazu";65
-"Maria Rosario?";66
-"Mus Reg Quetaro";67
-"Mus Reg Qutaro";68
-"Museo América";69
-"Museo Amparo";70
-"Museo Regional Queretaro";71
-"No datos";72
-"Obras restaurad";73
-"Oficina de registro de obras - México D. F.";74
-"Painting World";75
-"Pájaros  parlant";76
-"Pájaros parlant";77
-"Parábola Novo";78
-"Patrimonio Art";79
-"Patrimonio Art.";80
-"Perú ind virreinal";81
-"PESSCA";82
-"Pint Colon Cossio";83
-"Pint ColonCossio";84
-"Pint escult barro NE";85
-"Pintura escult NE";86
-"Pintura Reinos 1";87
-"Pintura Reinos 2";88
-"Pintura Reinos 3";89
-"Pintura Reinos 4";90
-"Pintura Reinos I";91
-"Pintura Reinos II";92
-"Pinturas Reinos II";93
-"Pntura de los Reinos III";94
-"Pntura de los Reinos III y Una serie pintura";95
-"Presencia Zurbar";96
-"Prim Salón Arte";97
-"Rosa Limensis";98
-"S.d";99
-"Serie de S Teresa";100
-"Simbol Andina";101
-"Tesoc Pinac Vir";102
-"Tesor Pinac Virr";103
-"Tesor Pinac Virr Cat. Revel A.L";104
-"Tesoros artisticos";105
-"Tesoros artísticos";106
-"Tesoros del arte";107
-"Tesoros Pinacoteca Virreinal";108
-"The Virgin";109
-"Una serie pintura";110
-"Una serie pintura - Pintura reinos III";111
-"Vascos Vizcaínas";112
-"Vascos Vizcánas";113
-"Vida y Leyenda";114
-"Virgin Saints";115
-"WEB Col Blastei";116
-"Web Museo";117
-"Web Museo - Museo Nacional del Virreinato";118
-"Web Museo - Museo Nacional Virreinato";119
-"Web museo - Tepotzotlán";120
-"Web Museo Nacional del Virreinato";121
-"Arte Sacra Colonial";122
-"Web Worcester Art Museum";123
-"Santa María: Iconografía del Arte Colonial";124
+"Fuente";"ID"
+"MAZA, Francisco de la, et al. Cuarenta siglos de arte Mexicano. México: Herrero, 1981.";4
+"MAQUIVAR, María Consuelo. Ángeles y arcángeles. México: Mexial Banpais, 1993.";6
+"TORD, Luis Enrique. Arequipa artística y monumental. Lima: Banco del Sur del Perú, 1987.";12
+"DONAHUE-WALLACE, Kelly. Art And Architecture of Viceregal Latín América, 1521-1821. Alburquerque: University of New Mexico Press, 2008.";13
+"BAILEY, Gauvin Alexander. Art of Colonial Latin America. Londres: Phaidon, 2005.";16
+"AA.VV. Arte barroca brasileira. São Paulo: Decep, 1995.";19
+"FERNÁNDEZ SALVADOR, Carmen y Alfredo Costales. Arte colonial quiteño. Renovado enfoque y nuevos actores. Quito: Fonsal, 2007.";20
+"SALVAT, Juan y Eduardo Crespo. Arte ecuatoriano, tomo II. Quito: Salvat Editores Ecuatoriana S.A., 1976.";22
+"CRESPO TORAL, Hernán et al. Arte Ecuatoriano, tomo II. Quito: Salvat, 1976.";23
+"BARDI, Pietro Maria. Arte No Brasil. São Paulo: Livros Abril, 1982.";24
+"RODRÍGUEZ MOYA, Inmaculada (ed). Arte, poder e identidad en Iberoamérica: de los virreinatos a la construcción nacional. Barcelona: Universitat Jaume I, 2008.";25
+"ORTIZ CRESPO, Alfonso y Adriana Pacheco Bustillos. Arte quiteño más allá de Quito. Memorias del seminario internacional. Quito: Fonsal, 2010.";26
+"VARGAS, José María. Arte Quiteño Colonial. Quito: Litografía e imprenta Romero, 1944.";27
+"KENNEDY TROYA, Alexandra.  Arte de la Real Audiencia de Quito, siglos XVII-XIX: patronos, corporaciones y comunidades. Hondarribia: Nerea, 2002.";28
+"LAVALLE, José Antonio y Werner Lang. Arte y tesoros del Perú. Lima: Santiago Valverde S.A, 1978.";31
+"Retrato Novohispano. Artes de México, No. 25 (julio-agosto 1994).";32
+"PIERCE, Donna. The arts of South America,1492-1850: papers from the 2008 Mayer Center Symposium at the Denver Art Museum. Denver: Denver Art Museum, 2010.";34
+"TRUSTED, Marjorie. The arts of Spain: Iberia and Latin América,1450-1700. London: Victoria and Albert Museum Publications; New York: The Hispanic Society of America, 2007.";36
+"ArtStore.";38
+"GONZALEZ CARRÉ, Enrique et al. Ayacucho. San Juan de la Frontera de Huamanga. Lima: Banco de Crédito del Perú, 1997.";39
+"GJURINOVIC, Pedro y Eduardo Barbosa. Vicerregal Peruvian Art, Barbosa Stern Collection. Lima: Museum of Modern Art of Latin America, 1989.";40
+"SCOBRY LEACEY, Dominique. El barroco en Los andes. Quito: Amtex, 2000.";41
+"CAMPOS, Norma (ed.). Barroco Andino. Memoria del I Encuentro Internacional sobre Barroco. La Paz: Unión Latina, 2003.";42
+"CAMPOS, Norma (ed.). Barroco y fuentes de la diversidad cultural. Memoria del II Encuentro Internacional sobre Barroco. La Paz: Unión Latina, 2004.";43
+"MUJICA, Ramón et al. El Barroco peruano. Lima: Banco de Crédito, 2002.";45
+"MUJICA, Ramón et al. El Barroco peruano. Lima: Banco de Crédito, 2003.";48
+"LOHMANN, Guillermo et al. La basílica catedral de Lima. Lima: Banco de Crédito, 2004.";53
+"BUCHER, Bernadette. America: bride of the sun: 500 years Latin America and the Low Countries. Bruselas: Ministerie van de Vlaamse Gemeenschap, Administratie Externe Betrekkingen; Gent: Imschoot, 1991.";54
+"GARCÍA SAIZ, María Concepción. Las castas Mexicanas. Un género pictórico americano. Milan: Olivetti, 1989.";58
+"GISBERT DE MESA, Teresa y Teresa Villegas de Anleiva. Museo Nacional de Arte. Catálogo de Obras Maestras. La  Paz: Museo Nacional de Arte, 2005.";59
+"RUIZ, Rogelio, Nelly Sigaut y Jaime Cuadriello. Catálogo comentado del acervo del Museo Nacional de Arte, Tomo II. México: Conaculta, 2004.";62
+"CUADRIELLO, Jaime. Catálogo comentado del acervo del Museo Nacional de Arte, tomo I. México: Conaculta, 2000.";68
+"Luis Mebold K. S.D.B. Catálogo de pintura colonial en Chile. Obras en monasterios de religiosas de Antigua fundación. Santiago: ediciones Universidad católica de Chile, 1987.";71
+"RISHEL, Joseph J. y Suzanne Stratton-Pruitt. Revelaciones. Las artes en América Latina, I492-I820. México: Fondo de Cultura Económica, 2007.";72
+"Instituto Nacional de Cultura. Inventario del patrimonio artístico mueble. Arequipa II. Lima: Dirección de Inventario, Registro y Catalogación, 1992.";90
+"Museo Nacional de Arte del Banco Central del Ecuador. Catalogo  de la sala de arte colonial. Banco Central: Quito, 2001.";91
+"CHACÓN, Cesar y Gretel Bardalez. La Catedral de Cusco y la iglesia de la Compañía de Jesús. Cusco: Piki, 2011.";92
+"Colección arte virreinal peruano. Dos imágenes un tema; La virgen y el Rosario, la Sagrada Familia. Aeropuerto Jorge Chavez, 2006.";93
+"MANRIQUE, Jorge Alberto. La colección pictórica del Banco Nacional de México. México: Fomento Cultural Banamex, 1992.";94
+"La Colección BBVA en América Latina. Madrid: BBVA, 2006.";97
+"Museo de Arte Hispanoamericano “Isaac Fernández Blanco”. Colores de los andes. Hacer, saber y poder. Buenos Aires: Museo de Arte Hispanoamericano “Isaac Fernández Blanco”, 2003.";98
+"FANE, Diane. Converging Cultures: art and indentity in Spanish America. New York: Harry Abrams, 1996.";99
+"ESTENSSORO, Juan Carlos et al. Los cuadros de mestizaje del virrey Amat. La representación etnográfica en el Perú colonial. Lima: Museo de Arte de Lima, 2000.";100
+"LIBBY, Gary Russell.  Cuba: a history in art. Daytona Beach, Fla: Museum of Arts and Sciences, 1997.";102
+"MALO, Claudio. Cuenca, Ecuador. Quito: Libri Mundi, Enrique Grosse-Luemern, 1991.";103
+"Documentos de Arte Argentino. Cuaderno XXIII. Los Templos de San Francisco y Santo Domingo. Buenos Aires: Publicaciones de la Academia Nacional de Bellas Artes, 1947.";104
+"PAZ, Octavio. México: esplendores de treinta siglos. New York: Metropolitan Museum of art – Amigos de las Artes de Mexico, 1991.";105
+"Flickr";114
+"flickr.com/photos/robertourrea7";115
+"VILLASÍN ENDARA, Carlos y Alexandra Kennedy Troya. La gracia barroca. Quito: Banco Central del Ecuador, Dirección cultural, 2000.";117
+"Guía artística. Quito.";118
+"Hechizo de Oaxaca. Monterrey: Museo de Arte Contemporáneo, 1992.";119
+"GUTIÉRREZ, Ramón y Rodrigo Gutiérrez. Historia del arte iberoamericano. Madrid: lunwerg, 2000.";122
+"BOULTON, Alfredo. Historia de la pintura en Venezuela, tomo I. Época colonial. Caracas: Ernesto Armitano, 1975.";123
+"BARDI, P. M. Historia da arte brasileira. São Paulo: Comphania Melhoramentos, 1975.";126
+"MESA, José de  y Teresa Gisbert. Historia de la pintura cuzqueña. Lima: Fundación Augusto N. Wiese, Banco Wiese, 1982.";127
+"BOULTON, Alfredo. Historia abreviada de la pintura en Venezuela, tomo I. Caracas: Monte Avila, 1971.";128
+"Academia Nacional de Bellas Artes. Historia general del arte en la Argentina, tomos I y II. Buenos Aires: Academia Nacional de Bellas Artes, 1982-2013.";129
+"www.commons.wikimedia.org/wiki/.";130
+"www.jesusdelamerced.wordpress.com";131
+"www.olanchito.wordpress.com/";132
+"www.catedral.org.";133
+"SCHENONE, Héctor. Iconografía del arte colonial. Los Santos. Buenos Aires: Fundación Tarea, 1992.";134
+"SEBASTIÁN, Santiago. Iconografía e iconología en el arte novohispano. México: Grupo Azabache, 1992.";135
+"TAYLOR, Rene y Elena Gerlero. Iconología y Sociedad. Arte Colonial Hispanoamericao. XLIV Congreso Internacional americanista., México: Universidad Nacional Autónoma de México ,1987.";139
+"DONOSO, Max, Teresa Gisbert et al. Iglesias en la antigua ruta de La Plata. Santiago de Chile: Max Donoso, 2011.";140
+"OCHI, Maria Elena y Frei Hugo Fragoso. Igreja e convento de San Francisco da Baia. Rio de Janeiro: Versal, 2009.";141
+"VARGAS LUGO, Elisa. Imágenes de los naturales en el arte de la Nueva España. Siglos XVI al XVIII. México: Fomento Cultural Banamex, 2005.";143
+"RODRÍGUEZ NÓBREGA, Janeth. Las imágenes expurgadas: censura del arte religioso en el arte colonial. León, Universidad de León, Secretariado de Publicaciones, 2008.";146
+"DEAN, Carolyn. Los cuerpos de los incas y el cuerpo de Cristo. Lima: Universidad Nacional Mayor de San Marcos, 2002.";147
+"CUMMINS, Thomas et al. Los incas, reyes del Perú. Lima: Banco de Crédito,  2005.";150
+"Isabel Santiago";152
+"La jerarquía de los ángeles.";153
+"Colegios Jesuitas. Artes de México, No. 58 (junio de 2001).";154
+"SCHENONE, Héctor. Iconografía del arte colonial. Jesucristo. Buenos Aires: Fundación Tarea, 1998.";156
+"SIGAUT, Nelly y José Juárez. Recursos y discursos del arte de pintar. México: Museo Nacional de Arte, 2002.";157
+"Juan Pedro López.";158
+"CAMPOS VERA, Norma (ed). La fiesta. Memoria del V Encuentro Internacional sobre Barroco. La Paz: Unión Latina, 2007.";159
+"VILLEGAS DE ANEIVA, Teresa. La Paz y sus museos de arte. Barcelona: Bustamante Editores, 1999.";161
+"SD";162
+"VARGAS, José María. Liturgia y arte ecuatoriano. Quito: Santo Domingo, 1965.";163
+"Museo de América. Los siglos de oro en los virreinatos de América, 1550-1700. Madrid: Sociedad Estatal para la Conmemoración de los Centenarios de Felipe II y Carlos V, 1999.";164
+"Lucia Qurejazu.";165
+"VARGAS, José María. Manuel Samaniego y su tratado de pintura. Quito: Museo Jacinto Jijón y Caamaño, Santo Domingo, 1975.";166
+"Antiguo Colegio de San Ildefonso. Maravillas y curiosidades. Mundos inéditos de la Universidad. México: San Ildefonso, 2002.";167
+"Fotografía Maria Rosario Leal.";169
+"BAKULA, Cecilia, et al. Mestizo. Del renacimiento al barroco andino. Lima: Impulso Empresa de servicios SAC, 2008.";170
+"TOVAR DE TERESA, Guillermo. México barroco. México: Sahop, 1981.";171
+"JUSTO ESTEBARANZ, Ángel. Miguel de Santiago en San Agustín de Quito: la serie de pinturas sobre la vida del santo. Quito: FONSAL, 2008.";174
+"JUSTO ESTEBARANZ, Ángel. Miguel de Santiago en San Agustín de Quito: la serie de pinturas sobre la vida del santo. Sevilla: Guadalquivir, 2008.";175
+"Monjas coronadas. Vida conventual femenina en Hispanoamérica. México: INAH, 2003.";176
+"RIVERO, José Manuel (coord.). Museo Regional de Querétaro. Dirección de Patrimonio Cultural. México: Gobierno del Estado de Querétaro, 1986.";178
+"www.mecd.gob.es/museodeamerica/colección/";179
+"CERVANTES, Miguel. Museo Amparo. Obras selectas. México: Libri Mundi, Museo Nacional de Historia, Castillo de Chapultepec, 2008.";181
+"Museo Regional Querétaro.";182
+"AA.VV. O Museu da Inconfidencia. São Paulo: Banco Safra, 1995.";183
+"AA.VV. O Museu de arte sacra de São Paulo. São Paulo: Banco Safra, 1995.";184
+"AA.VV. Museu da Arte da Bahía. São Paulo: Banco Safra, 1997.";185
+"MAFRA DE SOUSA, Alcidio. Museu Nacional de Belas Artes. São Paulo: Banco Safra, 1985.";186
+"AA.VV. O Museu da arte do Bahia. São Paulo: Banco Safra, 1989.";188
+"AA.VV. O Museu Histórico Nacional. São Paulo: Banco Safra, 1989.";189
+"Banco central de Bolivia. 70 obras coloniales restauradas. La Paz, Cochabamba, Sucre, Potosí.  La Paz: Fundación Cultural Banco Central de Bolivia, 2001.";190
+"Obras coloniales restauradas. La Paz, Cochabamba, Sucre, Potosí. La Paz: Fundación Cultural Banco Central de Bolivia. 2001.";191
+"PIERCE, Donna, Rogelio Ruiz y Clara Bargellini. Paiting a New World. Denver: Denver Art Museum, 2005.";194
+"GISBERT, Teresa. El paraíso de los pájaros parlantes: la imagen del otro en la cultura andina. La Paz: Plural; Universidad Nuestra Señora de La Paz, 1999.";196
+"VARGAS LUGO, Elisa, et al. Parabola Novohispana. Cristo en el arte virreinal. México: Banamex, 2000.";197
+"Academia Nacional de Bellas Artes. Patrimonio Artístico Nacional. Inventario de Bienes Muebles. Ciudad de Buenos Aires I. Buenos Aires: Academia Nacional de Bellas Artes, 1998.";198
+"Academia Nacional de Bellas Artes. Patrimonio Artístico Nacional. Inventario de Bienes Muebles. Ciudad de Buenos Aires II Primera parte. Buenos Aires: Academia Nacional de Bellas Artes, 2006.";199
+"Academia Nacional de Bellas Artes. Patrimonio Artístico Nacional. Inventario de Bienes Muebles. Ciudad de Buenos Aires II Segunda parte. Buenos Aires: Academia Nacional de Bellas Artes, 2006.";200
+"Academia Nacional de Bellas Artes. Patrimonio Artístico Nacional. Inventario de Bienes Muebles. Ciudad de Buenos Aires III. Buenos Aires: Academia Nacional de Bellas Artes, 2006.";201
+"Academia Nacional de Bellas Artes. Patrimonio Artístico Nacional. Inventario de Bienes Muebles. Ciudad de Buenos Aires IV. Buenos Aires: Academia Nacional de Bellas Artes, 2006.";202
+"BARBIERI, Sergio Darío. Patrimonio Artístico Nacional. Inventario de Bienes Muebles: Iglesia y Monasterio de Santa Catalina de Siena de Córdoba. Buenos Aires: Academia Nacional de Bellas Artes: The Getty Foundation, 2006.";203
+"Perú indígena y virreinal. Museu Nacional d´art de Catalunya, Biblioteca Nacional de España. Madrid: Seaex, D.L., 2004.";205
+"LÓPEZ GUZMÁN, Rafael J. Perú indígena y virreinal. Barcelona:  Sociedad Estatal p ara la Acción Cultural Exterior, Museu Nacional d'Art de Catalunya, 2004.";207
+"PESSCA www.colonialart.org/";208
+"COSSIO DEL POMAR, F. Pintura colonial. Escuela Cuzqueña. París: Crete, 1929.";212
+"BURKE, Marcus. Pintura y escultura en la Nueva España. El barroco. México: Azabache, 1992.";213
+"BENAVENTE, Teófilo y Alejandro Martínez. Historia del arte cusqueño: pintores cusqueños de la colonia. Cusco: Municipalidad Provincial del Cusco. 1995.";219
+"TOVAR DE TERESA, Guillermo. Pintura y escultura en la Nueva España (1557-1640). México: Azabache, 1992.";220
+"Pintura escult NE Mus Reg Qutaro.";222
+"GUTIÉRREZ HACES, Juana. Pintura de los reinos: identidades compartidas: territorios del mundo hispánico, siglos XVI-XVIII, tomo 3. México: Banamex, 2009.";226
+"GUTIÉRREZ HACES, Juana. Pintura de los reinos: identidades compartidas: territorios del mundo hispánico, siglos XVI-XVIII, tomo 4. México: Banamex, 2009.";228
+"GUTIÉRREZ HACES, Juana. Pintura de los reinos: identidades compartidas: territorios del mundo hispánico, siglos XVI-XVIII, tomo 1. México: Banamex, 2008.";231
+"GUTIÉRREZ HACES, Juana. Pintura de los reinos: identidades compartidas: territorios del mundo hispánico, siglos XVI-XVIII, tomo 2. México: Banamex, 2008.";232
+"ARIBAS LEGAS, Javier, et al. Pintura en el Virreinato del Perú. Lima: Banco de Crédito del Perú, 1989.";235
+"ANTEI, Giorgio. Plus Ultra: oltre il barrocco: arte latino-americana a confronto. Milano: Silvana, 2009.";236
+"Postal";237
+"Presencia de Zurbarán. Catálogo de Exposición. Bogotá: Banco de la República, 1988.";238
+"CAILLET-BOIS, H. Primer Salón de Arte Sagrado y retrospectivo. Santafé: Ministerio de Instrucción Pública, 1940.";239
+"BENSON, Elizabeth, et al. Retratos. 2000 years of Latin American Portraits. San Antonio: Yale University Press, San Antonio Museum Art, 2005.";240
+"FLÓREZ ARAOZ, José, et al. Santa Rosa de Lima y su tiempo. Lima: Banco de Crédito, 1995.";241
+"MUJICA PINILLA, Ramón. Rosa limensis: mística, política e iconografía en torno a la patrona de América. México D. F.: Fondo de Cultura Económica, 2005.";242
+"LEBRERO, Cecilia (ed.). Ruega por nosotros. Las imágenes religiosas del Museo Pueyrredón. San Isidro: Municipalidad de San Isidro, 2011.";244
+"www.Saber.sapo.ao/wiki/Barroco_no_Brasil";245
+"Fondo pro recuperación del patrimonio cultural. Iglesia de San Pedro. Lima: Banco de Crédito, 1998.";246
+"STASTNY, Francisco. Conjunto monumental de santo Domingo. Lima: Banco de Crédito, Fondo pro recuperación del patrimonio cultural, 1998.";247
+"BRACCIO, Gabriela y Gustavo Tudisco. Ser y parecer. Identidad y representación en el Mundo Colonial. Buenos Aires: Museo de Arte Hispanoamericano “Isaac Fernández Blanco”, 2001.";248
+"Serie de Santa Teresa: Visiones develadas, Monasterio del Carmen de San José de Santiago de Chile. Santiago: Santiago de Chile, 2009.";249
+"BARRIO, Néstor, et al. Las doce sibilas de la parroquia de San Pedro Telmo. San Martín: Fundación Tarea, Universidad Nacional de General San Martín, 2005.";251
+"SCOBRY LEACEY, Dominique. Simbología andina en el arte precolombino y colonial. Quito: Amtex, 1999.";252
+"Sólo ángeles. Iconografía angélica en el arte colonial iberoamericano. Buenos Aires: Museo de Arte Hispanoamericano, 1995.";254
+"www.spanishcolonial.com";255
+"BURUCÚA, José E. Tarea de diez años. Buenos Aires: Fundación Antorchas, 2000.";256
+"LARA, María Eugenia de, et al. Tesoros del Museo Nacional de Historia en el Castillo de Chapultepec. México: INAH, 1994.";259
+"ARMELLA DE ASPE, Virginia y Mercedes Meade de Angulo. Tesoros de la pinacoteca virreinal. México: Fomento cultural Banamex, 1993.";260
+"MORENO PROAÑO, Agustín. Tesoros artísticos. Quito, Guayaquil: Museo Filanbanco, 1983.";268
+"Tesoros del Arte Virreinal: Casa de la Moneda de Potosí. Barcelona: Iberdrola, 1996.";270
+"STRATTON-PRUITT, Suzanne (ed.). The Virgin, Saints and Angels: South American Paintings 1600-1825 from the Thoma Collection. Stanford: Skira, 2006.";272
+"Tresors L’Ecuate.";273
+"ABAD, Gonzalo y Diego Ortiz Múgica. Una serie de pinturas cuzqueñas de Santa Catalina: historia, restauración y química. Buenos Aires: Fundación Tarea, 1998.";274
+"ARAUJO, Emanoel, et al. O universo mágico do barroco brasileiro. Sa~o Paulo: FIESP/CIESP/IRS, 1998.";276
+"MURIEL, Josefina et al. Los vascos en México y su colegio de las Vizcaínas. México: Instituto de Investigaciones Estéticas e Históricas, UNAM, 1987.";277
+"LÓPEZ VALLARINO, Teresa. La vida y el arte del ilustre panameño Hernando de la Cruz S.J., 1591-1646. Quito: La Prensa Católica, 1950.";278
+"CURIEL, Gustavo, Fausto Ramírez, Antonio Rubial y Angélica Velázquez. Pintura y vida cotidiana en México: siglos XVII-XX. México: Fomento Cultural Banamex, 2002.";280
+"PREJA DÍEZ-CANESCO, Alfredo. Vida y leyenda de Miguel de Santiago. México D.F.: Fondo de Cultura Económica, 1952.";282
+"Álbum de las pinturas que representan el nacimiento, vida, milagros, santidad y último trance de nuestro seráfico padre San Francisco. Zurich: Moulinette, 1971.";283
+"AA.VV. Viento detenido. Mitologías e historias en el arte del biombo. México: Museo Sumaya, 1999.";289
+"DAMIAN, Carol. The virgin of the Andes. Art and ritual in Colonial Cuzco. Miami: Grassfield Press,1995.";290
+"MUJICA, Ramón et al. Visión y símbolos. Del virreinato criollo a la república peruana. Lima: Banco de Crédito, 2006.";294
+"www.museoblaisten.com/";295
+"www.virreinato.inah.gob.mx/";296
+"www";299
+"www Museo Franz Mayer";300
+"www.catedral.org.";301
+"www.hellerpalacios.net/";302
+"www.hondudiariohn.com/";303
+"www.myspace.com";304
+"www.old.latribuna.hn /";305
+"www.sinosrealestate.com";306
+"www.skyscrapercity.com/";307
+"Fotografía Cristina Cabrera";308
+"TIRAPELI, Persival. Arte Sacra Colonial Barroco memoria Viva. Sao Paulo: UNESP, 2005.";309
+"ZANINI, Walter (ed.). Historia Geral da Arte no Brasil. Sao paulo: Instituto Walther Moreira Salles, 1983.";310
+"OTT, Carlos, Joaquim Cardozo y Nair Batista. Pintura e Escultura II. Sao Paulo: Universidade de Sao paulo, 1978.";311
+"ANDRADE RIBEIRO DE OLIVEIRA, Myriam. O Rococo religioso no Brasil e seus antecedentes europeus. Sa~o Paulo: sp, 2003.";312
+"CAMPOFIORITO, Quirino. A pintura remanescente da colo^nia: 1800-1830. Rio de Janeiro: Pinakotheke, 1983.";313
+"GORI, Iris y Sergio Barbieri. Patrimonio artístico nacional: inventario de bienes muebles: provincia de Salta. Buenos Aires: Academia Nacional de Bellas Artes, 1988.";314
+"SIRACUSANO, Gabriela. La paleta del espanto. Color y cultura en los cielos e infiernos de la pintura colonial andina. Buenos Aires: UNSAM, 2010.";315
+"GORI, Iris y Sergio Barbieri. Patrimonio artístico nacional: inventario de bienes muebles: iglesia y convento de san Francisco de Córdoba. Buenos Aires: Academia Nacional de Bellas Artes, 2000.";316
+"AA.VV. Juegos de ingenio y agudeza: la pintura emblemática de la Nueva España. México: Museo Nacional de Arte; Banamex-Accival, 1994.";317
+"WWW Janeth Rodríguez: www.artecolonialvenezuela.blogspot.com/";318
+"www.worcesterart.org/";319
+"Fotografía Natalia Lozada";320
+"Web Universidad de Turabo";321
+"SCHENONE, Héctor. Iconografía del Arte Colonial: Santa María. Buenos Aires: Educa, 2008.";322
+"AMERLINCK, María Concepción y Manuel Ramos Medina. Conventos de monjas: fundaciones en el México virreinal. México: Grupo Condumex, 1995.";323
+"URRUELA DE QUEZADA, Ana María (ed.). El tesoro de la Catedral Metropolitana. Guatemala: Banco Industrial, 2005.";324
+"FISCHER, Manuela, Bea Hoffmann y Karoline Noack. Koloniale Kunst aus Lateinamerika. Katalog zur ständigen Ausstellung im Ethnologischen Museum. Berlín: SMB, 2006.";325
+"PIERCE, Donna y Ronald Otsuka (eds.). Asia  and SpanishAmerica: Trans-Pacific Artistic & Cultural Exchanges, 1500-1850. Denver: Denver Art Museum, 2009.";326
+"RIVERO LAKE, Rodrigo (ed.). El Arte Namban en el México Virreinal. Madrid: Turner, 2005.";328
+"TORRES, Miguel (ed.). El Tesoro de El Calvario, Patrimonio de La Antigua Guatemala. Guatemala: Galería Guatemala de Fundación G&T Continental, 2009.";329
+"Fundación Pedro y Angélica de Osma Gildemeister. Museo Pedro de Osma. Lima: Museo Pedro de Osma, 2004.";331
+"MORENO EGAS, Jorge, et al. Radiografía de la piedra: los jesuitas y su templo en Quito. Quito: Fondo de Salvamento del Patrimonio Cultural de Quito,  2008.";333
+"URRUELA DE QUEZADA, Ana María (ed.). The Treasure of La Merced: Art and History. Miami: Trade Litho, 1997.";334
+"El arte de Guatemala.";336
+"ALARCÓN CEDILLO, Roberto y Armida Alonso Lutteroth. Tecnología de la obra de arte en la época colonial: pintura mural y de caballete, escultura y orfebrería. México, D.F.: Universidad Iberoamericana, 1993.";338
+"BAYÓN, Damián y Murillo Marx. L´art colonial Sud-Américain: domaine espagnol et Brésil  París: Aurore Éditions D´art, SF.";339
+"RISHEL, Joseph y Suzanne Stratton-Pruitt (eds.). The arts in Latin America, 1492-1820. Philadelphia: Philadelphia Museum of Art, 2006.";340
+"AA.VV. De oficio pintor: arte colonial venezolano. Colección Patricia Phelps de Cisneros. Caracas: Fundación Cisneros, 2007.";341
+"CASTEDO, Leopoldo. Historia del arte iberoamericano, I. Madrid: Alianza , 1988.";342
+"Christie's. Important Latin American paintings, drawings and sculpture (Part I and II): pre-columbian and colonial works of art. New York: Christie's, 1996.";343
+"CHACÓN TORRES, Mario. Arte Virreinal en Potosí: fuentes para su historia. Sevilla: Escuela de Estudios Hispano-Americanos de Sevilla, 1973.";344
+"ROMERO CASH, Marie. Santos: enduring images of northern New Mexican village churches. Niwot:. University Press of Colorado, 1999.";345
+"COSSIO DEL POMAR, Felipe. Arte del Perú colonial. México; Buenos Aires: Fondo de Cultura Económica, 1958.";346
+"DUARTE, Carlos F. Catálogo de obras artísticas mexicanas en Venezuela: período hispánico. México: Universidad Nacional Autónoma de México, 1998.";347
+"DUARTE, Carlos F. y Graziano Gasparini. Arte colonial en Venezuela. Caracas: Arte, 1974.";348
+"www Museo de Arte de New Orleans: www.hnoc.org/the-golden-legend-in-the-new-world-art-of-the-spanish-colonial-viceroyalties";349
+"www.v2012.cultura.gob.ar";350
+"www.spanishcolonial.photoshelter.com";355
+"www.peytonwright.com/historic";356
+"www.spanishcolonial.com/space/start";357
+"www.colonialarts.com/paintings";358
+"www.collections.lacma.org";359
+"www.itinerancias.artequin";360
+"Web pintura cuzqueña Ppoint";361
+"www.brooklynmuseum.org";363
+"www.robertsimon.com/colonial.html#";364
+"www.samuseum.org";365
+"www.figgeartmuseum.org/Collections/Mexican-Colonial.aspx";367
+"www.artic.edu";368
+"www.museum.dma.org";369
+"www.allentownartmuseum.org/collections/american-painting-sculpture";370
+"www.arquidiocesisdemerida.org.ve";371
+"www.google.com/culturalinstitute/";372
+"www.icom.museum/recursos/banco-de-datos-de-las-listas-roja";374
+"www.bibliotecavirtual.bcn.gob.ni/";375
+"www.centrocultural-quito.com/boletin.php?c=1621";376
+"www.elcomercio.com/cultura/arte_colonial-quito-centro_historico-casco_colonial-arte_0_859714090.html";377
+"www.cvc.cervantes.es/artes/ciudades_patrimonio/quito/paseo/acc-museo_colonial.htm";378
+"www.noma.org/collection/";380
+"www.mfah.org/art/collections/arts-of-north-america-placeholder/";381
+"www.wga.hu/";382
+"www.pinacoteca.org.br/";383
+"www.galeriacubarte.cult.cu/";384
+"www.newarkmuseum.org/";385
+"www.albanyinstitute.org/";386
+"www.collection.blantonmuseum.org/";387
+"www.extension.uc.cl/";388
+"www.inah.gob.mx/especiales/6021-miradas-comparadas-en-los-virreinatos-de-america-mexico-y-peru";389
+"www.mintmuseum.org/art/exhibitions/detail/spanish-colonial-art-from-the-lilly-and-francis-robicsek-collection";390
+"www.mintmuseum.org/";391
+"www.joslyn.org/collections-and-exhibitions/";392
+"www.shapingamerica.byu.edu/gallery/";393
+"www.lvc.edu/";394
+"www.metmuseum.org/Collections/";395
+"www.gibbesmuseum.pastperfect-online.com/";396
+"www.imamuseum.org/";397
+"www.museodeartecolonialmerida.blogspot.com/";398
+"www.americanart.si.edu/collections/";399
+"www.cantorcollections.stanford.edu/";400
+"www.collections.artsmia.org";402
+"www.mfa.org/catalogues";403
+"www.nga.gov/content/ngaweb/Collection";404
+"www.philamuseum.org/collections";405
+"www.npgportraits.si.edu/";406
+"www7.uc.cl/faba/";407
+"www.es.wikipedia.org/wiki/Jos%C3%A9_Gil_de_Castro#mediaviewer/";408
+"www.sanmartiniano.gov.ar/";409
+"www.flickr.com/photos/28047774@N04/6825716227/in/photostream/lightbox/";411
+"www.reynoldahouse.org";412
+"www.artnet.com/artists/andreas-de-islas";413
+"Fotografía Laura Torres.";415
+"www.latinamericanart.com/";416
+"www.surdoc.cl/";417
+"www.mutualart.com/";418
+"www.artecolonialvenezuela.blogspot.com/";419
+"www.mali.pe/coleccionvirtual/";420
+"RODRIGUEZ Moya, Inmaculada. La mirada del virrey. Iconografía del poder en la Nueva España. Castellon: Universidad Jaume I, 2003.";421
+"www.obrasustraidas-cusco.org/";422
+"MOYA RODRIGUEZ, Inmaculada. El retrato en México, 1781-1867. Héroes, ciudadanos y emperadores para una nueva Nación. Sevilla: CSIC, 2006.";423
+"www.barbosa-stern.org/homepage.html";424
+"www.tigerishwaters.blogspot.ca";425
+"www.flickr.com/photos/tachidin/with/14891516763/";426
+"www.flickr.com/photos/tachidin/5365864209/";427
+"Fotografía Borja";429
+"Inventario de bienes culturales muebles de Antioquia.";430
+"Inventario Convento de Santa Inés";432
+"Arte quiteño más allá de Quito";433
+"Colección Museo de Antioquia";434

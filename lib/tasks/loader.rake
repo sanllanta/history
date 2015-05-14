@@ -219,7 +219,7 @@ namespace :loader do
 
     file = File.join(Rails.root, 'app', 'assets', 'data', 'fuente.csv')
     CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
-      attributes = {"id" => row['ID'], "name" => row['Fuente de la Imagen']}
+      attributes = {"id" => row['ID'], "name" => row['Fuente']}
       Source.create(attributes)
     end
 
