@@ -4,6 +4,7 @@ class CreateAuthors < ActiveRecord::Migration
       t.string :name
       t.string :lastname
       t.text :biography
+      t.text :activity
       t.timestamps
     end
   end
