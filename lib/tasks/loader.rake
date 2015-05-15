@@ -87,7 +87,7 @@ namespace :loader do
 
   desc "Loads the category level 0 listed in cate1.csv into the Category table"
   task load_categories1: :environment do
-  	p "cate1"
+  	p "categorias base"
     file = File.join(Rails.root, 'app', 'assets', 'data', 'c1.csv')
     CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
       if not row['Categorías 1'].nil?
@@ -101,7 +101,7 @@ namespace :loader do
 
   desc "Loads the category level 0 listed in cate1.csv into the Category table"
   task load_categories12: :environment do
-    p "cate12"
+    p "categorias 12"
     file = File.join(Rails.root, 'app', 'assets', 'data', 'c1-2.csv')
     CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
       base_all = Category.where(:name=>row['Categoría 1'])
@@ -124,7 +124,7 @@ namespace :loader do
 
   desc "Loads the category level 0 listed in cate1.csv into the Category table"
   task load_categories23: :environment do
-    p "cate23"
+    p "categorias 23"
 
     file = File.join(Rails.root, 'app', 'assets', 'data', 'c2-3.csv')
     CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
@@ -145,7 +145,7 @@ namespace :loader do
 
   desc "Loads the category level 0 listed in cate1.csv into the Category table"
   task load_categories34: :environment do
-    p "cate34"
+    p "categorias 34"
 
     file = File.join(Rails.root, 'app', 'assets', 'data', 'c3-4.csv')
     CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
@@ -634,11 +634,11 @@ namespace :loader do
           if File.exist?(@ruta_imagenes2+id_imagen+ '.jpg')
             #p @ruta_imagenes2+id_imagen+ '.jpg'
             #Se comenta para que no cargue la imagen
-            #f_avatar = File.open(@ruta_imagenes2+id_imagen+ '.jpg')
+            f_avatar = File.open(@ruta_imagenes2+id_imagen+ '.jpg')
           elsif File.exist?(@ruta_imagenes2+id_imagen+ '.JPG')
             #p @ruta_imagenes2+id_imagen+ '.JPG'
             #Se comenta para que no cargue la imagen
-            #f_avatar = File.open(@ruta_imagenes2+id_imagen+ '.JPG')
+            f_avatar = File.open(@ruta_imagenes2+id_imagen+ '.JPG')
           else
             p "No se encontró imagen #{@ruta_imagenes2+id_imagen}"
           end
