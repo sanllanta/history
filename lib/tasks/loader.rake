@@ -477,7 +477,7 @@ namespace :loader do
             elsif File.exist?(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.JPG')
               #p @ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.JPG'
               #se cambia
-              f_avatar = File.open(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.JPG')
+              #f_avatar = File.open(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.JPG')
             else
               #p "No se encontró imagen #{16000+row['Id Imagen'].to_i}"
             end
