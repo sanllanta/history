@@ -468,7 +468,7 @@ namespace :loader do
           sintesis = row['Sintesis']
           #p scene.id
           f_avatar = nil
-          if row['Id Imagen']
+          if row['Id Imagen'] && false
 
             if File.exist?(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg')
               #p @ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg'
@@ -629,7 +629,7 @@ namespace :loader do
           atributos_iconograficos.to_s.empty? and procedencia.to_s.empty? and fecha.to_s.empty?) and not(id_imagen.to_s.empty?)
 
         f_avatar = nil
-        if id_imagen
+        if id_imagen && false
           id_imagen = "%04d" % id_imagen
           if File.exist?(@ruta_imagenes2+id_imagen+ '.jpg')
             #p @ruta_imagenes2+id_imagen+ '.jpg'
@@ -855,7 +855,7 @@ namespace :loader do
           obra.origin_country = pais_origen
           obra.origin_city = ciudad_origen
           obra.actual_country = pais_actual
-          obra.place = place
+
           obra.save
         end
       end
