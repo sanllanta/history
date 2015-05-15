@@ -473,13 +473,13 @@ namespace :loader do
             if File.exist?(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg')
               #p @ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg'
               #se cambia
-              #f_avatar = File.open(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg')
+              f_avatar = File.open(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg')
             elsif File.exist?(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.JPG')
               #p @ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.JPG'
               #se cambia
-              #f_avatar = File.open(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.JPG')
+              f_avatar = File.open(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.JPG')
             else
-              #p "No se encontró imagen #{16000+row['Id Imagen'].to_i}"
+              p "No se encontró imagen #{16000+row['Id Imagen'].to_i}"
             end
           else
             #p "No se agrego imagen"
