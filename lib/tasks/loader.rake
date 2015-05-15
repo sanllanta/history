@@ -473,7 +473,7 @@ namespace :loader do
             if File.exist?(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg')
               #p @ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg'
               #se cambia
-              f_avatar = File.open(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg')
+              #f_avatar = File.open(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg')
             elsif File.exist?(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.JPG')
               #p @ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.JPG'
               #se cambia
@@ -630,7 +630,7 @@ namespace :loader do
 
         f_avatar = nil
         if id_imagen
-          id_imagen = "%04d" % id_imagen
+          id_imagen = "%04d" % id_imagen.to_i
           if File.exist?(@ruta_imagenes2+id_imagen+ '.jpg')
             #p @ruta_imagenes2+id_imagen+ '.jpg'
             #Se comenta para que no cargue la imagen
@@ -638,7 +638,7 @@ namespace :loader do
           elsif File.exist?(@ruta_imagenes2+id_imagen+ '.JPG')
             #p @ruta_imagenes2+id_imagen+ '.JPG'
             #Se comenta para que no cargue la imagen
-            f_avatar = File.open(@ruta_imagenes2+id_imagen+ '.JPG')
+            #f_avatar = File.open(@ruta_imagenes2+id_imagen+ '.JPG')
           else
             p "No se encontró imagen #{@ruta_imagenes2+id_imagen}"
           end
