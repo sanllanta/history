@@ -634,7 +634,7 @@ namespace :loader do
           if File.exist?(@ruta_imagenes2+id_imagen+ '.jpg')
             #p @ruta_imagenes2+id_imagen+ '.jpg'
             #Se comenta para que no cargue la imagen
-            f_avatar = File.open(@ruta_imagenes2+id_imagen+ '.jpg')
+            #f_avatar = File.open(@ruta_imagenes2+id_imagen+ '.jpg')
           elsif File.exist?(@ruta_imagenes2+id_imagen+ '.JPG')
             #p @ruta_imagenes2+id_imagen+ '.JPG'
             #Se comenta para que no cargue la imagen
