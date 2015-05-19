@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 20150427162212) do
     t.string   "name"
     t.string   "lastname"
     t.text     "biography"
+    t.text     "activity"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "avatar_file_name"

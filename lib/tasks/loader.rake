@@ -70,6 +70,7 @@ namespace :loader do
     Rake::Task['loader:load_personajes_obras'].invoke
     Rake::Task['loader:load_autores_apellido'].invoke
     Rake::Task['loader:load_lugares_obras_DB2'].invoke
+    Rake::Task['loader:load_author_data'].invoke
 
   end
 
@@ -468,7 +469,7 @@ namespace :loader do
           sintesis = row['Sintesis']
           #p scene.id
           f_avatar = nil
-          if row['Id Imagen']
+          if row['Id Imagen'] && false
 
             if File.exist?(@ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg')
               #p @ruta_imagenes+(16000+row['Id Imagen'].to_i).to_s+ '.jpg'
@@ -629,7 +630,7 @@ namespace :loader do
           atributos_iconograficos.to_s.empty? and procedencia.to_s.empty? and fecha.to_s.empty?) and not(id_imagen.to_s.empty?)
 
         f_avatar = nil
-        if id_imagen
+        if id_imagen && false
           id_imagen = "%04d" % id_imagen.to_i
           if File.exist?(@ruta_imagenes2+id_imagen+ '.jpg')
             #p @ruta_imagenes2+id_imagen+ '.jpg'
@@ -858,6 +859,38 @@ namespace :loader do
 
           obra.save
         end
+      end
+    end
+  end
+
+  desc "Drags data for the authors"
+  task load_author_data: :environment do
+    p "Importando información de autores..."
+    file = File.join(Rails.root, 'app', 'assets', 'data', 'autores.csv')
+    csv_file = File.join(Rails.root, 'app', 'assets', 'data', 'autores_apellido.csv')
+    CSV.foreach(file, :headers => true, :col_sep => ';') do |row|
+
+      auth = row['author'].strip
+      act = row['activity']
+      bio = row['bio']
+      
+      found = false
+      CSV.foreach(csv_file, :headers => true, :col_sep => ';') do |auth_row|
+        if auth_row['base'] == auth
+          found = true
+          author = Author.find_by(:name => auth_row['nombre'], :lastname => auth_row['apellido'])
+          if author
+            author.activity = act
+            author.biography = bio
+            author.save
+            p "Autor #{author.name} #{author.lastname} actualizado"
+          else
+            print "No se encontró el autor '#{auth}' en la base de datos"
+          end
+        end
+      end
+      if !found
+        print "No se encontró el autor '#{auth}' en la autores_apellido"
       end
     end
   end
