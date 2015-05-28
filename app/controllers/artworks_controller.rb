@@ -113,7 +113,7 @@ class ArtworksController < ApplicationController
         if params[:authors_filter].nil?
           @authors = Author.all.order(:lastname)
         else
-          @authors = Author.where("lastname LIKE ?", "%#{params[:authors_filter].downcase}%")
+          @authors = Author.where("lastname LIKE ?", "#{params[:authors_filter].downcase}%")
         end
         @authors = @authors.paginate(:per_page => 20, :page => params[:page])
       else
@@ -402,7 +402,7 @@ class ArtworksController < ApplicationController
   # Methods to set @artworks, @clasifications, @countries, @authors
   def set_filters author_id, author_lastname, category_id, country_id
     if not params[:search].nil? and not params[:search].to_s.empty?
-      p "Filter artwoe................................."
+      p "Filter artworks..."
       @clasifications = Category.filtros_category(author_id, author_lastname, category_id, country_id)
       @countries = Country.filtros_place(author_id, author_lastname, category_id, country_id)
     else
