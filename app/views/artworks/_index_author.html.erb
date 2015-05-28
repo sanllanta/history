@@ -32,37 +32,35 @@
               </a>
             </h4>
           </div>
-          <div id="collapseAutores" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingAutores">
-            <div class="panel-body">
-              <ul class="list-unstyled">
-                <li><%= link_to  "A" ,artworks_path(:params => params.merge(:authors_filter => "A"))  %></li>
-                <li><%= link_to  "B" ,artworks_path(:params => params.merge(:authors_filter => "B"))  %></li>
-                <li><%= link_to  "C" ,artworks_path(:params => params.merge(:authors_filter => "C"))  %></li>
-                <li><%= link_to  "D" ,artworks_path(:params => params.merge(:authors_filter => "D"))  %></li>
-                <li><%= link_to  "E" ,artworks_path(:params => params.merge(:authors_filter => "E"))  %></li>
-                <li><%= link_to  "F" ,artworks_path(:params => params.merge(:authors_filter => "F"))  %></li>
-                <li><%= link_to  "G" ,artworks_path(:params => params.merge(:authors_filter => "G"))  %></li>
-                <li><%= link_to  "H" ,artworks_path(:params => params.merge(:authors_filter => "H"))  %></li>
-                <li><%= link_to  "I" ,artworks_path(:params => params.merge(:authors_filter => "I"))  %></li>
-                <li><%= link_to  "J" ,artworks_path(:params => params.merge(:authors_filter => "J"))  %></li>
-                <li><%= link_to  "K" ,artworks_path(:params => params.merge(:authors_filter => "K"))  %></li>
-                <li><%= link_to  "L" ,artworks_path(:params => params.merge(:authors_filter => "L"))  %></li>
-                <li><%= link_to  "M" ,artworks_path(:params => params.merge(:authors_filter => "M"))  %></li>
-                <li><%= link_to  "N" ,artworks_path(:params => params.merge(:authors_filter => "N"))  %></li>
-                <li><%= link_to  "Ñ" ,artworks_path(:params => params.merge(:authors_filter => "Ñ"))  %></li>
-                <li><%= link_to  "O" ,artworks_path(:params => params.merge(:authors_filter => "O"))  %></li>
-                <li><%= link_to  "P" ,artworks_path(:params => params.merge(:authors_filter => "P"))  %></li>
-                <li><%= link_to  "Q" ,artworks_path(:params => params.merge(:authors_filter => "Q"))  %></li>
-                <li><%= link_to  "R" ,artworks_path(:params => params.merge(:authors_filter => "R"))  %></li>
-                <li><%= link_to  "S" ,artworks_path(:params => params.merge(:authors_filter => "S"))  %></li>
-                <li><%= link_to  "T" ,artworks_path(:params => params.merge(:authors_filter => "T"))  %></li>
-                <li><%= link_to  "U" ,artworks_path(:params => params.merge(:authors_filter => "U"))  %></li>
-                <li><%= link_to  "V" ,artworks_path(:params => params.merge(:authors_filter => "V"))  %></li>
-                <li><%= link_to  "W" ,artworks_path(:params => params.merge(:authors_filter => "W"))  %></li>
-                <li><%= link_to  "X" ,artworks_path(:params => params.merge(:authors_filter => "X"))  %></li>
-                <li><%= link_to  "Y" ,artworks_path(:params => params.merge(:authors_filter => "Y"))  %></li>
-                <li><%= link_to  "Z" ,artworks_path(:params => params.merge(:authors_filter => "Z"))  %></li>
-              </ul>
+          <div class="col-xs-12 col-sm-12 col-md-12" >
+            <div class="row" style="padding: 5px">
+              <div class="col-xs-1 col-sm-1 col-md-1"><%= link_to  "A" ,artworks_path(:params => params.merge(:authors_filter => "A")) %></div>
+              <div class="col-xs-1 col-sm-1 col-md-1"><%= link_to  "B" ,artworks_path(:params => params.merge(:authors_filter => "B"))  %></div>
+              <div class="col-xs-1 col-sm-1 col-md-1"><%= link_to  "C" ,artworks_path(:params => params.merge(:authors_filter => "C"))  %></div>
+              <div class="col-xs-1 col-sm-1 col-md-1"><%= link_to  "D" ,artworks_path(:params => params.merge(:authors_filter => "D"))  %></div>
+              <div class="col-xs-1 col-sm-1 col-md-1"><%= link_to  "E" ,artworks_path(:params => params.merge(:authors_filter => "E"))  %></div>
+              <div class="col-xs-1 col-sm-1 col-md-1"><%= link_to  "F" ,artworks_path(:params => params.merge(:authors_filter => "F"))  %></div>
+              <div class="col-xs-1 col-sm-1 col-md-1"><%= link_to  "G" ,artworks_path(:params => params.merge(:authors_filter => "G"))  %></div>
+              <div class="col-xs-1 col-sm-1 col-md-1"><%= link_to  "H" ,artworks_path(:params => params.merge(:authors_filter => "H"))  %></div>
+              <div class="col-xs-1 col-sm-1 col-md-1"><%= link_to  "I" ,artworks_path(:params => params.merge(:authors_filter => "I"))  %></div>
+              <div class="col-xs-1 col-sm-1 col-md-1"><%= link_to  "J" ,artworks_path(:params => params.merge(:authors_filter => "J"))  %></div>
+              <div class="col-xs-1 col-sm-1 col-md-1"><%= link_to  "K" ,artworks_path(:params => params.merge(:authors_filter => "K"))  %></div>
+              <div class="col-xs-1 col-sm-1 col-md-1"><%= link_to  "L" ,artworks_path(:params => params.merge(:authors_filter => "L"))  %></div>
+              <div class="col-xs-1 col-sm-1 col-md-1"><%= link_to  "M" ,artworks_path(:params => params.merge(:authors_filter => "M"))  %></div>
+              <div class="col-xs-1 col-sm-1 col-md-1"><%= link_to  "N" ,artworks_path(:params => params.merge(:authors_filter => "N"))  %></div>
+              <div class="col-xs-1 col-sm-1 col-md-1"><%= link_to  "Ñ" ,artworks_path(:params => params.merge(:authors_filter => "Ñ"))  %></div>
+              <div class="col-xs-1 col-sm-1 col-md-1"><%= link_to  "O" ,artworks_path(:params => params.merge(:authors_filter => "O"))  %></div>
+              <div class="col-xs-1 col-sm-1 col-md-1"><%= link_to  "P" ,artworks_path(:params => params.merge(:authors_filter => "P"))  %></div>
+              <div class="col-xs-1 col-sm-1 col-md-1"><%= link_to  "Q" ,artworks_path(:params => params.merge(:authors_filter => "Q"))  %></div>
+              <div class="col-xs-1 col-sm-1 col-md-1"><%= link_to  "R" ,artworks_path(:params => params.merge(:authors_filter => "R"))  %></div>
+              <div class="col-xs-1 col-sm-1 col-md-1"><%= link_to  "S" ,artworks_path(:params => params.merge(:authors_filter => "S"))  %></div>
+              <div class="col-xs-1 col-sm-1 col-md-1"><%= link_to  "T" ,artworks_path(:params => params.merge(:authors_filter => "T"))  %></div>
+              <div class="col-xs-1 col-sm-1 col-md-1"><%= link_to  "U" ,artworks_path(:params => params.merge(:authors_filter => "U"))  %></div>
+              <div class="col-xs-1 col-sm-1 col-md-1"><%= link_to  "V" ,artworks_path(:params => params.merge(:authors_filter => "V"))  %></div>
+              <div class="col-xs-1 col-sm-1 col-md-1"><%= link_to  "W" ,artworks_path(:params => params.merge(:authors_filter => "W"))  %></div>
+              <div class="col-xs-1 col-sm-1 col-md-1"><%= link_to  "X" ,artworks_path(:params => params.merge(:authors_filter => "X"))  %></div>
+              <div class="col-xs-1 col-sm-1 col-md-1"><%= link_to  "Y" ,artworks_path(:params => params.merge(:authors_filter => "Y"))  %></div>
+              <div class="col-xs-1 col-sm-1 col-md-1"><%= link_to  "Z" ,artworks_path(:params => params.merge(:authors_filter => "Z"))  %></div>
             </div>
           </div>
         </div>
@@ -92,55 +90,63 @@
       </div>
     </div>
 
-    <div class="col-md-9 text-center">
-      <% i = 0 %>
-      <% @authors.each  do |author| %>
-          <% if i == 0 then %>
-              <div class="row">
-          <% end %>
-          <div class="col-md-3 portfolio-item">
-            <h4>
-              <a href="<%= artworks_path(:author_show => author.id) %>"> <%= author.get_full_name %> </a>
-            </h4>
-            <a href="<%= artworks_path(:author_show => author.id) %>">
-                <div>
-                  <% obj_nombres = link_authors_artworks(author.artworks)%>
-                  <% if not obj_nombres.nil? %>
+    <div class="col-md-8">
+      <div class="container-fluid">
+        <div class="row">
 
-                      <% inombres = obj_nombres.length %>
-                      <% i = 1 %>
-                      <% obj_nombres.each  do |nombre| %>
-                          <%= nombre %>
-                          <br>
-                          <% if i == inombres %>
-                            <%='ver mas'%>
-                          <% end %>
-                          <% i = i + 1 %>
-                      <% end %>
-                  <% end %>
+          <% i = 0 %>
+          <% @authors.each  do |author| %>
+              <% if i == 0 then %>
+                  <div class="row">
+              <% end %>
+              <div class="col-sm-3  portfolio-item">
+                <div class="row" style="padding: 0px 2px">
+                  <div class="">
+
+                    <div class="thumbnail artwork-thumbnail" style="height: 90px">
+                      <div class="caption">
+                        <span class="ellipsis"><a href="<%= artworks_path(:author_show => author.id) %>"> <%= author.get_full_name %> </a></span>
+                        <span class="ellipsis"><a class="link-unstyled" href="<%= artworks_path(:author_show => author.id) %>">
+                                <span class="ellipsis">
+                                    <% obj_nombres = link_authors_artworks(author.artworks)%>
+                                    <% if not obj_nombres.nil? %>
+
+                                        <% inombres = 3 %>
+                                        <% j = 1 %>
+                                        <% obj_nombres.each  do |nombre| %>
+                                            <%= nombre %>
+                                            <br>
+
+                                            <% j = j + 1 %>
+                                        <% end %>
+                                        <%='ver mas'%>
+                                    <% end %>
+                                </span>
+                            </a>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-
-            </a>
-
-            <p><%= author.biography %></p>
-          </div>
-
-          <% i += 1 %>
-          <% if i == 4 then %>
-              <% i = 0 %>
               </div>
+
+              <% i += 1 %>
+              <% if i == 4 then %>
+                  <% i = 0 %>
+                  </div>
+              <% end %>
+
           <% end %>
+        </div>
 
-      <% end %>
-    </div>
+        <div class="text-center">
 
-    <div class="text-center">
-
-      <%= will_paginate @authors,  renderer: BootstrapPagination::Rails %>
+          <%= will_paginate @authors,  renderer: BootstrapPagination::Rails %>
+        </div>
+      </div>
     </div>
 
   </div>
-
 </div>
 
 <% content_for :css_application do %>

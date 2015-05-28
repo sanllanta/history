@@ -113,7 +113,7 @@ class ArtworksController < ApplicationController
         if params[:authors_filter].nil?
           @authors = Author.all.order(:lastname)
         else
-          @authors = Author.where("lastname LIKE ?", "#{params[:authors_filter].downcase}%")
+          @authors = Author.where("LOWER(lastname) LIKE ?", "#{params[:authors_filter].downcase}%")
         end
         @authors = @authors.paginate(:per_page => 20, :page => params[:page])
       else
