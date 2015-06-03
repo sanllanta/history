@@ -63,6 +63,7 @@
           <%= f.collection_select :source_id, Source.all, :id, :name,  {:prompt => 'Seleccione la fuente'} %>
           <%= f.collection_select :origin_country_id, Country.all.order("name_spanish"), :id, :name_spanish,  {:prompt => 'Seleccione el lugar'} %>
           <%= f.collection_select :origin_city_id, City.all, :id, :name,  {:prompt => 'Seleccione la ciudad de origen'} %>
+          <%= f.text_area :annotation, label:"Anotación" %>
         </div>
         <div class="col-md-6">
           <%= f.collection_select :school_id, School.all.order("name"), :id, :name,  {:prompt => 'Seleccione la escuela'} %>
