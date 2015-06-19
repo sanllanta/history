@@ -376,6 +376,11 @@ class Artwork < ActiveRecord::Base
     author ? author.biography : "N/A"
   end
 
+  def get_author_activity
+    author ? author.activity : "N/A"
+  end
+
+
   def get_place
     place ? place.name : "N/A"
   end
