@@ -12,7 +12,7 @@
 
 <div class="row">
 
-  <div class="col-md-3">
+  <div class="col-md-2">
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
       <div class="panel panel-default" style="margin-top: 0px">
@@ -58,20 +58,68 @@
     </div>
   </div>
 
-  <div class="col-sm-3">
+  <div class="col-md-4">
     <a type="href" data-toggle="modal" data-target="#imageModal" href="">
       <%= image_tag(@artwork.avatar.url(:large), :class => "img-thumbnail", :class => "img-responsive", :style => "margin-left: auto; margin-right: auto;") %>
     </a>
     <div class="img_title">Id:<%= @artwork.id %><br><%= @artwork.get_title  %><br><%= @artwork.get_author_name  %><br> Fecha: <%= @artwork.get_annotation_date%></div>
+    <br>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="tab-pane fade in" id="location">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-sm-12">
+                  <label style="text-align: left">Lugar de origen</label>
+                </div>
+                <div class="col-sm-12">
+                  <div id="mapOrigin" class="well"></div>
+                </div>
+              </div>
+              <div class="row">
+                <label class="control-label col-sm-3">Latitud</label>
+                <div class="col-sm-9"><%=@artwork.latitude_origin%></div>
+              </div>
+              <div class="row">
+                <label class="control-label col-sm-3">Longitud</label>
+                <div class="col-sm-9"><%=@artwork.longitude_origin%></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-sm-12">
+                  <label style="text-align: right">Lugar actual</label>
+                </div>
+                <div class="col-sm-12">
+                  <div id="mapCurrent" class="well"></div>
+                </div>
+              </div>
+              <div class="row">
+                <label class="control-label col-sm-3">Latitud</label>
+                <div class="col-sm-9"><%=@artwork.latitude_current%></div>
+              </div>
+              <div class="row">
+                <label class="control-label col-sm-3">Longitud</label>
+                <div class="col-sm-9"><%=@artwork.longitude_current%></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 
-  <div class="col-sm-6">
+
+
+  <div class="col-md-5">
     <ul class="nav nav-tabs">
       <li class="active"><a href="#datos_generales" data-toggle="tab" aria-expanded="false">Datos</a></li>
       <li class=""><a href="#desc_img_rel" data-toggle="tab" aria-expanded="false">Descripción</a></li>
       <li class=""><a href="#personajes" data-toggle="tab" aria-expanded="false">Personajes</a></li>
       <li class=""><a href="#cuerpo_gestos" data-toggle="tab" aria-expanded="false">Gestos</a></li>
-      <li class=""><a id="mapTab" href="#location" data-toggle="tab" aria-expanded="false">Lugar</a></li>
     </ul>
     <br>
     <div id="myTabContent" class="tab-content">
@@ -219,46 +267,6 @@
           </div>
         </div>
       </div>
-      <div class="tab-pane fade in" id="location">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="row">
-              <div class="col-sm-12">
-                <label style="text-align: left">Lugar de origen</label>
-              </div>
-              <div class="col-sm-12">
-                <div id="mapOrigin" class="well"></div>
-              </div>
-            </div>
-            <div class="row">
-              <label class="control-label col-sm-3">Latitud</label>
-              <div class="col-sm-9"><%=@artwork.latitude_origin%></div>
-            </div>
-            <div class="row">
-              <label class="control-label col-sm-3">Longitud</label>
-              <div class="col-sm-9"><%=@artwork.longitude_origin%></div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="row">
-              <div class="col-sm-12">
-                <label style="text-align: right">Lugar actual</label>
-              </div>
-              <div class="col-sm-12">
-                <div id="mapCurrent" class="well"></div>
-              </div>
-            </div>
-            <div class="row">
-              <label class="control-label col-sm-3">Latitud</label>
-              <div class="col-sm-9"><%=@artwork.latitude_current%></div>
-            </div>
-            <div class="row">
-              <label class="control-label col-sm-3">Longitud</label>
-              <div class="col-sm-9"><%=@artwork.longitude_current%></div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>
@@ -380,7 +388,7 @@
             mapCurrent.setCenter(latlngCurrent);
         });
 
-        $("#mapOrigin").css("width", '100%').css("height", 400);
+        $("#mapOrigin").css("width", '100%').css("height", 200);
         var markerOrigin = new google.maps.Marker({
             position: latlngOrigin,
             map: mapOrigin,
@@ -388,7 +396,7 @@
             icon: pinSymbol("#A12E33"),
             title: 'Ubicación de origen'
         });
-        $("#mapCurrent").css("width", '100%').css("height", 400);
+        $("#mapCurrent").css("width", '100%').css("height", 200);
         var markerCurrent = new google.maps.Marker({
             position: latlngCurrent,
             map: mapCurrent,
