@@ -111,7 +111,7 @@ class ArtworksController < ApplicationController
       if params[:authors] == ('true')
         p "AUTORES--------------------------------------"
         if params[:authors_filter].nil?
-          @authors = Author.all.order(:lastname)
+          @authors = Author.all.order(:lastname, :name)
         else
           @authors = Author.where("LOWER(lastname) LIKE ?", "#{params[:authors_filter].downcase}%").order("lastname, name")
         end
