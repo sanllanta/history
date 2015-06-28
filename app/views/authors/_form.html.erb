@@ -11,28 +11,28 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class:"form-control" %>
   </div>
   <div class="field">
     <%= f.label :lastname %><br>
-    <%= f.text_field :lastname %>
+    <%= f.text_field :lastname, class:"form-control" %>
   </div>
   <div class="field">
     <%= f.label :activity %><br>
-    <%= f.text_area :activity %>
+    <%= f.text_area :activity, class:"form-control"  %>
   </div>
   <div class="field">
     <%= f.label :biography %><br>
-    <%= f.text_field :biography %>
+    <%= f.text_area :biography, class:"form-control" %>
   </div>
   <div>
     <%= f.label "Avatar" %><br>
-    <%= f.file_field :avatar %>
+    <%= f.file_field :avatar, class:"form-control" %>
   </div>
   <br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-default" %>
   </div>
 <% end %>
