@@ -39,6 +39,7 @@ group :development, :test do
   #rails generate rspec:install
 end
 
+#Manejo de imagenes
 gem 'paperclip', '~> 3.5.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

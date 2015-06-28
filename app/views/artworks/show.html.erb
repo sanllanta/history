@@ -64,6 +64,8 @@
     </a>
     <div class="img_title">Id:<%= @artwork.id %><br><%= @artwork.get_title  %><br><%= @artwork.get_author_name  %><br> Fecha: <%= @artwork.get_annotation_date%></div>
     <br>
+    <%= link_to 'Download', @artwork.avatar.url %>
+    <br>
     <div class="row">
       <div class="col-md-12">
         <div class="tab-pane fade in" id="location">
