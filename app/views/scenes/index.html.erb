@@ -1,6 +1,14 @@
 <h1>Listing scenes</h1>
+<%= link_to 'New Scene', new_scene_path %>
 
-<table>
+<div id="scene">
+  <input class="search" placeholder="Buscar" />
+
+  <button class="sort" data-sort="nombre">
+    Ordenar por Nombre
+  </button>
+
+  <table  class="table table-bordered table-condensed table-hover">
   <thead>
     <tr>
       <th>Name</th>
@@ -8,10 +16,10 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class="list">
     <% @scenes.each do |scene| %>
       <tr>
-        <td><%= scene.name %></td>
+        <td class="nombre"><%= scene.name %></td>
         <td><%= link_to 'Show', scene %></td>
         <td><%= link_to 'Edit', edit_scene_path(scene) %></td>
         <td><%= link_to 'Destroy', scene, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -19,7 +27,12 @@
     <% end %>
   </tbody>
 </table>
+</div>
 
-<br>
+<script>
+    var options = {
+        valueNames: ['nombre']
+    };
 
-<%= link_to 'New Scene', new_scene_path %>
+    var userList = new List('scene', options);
+</script>

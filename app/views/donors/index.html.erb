@@ -1,25 +1,37 @@
 <h1>Listing donors</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @donors.each do |donor| %>
-      <tr>
-        <td><%= donor.name %></td>
-        <td><%= link_to 'Show', donor %></td>
-        <td><%= link_to 'Edit', edit_donor_path(donor) %></td>
-        <td><%= link_to 'Destroy', donor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
 <%= link_to 'New Donor', new_donor_path %>
+
+<div id="donadores">
+  <input class="search" placeholder="Buscar" />
+
+  <button class="sort" data-sort="nombre">
+    Ordenar por Nombre
+  </button>
+
+    <table  class="table table-bordered table-condensed table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody class="list">
+        <% @donors.each do |donor| %>
+          <tr>
+            <td class="nombre"><%= donor.name %></td>
+            <td><%= link_to 'Show', donor %></td>
+            <td><%= link_to 'Edit', edit_donor_path(donor) %></td>
+            <td><%= link_to 'Destroy', donor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
+<script>
+    var options = {
+        valueNames: ['nombre']
+    };
+
+    var userList = new List('donadores', options);
+</script>

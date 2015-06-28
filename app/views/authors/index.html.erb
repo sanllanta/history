@@ -1,31 +1,52 @@
 <!-- Page Heading -->
 <h1>Listing authors</h1>
 <%= link_to 'New Author', new_author_path %>
-<table  class="table table-bordered table-condensed table-hover">
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Apellido</th>
-      <th>Actividad</th>
-      <th># obras</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @authors.each do |author| %>
-      <tr>
-        <td><%= author.name %></td>
-        <td><%= author.lastname %></td>
-        <td><%= author.activity %></td>
-        <td><%= author.artworks.count %></td>
-        <td><%= link_to 'Show', author %></td>
-        <td><%= link_to 'Edit', edit_author_path(author) %></td>
-        <td><%= link_to 'Destroy', author, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div id="autor">
+  <input class="search" placeholder="Buscar" />
 
+  <button class="sort" data-sort="nombre">
+    Ordenar por Nombre
+  </button>
+
+  <button class="sort" data-sort="apellido">
+    Ordenar por Apellido
+  </button>
+
+
+    <table  class="table table-bordered table-condensed table-hover">
+      <thead>
+        <tr>
+          <th >Nombre</th>
+          <th>Apellido</th>
+          <th>Actividad</th>
+          <th># obras</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody class="list">
+        <% @authors.each do |author| %>
+          <tr>
+            <td class="nombre"><%= author.name %></td>
+            <td class="apellido"><%= author.lastname %></td>
+            <td><%= author.activity %></td>
+            <td><%= author.artworks.count %></td>
+            <td><%= link_to 'Show', author %></td>
+            <td><%= link_to 'Edit', edit_author_path(author) %></td>
+            <td><%= link_to 'Destroy', author, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
 <br>
 <%= will_paginate @authors,  renderer: BootstrapPagination::Rails  %>
+
+<script>
+    var options = {
+        valueNames: ['nombre','apellido']
+    };
+
+    var userList = new List('autor', options);
+</script>

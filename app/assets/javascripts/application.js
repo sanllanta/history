@@ -23,6 +23,7 @@
 //= require jquery-jvectormap-world-mill-en
 //= require jssor.js
 //= require jssor.slider.js
+//= require list.min.js
 
 // require contact_me.js
 

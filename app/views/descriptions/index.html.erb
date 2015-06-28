@@ -1,25 +1,37 @@
 <h1>Listing descriptions</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @descriptions.each do |description| %>
-      <tr>
-        <td><%= description.description %></td>
-        <td><%= link_to 'Show', description %></td>
-        <td><%= link_to 'Edit', edit_description_path(description) %></td>
-        <td><%= link_to 'Destroy', description, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
 <%= link_to 'New Description', new_description_path %>
+
+<div id="description">
+  <input class="search" placeholder="Buscar" />
+
+  <button class="sort" data-sort="description">
+    Ordenar por Descripción
+  </button>
+  <table  class="table table-bordered table-condensed table-hover">
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody class="list">
+        <% @descriptions.each do |description| %>
+          <tr>
+            <td class="description"><%= description.description %></td>
+            <td><%= link_to 'Show', description %></td>
+            <td><%= link_to 'Edit', edit_description_path(description) %></td>
+            <td><%= link_to 'Destroy', description, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+  </table>
+</div>
+
+<script>
+    var options = {
+        valueNames: ['description']
+    };
+
+    var userList = new List('description', options);
+</script>

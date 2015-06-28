@@ -1,25 +1,40 @@
 <h1>Listing iconographic_attributes</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<%= link_to 'New Iconographic attribute', new_iconographic_attribute_path %>
 
-  <tbody>
+
+<div id="incono">
+  <input class="search" placeholder="Buscar" />
+
+  <button class="sort" data-sort="nombre">
+    Ordenar por Nombre
+  </button>
+
+  <table  class="table table-bordered table-condensed table-hover">
+    <thead>
+        <tr>
+          <th>Name</th>
+          <th colspan="3"></th>
+        </tr>
+    </thead>
+
+    <tbody class="list">
     <% @iconographic_attributes.each do |iconographic_attribute| %>
       <tr>
-        <td><%= iconographic_attribute.name %></td>
+        <td class="nombre"><%= iconographic_attribute.name %></td>
         <td><%= link_to 'Show', iconographic_attribute %></td>
         <td><%= link_to 'Edit', edit_iconographic_attribute_path(iconographic_attribute) %></td>
         <td><%= link_to 'Destroy', iconographic_attribute, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>
 
-<br>
+<script>
+    var options = {
+        valueNames: ['nombre']
+    };
 
-<%= link_to 'New Iconographic attribute', new_iconographic_attribute_path %>
+    var userList = new List('incono', options);
+</script>

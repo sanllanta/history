@@ -1,6 +1,14 @@
 <h1>Listing passages</h1>
+<%= link_to 'New Passage', new_passage_path %>
 
-<table>
+<div id="passage">
+  <input class="search" placeholder="Buscar" />
+
+  <button class="sort" data-sort="nombre">
+    Ordenar por Nombre
+  </button>
+
+  <table  class="table table-bordered table-condensed table-hover">
   <thead>
     <tr>
       <th>Name</th>
@@ -8,18 +16,23 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @passages.each do |passage| %>
-      <tr>
-        <td><%= passage.name %></td>
-        <td><%= link_to 'Show', passage %></td>
-        <td><%= link_to 'Edit', edit_passage_path(passage) %></td>
-        <td><%= link_to 'Destroy', passage, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+    <tbody class="list">
+        <% @passages.each do |passage| %>
+          <tr>
+            <td class="nombre"><%= passage.name %></td>
+            <td><%= link_to 'Show', passage %></td>
+            <td><%= link_to 'Edit', edit_passage_path(passage) %></td>
+            <td><%= link_to 'Destroy', passage, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+    </tbody>
 </table>
+</div>
 
-<br>
+<script>
+    var options = {
+        valueNames: ['nombre']
+    };
 
-<%= link_to 'New Passage', new_passage_path %>
+    var userList = new List('passage', options);
+</script>

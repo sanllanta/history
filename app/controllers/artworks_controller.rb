@@ -97,12 +97,11 @@ class ArtworksController < ApplicationController
 
       set_filters(params[:author_show], params[:authors_filter], params[:topic], params[:country])
       page =1
-
       if not params[:page].nil?
         page = params[:page]
       end
-      @artworks = WillPaginate::Collection.create(page,20, @artworks.length) do |pager|
-        pager.replace @artworks
+      @artworks = WillPaginate::Collection.create(page,10, @artworks.length) do |pager|
+        pager.replace @artworks.to_a
       end
     else
       #Seccion de busqueda

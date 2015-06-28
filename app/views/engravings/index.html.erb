@@ -1,6 +1,14 @@
 <h1>Listing engravings</h1>
+<%= link_to 'New Engraving', new_engraving_path %>
 
-<table>
+<div id="engraving">
+  <input class="search" placeholder="Buscar" />
+
+  <button class="sort" data-sort="nombre">
+    Ordenar por Nombre
+  </button>
+
+  <table  class="table table-bordered table-condensed table-hover">
   <thead>
     <tr>
       <th>Name</th>
@@ -8,10 +16,10 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class="list">
     <% @engravings.each do |engraving| %>
       <tr>
-        <td><%= engraving.name %></td>
+        <td class="nombre"><%= engraving.name %></td>
         <td><%= link_to 'Show', engraving %></td>
         <td><%= link_to 'Edit', edit_engraving_path(engraving) %></td>
         <td><%= link_to 'Destroy', engraving, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -19,7 +27,12 @@
     <% end %>
   </tbody>
 </table>
+</div>
 
-<br>
+<script>
+  var options = {
+      valueNames: ['nombre']
+  };
 
-<%= link_to 'New Engraving', new_engraving_path %>
+  var userList = new List('engraving', options);
+</script>

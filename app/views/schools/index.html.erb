@@ -1,6 +1,14 @@
 <h1>Listing schools</h1>
+<%= link_to 'New School', new_school_path %>
 
-<table>
+<div id="school">
+  <input class="search" placeholder="Buscar" />
+
+  <button class="sort" data-sort="nombre">
+    Ordenar por Nombre
+  </button>
+
+  <table  class="table table-bordered table-condensed table-hover">
   <thead>
     <tr>
       <th>Name</th>
@@ -8,10 +16,10 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class="list">
     <% @schools.each do |school| %>
       <tr>
-        <td><%= school.name %></td>
+        <td class="nombre"><%= school.name %></td>
         <td><%= link_to 'Show', school %></td>
         <td><%= link_to 'Edit', edit_school_path(school) %></td>
         <td><%= link_to 'Destroy', school, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -19,7 +27,12 @@
     <% end %>
   </tbody>
 </table>
+</div>
 
-<br>
+<script>
+    var options = {
+        valueNames: ['nombre']
+    };
 
-<%= link_to 'New School', new_school_path %>
+    var userList = new List('school', options);
+</script>

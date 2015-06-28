@@ -1,6 +1,15 @@
 <h1>Listing sources</h1>
+<%= link_to 'New Source', new_source_path %>
 
-<table>
+
+<div id="source">
+  <input class="search" placeholder="Buscar" />
+
+  <button class="sort" data-sort="nombre">
+    Ordenar por Nombre
+  </button>
+
+  <table  class="table table-bordered table-condensed table-hover">
   <thead>
     <tr>
       <th>Name</th>
@@ -8,10 +17,10 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class="list">
     <% @sources.each do |source| %>
       <tr>
-        <td><%= source.name %></td>
+        <td class="nombre"><%= source.name %></td>
         <td><%= link_to 'Show', source %></td>
         <td><%= link_to 'Edit', edit_source_path(source) %></td>
         <td><%= link_to 'Destroy', source, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -19,7 +28,12 @@
     <% end %>
   </tbody>
 </table>
+</div>
 
-<br>
+<script>
+    var options = {
+        valueNames: ['nombre']
+    };
 
-<%= link_to 'New Source', new_source_path %>
+    var userList = new List('source', options);
+</script>

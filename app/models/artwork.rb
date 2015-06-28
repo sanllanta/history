@@ -85,7 +85,7 @@ class Artwork < ActiveRecord::Base
 
   def self.b_title(search)
     if not search.to_s.empty?
-      where( 'title LIKE ?', "%#{search}%")
+      where( 'lower(title) LIKE ?', "%#{search.downcase}%")
     else
       nil
     end
@@ -123,7 +123,7 @@ class Artwork < ActiveRecord::Base
         LEFT JOIN
         descriptions ON A.description_id = descriptions.id
 
-        WHERE (descriptions.description LIKE ' "'%#{search}%'" ')
+        WHERE ( lower(descriptions.description) LIKE ' "'%#{search.downcase}%'" ')
       ) B ON artworks.id = B.ar_id')
     else
       all
@@ -211,7 +211,7 @@ class Artwork < ActiveRecord::Base
 
   def self.b_author(search)
     if not search.to_s.empty?
-      joins('LEFT JOIN authors ON authors.id = artworks.author_id').where( 'authors.name LIKE ?', "#{search}%")
+      joins('LEFT JOIN authors ON authors.id = artworks.author_id').where( 'authors.name LIKE ?', "%#{search}%")
     else
       nil
     end

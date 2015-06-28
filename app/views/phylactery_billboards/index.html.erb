@@ -1,6 +1,15 @@
 <h1>Listing phylactery_billboards</h1>
+<%= link_to 'New Phylactery billboard', new_phylactery_billboard_path %>
 
-<table>
+
+<div id="phylac">
+  <input class="search" placeholder="Buscar" />
+
+  <button class="sort" data-sort="nombre">
+    Ordenar por Nombre
+  </button>
+
+  <table  class="table table-bordered table-condensed table-hover">
   <thead>
     <tr>
       <th>Name</th>
@@ -8,10 +17,10 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class="list">
     <% @phylactery_billboards.each do |phylactery_billboard| %>
       <tr>
-        <td><%= phylactery_billboard.name %></td>
+        <td class="nombre"><%= phylactery_billboard.name %></td>
         <td><%= link_to 'Show', phylactery_billboard %></td>
         <td><%= link_to 'Edit', edit_phylactery_billboard_path(phylactery_billboard) %></td>
         <td><%= link_to 'Destroy', phylactery_billboard, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -19,7 +28,12 @@
     <% end %>
   </tbody>
 </table>
+</div>
 
-<br>
+<script>
+    var options = {
+        valueNames: ['nombre']
+    };
 
-<%= link_to 'New Phylactery billboard', new_phylactery_billboard_path %>
+    var userList = new List('phylac', options);
+</script>

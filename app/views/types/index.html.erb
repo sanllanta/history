@@ -1,6 +1,14 @@
 <h1>Listing types</h1>
+<%= link_to 'New Type', new_type_path %>
 
-<table>
+<div id="type">
+  <input class="search" placeholder="Buscar" />
+
+  <button class="sort" data-sort="nombre">
+    Ordenar por Nombre
+  </button>
+
+  <table  class="table table-bordered table-condensed table-hover">
   <thead>
     <tr>
       <th>Name</th>
@@ -8,10 +16,10 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class="list">
     <% @types.each do |type| %>
       <tr>
-        <td><%= type.name %></td>
+        <td class="nombre"><%= type.name %></td>
         <td><%= link_to 'Show', type %></td>
         <td><%= link_to 'Edit', edit_type_path(type) %></td>
         <td><%= link_to 'Destroy', type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -19,7 +27,12 @@
     <% end %>
   </tbody>
 </table>
+</div>
 
-<br>
+<script>
+    var options = {
+        valueNames: ['nombre']
+    };
 
-<%= link_to 'New Type', new_type_path %>
+    var userList = new List('type', options);
+</script>
