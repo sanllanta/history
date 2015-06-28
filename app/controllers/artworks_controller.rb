@@ -175,7 +175,8 @@ class ArtworksController < ApplicationController
   # GET /artworks/1
   # GET /artworks/1.json
   def admin
-    @artworks = Artwork.all
+    @artworks = Artwork.paginate(:page => params[:page]).order("title")
+
   end
 
   # GET /artworks/new

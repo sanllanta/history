@@ -1,7 +1,7 @@
 <!-- Page Heading -->
 <h1>Listado de obras</h1>
-
-<table>
+<%= link_to 'Nueva obra', new_artwork_path %>
+<table  class="table table-bordered table-condensed table-hover">
   <thead>
     <tr>
       <th>Name</th>
@@ -22,5 +22,4 @@
 </table>
 
 <br>
-
-<%= link_to 'Nueva obra', new_artwork_path %>
+<%= will_paginate @artworks,  renderer: BootstrapPagination::Rails %>
