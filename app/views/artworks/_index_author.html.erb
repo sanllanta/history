@@ -103,7 +103,14 @@
                 <div class="row" style="padding: 0px 2px">
                   <div class="">
 
-                    <div class="thumbnail artwork-thumbnail" style="height: 90px">
+
+
+                    <div class="thumbnail artwork-thumbnail">
+                        <% if author.avatar.exists?%>
+                            <div id="img-wrap" style="background-image: url('<%= author.avatar.url(:medium) %>');"></div>
+                        <% else %>
+                            <%= image_tag author.avatar.url(:thumb) , :width => 150, :height => 150 %>
+                        <% end %>
                       <div class="caption">
                         <span class="ellipsis"><a href="<%= artworks_path(:author_show => author.id) %>"> <%= author.get_full_name %> </a></span>
                         <span class="ellipsis"><a class="link-unstyled" href="<%= artworks_path(:author_show => author.id) %>">
