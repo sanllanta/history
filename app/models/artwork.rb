@@ -91,14 +91,6 @@ class Artwork < ActiveRecord::Base
     end
   end
 
-  # def self.s_descriptions(search)
-  #   if not search.to_s.empty?
-  #     joins('LEFT JOIN descriptions ON descriptions.artwork_id = artworks.id ').where( 'description LIKE ?', "%#{search}%")
-  #   else
-  #     nil
-  #   end
-  # end
-
   def self.filtros(author_id, author_lastname, category_id, country_id)
     query = 'SELECT A2.* FROM "countries" RIGHT JOIN
     (SELECT A.* FROM "categories"
@@ -113,8 +105,7 @@ class Artwork < ActiveRecord::Base
     author_query = ""
     category_query = ""
     country_query = ""
-    p("author_lastname")
-    p(author_lastname)
+
     author_lastname ? author_query = "WHERE authors.lastname LIKE '#{author_lastname}%'" : nil
     author_id ? author_query = "WHERE authors.id = '#{author_id}'" : nil
     category_id ? category_query = "WHERE categories.id = #{category_id}" : nil
@@ -329,8 +320,6 @@ class Artwork < ActiveRecord::Base
   def get_actual_city_name
     actual_city && actual_city.name ? actual_city.name : "N/A"
   end
-
-
 
   def get_school_name
     school && school.name ? school.name : "N/A"

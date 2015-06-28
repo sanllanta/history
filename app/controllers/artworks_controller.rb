@@ -100,16 +100,12 @@ class ArtworksController < ApplicationController
       if not params[:page].nil?
         page = params[:page]
       end
-      p "sercar--------------------------------"
-      p @artworks.length
       @artworks = WillPaginate::Collection.create(page,20, @artworks.length) do |pager|
         pager.replace @artworks
       end
     else
-      p "sercar--------------------------------"
-      p params[:authors] == ('true')
+      #Seccion de busqueda
       if params[:authors] == ('true')
-        p "AUTORES--------------------------------------"
         if params[:authors_filter].nil?
           @authors = Author.all.order(:lastname, :name)
         else
@@ -162,9 +158,7 @@ class ArtworksController < ApplicationController
           end
         end
       end
-
     end
-
   end
 
   # GET /artworks/1
