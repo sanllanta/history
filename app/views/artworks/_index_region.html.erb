@@ -208,7 +208,8 @@
                               var map = $('#world-map').vectorMap('get', 'mapObject');
                               var regionName = map.getRegionName(code);
 
-                              var link_obra = "artworks?region_show=" + regionName
+                              var link_obra = "artworks?country_name=" + regionName
+
                               if (authors_filter)
                               {
                                   var link_obra = link_obra + "&" + "authors_filter=" + authors_filter
@@ -216,7 +217,6 @@
                               if (topic) {
                                   var link_obra = link_obra + "&" + "topic=" + topic
                               }
-
                               window.location.href = link_obra
                           }
                       }

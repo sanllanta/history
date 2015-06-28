@@ -94,6 +94,7 @@ class ArtworksController < ApplicationController
         end
       end
 
+
       set_filters(params[:author_show], params[:authors_filter], params[:topic], params[:country])
       page =1
 
@@ -116,6 +117,7 @@ class ArtworksController < ApplicationController
 
         #Define la cantidad de obras que se muestran en cada uno de los tipos de vistas
         buscar = true
+
         if not params[:topic].nil?
           params[:topic] == 'true' ? buscar = false : nil
         elsif not params[:author_show].nil?
@@ -128,10 +130,13 @@ class ArtworksController < ApplicationController
             params[:region] = "true";
             params[:region_show] = nil;
           end
-        else
-
         end
 
+        if not params[:country_name].nil?
+          country=Country.find_by_name(params[:country_name])
+          p country
+          params[:country] = country.id
+        end
         if buscar
           set_filters(params[:author_show], params[:authors_filter], params[:topic], params[:country])
           if params[:region] == ('true')
