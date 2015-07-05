@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   authenticate :user do
     get 'application/admin'
     get 'artworks/admin'
+
     resources :iconographic_attributes
 
     resources :artwork_symbols
@@ -38,8 +39,6 @@ Rails.application.routes.draw do
     resources :countries
 
     resources :authors
-
-    resources :users
 
     put 'artworks/send_image'
 

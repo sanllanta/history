@@ -11,9 +11,9 @@
       <%= link_to "Salir", destroy_user_session_path ,:method => :delete %>
       <br>
 
-
   <% else %>
-
+      <%= link_to "Crear usuario", new_user_registration_path %>
+      <br>
       <%= link_to "Entrar", new_user_session_path %>
   <% end %>
 </div>
