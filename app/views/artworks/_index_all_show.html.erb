@@ -12,9 +12,9 @@
                 <small>Autor:<%= Author.find(params[:author_show]).name %> <%= Author.find(params[:author_show]).lastname %></small><br>
             <% end %>
             <% if not params[:topic].nil? %>
-                <small>Categoria: <%= Category.find(params[:topic]).name %></small><br>
+                <small>Categoria: <%= Category.find(params[:topic]).name %> Total obras: <%= @artworks.count %></small><br>
             <% end %>
-
+      <small>Total obras: <%= @artworks.count %></small>
     </h1>
   </div>
 </div>
