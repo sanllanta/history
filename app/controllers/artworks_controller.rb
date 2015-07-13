@@ -158,6 +158,7 @@ class ArtworksController < ApplicationController
             if not params[:page].nil?
               page = params[:page]
             end
+            @total = @artworks.count
             @artworks = @artworks.paginate(:page => page, :per_page=>20)
           end
         end
