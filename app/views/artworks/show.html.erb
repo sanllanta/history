@@ -62,7 +62,7 @@
     <a type="href" data-toggle="modal" data-target="#imageModal" href="">
       <%= image_tag(@artwork.avatar.url(:large), :class => "img-thumbnail", :class => "img-responsive", :style => "margin-left: auto; margin-right: auto;") %>
     </a>
-    <div class="img_title">Id:<%= @artwork.id %><br><%= @artwork.get_title  %><br><%= @artwork.get_author_name  %><br> Fecha: <%= @artwork.get_annotation_date%></div>
+    <div class="img_title"><h3 style="color: #000000;   text-align: right;">Id:<%= @artwork.id %></h3><%= @artwork.get_title  %><br><%= @artwork.get_author_name  %><br> Fecha: <%= @artwork.get_annotation_date%></div>
     <%= link_to 'Download', @artwork.avatar.url %>
     <br>
     <br>
@@ -159,6 +159,7 @@
             <label class="control-label col-sm-3">Fuente</label>
             <div class="col-sm-9"><%=@artwork.get_source_name%></div>
           </div>
+          <br>
           <div class="row">
             <label class="control-label col-sm-3">Procedencia</label>
             <div class="col-sm-9"><%=@artwork.get_place%></div>
@@ -187,6 +188,7 @@
             <label class="control-label col-sm-3">Sintesis</label>
             <div class="col-sm-9"><%=@artwork.get_synthesis%></div>
           </div>
+          <br>
           <div class="row">
             <label class="control-label col-sm-3">Categoría 1</label>
             <div class="col-sm-9"><%=@artwork.get_category_1_name%></div>
