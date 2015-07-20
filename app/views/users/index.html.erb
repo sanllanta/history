@@ -6,7 +6,7 @@
 <% if current_user.admin? %>
 
     <%= link_to t('.new', :default => t("helpers.links.new")),
-                new_user_path,
+                new_users_admin_path,
             :class => 'btn btn-primary' %>
 <% end %>
 
@@ -43,7 +43,7 @@
   <tbody class="list">
     <% @users.each do |user| %>
       <tr>
-        <td><%= link_to user.id, user_path(user) %></td>
+        <td><%= link_to user.id, users_admin_path(user) %></td>
         <% if current_user.admin? %>
             <td><%= user.admin %></td>
         <% end %>
@@ -59,9 +59,9 @@
         <td><%=l user.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_user_path(user), :class => 'btn btn-default btn-xs' %>
+                      edit_users_admin_path(user), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      user_path(user),
+                      users_admin_path(user),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-xs btn-danger' %>

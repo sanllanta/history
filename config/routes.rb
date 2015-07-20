@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  resources :users_admin, :controller => 'users'
+
   authenticate :user do
     get 'application/admin'
     get 'artworks/admin'
@@ -39,8 +41,6 @@ Rails.application.routes.draw do
     resources :countries
 
     resources :authors
-
-    resources :users
 
     put 'artworks/send_image'
 
