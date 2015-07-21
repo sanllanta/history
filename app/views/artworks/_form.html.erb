@@ -59,17 +59,17 @@
       <br>
       <div class="row">
         <div class="col-md-6">
-          <%= f.collection_select :type_id, Type.all, :id, :name,  {:prompt => 'Seleccione el tipo'} %>
-          <%= f.collection_select :source_id, Source.all, :id, :name,  {:prompt => 'Seleccione la fuente'} %>
-          <%= f.collection_select :origin_country_id, Country.all.order("name_spanish"), :id, :name_spanish,  {:prompt => 'País de origen'} %>
-          <%= f.collection_select :origin_city_id, City.all, :id, :name,  {:prompt => 'Ciudad de origen'} %>
-          <%= f.collection_select :actual_country_id, Country.all.order("name_spanish"), :id, :name_spanish,  {:prompt => 'País actual'} %>
-          <%= f.collection_select :actual_city_id, City.all, :id, :name,  {:prompt => 'Ciudad actual'} %>
+          <%= f.collection_select :type_id, Type.order(:name), :id, :name,  {:prompt => 'Seleccione el tipo'} %>
+          <%= f.collection_select :source_id, Source.order(:name), :id, :name,  {:prompt => 'Seleccione la fuente'} %>
+          <%= f.collection_select :origin_country_id, Country.order("name_spanish"), :id, :name_spanish,  {:prompt => 'País de origen'} %>
+          <%= f.collection_select :origin_city_id, City.order(:name), :id, :name,  {:prompt => 'Ciudad de origen'} %>
+          <%= f.collection_select :actual_country_id, Country.order("name_spanish"), :id, :name_spanish,  {:prompt => 'País actual'} %>
+          <%= f.collection_select :actual_city_id, City.order(:name), :id, :name,  {:prompt => 'Ciudad actual'} %>
           <%= f.text_area :annotation, label:"Anotación" %>
         </div>
         <div class="col-md-6">
-          <%= f.collection_select :school_id, School.all.order("name"), :id, :name,  {:prompt => 'Seleccione la escuela'} %>
-          <%= f.collection_select :place_id, Place.all.order("name"), :id, :name,  {:prompt => 'Seleccione el lugar'} %>
+          <%= f.collection_select :school_id, School.order(:name), :id, :name,  {:prompt => 'Seleccione la escuela'} %>
+          <%= f.collection_select :place_id, Place.order(:name), :id, :name,  {:prompt => 'Seleccione el lugar'} %>
           <%= f.text_field :annotation_date %>
           <%= f.date_field :creation_date %>
         </div>
@@ -111,11 +111,11 @@
     <div class="tab-pane fade in" id="desc_img_rel">
       <div class="row">
         <div class="col-md-6">
-        <%= f.collection_select :scene_id, Scene.all, :id, :name,  {:prompt => 'Seleccione la escena'} %>
-        <%= f.collection_select :story_type_id, StoryType.all, :id, :name,  {:prompt => 'Seleccione el tipo de historia'} %>
-        <%= f.collection_select :donor_id, Donor.all, :id, :name,  {:prompt => 'Seleccione el donante'} %>
-        <%= f.collection_select :phylactery_billboard_id, PhylacteryBillboard.all, :id, :name,  {:prompt => 'Cartelera Filacteria'} %>
-        <%= f.collection_select :iconographic_attribute_id, IconographicAttribute.all, :id, :name,  {:prompt => 'Atributo Iconografico'}, label:"Atributo Iconografico" %>
+        <%= f.collection_select :scene_id, Scene.order(:name), :id, :name,  {:prompt => 'Seleccione la escena'} %>
+        <%= f.collection_select :story_type_id, StoryType.order(:name), :id, :name,  {:prompt => 'Seleccione el tipo de historia'} %>
+        <%= f.collection_select :donor_id, Donor.order(:name), :id, :name,  {:prompt => 'Seleccione el donante'} %>
+        <%= f.collection_select :phylactery_billboard_id, PhylacteryBillboard.order(:name), :id, :name,  {:prompt => 'Cartelera Filacteria'} %>
+        <%= f.collection_select :iconographic_attribute_id, IconographicAttribute.order(:name), :id, :name,  {:prompt => 'Atributo Iconografico'}, label:"Atributo Iconografico" %>
         </div>
         <div class="col-md-6">
           <%= f.text_area :comment, :class => 'form-control' %>
