@@ -174,7 +174,7 @@ class ArtworksController < ApplicationController
   # GET /artworks/1
   # GET /artworks/1.json
   def admin
-    @artworks = Artwork.paginate(:page => params[:page]).order(params[:sort] + ' ' + params[:direction])
+    @artworks = Artwork.paginate(:page => params[:page]).order(sort_column + ' ' + sort_direction)
   end
 
   # GET /artworks/new
@@ -265,6 +265,14 @@ class ArtworksController < ApplicationController
 
   private
   # Use callbacks to share common setup or constraints between actions.
+  def sort_column
+    Artwork.column_names.include?(params[:sort]) ? params[:sort] : "title"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
   def set_artwork
     if params[:id]!='send_image'
       @artwork = Artwork.find(params[:id])
