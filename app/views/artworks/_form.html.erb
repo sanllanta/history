@@ -135,6 +135,20 @@
     </div>
 
     <div class="tab-pane fade in" id="personajes">
+      <div class="row">
+        <div class="col-md-6">
+
+          <table class="table table-condensed table-hover table-striped">
+            <tbody>
+              <% @artwork.characters.each  do |sym| %>
+                  <tr><td><%= sym.name %></td></tr>
+              <% end %>
+            </tbody>
+           </table>
+          <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#perModal">Modificar Personajes</button>
+
+        </div>
+      </div>
     </div>
 
     <div class="tab-pane fade in" id="cuerpos_gestos">
@@ -212,6 +226,27 @@
             <% for description in ArtworkSymbol.all %>
                 <%= check_box_tag "artwork[artwork_symbol_ids][]", description.id,@artwork.artwork_symbols.include?(description) %>
                 <%=	 description.name %>
+                <br>
+            <% end %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for Personajes view -->
+    <div class="modal fade" id="perModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            Simbolos de la obra<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <% for personaje in Character.all %>
+                <%= check_box_tag "artwork[character_ids][]", personaje.id,@artwork.characters.include?(personaje) %>
+                <%=	 personaje.name %>
                 <br>
             <% end %>
           </div>
