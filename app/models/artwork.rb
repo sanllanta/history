@@ -346,11 +346,11 @@ class Artwork < ActiveRecord::Base
   end
 
   def get_phylactery_billboard_name
-    phylactery_billboards[0] && phylactery_billboards[0].name ? phylactery_billboards[0].name : "N/A"
+    PhylacteryBillboard.find_by_id(phylactery_billboard_id) ? PhylacteryBillboard.find_by_id(phylactery_billboard_id).name : "N/A"
   end
 
   def get_iconographic_attribute_name
-    iconographic_attributes && iconographic_attributes.to_s ? iconographic_attributes.name : "N/A"
+    IconographicAttribute.find_by(id:iconographic_attribute_id) ? IconographicAttribute.find_by(id:iconographic_attribute_id).name : "N/A"
   end
 
   def get_comment
@@ -372,6 +372,22 @@ class Artwork < ActiveRecord::Base
 
   def get_place
     place ? place.name : "N/A"
+  end
+
+  def get_passage_history_type
+    passage ? passage.get_history_type : "N/A"
+  end
+
+  def get_passage_name
+    passage ? passage.name : "N/A"
+  end
+
+  def get_passage_source
+    passage ? passage.source : "N/A"
+  end
+
+  def get_passage_text
+    passage ? passage.text : "N/A"
   end
 
 end

@@ -269,6 +269,64 @@
               </table>
             </div>
           </div>
+          <div class="row" >
+            <% @artwork.characters.each  do |sym| %>
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <label class="control-label">Personaje:</label> <%= sym.get_name %>
+                    </div>
+                    <!--<div class="col-md-9" style="background-color: rgb(0, 255, 0)">-->
+                    <!--< %= sym.name %>-->
+                    <!--</div>-->
+                    <div class="col-md-6">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <label class="control-label">Muerte:</label>
+                          <%= sym.get_death_date %>
+                        </div>
+                        <div class="col-md-12">
+                          <label class="control-label">Beatificación:</label> <%= sym.get_beatification_date %>
+                        </div>
+                        <div class="col-md-12">
+                          <label class="control-label">Canonización:</label> <%= sym.get_canonization_date %>
+                        </div>
+                        <div class="col-md-12">
+                          <label class="control-label">Principal:</label> <%= sym.get_is_principal %>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                        <%= sym.get_biography %>
+                    </div>
+                </div>
+                </div>
+                <br>
+            <% end %>
+          </div>
+          <div class="row" style="border: 1px; border-style: solid">
+              <div class="col-sm-12">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <label class="control-label">Pasaje:</label>
+                        <%= @artwork.get_passage_name %>
+                      </div>
+                      <div class="col-md-12">
+                        <textarea class="control-text" style="margin: 0px; width: 401px; height: 74px;"><%= @artwork.get_passage_text %></textarea>
+                      </div>
+                      <div class="col-md-12">
+                        <label class="control-label">Tipo de historia:</label>
+                        <%= @artwork.get_passage_history_type %>
+                      </div>
+                      <div class="col-md-12">
+                        <label class="control-label">Fuente:</label>
+                        <%= @artwork.get_passage_source %>
+                      </div>
+                    </div>
+              </div>
+          </div>
+
+
         </div>
       </div>
 
@@ -276,16 +334,29 @@
 
         <div class="container" style="width: inherit">
 
+              <div class="row" >
+
+              </div>
+
           <div class="row">
-            <label class="control-label col-sm-3">Personajes</label>
-            <div class="col-sm-10">
-              <table class="table table-condensed table-hover table-striped">
-                <tbody>
-                <% @artwork.characters.each  do |sym| %>
-                    <tr><td><%= sym.name %></td></tr>
-                <% end %>
-                </tbody>
-              </table>
+            <div class="col-sm-12">
+              <div class="row">
+                <div class="col-md-12">
+                    <label class="control-label">Pasaje:</label>
+                    <%= @artwork.get_passage_name %>
+                </div>
+                <div class="col-md-12">
+                    <textarea class="control-text" style="margin: 0px; width: 401px; height: 74px;"><%= @artwork.get_passage_text %></textarea>
+                </div>
+                <div class="col-md-12">
+                    <label class="control-label">Tipo de historia:</label>
+                    <%= @artwork.get_passage_history_type %>
+                </div>
+                <div class="col-md-12">
+                    <label class="control-label">Fuente:</label>
+                    <%= @artwork.get_passage_source %>
+                </div>
+              </div>
             </div>
           </div>
 

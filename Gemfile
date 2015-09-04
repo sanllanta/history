@@ -17,7 +17,6 @@ group :assets do
 end
 
 #Administracion
-gem 'activeadmin', :git => 'https://github.com/activeadmin/activeadmin.git'
 gem 'devise'
 
 #Presentacion, vista con bootstrap
