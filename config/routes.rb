@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
     resources :descriptions
 
+    resources :body_gestures
+
     resources :schools
 
     resources :story_types
