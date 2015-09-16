@@ -35,7 +35,6 @@ class Artwork < ActiveRecord::Base
   belongs_to :source
   belongs_to :donor
   belongs_to :story_type
-  belongs_to :work_art_symbol
   belongs_to :school
 
   #Origin and actual cities
@@ -71,7 +70,7 @@ class Artwork < ActiveRecord::Base
 
   accepts_nested_attributes_for :artwork_symbols, allow_destroy: true
   accepts_nested_attributes_for :descriptions, :reject_if => lambda{ |a| a[:description].blank? }, allow_destroy: true
-  accepts_nested_attributes_for :body_gestures, :reject_if => lambda{ |a| a[:body_gesture].blank? }, allow_destroy: true
+  accepts_nested_attributes_for :body_gestures, :reject_if => lambda{ |a| a[:name].blank? }, allow_destroy: true
   accepts_nested_attributes_for :iconographic_attributes, :reject_if => lambda{ |a| a[:name].blank? }, allow_destroy: true
   accepts_nested_attributes_for :artwork_symbols, :reject_if => lambda{ |a| a[:name].blank? }, allow_destroy: true
   accepts_nested_attributes_for :engravings, :reject_if => lambda{ |a| a[:name].blank? }, allow_destroy: true

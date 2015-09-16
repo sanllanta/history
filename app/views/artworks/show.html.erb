@@ -296,7 +296,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="more-less col-md-6" >
                         <%= sym.get_biography %>
                     </div>
                 </div>
@@ -339,24 +339,17 @@
               </div>
 
           <div class="row">
-            <div class="col-sm-12">
-              <div class="row">
-                <div class="col-md-12">
-                    <label class="control-label">Pasaje:</label>
-                    <%= @artwork.get_passage_name %>
-                </div>
-                <div class="col-md-12">
-                    <textarea class="control-text" style="margin: 0px; width: 401px; height: 74px;"><%= @artwork.get_passage_text %></textarea>
-                </div>
-                <div class="col-md-12">
-                    <label class="control-label">Tipo de historia:</label>
-                    <%= @artwork.get_passage_history_type %>
-                </div>
-                <div class="col-md-12">
-                    <label class="control-label">Fuente:</label>
-                    <%= @artwork.get_passage_source %>
-                </div>
-              </div>
+            <label class="control-label col-sm-3">Gestos:</label>
+            <div class="col-sm-10">
+              <table class="table table-condensed table-hover table-striped">
+                <tbody>
+
+                    <% @artwork.body_gestures.each  do |sym| %>
+                        <tr><td><%= sym.name %></td></tr>
+                    <% end %>
+
+                </tbody>
+              </table>
             </div>
           </div>
 
@@ -366,6 +359,7 @@
     </div>
   </div>
 </div>
+
 
 <br>
 <% if @artwork.category_1 %>
@@ -412,6 +406,8 @@
     </div>
   </div>
 </div>
+
+
 
 <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
 </script>

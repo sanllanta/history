@@ -94,30 +94,8 @@
           <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#descModal">Modificar descripciónes</button>
         </div>
       </div>
-
-      <div class="row">
-        <!--<label class="control-label col-sm-3">Descriptores</label>-->
-        <br>
-        <div class="col-md-6">
-          <%= f.fields_for :body_gestures, @artwork.body_gestures.build  do |fdesc| %>
-              <%= render 'body_gestures_fields', ff:fdesc %>
-          <% end %>
-          <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gestosModal">Modificar gestos</button>
-        </div>
-      </div>
       <br>
-      <!--<div class="row">-->
-        <!--< %= form_for :Descriptions, @artwork.descriptions.build do |fa|%>-->
-            <!--<p>-->
-              <!--< %= fa.text_field :name %>-->
-              <!--< %= submit_tag "Crear" , :name=>nil%>-->
-            <!--</p>-->
-        <!--< % end %>-->
-      <!--</div>-->
-
     </div>
-
-
 
     <div class="tab-pane fade in" id="desc_img_rel">
       <div class="row">
@@ -138,11 +116,13 @@
             <%= f.fields_for :artwork_symbols, @artwork.artwork_symbols.build  do |fart| %>
                 <%= render 'artwork_symbols_fields', ff:fart %>
             <% end %>
+
             <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#symbModal">Modificar simbolos</button>
 
           </div>
         </div>
       </div>
+      <br>
     </div>
 
     <div class="tab-pane fade in" id="personajes">
@@ -162,7 +142,17 @@
       </div>
     </div>
 
-    <div class="tab-pane fade in" id="cuerpos_gestos">
+    <div class="tab-pane fade in" id="cuerpo_gestos">
+      <div class="row">
+        <!--<label class="control-label col-sm-3">Descriptores</label>-->
+        <br>
+        <div class="col-md-6">
+          <%= f.fields_for :body_gestures, @artwork.body_gestures.build  do |fdesc| %>
+              <%= render 'body_gestures_fields', ff:fdesc %>
+          <% end %>
+          <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gestosModal">Modificar gestos</button>
+        </div>
+      </div>
     </div>
 
     <div class="tab-pane fade in" id="location">
