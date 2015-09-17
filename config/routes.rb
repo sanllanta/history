@@ -54,6 +54,9 @@ Rails.application.routes.draw do
   end
 
   resources :artworks do
+    member do
+      get 'line'
+    end
     resources :categories
   end
 
@@ -61,7 +64,7 @@ Rails.application.routes.draw do
 
 
   get 'welcome/index'
-
+  #get 'application/timeline'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -9,16 +9,16 @@
     <%= render 'index_region' %>
 <% elsif params[:topic] == ('true') %>
     <%= render 'index_topic' %>
+<% elsif params[:time_line] == ('show') %>
+    <%= render 'timeline' %>
+<% elsif params[:time_line] == ('true') %>
+    <%= render 'index_topic_timeline' %>
 <% elsif not params[:topic].nil? %>
-
     <%= render 'index_all_show' %>
-    <!--< %= render 'index_category_show' %>-->
 <% elsif not params[:author_show].nil?%>
     <%= render 'index_all_show' %>
-    <!--< %= render 'index_author_show' %>-->
 <% elsif not params[:region_show].nil?%>
     <%= render 'index_all_show' %>
-    <!--< %= render 'index_region_show' %>-->
 <% else %>
     <%= render 'index_all_show' %>
 <% end %>

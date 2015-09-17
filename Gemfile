@@ -19,6 +19,11 @@ end
 #Administracion
 gem 'devise'
 
+#Time line
+gem 'timeline_setter', '~> 0.3.2'
+
+
+
 #Presentacion, vista con bootstrap
 gem 'twitter-bootstrap-rails'
 gem 'bootstrap_form'
@@ -65,7 +70,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
+gem 'spring','~> 1.3.6',        group: :development
 
 #Ancestry for Category associtations
 gem 'ancestry'

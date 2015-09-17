@@ -24,6 +24,9 @@
 //= require jssor.js
 //= require jssor.slider.js
 //= require list.min.js
+//= require timesheet.js
+//= require underscore-min.js
+//= require timeline-setter.js
 
 // require contact_me.js
 
@@ -34,7 +37,7 @@ function getCategoryChildrenForSelect(category_id) {
     async:false,
     dataType: "json",
     url: "/categories/"+category_id+"/get_children_for_select.json",
-    dataType: "JSON",
+    dataType: "JSON"
   }).responseJSON;
 }
 

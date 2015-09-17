@@ -12,10 +12,12 @@
  *
  *= require font-awesome/font-awesome.css
  *= require bootstrap.css
+ *= require timeline-setter.css
  *= require rails_bootstrap_forms
  *= require agency.css
  *= require jquery-jvectormap-2.0.1.css
  *= require site_global.css
+ *= require timesheet-white.min.css
  *= require_self
  * require_tree .
  */

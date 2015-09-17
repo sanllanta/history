@@ -1,0 +1,92 @@
+<%= @artworks.count %>
+<br>
+<br>
+<br>
+<h6>
+            [   {"date":"Feb. 18, 2003",
+                "display_date":"","description":"Brock Savelkoul joins the Army and is stationed at Fort Riley, Kan., in the artillery division.  His assigned position is artillery survey, meaning he prepares terrain for mounting artillery canon.",
+                "link":"",
+                "series":"",
+                "html":"Brock Savelkoul",
+                "timestamp":1045544400000}],
+            {"interval":"","container":"#timeline"}
+<br>
+<br>
+  <%= json_artworks_timeline @artworks %> ,{"interval":"","container":"#timeline"}
+</h6>
+<div id="timeline"></div>
+<script type="text/javascript">
+    var currentTimeline = TimelineSetter.Timeline.boot(
+            [{"date":"Feb. 18, 2003","display_date":"","description":"Brock Savelkoul joins the Army and is stationed at Fort Riley, Kan., in the artillery division.  His assigned position is artillery survey, meaning he prepares terrain for mounting artillery canon.","link":"","series":"","html":"Brock Savelkoul","timestamp":1045544400000},
+                {"date":"Aug. 10, 2003","display_date":"","description":"Savelkoul deploys to Iraq, where he is based at Camp Forehead, near the Mansour District of Baghdad. ","link":"","series":"","html":"Brock Savelkoul","timestamp":1060491600000},
+                {"date":"Dec. 1, 2003","display_date":"December 2003","description":"Savelkoul and his unit are ambushed in the Mansour district. Many of them are shaken by the experience.","link":"","series":"","html":"Brock Savelkoul","timestamp":1070254800000},
+                {"date":"Oct. 1, 2006","display_date":"Oct-06","description":"Junge leaves the Air Force.","link":"","series":"","html":"Derrick Junge","timestamp":1159678800000},
+                {"date":"Oct. 9, 2005","display_date":"","description":"Savelkoul, who learned how to operate Ravens, or small surveillance drones used to fly above roads to make sure they're clear of bombs, is quoted in an article for a base newsletter: \"We're protecting them from the sky.\"","link":"http://www.dvidshub.net/publication/issues/0388","series":"","html":"Brock Savelkoul","timestamp":1128834000000},
+                {"date":"Nov. 1, 2006","display_date":"Nov-06","description":"Junge enlists in the Army.","link":"","series":"","html":"Derrick Junge","timestamp":1162357200000}],
+            {"interval":"","container":"#timeline"}
+    );
+</script>
+<noscript>
+  <table>
+    <thead>
+    <tr>
+      <th>date</th>
+      <th>series</th>
+      <th>description</th>
+      <th>link</th>
+      <th>html</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr>
+      <td>Feb. 18, 2003</td>
+      <td></td>
+      <td>Brock Savelkoul joins the Army and is stationed at Fort Riley, Kan., in the artillery division.  His assigned position is artillery survey, meaning he prepares terrain for mounting artillery canon.</td>
+      <td></td>
+      <td>Brock Savelkoul</td>
+    </tr>
+
+    <tr>
+      <td>Aug. 10, 2003</td>
+      <td></td>
+      <td>Savelkoul deploys to Iraq, where he is based at Camp Forehead, near the Mansour District of Baghdad. </td>
+      <td></td>
+      <td>Brock Savelkoul</td>
+    </tr>
+
+    <tr>
+      <td>Dec. 1, 2003</td>
+      <td></td>
+      <td>Savelkoul and his unit are ambushed in the Mansour district. Many of them are shaken by the experience.</td>
+      <td></td>
+      <td>Brock Savelkoul</td>
+    </tr>
+
+    <tr>
+      <td>Oct. 1, 2006</td>
+      <td></td>
+      <td>Junge leaves the Air Force.</td>
+      <td></td>
+      <td>Derrick Junge</td>
+    </tr>
+
+    <tr>
+      <td>Oct. 9, 2005</td>
+      <td></td>
+      <td>Savelkoul, who learned how to operate Ravens, or small surveillance drones used to fly above roads to make sure they're clear of bombs, is quoted in an article for a base newsletter: "We're protecting them from the sky."</td>
+      <td>http://www.dvidshub.net/publication/issues/0388</td>
+      <td>Brock Savelkoul</td>
+    </tr>
+
+    <tr>
+      <td>Nov. 1, 2006</td>
+      <td></td>
+      <td>Junge enlists in the Army.</td>
+      <td></td>
+      <td>Derrick Junge</td>
+    </tr>
+
+    </tbody>
+  </table>
+</noscript>
