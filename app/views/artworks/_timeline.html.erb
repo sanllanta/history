@@ -1,50 +1,43 @@
-<%= @artworks.count %>
+
 <br>
 <br>
 <br>
-<h6>
-            [   {"date":"Feb. 18, 2003",
-                "display_date":"","description":"Brock Savelkoul joins the Army and is stationed at Fort Riley, Kan., in the artillery division.  His assigned position is artillery survey, meaning he prepares terrain for mounting artillery canon.",
-                "link":"",
-                "series":"",
-                "html":"Brock Savelkoul",
-                "timestamp":1045544400000}],
-            {"interval":"","container":"#timeline"}
-<br>
-<br>
-  <%= json_artworks_timeline @artworks %> ,{"interval":"","container":"#timeline"}
-</h6>
 <div id="timeline"></div>
-<script type="text/javascript">
-    var currentTimeline = TimelineSetter.Timeline.boot(
-            [{"date":"Feb. 18, 2003","display_date":"","description":"Brock Savelkoul joins the Army and is stationed at Fort Riley, Kan., in the artillery division.  His assigned position is artillery survey, meaning he prepares terrain for mounting artillery canon.","link":"","series":"","html":"Brock Savelkoul","timestamp":1045544400000},
-              {"date":"Aug. 10, 2003","display_date":"","description":"Savelkoul deploys to Iraq, where he is based at Camp Forehead, near the Mansour District of Baghdad. ","link":"","series":"","html":"Brock Savelkoul","timestamp":1060491600000}],
-            {"interval":"","container":"#timeline"}
-    );
-</script>
-<noscript>
-  <table>
-    <thead>
-    <tr>
-      <th>date</th>
-      <th>series</th>
-      <th>description</th>
-      <th>link</th>
-      <th>html</th>
-    </tr>
-    </thead>
-    <tbody>
+<%  if (json_artworks_timeline_total @artworks) >1 %>
+    <script type="text/javascript">
+        var currentTimeline = TimelineSetter.Timeline.boot(
+                <%= json_artworks_timeline @artworks %> ,{"interval":"","container":"#timeline"}
+        );
+    </script>
+    <noscript>
+      <table>
+        <thead>
+        <tr>
+          <th>date</th>
+          <th>series</th>
+          <th>description</th>
+          <th>link</th>
+          <th>html</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @artworks.each  do |objeto| %>
+            <% if objeto.creation_date %>
+                <tr>
+                  <td><%=objeto.creation_date %></td>
+                  <td></td>
+                  <td><%=objeto.biographic_comment %></td>
+                  <td><%=url_for(objeto) %></td>
+                  <td><%=objeto.title %></td>
+                </tr>
+            <% end %>
+        <% end %>
 
-    <tr>
-      <td>Feb. 18, 2003</td>
-      <td></td>
-      <td>Brock Savelkoul joins the Army and is stationed at Fort Riley, Kan., in the artillery division.  His assigned position is artillery survey, meaning he prepares terrain for mounting artillery canon.</td>
-      <td></td>
-      <td>Brock Savelkoul</td>
-    </tr>
 
-
-
-    </tbody>
-  </table>
-</noscript>
+        </tbody>
+      </table>
+    </noscript>
+<% else %>
+    <h6>Tiene que existir dos obras o mas para poder visualizar la linea de tiempo.</h6>
+    <%= link_to "Ver otras linea de tiempo", artworks_path+"?time_line=true", class: "page-scroll" %>
+<% end %>

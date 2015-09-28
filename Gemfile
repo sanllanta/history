@@ -22,8 +22,6 @@ gem 'devise'
 #Time line
 gem 'timeline_setter', '~> 0.3.2'
 
-
-
 #Presentacion, vista con bootstrap
 gem 'twitter-bootstrap-rails'
 gem 'bootstrap_form'
