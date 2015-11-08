@@ -4,29 +4,17 @@
       <div class="col-md-4">
         <span class="copyright">Copyright &copy; Arca</span>
       </div>
-      <!--<div class="col-md-4">-->
-        <!--<ul class="list-inline social-buttons">-->
-          <!--<li><a href="#"><i class="fa fa-twitter"></i></a>-->
-          <!--</li>-->
-          <!--<li><a href="#"><i class="fa fa-facebook"></i></a>-->
-          <!--</li>-->
-          <!--<li><a href="#"><i class="fa fa-linkedin"></i></a>-->
-          <!--</li>-->
-        <!--</ul>-->
-      <!--</div>-->
-      <div class="col-md-4">
-        <!--<ul class="list-inline quicklinks">-->
-          <!--<li><a href="#">Privacy Policy</a>-->
-          <!--</li>-->
-          <!--<li><a href="#">Terms of Use</a>-->
-          <!--</li>-->
-        <!--</ul>-->
-        <span class="list-inline quicklinks">Desarrollado por: Kelvin Guerrero, Santiago Villaveces</span>
-        <br>
-        <span class="list-inline quicklinks">Correo: kelvin_guerrero@hotmail.com </span>
-        <br>
-        <span class="list-inline quicklinks">Tel: 314 264 5737 </span>
-      </div>
+
+      <% if request.env['ORIGINAL_FULLPATH'] == '/' %>
+          <div class="col-md-4">
+            <span class="list-inline quicklinks">Desarrollado por: Kelvin Guerrero, Santiago Villaveces</span>
+            <br>
+            <span class="list-inline quicklinks">Correo: kelvin_guerrero@hotmail.com </span>
+            <br>
+            <span class="list-inline quicklinks">Tel: 314 264 5737 </span>
+          </div>
+      <% end %>
+
     </div>
   </div>
 </footer>

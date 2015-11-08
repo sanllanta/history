@@ -391,5 +391,9 @@ class Artwork < ActiveRecord::Base
     passage ? passage.text : "N/A"
   end
 
+  def get_characters
+    characters.order('name')
+  end
+
 end
 

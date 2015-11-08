@@ -4,7 +4,7 @@ class ArtworkSymbolsController < ApplicationController
   # GET /artwork_symbols
   # GET /artwork_symbols.json
   def index
-    @artwork_symbols = ArtworkSymbol.all
+    @artwork_symbols = ArtworkSymbol.all.order("name")
   end
 
   # GET /artwork_symbols/1
