@@ -223,6 +223,18 @@
               </table>
             </div>
           </div>
+          <div class="row">
+            <label class="control-label col-sm-3">Grabados</label>
+            <div class="col-sm-10">
+              <table class="table table-condensed table-hover table-striped">
+                <tbody>
+                <% @artwork.engravings.each  do |e| %>
+                    <tr><td><%= e.name %></td></tr>
+                <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
 
       </div>

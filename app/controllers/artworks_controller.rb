@@ -304,7 +304,7 @@ class ArtworksController < ApplicationController
                                     source_attributes:[:id,:name,:_destroy],
                                     story_type_attributes:[:id,:name,:_destroy],
                                     type_attributes:[:id,:name,:_destroy],
-                                    :description_ids=>[],:body_gesture_ids=>[],:character_ids=>[],:artwork_symbol_ids=>[]
+                                    :description_ids=>[],:body_gesture_ids=>[],:character_ids=>[],:artwork_symbol_ids=>[],:engraving_ids=>[]
     )
   end
 
