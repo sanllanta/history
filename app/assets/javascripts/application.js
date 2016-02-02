@@ -36,9 +36,8 @@ function getCategoryChildrenForSelect(category_id) {
     type: "GET",
     async:false,
     dataType: "json",
-    url: "/categories/"+category_id+"/get_children_for_select.json",
-    dataType: "JSON"
-  }).responseJSON;
+    url: "/categories/"+category_id+"/get_children_for_select.json"
+  });
 }
 
 $(function() {
@@ -46,10 +45,11 @@ $("#artwork_category_1_id").change(function() {
     // make a POST call and replace the content
     select = document.getElementById('artwork_category_2_id');
     select.options.length = 0;
-    data = getCategoryChildrenForSelect($("#artwork_category_1_id").val())
+    var data = getCategoryChildrenForSelect($("#artwork_category_1_id").val());
+    var obj = JSON.parse(data.responseText);
     select.options.add(new Option("Select Category"));
-    for (index = 0; index < data.length; ++index) {
-      option = data[index];
+    for (index = 0; index < obj.length; ++index) {
+      option = obj[index];
       select.options.add(new Option(option.name, option.id));
     }
   });
@@ -58,9 +58,10 @@ $("#artwork_category_2_id").change(function() {
     // make a POST call and replace the content
     select = document.getElementById('artwork_category_3_id');
     select.options.length = 0;
-    data = getCategoryChildrenForSelect($("#artwork_category_2_id").val())
-    for (index = 0; index < data.length; ++index) {
-      option = data[index];
+    var data = getCategoryChildrenForSelect($("#artwork_category_2_id").val());
+    var obj = JSON.parse(data.responseText);
+    for (index = 0; index < obj.length; ++index) {
+      option = obj[index];
       select.options.add(new Option(option.name, option.id));
     }
     select.options.add(new Option("Select Category"));
@@ -70,10 +71,11 @@ $("#artwork_category_3_id").change(function() {
     // make a POST call and replace the content
     select = document.getElementById('artwork_category_4_id');
     select.options.length = 0;
-    data = getCategoryChildrenForSelect($("#artwork_category_3_id").val())
+    var data = getCategoryChildrenForSelect($("#artwork_category_3_id").val());
+    var obj = JSON.parse(data.responseText);
     select.options.add(new Option("Select Category"));
-    for (index = 0; index < data.length; ++index) {
-      option = data[index];
+    for (index = 0; index < obj.length; ++index) {
+      option = obj[index];
       select.options.add(new Option(option.name, option.id));
     }
   });
@@ -82,10 +84,11 @@ $("#artwork_category_4_id").change(function() {
     // make a POST call and replace the content
     select = document.getElementById('artwork_category_5_id');
     select.options.length = 0;
-    data = getCategoryChildrenForSelect($("#artwork_category_4_id").val())
+    var data = getCategoryChildrenForSelect($("#artwork_category_4_id").val());
+    var obj = JSON.parse(data.responseText);
     select.options.add(new Option("Select Category"));
-    for (index = 0; index < data.length; ++index) {
-      option = data[index];
+    for (index = 0; index < obj.length; ++index) {
+      option = obj[index];
       select.options.add(new Option(option.name, option.id));
     }
   });

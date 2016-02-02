@@ -15,9 +15,6 @@ class CategoriesController < ApplicationController
   # GET /categories/new
   def new
     @category = Category.new
-    puts '-----------------'
-    puts params[:parent_id]
-    puts '-----------------'
     @category.parent = Category.find(params[:parent_id]) unless params[:parent_id] == nil
   end
 
@@ -71,10 +68,11 @@ class CategoriesController < ApplicationController
     @children = @category.children.map do |child|
       { :id => child.id, :name => child.name }
     end
-    json = @children.to_json
+    json_rta = @children.to_json
+    puts json_rta
     respond_to do |format|
         format.html { redirect_to @category }
-        format.json { render json: json }
+        format.json { render json: json_rta }
     end    
   end
 
